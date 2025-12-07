@@ -5,6 +5,11 @@ const MOVE_SPEED := 80.0
 
 func update(_delta: float) -> void:
 	var movement_dir = player.get_movement_direction()
+
+	if Input.is_action_just_pressed("attack"):
+		state_machine.transition_to("Attack")
+		return
+
 	if movement_dir == Vector2.ZERO:
 		state_machine.transition_to("Idle")
 		return

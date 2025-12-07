@@ -4,6 +4,10 @@ extends PlayerState
 func update(_delta: float) -> void:
 	var movement_direction = player.get_movement_direction()
 
+	if Input.is_action_just_pressed("attack"):
+		state_machine.transition_to("Attack")
+		return
+
 	if movement_direction != Vector2.ZERO:
 		state_machine.transition_to("Run")
 
