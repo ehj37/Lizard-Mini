@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://tan1k2ixkecg"
+path="res://.godot/imported/wall.aseprite-a7b07a9bf6884c5dda3be0eb4f67b161.res"
+
+[deps]
+
+source_file="res://scenes/wall/wall.aseprite"
+dest_files=["res://.godot/imported/wall.aseprite-a7b07a9bf6884c5dda3be0eb4f67b161.res"]
+
+[params]
+

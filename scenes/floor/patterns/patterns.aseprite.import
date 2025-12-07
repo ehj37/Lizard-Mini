@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://g3qo1u8krrbo"
+path="res://.godot/imported/patterns.aseprite-2a21124e29b1d42587c99601cbdcd481.res"
+
+[deps]
+
+source_file="res://scenes/floor/patterns/patterns.aseprite"
+dest_files=["res://.godot/imported/patterns.aseprite-2a21124e29b1d42587c99601cbdcd481.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cfkco1orcjsan"
+path="res://.godot/imported/scribble_1.aseprite-b70c51e34d86598166090f999b5624bc.res"
+
+[deps]
+
+source_file="res://aseprite/scribbles/scribble_1.aseprite"
+dest_files=["res://.godot/imported/scribble_1.aseprite-b70c51e34d86598166090f999b5624bc.res"]
+
+[params]
+

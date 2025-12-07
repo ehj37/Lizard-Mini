@@ -9,8 +9,8 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAQAEAAEABAAB0AwAAUklGRmwDAABXRUJQVlA4TGADAAAvP8FPECcgECBToow4ICQgU5o7NhESELabKhsx/wEAnnQdyI5tu26bSwgF0BMVgLlkARqiAZpz+i8K5M/BuWDeUkT/JTiSpEiS1cLxedTAI+zz+gFpz6w9R99tO8hloLOB6LsNT84OZKO79Ltp4DyBb7YasNC7rTT07g5C7zYHxD9xzybezTtglANYyex2TL9bygHvIPTu4k5f6ypWuuymPcisbfFEZjvXZd5l9+i2h6m79Oiuem/ct4a9t6GVXz7Gc9/Ur4tG+75bthpd2ZZEdrmTXZVlpbJmsyl214vWsqehzRPf/WWkKbivyU5k2CDYNO6n9+j2zsd/749A3yW2Zz4MWd+l3Y0O1/7MsbsA+lbR4eKyvku6+wl8k0qj75LuRjskb/Rd9G7xT/yAvEu8+wDW+LS7HXDyaeue9V3a3X6svIe+S7vbt4W2xVbO3YlU2Xtr5F206onvGpl7HVxhlQsXqwOghvvJB2a+Xb7EVrVKs5C/XNU/KR3urf7gumrDdZ/I3fNsnNltolyiJsqrsvc6n9lk2MRq5R3Qu7XmL2N3s+bLr9Pp4q6ZN/Gm0RnPAhj9THZ75+O/dyf2zHeNvgvguwbftQOZ7xp71xP45rvG3oV2+K74u/SP+9i7DmDlu8be5YDzXWPv8mPlu0bftS0dulL0XbGVy73FR+6utMqq6nvrsLt26HKnuuSKnF8k+t74xyWwwnP+cY1vq10ed5b4ebc15MuO7TKnu3ilLlyWvWp9cF1NpbsTp9S6GGU2m/gu/t74Xb88XcZ3aVmX3dHJT3g2gNs7H/+9gbFnfXf0LkDfHbxrB7K+O3bXE/jWdqOdn19X7Mdld8+xuw5g1XZ7O8G7gA67Bnesd2erNyDREqNcuu9O7HsrXSwUD0F876xy4dLHVc69suhvA9zbyY3fPTBrqg//R4zyqvXBdS3y963inrRds9mkvbe5pIne9ZPvMr5r/N0D3FuPE4D2xHB75+O/dz/2rO+KvhvQd/HE3TuQ5V0dvmm70Y6+S/0duHe7e5Z3dfiJttvb0Xfx+N2/tcophZfCS2Njh5Xh+UWi7025u6gVnssfV9fj7z1Gl0t/Ev99Qc4W943zWjzxjzzZff5c6lXrgzObTfouHr/75nTpunv0GUCEo/Z27xg=")
 size_override = Vector2(320, 320)
 
-[sub_resource type="Animation" id="Animation_gmlin"]
-length = 0.5
+[sub_resource type="Animation" id="Animation_75vfm"]
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,10 +19,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3, 4, 5, 6, 7]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_p47bc"]
@@ -39,22 +39,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_75vfm"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_0owmy"]
@@ -89,6 +73,22 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_gmlin"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7]
+}
+
 [sub_resource type="Animation" id="Animation_5gtgg"]
 length = 0.8
 loop_mode = 1
@@ -118,8 +118,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 128
+collision_layer = 128
 script = ExtResource("1_8afob")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
