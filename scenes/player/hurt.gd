@@ -1,36 +1,49 @@
 extends PlayerState
 
-const MOVE_SPEED := 80.0
+const HURT_MOVE_SPEED := 30.0
 
 
 func update(_delta: float) -> void:
 	var movement_dir = player.get_movement_direction()
 
+	if movement_dir != Vector2.ZERO:
+		player.sprite.flip_h = movement_dir.x < 0
+		player.velocity = movement_dir * HURT_MOVE_SPEED
+		player.orientation = movement_dir
+	else:
+		player.velocity = Vector2.ZERO
+
+	if animation_player.is_playing():
+		return
+
 	if Input.is_action_just_pressed("attack"):
 		state_machine.transition_to("Attack")
 		return
 
-	if movement_dir == Vector2.ZERO:
-		state_machine.transition_to("Idle")
+	if movement_dir != Vector2.ZERO:
+		state_machine.transition_to("Run")
 		return
 
-	var animation = _get_animation(movement_dir)
-	if animation_player.current_animation != animation:
-		animation_player.current_animation = animation
-
-	player.sprite.flip_h = movement_dir.x < 0
-	player.velocity = movement_dir * MOVE_SPEED
-	player.orientation = movement_dir
+	state_machine.transition_to("Idle")
 
 
-func enter(_data := {}) -> void:
+func enter(_data := {}):
+	player.velocity = Vector2.ZERO
+
 	var animation = _get_animation(player.orientation)
 	animation_player.play(animation)
+
+	if player.orientation.x < 0:
+		player.sprite.flip_h = true
+
+	player.hurtbox.disable()
 
 
 func exit() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
+
+	player.hurtbox.enable()
 
 
 func _get_animation(dir: Vector2) -> String:
@@ -49,13 +62,13 @@ func _get_animation(dir: Vector2) -> String:
 	var animation: String = ""
 	match closest_cardinal_dir:
 		Vector2.UP:
-			animation = "run_up"
+			animation = "hurt_up"
 		Vector2.RIGHT:
-			animation = "run_side"
+			animation = "hurt_side"
 		Vector2.DOWN:
-			animation = "run_down"
+			animation = "hurt_down"
 		Vector2.LEFT:
-			animation = "run_side"
+			animation = "hurt_side"
 
 	assert(animation != "", "Could not match direction to run animation.")
 	return animation

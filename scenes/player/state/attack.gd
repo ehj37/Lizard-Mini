@@ -1,7 +1,7 @@
 extends PlayerState
 
-const INITIAL_LUNGE_SPEED := 50.0
-const LUNGE_DECELERATION := 200.0
+const INITIAL_LUNGE_SPEED := 80.0
+const LUNGE_DECELERATION := 350.0
 
 const DIR_UR := Vector2(1, -1)
 const DIR_DR := Vector2(1, 1)
@@ -16,7 +16,7 @@ var _speed := 0.0
 
 
 func physics_update(delta: float) -> void:
-	_speed = _speed - LUNGE_DECELERATION * delta
+	_speed = max(_speed - LUNGE_DECELERATION * delta, 0.0)
 	player.velocity = player.orientation * _speed
 
 

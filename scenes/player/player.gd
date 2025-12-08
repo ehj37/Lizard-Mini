@@ -18,6 +18,8 @@ var _pressed_movement_inputs: Array[String] = []
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: StateMachine = $StateMachine
+@onready var hurtbox: Hurtbox = $Hurtbox
 
 
 func _physics_process(_delta):
@@ -31,6 +33,10 @@ func _process(_delta):
 				_pressed_movement_inputs.append(movement_input)
 		else:
 			_pressed_movement_inputs.erase(movement_input)
+
+
+func take_damage(_damage_amount: int) -> void:
+	state_machine.transition_to("Hurt")
 
 
 func get_movement_direction() -> Vector2:
