@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxf4f7cbb0ma6"]
+
+[ext_resource type="Texture2D" uid="uid://b4r1ft2hk8wnl" path="res://scenes/wall/wall_inner/wall_inner.png" id="1_c2c0s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2c0s"]
+texture = ExtResource("1_c2c0s")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/y_sort_origin = 68
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+2:1/0 = 0
+7:1/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_c2c0s"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_c2c0s")
+
+[node name="WallInner" type="TileMapLayer"]
+tile_set = SubResource("TileSet_c2c0s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_c2c0s")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/wall/wall_inner/wall_inner.aseprite",
+"source_uid": 7769501647125901476
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6c541cd4205ca5365c3f3818bd332ef1"

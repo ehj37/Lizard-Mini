@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjneeorls166y"]
+
+[ext_resource type="Texture2D" uid="uid://dn8pmvfwgx3t7" path="res://scenes/ledge/ledge.png" id="1_dj5sr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dj5sr"]
+texture = ExtResource("1_dj5sr")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dj5sr"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_dj5sr")
+
+[node name="Ledge" type="TileMapLayer"]
+z_index = -5
+tile_set = SubResource("TileSet_dj5sr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_dj5sr")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/ledge/ledge.aseprite",
+"source_uid": 2548223470949207418
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0af3b5c6737d91512938e8a2977afc81"
