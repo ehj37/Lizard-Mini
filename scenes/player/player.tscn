@@ -1,16 +1,25 @@
-[gd_scene load_steps=24 format=4 uid="uid://fkmtv41g72kp"]
+[gd_scene load_steps=31 format=4 uid="uid://fkmtv41g72kp"]
 
 [ext_resource type="Script" uid="uid://bslt7m2op841j" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="2_dovo2"]
+[ext_resource type="Shader" uid="uid://binhl7o1u780h" path="res://scenes/player/player_shader.gdshader" id="2_qek5x"]
 [ext_resource type="Script" uid="uid://bf2uyp8rfgxsv" path="res://scenes/player/state/idle.gd" id="3_lvxji"]
 [ext_resource type="Script" uid="uid://cjyha36kaaij1" path="res://scenes/player/state/run.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://c71sfcy5v7d1f" path="res://scenes/player/state/attack.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bedfjq7soys7h" path="res://scenes/player/hurt.gd" id="6_0owmy"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="6_75vfm"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_0owmy"]
-_data = PackedByteArray("AAADAAUAAAABAAAAwAEAAIABAAC4BwAAUklGRrAHAABXRUJQVlA4TKQHAAAvv8FfEC9AkG2bm8RMJnKDE2Yb5/abzhRO5QizjcY+hRne+yDmPwDAp7x9XEDX2vaqdfSDoccTTy//OL2DJr3t/OnJQfd/L0LZyy+/MHPeEf2n4DaSJEli1KA6e/aQe1Rj5g2ye+fdf/9GZNCtE9xVwdy1d92sg9U420wqmLvyLjsxN8vZvMt97uq7jDmZ3Wm1mbjPXXlXyPDeVuA8d/Vdaub8oNqJ89z1dz1MkIfZBWbnI/5zb7pLzXQFL21vQRVf68VZWGXu6rsOMGsatYXZyrpEV5nbv2vrpoPQLmzi+Fz+cFfk/Lu2TXXK6N5fuvCnSHztD6rTxknm++dumGL9orMwjS3sUoVdkZIQVyBwbmwQaeruumI5G3aHYYAGlWbThoZ3HyWD5ZTQvTeVOzZCHVfZO93bVuA0Ojqt5prds3vn3X/v/vtnhDm7df5dnHv3zTrfbrMauuqeW+wEmeFbsa6CLv+5cXjn2n0yu1fQVfXcEjLXbsungq6q5xbNcPcGHtznph7O3Q+zi3+X/9ycb7eaqX9X3XMH1c55L49LBV3uc3MH57mnsYKu1ntuX2GFuadYAz6371w6YVFb3oVVPlcctfWkGv3h7rhClyrqwgIVCup67+600OK9e+Jz6UL9uc7tTXQqurdsiqt87jyFbKRzef8jU8ayI+0S5V0aP7CumPnOFeC1iFxjPOC5I+5umWb5vuvcQ86uoMt97hXwvb3yrqH4PjuYbIHwLn/V712qJxXwPbWTKkjtdu+8++/df3+HuXW8y3+urc9txru85zbb+Nw3s4534blXmGvbc5/M7rzLd27Lx7/Lf+7X3+X/uXSeS7Xz7/L1MLvwLt+5NR//Lue5zdS5S/XVdT0uvOvVm0bcFV+AtnotEYq5a7fG3LWre+9hE0ZE69C6U9fPBRUK6nrv7hRfbMBUI8Tnqn7vwV9YqPC9bV3r+SBZ1M3/IzhbhYXHOApyjfHAukb3P3eCasu78NwTM4g0vMt370Nom/rn5v7cdAnv2gKh8KmeVLC3Gk4FfM8rJLXbvfPuv3f//RU2p68/U1+zW+ffxRn9lcxSSjzcsctyddVdvdyso+9mP9nrl3C3rpst1d5dlFkD2d3uib3MbOHVZUV1zV2z4MWnpXzRP39zJzt1C9a1ZYF7LA/o7Wa/lDt13VS7rOIuUUzf0Nf5oPmIuHfhvdEuzc/l2SdB9ctPKDzsUpaTrtrhvXW4O44poUdV0xaWm25cS6unOH5HirAWDhbH2rXOPsSzPk+X8ymOqL3oauleqoazSul5IZs+xbMquLbFGQgvwBSPSr6dxU9HVTb20gWp597CKg5IWMzsX4vxGBVezDGivWMBU3dyjfEI/83443Ms/wb2bNf0I0Zd4cG5S739oFJpTvJ0V4xtzT/XVZFnFUVzSj1wYHON2jIB7/26rN0dexf6qRL5QQ0ijdTeNeAuYXsbEv1L8ZCLh5eHfSyaGf6SJlf/TkndGqwpoa5l6bR7cIZPHfDYfYPX0jC1n2adLr6WNezeefff/7pJ/b6ZU0q79kUqT79jX//62j1pt573zvyW/q+Z9Ob5m4sxtw6xF2C+ddzNWJoZ8dV+/vKf7fmduHWtwWyFdzO29Oe3PmdFcYHfiVvXCvLo/HJOdurY0g2bn9bLnc68TheXl2aYmTFfOZmfZ9Q6XSs8m5nzw+V7x2i76GW7lp9bX0H149NJKfV2WTzfJbZ0QRelLkoN9xWEh12g75AiN1NVouhqeRdd2tGspVRNWZX+1hKKBk99oaUUU+p8vygXKW2el4osBeRSZJEvLnTvcuF0+jDizevZ01AAnysJZRcaulgc7GqpeFb8/imeqRY4Uv0VK7uEdmERCtlRncypl0DJiBcz0r3LSlrqGLX1ItCcRbaXXiQuL/E2Mqrfoxvp6Qd3TmmI4xSBJEOMqi0xFB8rX0E/x7jCA+xqif4aI9IP1/wmSMBCxCR+jgf8gymwazo4Ss3ShTRX1Ung2pZw5keErqOyLKF761foooou6ErXJsPyfdrVMI0MiEhEXTPukrnsonujYU0FpCFo9Fx2IUVXDRy78d56vJcVutYB24ZyOX5wVF9F1xaIyCvrkkLVZwN277z7791/fwe5dXvHbOdu/mbW4c/Vi795y8d/Kqu862Z3eu8rWOVzRdM6/y48ueu93y7awuy73fm1n7q6ux5mrvceFLMVHs26qrsCdTJ675oPf9g6tQ7fe+3CwzrvLl8PswtFHwN/Vl30qOsL7nrwLvEUOH38oUgrqmrtnJCYu5gpdwnrop8q05aDVXFUNnX2RefUg/QpfkF7D9kXX4+Lo/ljIapCUzwmQLPcBcVjzxYToWn0lFKxlrO2M+qOxzNQ3MvxTBTdjWxZjMffzm1C134cNaVE1pK7vjPHsd2wj1PMr+OM9hLj2OZC1qWSenIvsX5C9NfsIOTnuuwSICzyCESsm6jqhKQVsS40tztZCFx8PDCySCuYnYmnMI0TM4g0TIrlfyn5Y110L9LArnjwVJ5VSN0GvDc/spJDEc67xK2rqYH4GsrZ55510blfIMEEcj+YMPNbekz2jnja9nnzeafO/Mb77pHdOm+979ybyL69evlP3RE=")
-size_override = Vector2(448, 384)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gtgg"]
+shader = ExtResource("2_qek5x")
+shader_parameter/enabled = false
+shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
+shader_parameter/death_color = Color(1, 0, 0, 1)
+shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
+shader_parameter/event_type = 0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qek5x"]
+_data = PackedByteArray("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")
+size_override = Vector2(448, 448)
 
 [sub_resource type="Animation" id="Animation_ugbui"]
 length = 0.2
@@ -24,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 40]
+"values": [41, 42]
 }
 
 [sub_resource type="Animation" id="Animation_gx1jg"]
@@ -39,7 +48,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 39]
+"values": [39, 40]
 }
 
 [sub_resource type="Animation" id="Animation_fcs02"]
@@ -54,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [2, 41]
+"values": [43, 44]
 }
 
 [sub_resource type="Animation" id="Animation_75vfm"]
@@ -214,6 +223,101 @@ _data = {
 &"swing_up_1": SubResource("Animation_je7p5")
 }
 
+[sub_resource type="Animation" id="Animation_myrg7"]
+resource_name = "hurt_flash"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kvlxm"]
+resource_name = "heal_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_uf5tr"]
+resource_name = "death_flash"
+length = 0.2
+
+[sub_resource type="Animation" id="Animation_lgqa7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgqa7"]
+_data = {
+&"RESET": SubResource("Animation_lgqa7"),
+&"death_flash": SubResource("Animation_uf5tr"),
+&"heal_flash": SubResource("Animation_kvlxm"),
+&"hurt_flash": SubResource("Animation_myrg7")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 radius = 5.0
 
@@ -226,10 +330,12 @@ script = ExtResource("1_8afob")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_0owmy")
+material = SubResource("ShaderMaterial_5gtgg")
+texture = SubResource("PortableCompressedTexture2D_qek5x")
 offset = Vector2(0, -16)
 hframes = 7
-vframes = 6
+vframes = 7
+frame = 41
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
 "pending_changes": {}
@@ -252,11 +358,16 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/player/player.aseprite",
 "source_uid": 439575620103134135
 }
-metadata/_aseprite_wizard_source_file_hash_ = "76a4e45efbba09e00611f56123be0699"
+metadata/_aseprite_wizard_source_file_hash_ = "a9a560e606bb291eda1d65f1f8ec5cbe"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_lvxji")
+}
+
+[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lgqa7")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

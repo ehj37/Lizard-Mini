@@ -2,6 +2,8 @@ class_name Player
 
 extends CharacterBody2D
 
+signal hurt
+
 const MOVEMENT_INPUTS: Array[String] = ["move_up", "move_right", "move_down", "move_left"]
 const VERTICAL_MOVEMENT_INPUTS: Array[String] = ["move_up", "move_down"]
 const HORIZONTAL_MOVEMENT_INPUTS: Array[String] = ["move_right", "move_left"]
@@ -18,6 +20,7 @@ var _pressed_movement_inputs: Array[String] = []
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
 
@@ -36,6 +39,10 @@ func _process(_delta):
 
 
 func take_damage(_damage_amount: int) -> void:
+	hurt.emit()
+	shader_animation_player.play("hurt_flash")
+	HitStopManager.hit_stop()
+
 	state_machine.transition_to("Hurt")
 
 
