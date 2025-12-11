@@ -8,6 +8,10 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Attack")
 		return
 
+	if Input.is_action_just_pressed("dash"):
+		state_machine.transition_to("Dash")
+		return
+
 	if movement_direction != Vector2.ZERO:
 		state_machine.transition_to("Run")
 

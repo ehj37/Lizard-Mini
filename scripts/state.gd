@@ -19,3 +19,7 @@ func enter(_data := {}) -> void:
 
 func exit() -> void:
 	pass
+
+
+func is_current_state() -> bool:
+	return state_machine.current_state == self

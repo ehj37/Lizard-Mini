@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=9 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="1_x6ivy"]
 [ext_resource type="PackedScene" uid="uid://bsln2e52ibcdk" path="res://scenes/player_camera/player_camera.tscn" id="2_4tcl0"]
@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dejofeby1jh17" path="res://scenes/floor/grid/grid.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://dxf4f7cbb0ma6" path="res://scenes/wall/wall_inner/wall_inner.tscn" id="5_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cnfg7l70sfnrc" path="res://scenes/floor/patterns/patterns.tscn" id="5_dywbp"]
-[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="9_plydf"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ntmo"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -38,9 +35,3 @@ tile_map_data = PackedByteArray("AAD2/9b/BAAAAAAAAAD2/9f/BAAAAAEAAAD2/9j/BAAAAAI
 
 [node name="WallInner" parent="." instance=ExtResource("5_2r1tl")]
 tile_map_data = PackedByteArray("AAD2/9X/AAACAAAAABD5/9X/AAACAAAAAAD7/9X/AAACAAAAABD+/9X/AAACAAAAAAAAANX/AAACAAAAABADANX/AAACAAAAAAAFANX/AAACAAAAABAIANX/AAACAAAAAAAHANX/AAADAAAAACAGANX/AAADAAAAACACANX/AAADAAAAACABANX/AAADAAAAACD9/9X/AAADAAAAACD8/9X/AAADAAAAACD4/9X/AAADAAAAACD3/9X/AAADAAAAACD6/9T/AAADAAAAACD//9T/AAADAAAAACAEANT/AAADAAAAACD+/9T/AAAIAAAAACAAANT/AAAIAAAAADADANT/AAAIAAAAACAFANT/AAAIAAAAADD7/9T/AAAIAAAAADD5/9T/AAAIAAAAACD2/9L/AAACAAAAADAIANL/AAACAAAAACAHANL/AAADAAAAAAAGANL/AAADAAAAAAAFANL/AAADAAAAAAAEANL/AAADAAAAAAADANL/AAADAAAAAAACANL/AAADAAAAAAABANL/AAADAAAAAAAAANL/AAADAAAAAAD//9L/AAADAAAAAAD+/9L/AAADAAAAAAD9/9L/AAADAAAAAAD8/9L/AAADAAAAAAD7/9L/AAADAAAAAAD6/9L/AAADAAAAAAD5/9L/AAADAAAAAAD4/9L/AAADAAAAAAD3/9L/AAADAAAAAAAIANP/AAADAAAAAFAIANT/AAADAAAAAFD2/9P/AAADAAAAAED2/9T/AAADAAAAAED3/9P/AAAEAAAAAAD3/9T/AAAEAAAAAAD4/9T/AAAEAAAAAAD4/9P/AAAEAAAAAAD5/9P/AAAEAAAAAAD6/9P/AAAEAAAAAAD7/9P/AAAEAAAAAAD8/9P/AAAEAAAAAAD8/9T/AAAEAAAAAAD9/9T/AAAEAAAAAAD9/9P/AAAEAAAAAAD+/9P/AAAEAAAAAAD//9P/AAAEAAAAAAAAANP/AAAEAAAAAAABANP/AAAEAAAAAAABANT/AAAEAAAAAAACANT/AAAEAAAAAAACANP/AAAEAAAAAAADANP/AAAEAAAAAAAEANP/AAAEAAAAAAAFANP/AAAEAAAAAAAGANP/AAAEAAAAAAAGANT/AAAEAAAAAAAHANT/AAAEAAAAAAAHANP/AAAEAAAAAAA=")
-
-[node name="Hitbox" parent="." instance=ExtResource("9_plydf")]
-position = Vector2(-48, -238)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_5ntmo")
