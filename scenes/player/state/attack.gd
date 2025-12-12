@@ -1,7 +1,11 @@
 extends PlayerState
 
+enum SwingDirection {}
+
 const INITIAL_LUNGE_SPEED := 80.0
 const LUNGE_DECELERATION := 350.0
+const HITBOX_ENABLED_DELAY := 0.075
+const HITBOX_ENABLED_DURATION := 0.075
 
 const DIR_UR := Vector2(1, -1)
 const DIR_DR := Vector2(1, 1)
@@ -43,14 +47,21 @@ func enter(_data := {}) -> void:
 
 	if _lunge_dir.x < 0:
 		player.sprite.flip_h = true
+		player.hitbox_sword.scale.x = -1
+	else:
+		player.sprite.flip_h = false
+		player.hitbox_sword.scale.x = 1
 
 	_speed = INITIAL_LUNGE_SPEED
 	player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
+	player.hitbox_sword.damage_direction = player.orientation
 
 
 func exit() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
+
+	player.disable_sword()
 
 
 func _get_animation(dir: Vector2) -> String:

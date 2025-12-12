@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://m8ob1h7af4h7"
+path="res://.godot/imported/pots.aseprite-1c034b80cfee15826e49091fa9963029.res"
+
+[deps]
+
+source_file="res://scenes/objects/pots/pots.aseprite"
+dest_files=["res://.godot/imported/pots.aseprite-1c034b80cfee15826e49091fa9963029.res"]
+
+[params]
+

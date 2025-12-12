@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=4 uid="uid://dur8f8605xvcr"]
+
+[ext_resource type="Script" uid="uid://cevmaed438gsu" path="res://scenes/objects/pots/fragment/pot_fragment.gd" id="1_ttqgp"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ttqgp"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAEAAAACKAAAAUklGRoIAAABXRUJQVlA4THYAAAAvf8APEBcgEEhxIkMtEEgi2d9oHYFAihOZ5fkP+FfgNrJtpznf4DLfzy0BD+EvhRLo2UuKNRPR/wng9+uDIgzsJ60BzI1IUUCRGkUj0Eatac16Q1F7MGqUjbS0Btoo3Bgb0RoZIQttpIO5BcgI2IBgAHI2/icD")
+size_override = Vector2(128, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttqgp"]
+radius = 4.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wm083"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAAAqAAAAUklGRiIAAABXRUJQVlA4TBUAAAAvB8ABEA8QEWMZQiCQ4jCGOaL/QR8A")
+size_override = Vector2(8, 8)
+
+[node name="Fragment" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 129
+mass = 2.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 10.0
+angular_damp = 50.0
+script = ExtResource("1_ttqgp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+texture = SubResource("PortableCompressedTexture2D_ttqgp")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/pots/fragment/pot_fragments.aseprite",
+"source_uid": 4004495538936978442
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9c09c8636ab92029aaedfe5296a868f2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ttqgp")
+
+[node name="SpriteShadow" type="Sprite2D" parent="."]
+z_index = -4
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_wm083")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/pots/fragment/fragment_shadow.aseprite",
+"source_uid": 4521562374725261958
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0501688f3b3d92b45c0fbdbac45a3cd8"

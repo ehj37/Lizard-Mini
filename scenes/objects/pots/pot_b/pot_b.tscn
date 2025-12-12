@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=4 uid="uid://c6ceoo202u4lv"]
+
+[ext_resource type="Script" uid="uid://y3aesk4nf26x" path="res://scenes/objects/pots/pot.gd" id="1_iudrq"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="2_5lhnu"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_677y1"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAABgAAACIAAAAUklGRoAAAABXRUJQVlA4THQAAAAvB8AFEEdgpAEaNBLL0ESh42M9ndpINqj3kRmpUBO6ULuizEQgZDUbnRoq6PLBP8f8BwD7ZlImuqMSt929jwM2sW01eiJQ8BwQNVDnmsEBbKiZtR4lRPR/AvCrdhqXkA8NXWsE8s04Ec4Bz4VA3tSH8MpzAQ==")
+size_override = Vector2(8, 24)
+
+[node name="PotB" type="StaticBody2D"]
+script = ExtResource("1_iudrq")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_677y1")
+offset = Vector2(0, -12)
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/pots/pot_b/pot_b.aseprite",
+"source_uid": 5193906153603586488
+}
+metadata/_aseprite_wizard_source_file_hash_ = "103720f04783f28e6a2d10236360f0af"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 14)
+polygon = PackedVector2Array(2, -14, 2, -19, -4, -19, -4, -14)
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_5lhnu")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(2, 0, -4, 0, -4, -18, 2, -18)

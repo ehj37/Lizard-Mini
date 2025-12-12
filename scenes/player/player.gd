@@ -23,6 +23,7 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hitbox_sword: Hitbox = $HitboxSword
 
 
 func _physics_process(_delta):
@@ -38,7 +39,7 @@ func _process(_delta):
 			_pressed_movement_inputs.erase(movement_input)
 
 
-func take_damage(_damage_amount: int) -> void:
+func take_damage(_damage_amount: int, _damage_direction: Vector2) -> void:
 	hurt.emit()
 	shader_animation_player.play("hurt_flash")
 	HitStopManager.hit_stop()
@@ -63,3 +64,10 @@ func get_movement_direction() -> Vector2:
 		movement_vector += MOVEMENT_INPUT_TO_DIR[horizontal_movement_input]
 
 	return movement_vector.normalized()
+
+
+func disable_sword() -> void:
+	hitbox_sword.disabled = true
+
+	for collision_polygon: CollisionPolygon2D in hitbox_sword.get_children():
+		collision_polygon.disabled = true
