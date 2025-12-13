@@ -82,19 +82,19 @@ func _get_animation(dir: Vector2) -> String:
 		Vector2.UP:
 			animation = "swing_up_1"
 		DIR_UR:
-			animation = "swing_right_1"  # TODO
+			animation = "swing_up_right_1"
 		Vector2.RIGHT:
 			animation = "swing_right_1"
 		DIR_DR:
-			animation = "swing_right_1"  # TODO
+			animation = "swing_down_right_1"
 		Vector2.DOWN:
 			animation = "swing_down_1"
 		DIR_DL:
-			animation = "swing_right_1"  # TODO
+			animation = "swing_down_right_1"
 		Vector2.LEFT:
 			animation = "swing_right_1"
 		DIR_UL:
-			animation = "swing_right_1"  # TODO
+			animation = "swing_up_right_1"
 
 	assert(animation != "", "Unhandled direction, could not find attack animation.")
 	return animation
