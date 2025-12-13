@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://de4mvs53ex1ml"
+path="res://.godot/imported/flame.aseprite-5ecbaf2a956e3f81ebf4485e91a92e52.res"
+
+[deps]
+
+source_file="res://scenes/fire/flame.aseprite"
+dest_files=["res://.godot/imported/flame.aseprite-5ecbaf2a956e3f81ebf4485e91a92e52.res"]
+
+[params]
+

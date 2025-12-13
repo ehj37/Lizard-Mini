@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=4 uid="uid://drejn87khel14"]
+
+[ext_resource type="Script" uid="uid://3holv2lv4flq" path="res://scenes/wall/sconce/sconce.gd" id="1_l1wwq"]
+[ext_resource type="PackedScene" uid="uid://cn3a8sl4crc" path="res://scenes/fire/fire_small.tscn" id="2_r6bn0"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_l1wwq"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAwAAABeAAAAUklGRlYAAABXRUJQVlA4TEoAAAAvD8ACECegkI0kaF9/hgU5ipMjyLaZxjSmcH+Euyho24bpoV9s3UE0/wGg+lX/twUURLJBqfBGI/P6l/KnQET/J0AGaaSDAk8QxQ==")
+size_override = Vector2(16, 12)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_r6bn0"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAwAAAByAAAAUklGRmoAAABXRUJQVlA4TF0AAAAvD8ACEDegqI0UaJcbJ4jFJl/0qGkkBToTrxj826CmxYCiRlKYKxQlGMcbTzzMfwDg9WabGbvr7vw/KGokSVlQsHsggP7o3xyfg4j+TwB8ZIAy9dH7FHPQP8aLTLcA")
+size_override = Vector2(16, 12)
+
+[node name="Sconce" type="Node2D"]
+script = ExtResource("1_l1wwq")
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_l1wwq")
+offset = Vector2(0, -43)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Back"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/wall/sconce/sconce.aseprite",
+"source_uid": 2847436900802534793
+}
+metadata/_aseprite_wizard_source_file_hash_ = "4d0f889eb96f48021912357b7c7ac810"
+
+[node name="FireSmall" parent="." instance=ExtResource("2_r6bn0")]
+position = Vector2(0, -42)
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_r6bn0")
+offset = Vector2(0, -43)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Front"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/wall/sconce/sconce.aseprite",
+"source_uid": 2847436900802534793
+}
+metadata/_aseprite_wizard_source_file_hash_ = "4d0f889eb96f48021912357b7c7ac810"

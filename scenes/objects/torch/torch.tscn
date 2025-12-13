@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=4 uid="uid://caykhua165p4"]
+
+[ext_resource type="PackedScene" uid="uid://cn3a8sl4crc" path="res://scenes/fire/fire_small.tscn" id="1_resnv"]
+[ext_resource type="Script" uid="uid://dya7f6j2l0mr8" path="res://scenes/objects/torch/torch.gd" id="1_t7w55"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_sjj0e"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAADAAAABkAAAAUklGRlwAAABXRUJQVlA4TFAAAAAvD8ALEC9AkG0zgvnP4yaXI8i2mcgUBnffuxBp2wzP8/SdX9H8BwBomvNfCxQ1kqTsOjg0QILQvxjm+0b0fwLg+imFlFllfCYpdRmhFMf8Jw==")
+size_override = Vector2(16, 48)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_t7w55"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAADAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvD8ALEE+gNJIUBsngoo+10H8TWOoxDAFNBF0AkYQR3hC35wSUNpICnTt+PBXTKJIe5j8A4K1I4ji6NlrhsQO35/+BTQAAaZAELq9zwjTJ1r+L+x3R/wkAvxUDUM5p27FdeJvpveawFqc1b7+OE0MW")
+size_override = Vector2(16, 48)
+
+[node name="Torch" type="StaticBody2D"]
+script = ExtResource("1_t7w55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 8, 0, 8, -7, 0, -7)
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -24)
+texture = SubResource("PortableCompressedTexture2D_sjj0e")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Back"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/torch/torch.aseprite",
+"source_uid": 2529246766059414203
+}
+metadata/_aseprite_wizard_source_file_hash_ = "89852c32293f049afa2cdbe0d3c7ca37"
+
+[node name="FireSmall" parent="." instance=ExtResource("1_resnv")]
+position = Vector2(4, -26)
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -24)
+texture = SubResource("PortableCompressedTexture2D_t7w55")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Front"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/torch/torch.aseprite",
+"source_uid": 2529246766059414203
+}
+metadata/_aseprite_wizard_source_file_hash_ = "89852c32293f049afa2cdbe0d3c7ca37"

@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=4 uid="uid://daof3gfkfrsnn"]
+
+[ext_resource type="PackedScene" uid="uid://b366qdko3scui" path="res://scenes/fire/fire_extra_large.tscn" id="1_irore"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_irore"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIACAACGAAAAUklGRn4AAABXRUJQVlA4THIAAAAvf8CfECcgEEhxRGMtJCD8n2CIc4qQgLBD8trd+Q8AzPROUBXbNnUr0OCVwEhA/17O8WvsiP4rTNuGUXdPCfwP/If/8N9bAP9VW5wbe3p6E7imYOVkidLvEw6Xdh2ZvasplPeeni6otjiH/4H/fv7wXwA=")
+size_override = Vector2(128, 640)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_n6v2y"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIACAAA4AQAAUklGRjABAABXRUJQVlA4TCQBAAAvf8CfED+gpI0kaB++C8/FyTr/7KyoaSQFOkUfopCII2oE0Chq24jpq73BYOE+igdj/gOAMLaSd83R99s/NwWQI0luw6zcH1NABMoAISADef19BFL+RR5V5O1PDhH9Z+S2bSQa6OaZW14he6b/pv+m/6b/pv/+mfdxkePqcb/XLA9+/ssfluf7pDwc8Pmesx5wn5b9LtOy39Nb1rrf21PW6r/8ADicIgQnokGHpgJCJ0pLYYlOVBnAQEUsSSSt4he900CAkvPFAkNFSA6dWPtQYVBdlrRtDR6bv6mBIyc0lqVRZEr8YgxwKbRYn9jUEWsbbedeNjXUdfj0Hmsf6lpXo+3c+wxibby0WDuXWDuXtbbO3Yi1pv9z/w0699P/uZ/+z70A")
+size_override = Vector2(128, 640)
+
+[node name="ForegroundTorch" type="Node2D"]
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -320)
+texture = SubResource("PortableCompressedTexture2D_irore")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Back"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/foreground/foreground_torch.aseprite",
+"source_uid": 5379586688526013447
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cfe21960973d8015f22f9b8d374dcbe0"
+
+[node name="FireExtraLarge" parent="." instance=ExtResource("1_irore")]
+position = Vector2(5, -269)
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -320)
+texture = SubResource("PortableCompressedTexture2D_n6v2y")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Front"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/foreground/foreground_torch.aseprite",
+"source_uid": 5379586688526013447
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cfe21960973d8015f22f9b8d374dcbe0"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://civ6ah38fnai6"
+path="res://.godot/imported/foreground_torch.aseprite-a6dad7cbbb2c0b699542709d309f6364.res"
+
+[deps]
+
+source_file="res://scenes/foreground/foreground_torch.aseprite"
+dest_files=["res://.godot/imported/foreground_torch.aseprite-a6dad7cbbb2c0b699542709d309f6364.res"]
+
+[params]
+

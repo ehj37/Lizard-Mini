@@ -3,7 +3,7 @@ class_name PotFragment
 extends RigidBody2D
 
 const NUM_FRAGMENT_VARIANTS := 12
-const INITIAL_VERTICAL_SPEED := -100.0
+const INITIAL_VERTICAL_SPEED := -50.0
 const GRAVITY := 575.0
 
 var _vertical_speed := INITIAL_VERTICAL_SPEED

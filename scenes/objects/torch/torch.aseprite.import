@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bcbglbmm5ic16"
+path="res://.godot/imported/torch.aseprite-8b6e294417eb03550210e5217e4ec102.res"
+
+[deps]
+
+source_file="res://scenes/objects/torch/torch.aseprite"
+dest_files=["res://.godot/imported/torch.aseprite-8b6e294417eb03550210e5217e4ec102.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bgtk4tojrqo2l"
+path="res://.godot/imported/sconce.aseprite-931da77a61da8be9a0de1468cb44a55c.res"
+
+[deps]
+
+source_file="res://scenes/wall/sconce/sconce.aseprite"
+dest_files=["res://.godot/imported/sconce.aseprite-931da77a61da8be9a0de1468cb44a55c.res"]
+
+[params]
+
