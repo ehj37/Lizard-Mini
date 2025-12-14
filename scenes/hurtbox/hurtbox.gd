@@ -29,6 +29,9 @@ func _process(_delta) -> void:
 		return
 
 	for hitbox in _overlapping_hitboxes:
+		if hitbox.disabled:
+			continue
+
 		if self_damage_disabled && hitbox.owner == owner:
 			continue
 
