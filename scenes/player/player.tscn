@@ -85,6 +85,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yj68g"]
 length = 0.4
@@ -569,7 +581,7 @@ texture = SubResource("PortableCompressedTexture2D_h17s1")
 offset = Vector2(0, -16)
 hframes = 9
 vframes = 8
-frame = 58
+frame = 61
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
 "pending_changes": {}
@@ -614,7 +626,6 @@ repetitive_hitbox_damage_cooldown = 0.6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_0owmy")
-disabled = true
 
 [node name="HitboxSword" parent="." instance=ExtResource("10_h17s1")]
 visible = false

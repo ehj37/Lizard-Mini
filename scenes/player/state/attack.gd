@@ -36,6 +36,8 @@ func update(_delta: float) -> void:
 
 
 func enter(_data := {}) -> void:
+	player.hitbox_sword.disabled = false
+
 	var movement_direction = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		_lunge_dir = movement_direction

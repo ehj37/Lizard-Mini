@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://03vu2lhq7ub3"
+path="res://.godot/imported/explosive_canister.aseprite-dea76be7b00ea77bb1012bc103297b7b.res"
+
+[deps]
+
+source_file="res://scenes/objects/explosive_canister/explosive_canister.aseprite"
+dest_files=["res://.godot/imported/explosive_canister.aseprite-dea76be7b00ea77bb1012bc103297b7b.res"]
+
+[params]
+

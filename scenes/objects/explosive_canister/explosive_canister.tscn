@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=4 uid="uid://db24r4k8yb5md"]
+
+[ext_resource type="Script" uid="uid://duyfqlsqgrgaq" path="res://scenes/objects/explosive_canister/explosive_canister.gd" id="1_opcd8"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="2_fntc5"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e5hk1"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAGAAAABQAAAAUklGRkgAAABXRUJQVlA4TDwAAAAvP8AXEBcgEEjy99hvnBERkCT+/9DUQCCQpLvQvAH7FhQ1kqQsHqlbiWeX+RHR/wmAVTSdnZxKmfbuYwg=")
+size_override = Vector2(64, 96)
+
+[sub_resource type="Gradient" id="Gradient_4u3xp"]
+offsets = PackedFloat32Array(0.05462185, 0.4642857, 0.9978992)
+colors = PackedColorArray(0.7176471, 0.25490198, 0.99607843, 1, 0, 0.9411765, 0.99215686, 1, 0.7176471, 0.25490198, 0.99607843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_opcd8"]
+gradient = SubResource("Gradient_4u3xp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_opcd8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4.5, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -44.99999
+angle_max = 45.00001
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_opcd8")
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_uphv0"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAGAAAACsAAAAUklGRqQAAABXRUJQVlA4TJgAAAAvP8AXEEdAJmCxUymJdHa6xVHTthGUrUCKtzTvQ3CjgbRtMv/eZmS3cCAThlgcv8xyCuD8QZUkshp/tWZ34Ca2bacigwGG/gUDBAcIiKdHAlTXwrN+yPwwE9H/CfCe5Q6eh5jSAzkHACiL2EFSRgc7IuY0A8uyejvkHACgzAJIRllFip0ptbuSplmlYmma2l3bkpxzjvKXHw==")
+size_override = Vector2(64, 96)
+
+[node name="ExplosiveCannister" type="StaticBody2D"]
+script = ExtResource("1_opcd8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, 0, 5, 0, 5, -9, -5, -9)
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_fntc5")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-5, 0, 5, 0, 5, -21, -5, -21)
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 16)
+texture = SubResource("PortableCompressedTexture2D_e5hk1")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Back"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/explosive_canister/explosive_canister.aseprite",
+"source_uid": 1813835876254689710
+}
+metadata/_aseprite_wizard_source_file_hash_ = "fee912713b73c0a6cbf2fab36e48ff04"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 1
+offset_left = -5.0
+offset_top = -21.0
+offset_right = 5.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect"]
+position = Vector2(5, 21)
+amount = 100
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_opcd8")
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 16)
+texture = SubResource("PortableCompressedTexture2D_uphv0")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Front"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/explosive_canister/explosive_canister.aseprite",
+"source_uid": 1813835876254689710
+}
+metadata/_aseprite_wizard_source_file_hash_ = "fee912713b73c0a6cbf2fab36e48ff04"

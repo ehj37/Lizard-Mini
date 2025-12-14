@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=17 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="1_x6ivy"]
 [ext_resource type="PackedScene" uid="uid://bsln2e52ibcdk" path="res://scenes/player_camera/player_camera.tscn" id="2_4tcl0"]
@@ -15,12 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://c6ceoo202u4lv" path="res://scenes/objects/pots/pot_b/pot_b.tscn" id="12_jprdt"]
 [ext_resource type="PackedScene" uid="uid://drejn87khel14" path="res://scenes/wall/sconce/sconce.tscn" id="13_lgguw"]
 [ext_resource type="PackedScene" uid="uid://daof3gfkfrsnn" path="res://scenes/foreground/foreground_torch.tscn" id="15_ps2vj"]
+[ext_resource type="PackedScene" uid="uid://db24r4k8yb5md" path="res://scenes/objects/explosive_canister/explosive_canister.tscn" id="16_sbmf2"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-5, -247)
+position = Vector2(175, -248)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -119,3 +120,24 @@ position = Vector2(8, 80)
 
 [node name="ForegroundTorch2" parent="." instance=ExtResource("15_ps2vj")]
 position = Vector2(288, 80)
+
+[node name="ExplosiveCannister" parent="." instance=ExtResource("16_sbmf2")]
+position = Vector2(249, -270)
+
+[node name="ExplosiveCannister2" parent="." instance=ExtResource("16_sbmf2")]
+position = Vector2(288, -261)
+
+[node name="ExplosiveCannister3" parent="." instance=ExtResource("16_sbmf2")]
+position = Vector2(356, -211)
+
+[node name="ExplosiveCannister4" parent="." instance=ExtResource("16_sbmf2")]
+position = Vector2(-53, -262)
+
+[node name="PotA" parent="." instance=ExtResource("9_plydf")]
+position = Vector2(305, -257)
+
+[node name="PotA2" parent="." instance=ExtResource("9_plydf")]
+position = Vector2(236, -272)
+
+[node name="Torch5" parent="." instance=ExtResource("6_jprdt")]
+position = Vector2(134, -252)
