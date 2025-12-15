@@ -58,7 +58,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdac4"]
 radius = 31.016125
 
-[node name="ExplosiveCannisterExplosion" type="Node2D"]
+[node name="ExplosiveCanisterExplosion" type="Node2D"]
 script = ExtResource("1_sjeal")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

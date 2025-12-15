@@ -34,7 +34,7 @@ color_ramp = SubResource("GradientTexture1D_opcd8")
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAGAAAACsAAAAUklGRqQAAABXRUJQVlA4TJgAAAAvP8AXEEdAJmCxUymJdHa6xVHTthGUrUCKtzTvQ3CjgbRtMv/eZmS3cCAThlgcv8xyCuD8QZUkshp/tWZ34Ca2bacigwGG/gUDBAcIiKdHAlTXwrN+yPwwE9H/CfCe5Q6eh5jSAzkHACiL2EFSRgc7IuY0A8uyejvkHACgzAJIRllFip0ptbuSplmlYmma2l3bkpxzjvKXHw==")
 size_override = Vector2(64, 96)
 
-[node name="ExplosiveCannister" type="StaticBody2D"]
+[node name="ExplosiveCanister" type="StaticBody2D"]
 script = ExtResource("1_opcd8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

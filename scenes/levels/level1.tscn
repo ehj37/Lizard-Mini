@@ -102,42 +102,54 @@ position = Vector2(103, -247)
 [node name="PotB2" parent="Pots" instance=ExtResource("12_jprdt")]
 position = Vector2(95, -236)
 
-[node name="Torch" parent="." instance=ExtResource("6_jprdt")]
-position = Vector2(161, -272)
-
-[node name="Torch2" parent="." instance=ExtResource("6_jprdt")]
-position = Vector2(296, -265)
-
-[node name="Torch3" parent="." instance=ExtResource("6_jprdt")]
-position = Vector2(384, -265)
-
-[node name="Torch4" parent="." instance=ExtResource("6_jprdt")]
-position = Vector2(171, -273)
-flame_on = false
-
-[node name="ForegroundTorch" parent="." instance=ExtResource("15_ps2vj")]
-position = Vector2(8, 80)
-
-[node name="ForegroundTorch2" parent="." instance=ExtResource("15_ps2vj")]
-position = Vector2(288, 80)
-
-[node name="ExplosiveCannister" parent="." instance=ExtResource("16_sbmf2")]
-position = Vector2(249, -270)
-
-[node name="ExplosiveCannister2" parent="." instance=ExtResource("16_sbmf2")]
-position = Vector2(288, -261)
-
-[node name="ExplosiveCannister3" parent="." instance=ExtResource("16_sbmf2")]
-position = Vector2(356, -211)
-
-[node name="ExplosiveCannister4" parent="." instance=ExtResource("16_sbmf2")]
-position = Vector2(-53, -262)
-
-[node name="PotA" parent="." instance=ExtResource("9_plydf")]
+[node name="PotA9" parent="Pots" instance=ExtResource("9_plydf")]
 position = Vector2(305, -257)
 
-[node name="PotA2" parent="." instance=ExtResource("9_plydf")]
+[node name="PotA10" parent="Pots" instance=ExtResource("9_plydf")]
 position = Vector2(236, -272)
 
 [node name="Torch5" parent="." instance=ExtResource("6_jprdt")]
 position = Vector2(134, -252)
+
+[node name="ExplosiveCanisters" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ExplosiveCanister" parent="ExplosiveCanisters" instance=ExtResource("16_sbmf2")]
+position = Vector2(249, -270)
+
+[node name="ExplosiveCanister2" parent="ExplosiveCanisters" instance=ExtResource("16_sbmf2")]
+position = Vector2(288, -261)
+
+[node name="ExplosiveCanister3" parent="ExplosiveCanisters" instance=ExtResource("16_sbmf2")]
+position = Vector2(356, -211)
+
+[node name="ExplosiveCanister4" parent="ExplosiveCanisters" instance=ExtResource("16_sbmf2")]
+position = Vector2(-53, -262)
+
+[node name="ExplosiveCanister5" parent="ExplosiveCanisters" instance=ExtResource("16_sbmf2")]
+position = Vector2(47, -210)
+
+[node name="Torches" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Torch" parent="Torches" instance=ExtResource("6_jprdt")]
+position = Vector2(161, -272)
+
+[node name="Torch2" parent="Torches" instance=ExtResource("6_jprdt")]
+position = Vector2(296, -265)
+
+[node name="Torch3" parent="Torches" instance=ExtResource("6_jprdt")]
+position = Vector2(384, -265)
+
+[node name="Torch4" parent="Torches" instance=ExtResource("6_jprdt")]
+position = Vector2(171, -273)
+flame_on = false
+
+[node name="Foreground" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ForegroundTorch" parent="Foreground" instance=ExtResource("15_ps2vj")]
+position = Vector2(8, 80)
+
+[node name="ForegroundTorch2" parent="Foreground" instance=ExtResource("15_ps2vj")]
+position = Vector2(288, 80)

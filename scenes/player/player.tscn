@@ -1,27 +1,29 @@
-[gd_scene load_steps=39 format=4 uid="uid://fkmtv41g72kp"]
+[gd_scene load_steps=40 format=4 uid="uid://fkmtv41g72kp"]
 
 [ext_resource type="Script" uid="uid://bslt7m2op841j" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="2_dovo2"]
-[ext_resource type="Shader" uid="uid://binhl7o1u780h" path="res://scenes/player/player_shader.gdshader" id="2_qek5x"]
 [ext_resource type="Script" uid="uid://bf2uyp8rfgxsv" path="res://scenes/player/state/idle.gd" id="3_lvxji"]
 [ext_resource type="Script" uid="uid://cjyha36kaaij1" path="res://scenes/player/state/run.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://c71sfcy5v7d1f" path="res://scenes/player/state/attack.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bedfjq7soys7h" path="res://scenes/player/hurt.gd" id="6_0owmy"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://b6505ywyhbpcj" path="res://scenes/player/state/dash.gd" id="8_5gtgg"]
+[ext_resource type="Shader" uid="uid://dx86kwjijcb0k" path="res://scenes/player/silhouette_shader.gdshader" id="8_je7p5"]
+[ext_resource type="Script" uid="uid://cau61nvpakwbn" path="res://scenes/player/player_sprite.gd" id="9_je7p5"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="10_h17s1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gtgg"]
-shader = ExtResource("2_qek5x")
-shader_parameter/enabled = false
-shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
-shader_parameter/death_color = Color(1, 0, 0, 1)
-shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
-shader_parameter/event_type = 0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h17s1"]
 _data = PackedByteArray("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")
 size_override = Vector2(576, 512)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fm80t"]
+shader = ExtResource("8_je7p5")
+shader_parameter/silhouette_color = Color(0, 0, 0, 0.25)
+shader_parameter/silhouette_color_tolerance = 0.01
+shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
+shader_parameter/death_color = Color(1, 0, 0, 1)
+shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
+shader_parameter/event_type = 0
 
 [sub_resource type="Animation" id="Animation_ioxgp"]
 length = 0.001
@@ -446,22 +448,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/path = NodePath("Sprite2D/Silhouette:material:shader_parameter/event_type")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -478,26 +468,14 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/path = NodePath("Sprite2D/Silhouette:material:shader_parameter/event_type")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
+"values": [3, 0]
 }
 
 [sub_resource type="Animation" id="Animation_myrg7"]
@@ -506,26 +484,14 @@ length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/path = NodePath("Sprite2D/Silhouette:material:shader_parameter/event_type")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/event_type")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgqa7"]
@@ -576,12 +542,12 @@ wait_time = 0.04
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_5gtgg")
 texture = SubResource("PortableCompressedTexture2D_h17s1")
 offset = Vector2(0, -16)
 hframes = 9
 vframes = 8
 frame = 61
+script = ExtResource("9_je7p5")
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
 "pending_changes": {}
@@ -605,6 +571,12 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 439575620103134135
 }
 metadata/_aseprite_wizard_source_file_hash_ = "a5d6e6625337ef8746d35fd362232f0d"
+
+[node name="Silhouette" type="Sprite2D" parent="Sprite2D"]
+visible = false
+z_index = 999
+material = SubResource("ShaderMaterial_fm80t")
+texture = SubResource("PortableCompressedTexture2D_h17s1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

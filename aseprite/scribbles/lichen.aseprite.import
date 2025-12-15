@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://doy54ivag7nyk"
+path="res://.godot/imported/lichen.aseprite-57ce047e4d25139ce0a2f302e66e932f.res"
+
+[deps]
+
+source_file="res://aseprite/scribbles/lichen.aseprite"
+dest_files=["res://.godot/imported/lichen.aseprite-57ce047e4d25139ce0a2f302e66e932f.res"]
+
+[params]
+
