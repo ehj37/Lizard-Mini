@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=4 uid="uid://dmpta4hr306vr"]
+
+[ext_resource type="Script" uid="uid://moq83pfkhpkh" path="res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.gd" id="1_wb6cj"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wb6cj"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAACAAAABYAAAAUklGRlAAAABXRUJQVlA4TEMAAAAvL8AHEA8w//M//wMU8GBU27aS812wCBCCoUYkDWEYEYAATgB+gYj+J0kaYKJjEzuLONRjZ57qc/DVkyZhDrQArPwGAA==")
+size_override = Vector2(48, 32)
+
+[sub_resource type="Animation" id="Animation_u4ixo"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6sjn"]
+_data = {
+&"poof": SubResource("Animation_u4ixo")
+}
+
+[node name="FootstepDustCloud" type="Sprite2D"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_wb6cj")
+offset = Vector2(0, -6)
+hframes = 3
+vframes = 2
+script = ExtResource("1_wb6cj")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.aseprite",
+"source_uid": 6846059153511876693
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2312d890ef856ed7ee2bb2c627b72b2c"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y6sjn")
+}

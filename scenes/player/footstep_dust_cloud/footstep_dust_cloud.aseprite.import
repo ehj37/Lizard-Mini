@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c4sjugyap53af"
+path="res://.godot/imported/footstep_dust_cloud.aseprite-d9ae30955704a4ce64436d5cdda28120.res"
+
+[deps]
+
+source_file="res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.aseprite"
+dest_files=["res://.godot/imported/footstep_dust_cloud.aseprite-d9ae30955704a4ce64436d5cdda28120.res"]
+
+[params]
+
