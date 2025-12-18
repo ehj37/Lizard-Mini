@@ -9,6 +9,15 @@ const SHAKE_DIMINISH_SPEED := 200.0
 @export var player: Player
 
 var _current_shake_magnitude := 5.0
+var _registed_lock_areas: Array[CameraLockArea] = []
+
+
+func register_lock_area(lock_area: CameraLockArea) -> void:
+	_registed_lock_areas.append(lock_area)
+
+
+func unregister_lock_area(lock_area: CameraLockArea) -> void:
+	_registed_lock_areas.erase(lock_area)
 
 
 func _ready() -> void:
@@ -16,7 +25,24 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	global_position = player.global_position + player.orientation * ORIENTATION_OFFSET
+	var target_x
+	var target_y
+
+	for lock_area in _registed_lock_areas:
+		if lock_area.lock_x:
+			target_x = lock_area.global_position.x
+		if lock_area.lock_y:
+			target_y = lock_area.global_position.y
+
+	var target_position_from_player = (
+		player.global_position + player.orientation * ORIENTATION_OFFSET
+	)
+	if target_x == null:
+		target_x = target_position_from_player.x
+	if target_y == null:
+		target_y = target_position_from_player.y
+
+	global_position = Vector2(target_x, target_y)
 
 	if _current_shake_magnitude > 0:
 		var shake_offset_x = randf_range(-_current_shake_magnitude, _current_shake_magnitude)

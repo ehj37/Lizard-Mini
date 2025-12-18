@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=19 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="1_x6ivy"]
 [ext_resource type="PackedScene" uid="uid://bsln2e52ibcdk" path="res://scenes/player_camera/player_camera.tscn" id="2_4tcl0"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://drejn87khel14" path="res://scenes/wall/sconce/sconce.tscn" id="13_lgguw"]
 [ext_resource type="PackedScene" uid="uid://daof3gfkfrsnn" path="res://scenes/foreground/foreground_torch.tscn" id="15_ps2vj"]
 [ext_resource type="PackedScene" uid="uid://db24r4k8yb5md" path="res://scenes/objects/explosive_canister/explosive_canister.tscn" id="16_sbmf2"]
+[ext_resource type="PackedScene" uid="uid://me06723le6of" path="res://scenes/camera_lock_area/camera_lock_area.tscn" id="17_1xax6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
+size = Vector2(448, 56)
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -153,3 +157,12 @@ position = Vector2(8, 80)
 
 [node name="ForegroundTorch2" parent="Foreground" instance=ExtResource("15_ps2vj")]
 position = Vector2(288, 80)
+
+[node name="CameraLockArea" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("17_1xax6")]
+position = Vector2(141, -244)
+player_camera = NodePath("../PlayerCamera")
+lock_x = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLockArea"]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_g7tkf")
