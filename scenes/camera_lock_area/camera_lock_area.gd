@@ -28,7 +28,8 @@ const COLOR_NEITHER_X_OR_Y := Color.YELLOW
 
 
 func _ready():
-	assert(player_camera != null, "Must provide player camera export var")
+	if owner:
+		assert(player_camera != null, "Must provide player camera export var")
 
 	if Engine.is_editor_hint():
 		var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")

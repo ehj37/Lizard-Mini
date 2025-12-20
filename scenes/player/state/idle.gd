@@ -1,5 +1,7 @@
 extends PlayerState
 
+@onready var impatient_timer: Timer = $ImpatientTimer
+
 
 func update(_delta: float) -> void:
 	var movement_direction = player.get_movement_direction()
@@ -22,13 +24,16 @@ func enter(_data := {}):
 	var animation = _get_animation(player.orientation)
 	animation_player.play(animation)
 
-	if player.orientation.x < 0:
-		player.sprite.flip_h = true
+	player.sprite.flip_h = player.orientation.x < 0
+
+	impatient_timer.start()
 
 
 func exit() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
+
+	impatient_timer.stop()
 
 
 func _get_animation(dir: Vector2) -> String:
@@ -53,3 +58,7 @@ func _get_animation(dir: Vector2) -> String:
 			return "idle_down"
 		_:
 			return "idle_side"
+
+
+func _on_impatient_timer_timeout():
+	state_machine.transition_to("Impatient")
