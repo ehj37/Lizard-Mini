@@ -15,7 +15,6 @@ const MOVEMENT_INPUT_TO_DIR := {
 }
 
 var orientation: Vector2 = Vector2.ZERO
-
 var _pressed_movement_inputs: Array[String] = []
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -24,6 +23,7 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hitbox_sword: Hitbox = $HitboxSword
+@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 
 func _physics_process(_delta):

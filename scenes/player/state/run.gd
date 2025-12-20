@@ -1,7 +1,10 @@
 extends PlayerState
 
-const MOVE_SPEED := 80.0
+const MAX_MOVE_SPEED := 80.0
+const MOVE_ACCELERATION := 360.0
 const FOOTSTEP_PITCH_VARIANCE := 0.1
+
+var _move_speed := 0.0
 
 @onready var footstep_dust_cloud_resource := preload(
 	"res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.tscn"
@@ -10,14 +13,14 @@ const FOOTSTEP_PITCH_VARIANCE := 0.1
 @onready var dust_cloud_timer: Timer = $DustCloudTimer
 
 
-func update(_delta: float) -> void:
+func update(delta: float) -> void:
 	var movement_dir = player.get_movement_direction()
 
 	if Input.is_action_just_pressed("attack"):
 		state_machine.transition_to("Attack")
 		return
 
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && player.dash_cooldown_timer.is_stopped():
 		state_machine.transition_to("Dash")
 		return
 
@@ -29,12 +32,15 @@ func update(_delta: float) -> void:
 	if animation_player.current_animation != animation:
 		animation_player.current_animation = animation
 
+	_move_speed = min(_move_speed + MOVE_ACCELERATION * delta, MAX_MOVE_SPEED)
+
 	player.sprite.flip_h = movement_dir.x < 0
-	player.velocity = movement_dir * MOVE_SPEED
+	player.velocity = movement_dir * _move_speed
 	player.orientation = movement_dir
 
 
 func enter(_data := {}) -> void:
+	_move_speed = 0.0
 	var animation = _get_animation(player.orientation)
 	animation_player.play(animation)
 	dust_cloud_timer.start()

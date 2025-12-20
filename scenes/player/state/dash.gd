@@ -1,16 +1,49 @@
 extends PlayerState
 
-const DASH_SPEED := 250.0
+const DASH_SPEED := 320.0
 const MOVEMENT_DURATION := 0.2
+const CHAIN_ATTACK_WINDOW_START := 0.25
+const CHAIN_DASH_WINDOW_START := 0.3
 
 var _dash_direction: Vector2
+var _in_move_window: bool
+var _in_chain_attack_window: bool
+var _in_chain_dash_window: bool
+var _dash_attempted_before_dash_window: bool
 
 @onready var dash_ghost_resource := preload("res://scenes/player/dash_ghost/dash_ghost.tscn")
 @onready var ghost_timer: Timer = $GhostTimer
 
 
 func update(_delta: float) -> void:
-	player.velocity = _dash_direction * DASH_SPEED
+	if _in_move_window:
+		player.velocity = _dash_direction * DASH_SPEED
+	else:
+		player.velocity = Vector2.ZERO
+
+	if Input.is_action_just_pressed("attack"):
+		if _in_chain_attack_window:
+			state_machine.transition_to("Attack")
+			return
+
+	if Input.is_action_just_pressed("dash"):
+		if _in_chain_dash_window:
+			# Punish spamming dash too early by not allowing a chain dash.
+			if !_dash_attempted_before_dash_window:
+				state_machine.transition_to("Dash")
+				return
+		else:
+			_dash_attempted_before_dash_window = true
+
+	if animation_player.is_playing():
+		return
+
+	var movement_dir = player.get_movement_direction()
+	if movement_dir != Vector2.ZERO:
+		state_machine.transition_to("Run")
+		return
+
+	state_machine.transition_to("Idle")
 
 
 func enter(_data := {}):
@@ -19,12 +52,21 @@ func enter(_data := {}):
 		_dash_direction = player.orientation
 	else:
 		_dash_direction = movement_dir
-
 	player.velocity = _dash_direction * DASH_SPEED
-	get_tree().create_timer(MOVEMENT_DURATION).timeout.connect(_stop)
+
+	_in_move_window = true
+	get_tree().create_timer(MOVEMENT_DURATION).timeout.connect(_exit_movement_window)
+
+	_in_chain_attack_window = false
+	get_tree().create_timer(CHAIN_ATTACK_WINDOW_START).timeout.connect(_enter_chain_attack_window)
+
+	_in_chain_dash_window = false
+	_dash_attempted_before_dash_window = false
+	get_tree().create_timer(CHAIN_DASH_WINDOW_START).timeout.connect(_enter_chain_dash_window)
 
 	player.sprite.flip_h = _dash_direction.x < 0
 	player.orientation = _dash_direction
+
 	var animation = _get_animation(_dash_direction)
 	animation_player.play(animation)
 	if player.orientation.x < 0:
@@ -44,21 +86,31 @@ func exit() -> void:
 	player.velocity = Vector2.ZERO
 	player.hurtbox.enable()
 
+	# For chain dashes, we don't check the cooldown timer, so this is fine.
+	player.dash_cooldown_timer.start()
 
-func _stop():
+
+func _exit_movement_window():
 	if !is_current_state():
 		return
 
-	if Input.is_action_just_pressed("attack"):
-		state_machine.transition_to("Attack")
+	_in_move_window = false
+	player.velocity = Vector2.ZERO
+	ghost_timer.stop()
+
+
+func _enter_chain_attack_window() -> void:
+	if !is_current_state():
 		return
 
-	var movement_dir = player.get_movement_direction()
-	if movement_dir != Vector2.ZERO:
-		state_machine.transition_to("Run")
+	_in_chain_attack_window = true
+
+
+func _enter_chain_dash_window() -> void:
+	if !is_current_state():
 		return
 
-	state_machine.transition_to("Idle")
+	_in_chain_dash_window = true
 
 
 func _get_animation(dir: Vector2) -> String:
