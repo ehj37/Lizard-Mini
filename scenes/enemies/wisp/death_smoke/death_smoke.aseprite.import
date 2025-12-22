@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cgtdp2grwynx4"
+path="res://.godot/imported/death_smoke.aseprite-1dd424b6b905e6db94349ecb557f08b3.res"
+
+[deps]
+
+source_file="res://scenes/enemies/wisp/death_smoke/death_smoke.aseprite"
+dest_files=["res://.godot/imported/death_smoke.aseprite-1dd424b6b905e6db94349ecb557f08b3.res"]
+
+[params]
+

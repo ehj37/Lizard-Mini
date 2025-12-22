@@ -71,3 +71,7 @@ func disable_sword() -> void:
 
 	for collision_polygon: CollisionPolygon2D in hitbox_sword.get_children():
 		collision_polygon.disabled = true
+
+
+func _on_hitbox_sword_blood_drawn():
+	HitStopManager.hit_stop()

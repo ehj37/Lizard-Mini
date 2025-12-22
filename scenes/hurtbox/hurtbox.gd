@@ -13,6 +13,9 @@ var _hitbox_instance_ids_on_cooldown: Array[int] = []
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
 	assert(owner.has_method("take_damage"), "Owner of a hurtbox must have implement take_damage")
 
 
@@ -40,6 +43,7 @@ func _process(_delta) -> void:
 			continue
 
 		owner.take_damage(hitbox.damage_amount, hitbox.damage_direction)
+		hitbox.on_hurtbox_connect(self)
 
 		if repetitive_hitbox_damage_cooldown > 0:
 			_add_cooldown_for(hitbox)

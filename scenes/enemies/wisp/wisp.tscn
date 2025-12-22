@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://g7iyyiv2xqy6"]
+
+[ext_resource type="Script" uid="uid://bdat7muj1lv3w" path="res://scenes/enemies/wisp/wisp.gd" id="1_pdocg"]
+[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="2_57p5f"]
+[ext_resource type="PackedScene" uid="uid://cn3a8sl4crc" path="res://scenes/fire/fire_small.tscn" id="3_57p5f"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="4_7tr8l"]
+[ext_resource type="Script" uid="uid://bwnwtysfqeppr" path="res://scenes/enemies/wisp/state/pursue.gd" id="4_b2b4a"]
+[ext_resource type="Script" uid="uid://cnn82uyu684ot" path="res://scenes/enemies/wisp/wisp_state.gd" id="5_b2b4a"]
+[ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="5_t81e8"]
+[ext_resource type="Script" uid="uid://brdpm8vjgdsb6" path="res://scenes/enemies/wisp/state/death.gd" id="7_q6b6h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6b6h"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6up6a"]
+radius = 3.0
+
+[sub_resource type="Gradient" id="Gradient_b2b4a"]
+colors = PackedColorArray(0, 0.9411765, 0.99215686, 1, 0, 0.9411765, 0.99215686, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6up6a"]
+gradient = SubResource("Gradient_b2b4a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75, 0.75)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b2b4a"]
+radius = 4.0
+height = 12.0
+
+[node name="Wisp" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_pdocg")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_t81e8")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://b023dqmvy1wyg"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_b2b4a")
+metadata/_custom_type_script = "uid://cnn82uyu684ot"
+
+[node name="Pursue" type="Node" parent="StateMachine"]
+script = ExtResource("4_b2b4a")
+metadata/_custom_type_script = "uid://cnn82uyu684ot"
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("7_q6b6h")
+metadata/_custom_type_script = "uid://cnn82uyu684ot"
+
+[node name="OffsetContainer" type="Node2D" parent="."]
+
+[node name="FireSmall" parent="OffsetContainer" instance=ExtResource("3_57p5f")]
+position = Vector2(0, -9)
+
+[node name="Hitbox" parent="OffsetContainer" instance=ExtResource("2_57p5f")]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OffsetContainer/Hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_q6b6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6up6a")
+
+[node name="SpriteShadow" type="Sprite2D" parent="."]
+z_index = -4
+texture_filter = 1
+scale = Vector2(0.15, 0.15)
+texture = SubResource("GradientTexture2D_6up6a")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/enemies/wisp/shadow.aseprite",
+"source_uid": -1
+}
+metadata/_aseprite_wizard_source_file_hash_ = "988f81b866ba37de1f10b1135b618f54"
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_7tr8l")]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_b2b4a")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="blood_drawn" from="OffsetContainer/Hitbox" to="." method="_on_hitbox_blood_drawn"]

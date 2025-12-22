@@ -36,14 +36,10 @@ func enter(_data := {}):
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
 
-	player.hurtbox.disable()
-
 
 func exit() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
-
-	player.hurtbox.enable()
 
 
 func _get_animation(dir: Vector2) -> String:

@@ -572,10 +572,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0owmy"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
 radius = 5.0
+height = 18.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 128
 script = ExtResource("1_8afob")
 
@@ -616,7 +617,7 @@ script = ExtResource("8_5gtgg")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
 [node name="GhostTimer" type="Timer" parent="StateMachine/Dash"]
-wait_time = 0.030000000000000002
+wait_time = 0.03
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -700,10 +701,12 @@ shape = SubResource("CircleShape2D_8afob")
 
 [node name="Hurtbox" parent="." instance=ExtResource("6_75vfm")]
 repetitive_hitbox_damage_cooldown = 0.6
+self_damage_disabled = null
+disabled = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_0owmy")
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_fm80t")
 
 [node name="HitboxSword" parent="." instance=ExtResource("10_h17s1")]
 visible = false
@@ -735,3 +738,4 @@ one_shot = true
 [connection signal="timeout" from="StateMachine/Idle/ImpatientTimer" to="StateMachine/Idle" method="_on_impatient_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Run/DustCloudTimer" to="StateMachine/Run" method="_on_dust_cloud_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dash/GhostTimer" to="StateMachine/Dash" method="_spawn_ghost"]
+[connection signal="blood_drawn" from="HitboxSword" to="." method="_on_hitbox_sword_blood_drawn"]

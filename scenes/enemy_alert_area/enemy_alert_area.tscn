@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://xdlncbhpcnv0"]
+
+[ext_resource type="Script" uid="uid://byryuved10hms" path="res://scenes/enemy_alert_area/enemy_alert_area.gd" id="1_2ldma"]
+
+[node name="EnemyAlertArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+script = ExtResource("1_2ldma")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
