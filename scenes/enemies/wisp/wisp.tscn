@@ -99,6 +99,4 @@ position = Vector2(0, -9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_b2b4a")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
 [connection signal="blood_drawn" from="OffsetContainer/Hitbox" to="." method="_on_hitbox_blood_drawn"]

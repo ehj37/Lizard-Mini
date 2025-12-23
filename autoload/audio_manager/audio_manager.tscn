@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpy6ktanniqrq"]
+
+[ext_resource type="Script" uid="uid://dsuxsfcvtx25x" path="res://autoload/audio_manager/audio_manager.gd" id="1_418ss"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="2_veri3"]
+[ext_resource type="Resource" uid="uid://bae3u5yhmfh2b" path="res://autoload/sound_effect_configs/player_dash.tres" id="3_3bhmr"]
+[ext_resource type="Resource" uid="uid://bnrqjpequl6ak" path="res://autoload/sound_effect_configs/player_footstep.tres" id="4_180s8"]
+[ext_resource type="Resource" uid="uid://cxnspfu4u4b8c" path="res://autoload/sound_effect_configs/player_sword_swing.tres" id="5_b4cw0"]
+[ext_resource type="Resource" uid="uid://dqqjfa47vkt8y" path="res://autoload/sound_effect_configs/pot_break.tres" id="6_d6pjd"]
+[ext_resource type="Resource" uid="uid://dukcpq43qnamd" path="res://autoload/sound_effect_configs/wisp_death.tres" id="7_iwjvn"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_418ss")
+sound_effect_configs = Array[ExtResource("2_veri3")]([ExtResource("3_3bhmr"), ExtResource("4_180s8"), ExtResource("5_b4cw0"), ExtResource("6_d6pjd"), ExtResource("7_iwjvn")])

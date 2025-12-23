@@ -1,0 +1,13 @@
+# States:
+# Idle
+# - Different color flame? Or change flame color during pursuit?
+# Idle submerge?
+# - Means a different way of surprising the player
+# Pursue
+# - Should be able to go over the floor and pits
+# Submerge
+# Pursue submerge
+# - Faster?
+# - Trail of flames
+# Emerge
+# Bloom (AOE attack, causes death)

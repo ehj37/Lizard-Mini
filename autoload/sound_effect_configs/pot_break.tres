@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://dqqjfa47vkt8y"]
+
+[ext_resource type="AudioStream" uid="uid://birkmijq1r8bc" path="res://sound_effects/Pottery break.ogg" id="1_6t6ts"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_wen2n"]
+
+[resource]
+script = ExtResource("1_wen2n")
+type = 3
+limit = 3
+audio_stream = ExtResource("1_6t6ts")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

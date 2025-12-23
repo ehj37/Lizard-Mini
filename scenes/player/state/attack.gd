@@ -46,6 +46,9 @@ func enter(_data := {}) -> void:
 
 	var animation = _get_animation(_lunge_dir)
 	animation_player.play(animation)
+	AudioManager.play_effect_at(
+		player.global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_SWING
+	)
 
 	if _lunge_dir.x < 0:
 		player.sprite.flip_h = true
@@ -61,6 +64,7 @@ func enter(_data := {}) -> void:
 
 func exit() -> void:
 	if animation_player.is_playing():
+		AudioManager.cancel_audio(SoundEffectConfiguration.Type.PLAYER_SWORD_SWING)
 		animation_player.stop()
 
 	player.disable_sword()

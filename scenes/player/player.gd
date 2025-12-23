@@ -43,7 +43,6 @@ func take_damage(_damage_amount: int, _damage_direction: Vector2) -> void:
 	hurt.emit()
 	shader_animation_player.play("hurt_flash")
 	HitStopManager.hit_stop()
-
 	state_machine.transition_to("Hurt")
 
 

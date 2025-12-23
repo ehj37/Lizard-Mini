@@ -19,6 +19,7 @@ run/canvas_textures/default_texture_filter=0
 [autoload]
 
 HitStopManager="*res://autoload/hit_stop_manager.gd"
+AudioManager="*res://autoload/audio_manager/audio_manager.tscn"
 
 [display]
 

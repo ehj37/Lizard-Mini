@@ -15,6 +15,8 @@ func enter(_data := {}) -> void:
 	death_particle_burst.global_position = wisp.global_position
 	wisp.owner.add_child(death_particle_burst)
 
+	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
+
 	wisp.velocity = Vector2.ZERO
 	var mod_tween = get_tree().create_tween()
 	var lifetime = wisp.fire_small.lifetime

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://cxnspfu4u4b8c"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_nk6nf"]
+[ext_resource type="AudioStream" uid="uid://htyi2oa4fe8c" path="res://sound_effects/Sword swing.ogg" id="1_y4wou"]
+
+[resource]
+script = ExtResource("1_nk6nf")
+type = 2
+audio_stream = ExtResource("1_y4wou")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

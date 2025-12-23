@@ -9,7 +9,6 @@ var _move_speed := 0.0
 @onready var footstep_dust_cloud_resource := preload(
 	"res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.tscn"
 )
-@onready var footstep_sound := preload("res://scenes/player/sound_effects/footsteps.ogg")
 @onready var dust_cloud_timer: Timer = $DustCloudTimer
 
 
@@ -53,15 +52,9 @@ func exit() -> void:
 
 
 func play_footstep_sound_effect() -> void:
-	var audio_player = AudioStreamPlayer2D.new()
-	audio_player.global_position = player.global_position
-	audio_player.stream = footstep_sound
-	player.owner.add_child(audio_player)
-	audio_player.play()
-	audio_player.pitch_scale = randf_range(
-		1.0 - FOOTSTEP_PITCH_VARIANCE, 1.0 + FOOTSTEP_PITCH_VARIANCE
+	AudioManager.play_effect_at(
+		player.global_position, SoundEffectConfiguration.Type.PLAYER_FOOTSTEP
 	)
-	audio_player.finished.connect(func(): audio_player.queue_free())
 
 
 func _get_animation(dir: Vector2) -> String:

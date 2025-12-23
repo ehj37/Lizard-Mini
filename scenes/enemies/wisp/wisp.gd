@@ -13,7 +13,6 @@ var _elapsed_time := 0.0
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var hitbox: Hitbox = $OffsetContainer/Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 
 func take_damage(_damage_amount: int, _damage_direction: Vector2) -> void:

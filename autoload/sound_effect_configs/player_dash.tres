@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://bae3u5yhmfh2b"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_lunlo"]
+[ext_resource type="AudioStream" uid="uid://4m76ldoevv6f" path="res://sound_effects/Dash.ogg" id="1_xwneb"]
+
+[resource]
+script = ExtResource("1_lunlo")
+audio_stream = ExtResource("1_xwneb")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

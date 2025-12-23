@@ -71,6 +71,7 @@ func enter(_data := {}):
 	animation_player.play(animation)
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
+	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_DASH)
 
 	_spawn_ghost()
 	ghost_timer.start()

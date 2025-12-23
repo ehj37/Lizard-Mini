@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bi1cqxvfjry8u"
+path="res://.godot/imported/Wisp death.ogg-1b8d88206a2e1e502c2ecbd305ec56ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Wisp death.ogg"
+dest_files=["res://.godot/imported/Wisp death.ogg-1b8d88206a2e1e502c2ecbd305ec56ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
