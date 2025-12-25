@@ -8,6 +8,7 @@ var death_smoke_resource := preload("res://scenes/enemies/wisp/death_smoke/death
 
 
 func enter(_data := {}) -> void:
+	wisp.velocity = Vector2.ZERO
 	wisp.hitbox.disable()
 	wisp.hurtbox.disable()
 
@@ -17,10 +18,14 @@ func enter(_data := {}) -> void:
 
 	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
 
-	wisp.velocity = Vector2.ZERO
-	var mod_tween = get_tree().create_tween()
 	var lifetime = wisp.fire_small.lifetime
-	mod_tween.tween_property(wisp.sprite_shadow, "modulate", Color.TRANSPARENT, lifetime / 3)
+
+	var shadow_mod_tween = get_tree().create_tween()
+	shadow_mod_tween.tween_property(wisp.sprite_shadow, "modulate", Color.TRANSPARENT, lifetime / 3)
+
+	var sprite_mod_tween = get_tree().create_tween()
+	sprite_mod_tween.tween_property(wisp.sprite, "modulate", Color.TRANSPARENT, lifetime / 3)
+
 	wisp.fire_small.emitting = false
 	await get_tree().create_timer(lifetime).timeout
 

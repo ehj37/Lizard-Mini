@@ -21,7 +21,7 @@ func update(_delta: float) -> void:
 	else:
 		player.velocity = Vector2.ZERO
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		if _in_chain_attack_window:
 			state_machine.transition_to("Attack")
 			return

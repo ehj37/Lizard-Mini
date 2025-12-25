@@ -16,7 +16,7 @@ func update(_delta: float) -> void:
 	if animation_player.is_playing():
 		return
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
 

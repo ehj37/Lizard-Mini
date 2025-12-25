@@ -6,7 +6,7 @@ extends PlayerState
 func update(_delta: float) -> void:
 	var movement_direction = player.get_movement_direction()
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
 

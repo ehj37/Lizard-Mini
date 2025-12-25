@@ -24,6 +24,7 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hitbox_sword: Hitbox = $HitboxSword
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
+@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
 
 func _physics_process(_delta):
@@ -73,4 +74,5 @@ func disable_sword() -> void:
 
 
 func _on_hitbox_sword_blood_drawn():
-	HitStopManager.hit_stop()
+	pass
+	#HitStopManager.hit_stop()

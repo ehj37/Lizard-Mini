@@ -9,9 +9,10 @@ var _elapsed_time := 0.0
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var offset_container: Node2D = $OffsetContainer
+@onready var sprite: Sprite2D = $OffsetContainer/Sprite2D
 @onready var fire_small: GPUParticles2D = $OffsetContainer/FireSmall
-@onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var hitbox: Hitbox = $OffsetContainer/Hitbox
+@onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var hurtbox: Hurtbox = $Hurtbox
 
 
