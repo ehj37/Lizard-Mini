@@ -1,6 +1,10 @@
 extends PlayerState
 
 const HURT_MOVE_SPEED := 30.0
+const ATTACK_QUEUE_WINDOW_START := 0.06
+
+var _in_attack_queue_window := false
+var _attack_queued := false
 
 
 func update(_delta: float) -> void:
@@ -14,9 +18,16 @@ func update(_delta: float) -> void:
 		player.velocity = Vector2.ZERO
 
 	if animation_player.is_playing():
+		if _in_attack_queue_window && Input.is_action_just_pressed("attack"):
+			_attack_queued = true
+
 		return
 
-	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
+	if _attack_queued:
+		state_machine.transition_to("Attack")
+		return
+
+	if _attack_queued || Input.is_action_just_pressed("attack"):
 		state_machine.transition_to("Attack")
 		return
 
@@ -35,6 +46,10 @@ func enter(_data := {}):
 
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
+
+	_in_attack_queue_window = false
+	_attack_queued = false
+	get_tree().create_timer(ATTACK_QUEUE_WINDOW_START).timeout.connect(_enter_attack_queue_window)
 
 
 func exit() -> void:
@@ -68,3 +83,10 @@ func _get_animation(dir: Vector2) -> String:
 
 	assert(animation != "", "Could not match direction to run animation.")
 	return animation
+
+
+func _enter_attack_queue_window() -> void:
+	if state_machine.current_state != self:
+		return
+
+	_in_attack_queue_window = true
