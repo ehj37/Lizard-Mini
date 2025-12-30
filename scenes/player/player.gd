@@ -25,6 +25,15 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var hitbox_sword: Hitbox = $HitboxSword
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+# Sword collision polygons
+@onready var sword_polygon_r_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight1
+@onready var sword_polygon_r_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight2
+@onready var sword_polygon_u_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp1
+@onready var sword_polygon_u_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp2
+@onready var sword_polygon_d_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown1
+@onready var sword_polygon_d_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown2
+@onready var sword_polygon_ur_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUpRight1
+@onready var sword_polygon_dr_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDownRight1
 
 
 func _physics_process(_delta):
@@ -66,13 +75,5 @@ func get_movement_direction() -> Vector2:
 	return movement_vector.normalized()
 
 
-func disable_sword() -> void:
-	hitbox_sword.disabled = true
-
-	for collision_polygon: CollisionPolygon2D in hitbox_sword.get_children():
-		collision_polygon.disabled = true
-
-
 func _on_hitbox_sword_blood_drawn():
 	pass
-	#HitStopManager.hit_stop()

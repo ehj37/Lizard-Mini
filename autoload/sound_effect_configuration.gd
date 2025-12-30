@@ -2,7 +2,9 @@ class_name SoundEffectConfiguration
 
 extends Resource
 
-enum Type { PLAYER_DASH, PLAYER_FOOTSTEP, PLAYER_SWORD_SWING, POT_BREAK, WISP_DEATH }
+enum Type {
+	PLAYER_DASH, PLAYER_FOOTSTEP, PLAYER_SWORD_SWING, POT_BREAK, WISP_DEATH, CANISTER_EXPLOSION
+}
 
 enum LimitBehavior { REPLACE_OLD, NOOP }
 

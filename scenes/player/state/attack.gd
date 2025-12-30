@@ -4,8 +4,12 @@ enum SwingDirection {}
 
 const INITIAL_LUNGE_SPEED := 80.0
 const LUNGE_DECELERATION := 350.0
-const COMBO_WINDOW_START := 0.225
 const MAX_COMBO_NUM := 2
+# TIMINGS
+const POLYGON_ENABLE_TIME := 0.025
+const POLYGON_DISABLE_TIME := 0.15
+const COMBO_WINDOW_START := 0.225
+# DIRECTIONS
 const DIR_UR := Vector2(1, -1)
 const DIR_DR := Vector2(1, 1)
 const DIR_DL := Vector2(-1, 1)
@@ -13,11 +17,42 @@ const DIR_UL := Vector2(-1, -1)
 const ATTACK_DIRECTIONS: Array[Vector2] = [
 	Vector2.UP, DIR_UR, Vector2.RIGHT, DIR_DR, Vector2.DOWN, DIR_DL, Vector2.LEFT, DIR_UL
 ]
+# ANIMATIONS
+const ANIMATION_U_1 := "swing_up_1"
+const ANIMATION_U_2 := "swing_up_2"
+const ANIMATION_UR_1 := "swing_up_right_1"
+const ANIMATION_UR_2 := "swing_up_right_2"
+const ANIMATION_R_1 := "swing_right_1"
+const ANIMATION_R_2 := "swing_right_2"
+const ANIMATION_DR_1 := "swing_down_right_1"
+const ANIMATION_DR_2 := "swing_down_right_2"
+const ANIMATION_D_1 := "swing_down_1"
+const ANIMATION_D_2 := "swing_down_2"
 
 var _lunge_dir: Vector2
 var _speed := 0.0
 var _can_combo := false
 var _combo_num: int
+
+@onready var animation_to_collision_polygon: Dictionary
+
+
+func _ready() -> void:
+	super()
+	await owner.ready
+
+	animation_to_collision_polygon = {
+		ANIMATION_U_1: player.sword_polygon_u_1,
+		ANIMATION_U_2: player.sword_polygon_u_2,
+		ANIMATION_UR_1: player.sword_polygon_ur_1,
+		ANIMATION_UR_2: player.sword_polygon_ur_1,  # TODO
+		ANIMATION_R_1: player.sword_polygon_r_1,
+		ANIMATION_R_2: player.sword_polygon_r_2,
+		ANIMATION_DR_1: player.sword_polygon_dr_1,
+		ANIMATION_DR_2: player.sword_polygon_dr_1,  # TODO
+		ANIMATION_D_1: player.sword_polygon_d_1,
+		ANIMATION_D_2: player.sword_polygon_d_2,
+	}
 
 
 func physics_update(delta: float) -> void:
@@ -68,16 +103,19 @@ func enter(data := {}) -> void:
 	player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
 	player.hitbox_sword.damage_direction = player.orientation
 
+	get_tree().create_timer(POLYGON_ENABLE_TIME).timeout.connect(_enable_sword)
+	get_tree().create_timer(POLYGON_DISABLE_TIME).timeout.connect(_disable_sword)
+
 	_can_combo = false
 	get_tree().create_timer(COMBO_WINDOW_START).timeout.connect(_enter_combo_window)
 
 
 func exit() -> void:
 	if animation_player.is_playing():
+		_disable_sword()
 		AudioManager.cancel_audio(SoundEffectConfiguration.Type.PLAYER_SWORD_SWING)
 		animation_player.stop()
 
-	player.disable_sword()
 	# This is fine for combo attacks since they don't check the timer.
 	player.attack_cooldown_timer.start()
 
@@ -100,46 +138,70 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 		Vector2.UP:
 			match combo_num:
 				0:
-					animation = "swing_up_1"
+					animation = ANIMATION_U_1
 				1:
-					animation = "swing_up_1"  # TODO
+					animation = ANIMATION_U_2
 				2:
-					animation = "swing_up_1"  # TODO
+					animation = ANIMATION_U_1  # TODO
 		DIR_UR, DIR_UL:
 			match combo_num:
 				0:
-					animation = "swing_up_right_1"
+					animation = ANIMATION_UR_1
 				1:
-					animation = "swing_up_right_1"  # TODO
+					animation = ANIMATION_UR_1  # TODO
 				2:
-					animation = "swing_up_right_1"  # TODO
+					animation = ANIMATION_UR_1  # TODO
 		Vector2.RIGHT, Vector2.LEFT:
 			match combo_num:
 				0:
-					animation = "swing_right_1"
+					animation = ANIMATION_R_1
 				1:
-					animation = "swing_right_2"
+					animation = ANIMATION_R_2
 				2:
-					animation = "swing_right_1"  # TODO
+					animation = ANIMATION_R_1  # TODO
 		DIR_DR, DIR_DL:
 			match combo_num:
 				0:
-					animation = "swing_down_right_1"
+					animation = ANIMATION_DR_1
 				1:
-					animation = "swing_down_right_1"  # TODO
+					animation = ANIMATION_DR_1  # TODO
 				2:
-					animation = "swing_down_right_1"  # TODO
+					animation = ANIMATION_DR_1  # TODO
 		Vector2.DOWN:
 			match combo_num:
 				0:
-					animation = "swing_down_1"
+					animation = ANIMATION_D_1
 				1:
-					animation = "swing_down_1"  # TODO
+					animation = ANIMATION_D_2
 				2:
-					animation = "swing_down_1"  # TODO
+					animation = ANIMATION_D_1  # TODO
 
 	assert(animation != "", "Unhandled direction, could not find attack animation.")
 	return animation
+
+
+func _enable_sword() -> void:
+	if state_machine.current_state != self:
+		return
+
+	player.hitbox_sword.enable()
+	var collision_polygon = (
+		animation_to_collision_polygon.get(animation_player.current_animation) as CollisionPolygon2D
+	)
+	collision_polygon.disabled = false
+	collision_polygon.visible = true
+
+
+func _disable_sword() -> void:
+	if state_machine.current_state != self:
+		return
+
+	player.hitbox_sword.disable()
+	var collision_polygon = (
+		animation_to_collision_polygon.get(animation_player.current_animation) as CollisionPolygon2D
+	)
+	collision_polygon.disabled = true
+	collision_polygon.visible = false
 
 
 func _enter_combo_window() -> void:
