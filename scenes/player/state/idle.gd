@@ -53,11 +53,11 @@ func _get_animation(dir: Vector2) -> String:
 		Vector2.UP:
 			return "idle_up"
 		Vector2.RIGHT:
-			return "idle_side"
+			return "idle_right"
 		Vector2.DOWN:
 			return "idle_down"
 		_:
-			return "idle_side"
+			return "idle_right"
 
 
 func _on_impatient_timer_timeout():

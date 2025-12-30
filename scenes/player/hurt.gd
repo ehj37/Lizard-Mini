@@ -75,11 +75,11 @@ func _get_animation(dir: Vector2) -> String:
 		Vector2.UP:
 			animation = "hurt_up"
 		Vector2.RIGHT:
-			animation = "hurt_side"
+			animation = "hurt_right"
 		Vector2.DOWN:
 			animation = "hurt_down"
 		Vector2.LEFT:
-			animation = "hurt_side"
+			animation = "hurt_right"
 
 	assert(animation != "", "Could not match direction to run animation.")
 	return animation

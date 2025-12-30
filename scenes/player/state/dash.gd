@@ -132,11 +132,11 @@ func _get_animation(dir: Vector2) -> String:
 		Vector2.UP:
 			animation = "dash_up"
 		Vector2.RIGHT:
-			animation = "dash_side"
+			animation = "dash_right"
 		Vector2.DOWN:
 			animation = "dash_down"
 		Vector2.LEFT:
-			animation = "dash_side"
+			animation = "dash_right"
 
 	assert(animation != "", "Could not match direction to dash animation.")
 	return animation

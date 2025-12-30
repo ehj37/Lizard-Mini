@@ -23,7 +23,7 @@ func update(_delta: float) -> void:
 func enter(_data := {}):
 	player.orientation = Vector2(player.orientation.x, 0).normalized()
 	player.velocity = Vector2.ZERO
-	animation_player.play("impatient_side")
+	animation_player.play("impatient_right")
 
 	player.sprite.flip_h = player.orientation.x < 0
 
