@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=4 uid="uid://bjkktw14vfsrq"]
+
+[ext_resource type="Script" uid="uid://vlnyrwxmk45p" path="res://scenes/progress_indicator/progress_indicator.gd" id="1_ajmdn"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ahl1m"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABgAAAAUklGRlgAAABXRUJQVlA4TEsAAAAvH8AHEBcw8DH9AoEk3YXmDTyBTSRbkV69iCJEAZpWEaePjZ9NbjAQ0f8JwMN+AP1sgtRj6OALaL0bsAcGc0sZVPQCmyD1bOgg4GkA")
+size_override = Vector2(32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajmdn"]
+bg_color = Color(0, 0, 0, 0.5882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyf5t"]
+bg_color = Color(0.7176471, 0.25490198, 0.99607843, 1)
+
+[node name="ProgressIndicator" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+script = ExtResource("1_ajmdn")
+
+[node name="SineMovementContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SineMovementContainer"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_ahl1m")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"source": "res://scenes/progress_indicator/progress_indicator.aseprite"
+}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/wall/door/progress_indicator/progress_indicator.aseprite",
+"source_uid": 4585799713919788758
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e791340e0e70ff35b16f903da009a3de"
+
+[node name="ProgressBar" type="ProgressBar" parent="SineMovementContainer"]
+offset_left = -3.0
+offset_top = 6.0
+offset_right = 9.0
+offset_bottom = 12.0
+rotation = -1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_ajmdn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cyf5t")
+show_percentage = false

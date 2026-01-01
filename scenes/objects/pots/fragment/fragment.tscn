@@ -56,7 +56,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "9c09c8636ab92029aaedfe5296a868f2"
 shape = SubResource("CircleShape2D_ttqgp")
 
 [node name="SpriteShadow" type="Sprite2D" parent="."]
-z_index = -4
+z_index = -3
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_wm083")
 metadata/_aseprite_wizard_interface_config_ = {

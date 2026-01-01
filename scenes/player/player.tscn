@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://fkmtv41g72kp"]
+[gd_scene load_steps=51 format=4 uid="uid://fkmtv41g72kp"]
 
 [ext_resource type="Script" uid="uid://bslt7m2op841j" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="2_dovo2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://b6505ywyhbpcj" path="res://scenes/player/state/dash.gd" id="8_5gtgg"]
 [ext_resource type="Shader" uid="uid://dx86kwjijcb0k" path="res://scenes/player/silhouette_shader.gdshader" id="8_je7p5"]
+[ext_resource type="Script" uid="uid://b43v2xp6dwh51" path="res://scenes/player/state/interact.gd" id="9_gx1jg"]
 [ext_resource type="Script" uid="uid://cau61nvpakwbn" path="res://scenes/player/player_sprite.gd" id="9_je7p5"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="10_h17s1"]
 
@@ -596,6 +597,10 @@ metadata/_custom_type_script = "uid://ctigeyiermart"
 [node name="GhostTimer" type="Timer" parent="StateMachine/Dash"]
 wait_time = 0.03
 
+[node name="Interact" type="Node" parent="StateMachine"]
+script = ExtResource("9_gx1jg")
+metadata/_custom_type_script = "uid://ctigeyiermart"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_fm80t")
@@ -635,7 +640,7 @@ material = SubResource("ShaderMaterial_fm80t")
 texture = SubResource("PortableCompressedTexture2D_h17s1")
 
 [node name="SpriteShadow" type="Sprite2D" parent="."]
-z_index = -4
+z_index = -3
 texture_filter = 1
 position = Vector2(0, -2)
 texture = SubResource("PortableCompressedTexture2D_je7p5")

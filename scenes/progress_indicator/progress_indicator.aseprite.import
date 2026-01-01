@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b6lnplxxety5c"
+path="res://.godot/imported/progress_indicator.aseprite-9b55093573a534042d4bfd37e6fbf824.res"
+
+[deps]
+
+source_file="res://scenes/progress_indicator/progress_indicator.aseprite"
+dest_files=["res://.godot/imported/progress_indicator.aseprite-9b55093573a534042d4bfd37e6fbf824.res"]
+
+[params]
+
