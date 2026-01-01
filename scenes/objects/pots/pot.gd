@@ -2,11 +2,10 @@ class_name Pot
 
 extends StaticBody2D
 
+const NUM_FRAGMENTS := 3
 const MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE := PI / 4
 const MIN_IMPULSE_MAGNITUDE := 400.0
 const MAX_IMPULSE_MAGNITUDE := 800.0
-
-@export var num_fragments := 3
 
 @onready var fragment_resource := preload("res://scenes/objects/pots/fragment/fragment.tscn")
 @onready var dust_puff_resource := preload("res://scenes/objects/pots/dust_puff/dust_puff.tscn")
@@ -22,7 +21,7 @@ func take_damage(_amount: int, direction: Vector2):
 
 
 func _spawn_fragments(direction: Vector2) -> void:
-	for i in num_fragments:
+	for i in NUM_FRAGMENTS:
 		var fragment = fragment_resource.instantiate() as PotFragment
 		var spawn_angle_offset = randf_range(
 			-MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE, MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE

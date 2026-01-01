@@ -45,11 +45,11 @@ func _ready() -> void:
 		ANIMATION_U_1: player.sword_polygon_u_1,
 		ANIMATION_U_2: player.sword_polygon_u_2,
 		ANIMATION_UR_1: player.sword_polygon_ur_1,
-		ANIMATION_UR_2: player.sword_polygon_ur_1,  # TODO
+		ANIMATION_UR_2: player.sword_polygon_ur_2,
 		ANIMATION_R_1: player.sword_polygon_r_1,
 		ANIMATION_R_2: player.sword_polygon_r_2,
 		ANIMATION_DR_1: player.sword_polygon_dr_1,
-		ANIMATION_DR_2: player.sword_polygon_dr_1,  # TODO
+		ANIMATION_DR_2: player.sword_polygon_dr_2,
 		ANIMATION_D_1: player.sword_polygon_d_1,
 		ANIMATION_D_2: player.sword_polygon_d_2,
 	}
@@ -148,7 +148,7 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 				0:
 					animation = ANIMATION_UR_1
 				1:
-					animation = ANIMATION_UR_1  # TODO
+					animation = ANIMATION_UR_2
 				2:
 					animation = ANIMATION_UR_1  # TODO
 		Vector2.RIGHT, Vector2.LEFT:
@@ -164,7 +164,7 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 				0:
 					animation = ANIMATION_DR_1
 				1:
-					animation = ANIMATION_DR_1  # TODO
+					animation = ANIMATION_DR_2
 				2:
 					animation = ANIMATION_DR_1  # TODO
 		Vector2.DOWN:

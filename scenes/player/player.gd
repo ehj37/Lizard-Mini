@@ -26,14 +26,16 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 # Sword collision polygons
-@onready var sword_polygon_r_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight1
-@onready var sword_polygon_r_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight2
 @onready var sword_polygon_u_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp1
 @onready var sword_polygon_u_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp2
+@onready var sword_polygon_ur_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUpRight1
+@onready var sword_polygon_ur_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonUpRight2
+@onready var sword_polygon_r_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight1
+@onready var sword_polygon_r_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonRight2
+@onready var sword_polygon_dr_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDownRight1
+@onready var sword_polygon_dr_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDownRight2
 @onready var sword_polygon_d_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown1
 @onready var sword_polygon_d_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown2
-@onready var sword_polygon_ur_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUpRight1
-@onready var sword_polygon_dr_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDownRight1
 
 
 func _physics_process(_delta):
