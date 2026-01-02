@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=4 uid="uid://d3fb1pi8x6qu1"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_i4l2y"]
+_data = PackedByteArray("AAADAAUAAAABAAAAwAMAABwCAAD6AAAAUklGRvIAAABXRUJQVlA4TOUAAAAvv8OGEFegJJIV6kkyIamJJhqD+heghpEASNjEBhKLueEGm2azZgGgySCHABJNaTrbN4bmPwD4b0llCxXFHdvhs9SPaaeAq0iyXWVfMPAsPAtYwAIWsIAFLGABn0v+ih3R/wlIPdVcfax5+kPNy19qrt7X3Pxcc/Vac/dN3dU8/bbOeZX8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/8x3/897YGAA==")
+size_override = Vector2(960, 540)
+
+[node name="Test2" type="Parallax2D"]
+z_index = -4096
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(940, 540)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_i4l2y")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {
+"source_uid": 2092564307856457640
+}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Front"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/backgrounds/test/test.aseprite",
+"source_uid": 5836432285603385384
+}
+metadata/_aseprite_wizard_source_file_hash_ = "409286d04ccbaee410e3b48e4cae4258"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=4 uid="uid://cpmodhwgy5ijt"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_w5ro5"]
+_data = PackedByteArray("AAADAAUAAAABAAAAwAMAABwCAACcAQAAUklGRpQBAABXRUJQVlA4TIcBAAAvv8OGEGegKJKk5u6ZE8EBBvAvBScYURPJVvMjOde0qEATShFAhxaljaRA5/lBXkO0TkVYgUAS7FbLBgDqbYdNf769Ro1Cbz0h/OdeECcyl3MIECLblhpdC1iIhW8BC7EwFmIBC7GABSxg6xS/FpidE9H/CUj3E6bZD8zhF6b6G3OZZ8wwV0z1BTNc/af/9J/+03/6T//pP/2n//Sf/tN/+k//6T/9p//0n/7Tf/pP/+m/33vb6dJ2mLbqtF1m2k6TttPXfzfs9u4n3Lun/ctyxf109d8NvnRPafYDc5hS/Y25zDNmmJTqC2a4+k//6T/9p//+ySvdU2mWSvNULjOVYVKpTmW4+u8GX7qnNEs5/MJUp1xmyjAp1SnD1X/6T//pP/2n//Sf/tN/+k//6T/9p//0n/7Tf/rvjs/jdOnRPD2+PfXfDbt0P2GapRx+YapTLvOMGeaKqb5ghqv/9J/+u8XzPF16Hqbnt6/+u2GX7idMs5TDlOpvzGWeMcNcMdUXzHD13x8YAA==")
+size_override = Vector2(960, 540)
+
+[node name="Test1" type="Parallax2D"]
+z_index = -4096
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(960, 540)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_w5ro5")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "Front",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/backgrounds/test/test.aseprite",
+"source_uid": 2092564307856457640
+}
+metadata/_aseprite_wizard_source_file_hash_ = "409286d04ccbaee410e3b48e4cae4258"
