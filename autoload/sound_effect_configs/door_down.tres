@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://dti270baefxxa"]
+
+[ext_resource type="AudioStream" uid="uid://u1ihj0pua6b0" path="res://sound_effects/Door down.ogg" id="1_mroa5"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_vp6lj"]
+
+[resource]
+script = ExtResource("1_vp6lj")
+type = 7
+audio_stream = ExtResource("1_mroa5")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

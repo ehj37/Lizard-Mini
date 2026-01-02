@@ -38,7 +38,7 @@ size = Vector2(20, 64.5)
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(549, -251)
+position = Vector2(540, -258)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")

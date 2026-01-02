@@ -11,6 +11,11 @@ var _completion_progress := 0.0
 
 
 func interact(delta: float) -> void:
+	if _completion_progress == 0.0:
+		AudioManager.play_effect_at(
+			global_position, SoundEffectConfiguration.Type.PROGRESS_INDICATOR
+		)
+
 	_completion_progress = min(_completion_progress + delta, completion_time)
 	var completion_percentage = _completion_progress / completion_time
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
@@ -21,6 +26,7 @@ func interact(delta: float) -> void:
 
 func reset_progress() -> void:
 	_completion_progress = 0.0
+	AudioManager.cancel_audio(SoundEffectConfiguration.Type.PROGRESS_INDICATOR)
 	progress_indicator.update_progress_bar(0.0)
 
 
