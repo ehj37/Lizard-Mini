@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=4 uid="uid://cmfejqclsj46x"]
+
+[ext_resource type="Script" uid="uid://oeenfj6gkj7u" path="res://scenes/wall/door/door_dust_cloud/door_dust_cloud.gd" id="1_lcrge"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lcrge"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAAB2AAAAUklGRm4AAABXRUJQVlA4TGEAAAAvX8APEA8w//M//wMU8HAT27arrJ8DOMhOsIIEHPCkIeUrgFeScyp/GdH/CdDfDhETUmxxS4RdIt7oXm6Z8y0Rb2xulestsV+/cLslrjO6TG88Rng3mjFfviQWJSsElP4MAA==")
+size_override = Vector2(96, 64)
+
+[sub_resource type="Animation" id="Animation_jg707"]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.5, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imqiw"]
+_data = {
+&"poof": SubResource("Animation_jg707")
+}
+
+[node name="DoorDustCloud" type="Sprite2D"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_lcrge")
+offset = Vector2(0, -16)
+hframes = 3
+vframes = 2
+script = ExtResource("1_lcrge")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/wall/door/door_dust_cloud.aseprite",
+"source_uid": 4819530711112543142
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6049d577e9a958ce9f9c8506adc4df2a"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_imqiw")
+}

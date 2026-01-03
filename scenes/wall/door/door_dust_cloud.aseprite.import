@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cawu74p8vchy1"
+path="res://.godot/imported/door_dust_cloud.aseprite-4c73d86ce6d4df58cfa3e0cd881bc540.res"
+
+[deps]
+
+source_file="res://scenes/wall/door/door_dust_cloud.aseprite"
+dest_files=["res://.godot/imported/door_dust_cloud.aseprite-4c73d86ce6d4df58cfa3e0cd881bc540.res"]
+
+[params]
+

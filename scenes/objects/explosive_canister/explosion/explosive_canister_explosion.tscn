@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="2_kdac4"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_luv0o"]
-_data = PackedByteArray("AAADAAUAAAABAAAAAAEAAMAAAAD6AgAAUklGRvICAABXRUJQVlA4TOYCAAAv/8AvECcgECC8+2ZDIED4X/Fjh4Cg6LrlBAJJ/gLjHsB/oQGBYm3bddvoUk8FEE4DDit4WtcFeC2h/6YI4r0LgMn8J6L/E4B/5qXdHMlb4/nOeHfesqn2onLm0Xg5T2luAjYti73T7K1SypbkLZKWYOzGHXEFpTeJvQlcQelPYX/IF7AXlXMkm6JEtxijlmJXmHGXuch5hrdsiiLjEJ03hIjlHY+0Xeax9zPkDRcdx3E8HquooXaLkuM4HhlFxoRn0mXW0RvaExD0hBrwiCU9xrK5kPt5jEUbi0HL+TxG41A+QSmb6CV7BxjFGKWvhF+MMPyufR4w3ATSDOl9H6WUrWePkbQuj1UF0o/+cla8ZG8BhIGPUsqmIElIaq3PLgzxuZon+n2EQwMZ7uYle8cwRxGQpElqrYj6hU2z9/GM4FdfrfUZAlpQ9pVml8tq5InMkyk+VQxZqA4g7/tobAH+6DPE6lcXpuwqCSDJH60XSYS/a631q/Wuzzl+xtDvHS+mAB3vWjHlXsrP1kdrC7BZyotnS6qVfNdaMVtpI+Uaud+1/ZynND5aW8RHwHcD05ZoCN6BVYcQ9wtbFgJbAgAniYWPsPq+DTe34Zb3Dtz33sCtlw3/+ummctriSJrESU5FypwkFTzPxAF4tjwfgJQ4CbXP5hRxEabgKpDPpghag5yrG3AMU5hhWc4rw4RuAzjZYRnODszIQXiFTLbynTYde5DppGmoMuj9AkSqk4TIMKgzy0nSTskcANcmYhpJGjR2RaZ0Ok3ihI5OphjaTpFTBBuBKb3UYXqVk7S1kaQpSBJLp8pvginkZDQdSQV5YQJqqOP5ymJ+JSRN4iTE3uE0JA7gOgyTPQY0NobNRNWAHMIkTtzc9C7DCeuDyJYGkDSJE6t34v8w++3dINfnKluAiZyqBVJmt4fVu+HX3G/P1meqBbqJfH2UYX34dXSZrc9EjuUTd39/f901lS3PZet3/O//P/AB")
-size_override = Vector2(256, 192)
+_data = PackedByteArray("AAADAAUAAAABAAAAgAEAACABAACWAwAAUklGRo4DAABXRUJQVlA4TIIDAAAvf8FHECcgECC8+2ZDIED4X/Fjh4Cg6LrlBAJJ/gLjHsB/oQGBYiRJchuowaEBWMoBChYMo2WAIrj+OwVgn97F3H+M6P8E4L+xacEjGTruI8fo+ZFNbU1qTh0aT+eVDhchHpoKS6e1HqWUFhE/ImkCxmJEjFeQiheS/VgqwCtIlSStF8u7+QWsqfZFso9zJJN7bjeBJMdak7AzSD+327Zt263bKudizj38yKS28+fWKTUkaT04RKHSs2DbbgPQpoEa09nKb2tKS7NVzuve925+4GJbTRqASrnb8REH2VJKqVlqZs3Y4C5yqrI1WRqtTV5dvEHu5DUmcgsMNJ9bm7Qul8RK03hurVLSwiQ8QO9OrMVoS4vUlHtrxep37uMVhqBAxiArtTZ5dfG6rATZbbQXpd5CEO6RNHgMkZzzvQuGeI72krujr4+wtXx0gBwuKs3r3Q/T83YmknNGbz+xWfGrjr1+ynLO927AEZTFWPU6QfNcc4fizpS+uyxVTrKGx9YhD6Ce+qQmX23QI/8UYUapwaMTm6Djb845/xy9831Ca0rfdal06fbqBxS8c8Y1PLp9DZAz+c45Y8apRepGNeA3H9+vCNUHXyXUwO8B5pxSSjWPsqXKd/w6e6lMffddkRTII55fXSp7dIIf1drlfRc8Um0DtkUgUrywS98njzpUexsEoKOGXdvaCRKGwCwShotPfdGyzhCZpYmXGa5/1YOThhNEBxH+Y7OEKP2hQfSWGK0dFgR5bYcwr39UljgBjRC8BaFeWyDaa9myLoh3GUK+pvVsiRmAkwVxTwlrWvDx/1/6bmpOCwZJk3KSUyPlnCSVuJ8ZB+DedHwAUspJqPvsnGK8CFPiVUCXh2LQNsgzGgOOYUpmCIPzzDBhtwGcLDAFZwFmzEF4BkUe6TpteiyBopOmRTWDvp+AkHSSEDMM6lRxkrSdKAfAuYlRhiQNWnZGShQ6TcoJPTopYTh2ijnFYCNQopR6mL6ak7RYkKQpkSRCSTUPCiXIydH0SCqRJyZELepxf2b9/EyYNCknIe4FToPgAK6HYVTHgJaNYTOj2oAcwqScCN70XQ47xANiFgqApEk5EU0nPv7/+P8zWQ9fQBkPV7MLMDGn2gVSzsKHaLrhz0kPn8XD1C7QTczjQTnEA38cXc7iYWKOcBLRj98/t03NwuFy8XR8/P/x/8f/f+sE")
+size_override = Vector2(384, 288)
 
 [sub_resource type="Animation" id="Animation_kdac4"]
 length = 0.001
@@ -63,11 +63,10 @@ script = ExtResource("1_sjeal")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-2, -17)
+position = Vector2(5, -4)
 texture = SubResource("PortableCompressedTexture2D_luv0o")
 hframes = 4
 vframes = 3
-frame = 5
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -89,7 +88,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/objects/explosive_canister/explosion/explosion.aseprite",
 "source_uid": 1509462786606619056
 }
-metadata/_aseprite_wizard_source_file_hash_ = "0e42f432dace46ce15d9828a32746472"
+metadata/_aseprite_wizard_source_file_hash_ = "b50c83bc0b46ee00e13cf195bae1bc03"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

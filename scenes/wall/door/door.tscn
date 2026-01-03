@@ -60,3 +60,13 @@ completion_time = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_yr83s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_yr83s")
+
+[node name="RightDustSpawn" type="Marker2D" parent="."]
+position = Vector2(24, 1)
+
+[node name="LeftDustSpawn" type="Marker2D" parent="."]
+position = Vector2(-24, 1)
