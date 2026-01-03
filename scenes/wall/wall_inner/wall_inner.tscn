@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxf4f7cbb0ma6"]
+[gd_scene load_steps=7 format=3 uid="uid://dxf4f7cbb0ma6"]
 
 [ext_resource type="Texture2D" uid="uid://b4r1ft2hk8wnl" path="res://scenes/wall/wall_inner/wall_inner.png" id="1_c2c0s"]
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_sv8hl"]
+tile_data = PackedInt32Array(0, 262144, 536870912, 1, 262144, 536870912, 2, 262144, 536870912, 3, 262144, 536870912, 4, 524288, 805306368, 65540, 196608, 805306368, 5, 0, 0, 65541, 262144, 536870912, 6, 0, 0, 65542, 262144, 536870912, 7, 0, 0, 65543, 262144, 536870912, 8, 0, 0, 65544, 262144, 536870912, 9, 0, 0, 65545, 262144, 536870912, 10, 0, 0, 65546, 262144, 536870912, 11, 0, 0, 65547, 262144, 536870912, 12, 0, 0, 65548, 262144, 536870912, 13, 0, 0, 65549, 262144, 536870912, 14, 0, 0, 65550, 262144, 536870912, 15, 524288, 536870912, 65551, 196608, 536870912, 16, 262144, 536870912, 17, 262144, 536870912, 18, 262144, 536870912, 19, 262144, 536870912)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_6yrne"]
+tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 4, 1, 0, 0, 65537, 262144, 536870912, 2, 0, 0, 65538, 262144, 536870912, 3, 0, 0, 65539, 262144, 536870912, 4, 0, 0, 65540, 262144, 536870912, 5, 0, 0, 65541, 262144, 536870912, 6, 0, 0, 65542, 262144, 536870912, 7, 0, 0, 65543, 262144, 536870912, 8, 0, 0, 65544, 262144, 536870912, 9, 0, 0, 65545, 262144, 536870912, 10, 524288, 536870912, 65546, 196608, 536870912, 11, 262144, 536870912, 12, 524288, 805306368, 65548, 0, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_04jws"]
+tile_data = PackedInt32Array(0, 0, 0, 65536, 262144, 536870912, 1, 0, 0, 65537, 262144, 536870912, 2, 524288, 536870912, 65538, 196608, 536870912, 3, 262144, 536870912, 4, 262144, 536870912, 5, 262144, 536870912, 6, 262144, 536870912, 7, 262144, 536870912, 8, 262144, 536870912, 9, 262144, 536870912, 10, 524288, 805306368, 65546, 196608, 805306368, 11, 0, 0, 65547, 262144, 536870912, 12, 0, 0, 65548, 262144, 536870912)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2c0s"]
 texture = ExtResource("1_c2c0s")
-texture_region_size = Vector2i(8, 8)
+texture_region_size = Vector2i(4, 4)
 0:0/0 = 0
-0:0/0/y_sort_origin = 68
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -14,13 +22,21 @@ texture_region_size = Vector2i(8, 8)
 5:0/0 = 0
 6:0/0 = 0
 7:0/0 = 0
-2:1/0 = 0
-7:1/0 = 0
 8:0/0 = 0
+3:1/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_c2c0s"]
-tile_size = Vector2i(8, 8)
+tile_size = Vector2i(4, 4)
 sources/0 = SubResource("TileSetAtlasSource_c2c0s")
+pattern_0 = SubResource("TileMapPattern_sv8hl")
+pattern_1 = SubResource("TileMapPattern_6yrne")
+pattern_2 = SubResource("TileMapPattern_04jws")
 
 [node name="WallInner" type="TileMapLayer"]
 tile_set = SubResource("TileSet_c2c0s")
@@ -51,4 +67,4 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/wall/wall_inner/wall_inner.aseprite",
 "source_uid": 7769501647125901476
 }
-metadata/_aseprite_wizard_source_file_hash_ = "6c541cd4205ca5365c3f3818bd332ef1"
+metadata/_aseprite_wizard_source_file_hash_ = "0fe25784d9d33f9ca3a54992bef8036a"

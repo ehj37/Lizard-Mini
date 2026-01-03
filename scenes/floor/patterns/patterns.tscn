@@ -7,39 +7,14 @@ texture = ExtResource("1_xm2mw")
 texture_region_size = Vector2i(4, 4)
 0:0/0 = 0
 1:0/0 = 0
-2:0/0 = 0
 1:1/0 = 0
-2:1/0 = 0
 0:1/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-3:1/0 = 0
 0:2/0 = 0
 0:3/0 = 0
 1:2/0 = 0
 1:3/0 = 0
-2:3/0 = 0
-4:3/0 = 0
-4:2/0 = 0
-4:1/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-5:1/0 = 0
-5:2/0 = 0
-5:3/0 = 0
 1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:1/0 = 0
-6:2/0 = 0
-6:4/0 = 0
 1:5/0 = 0
-3:3/0 = 0
-6:3/0 = 0
-6:0/0 = 0
-3:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_xm2mw"]
 tile_size = Vector2i(4, 4)
@@ -75,4 +50,4 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/floor/patterns/patterns.aseprite",
 "source_uid": 479933509957412284
 }
-metadata/_aseprite_wizard_source_file_hash_ = "3e0e3339844f404e1490f1af9b04fcef"
+metadata/_aseprite_wizard_source_file_hash_ = "4d6937f4bd5233d10eb3323ad66dc40e"
