@@ -6,6 +6,7 @@ signal blood_drawn
 
 @export var damage_amount := 100
 @export var damage_direction := Vector2.ZERO
+@export var grounded := false
 @export var disabled := false
 
 

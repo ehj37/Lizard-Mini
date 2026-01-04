@@ -6,6 +6,7 @@ extends Area2D
 # the hitbox can hurt the hurtbox's owner again.
 @export var repetitive_hitbox_damage_cooldown := 0.0
 @export var self_damage_disabled := true
+@export var grounded := false
 @export var disabled := false
 
 var _overlapping_hitboxes: Array[Hitbox] = []
@@ -37,6 +38,9 @@ func _process(_delta) -> void:
 
 		if self_damage_disabled && hitbox.owner == owner:
 			continue
+
+		if grounded != hitbox.grounded:
+			return
 
 		var hitbox_on_cooldown = _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
 		if hitbox_on_cooldown:

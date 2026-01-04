@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://fkmtv41g72kp"]
+[gd_scene load_steps=52 format=4 uid="uid://fkmtv41g72kp"]
 
 [ext_resource type="Script" uid="uid://bslt7m2op841j" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="2_dovo2"]
@@ -554,6 +554,9 @@ radius = 5.0
 radius = 5.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gx1jg"]
+radius = 4.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 128
 script = ExtResource("1_8afob")
@@ -683,12 +686,18 @@ shape = SubResource("CircleShape2D_8afob")
 
 [node name="Hurtbox" parent="." instance=ExtResource("6_75vfm")]
 repetitive_hitbox_damage_cooldown = 0.6
-self_damage_disabled = null
-disabled = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_fm80t")
+
+[node name="HurtboxFeet" parent="." instance=ExtResource("6_75vfm")]
+repetitive_hitbox_damage_cooldown = 0.6
+grounded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxFeet"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_gx1jg")
 
 [node name="HitboxSword" parent="." instance=ExtResource("10_h17s1")]
 

@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=4 uid="uid://b8agbdu84gnwv"]
+
+[ext_resource type="Texture2D" uid="uid://drpj8v0ka3q2c" path="res://scenes/fire/flame.png" id="1_ojh8q"]
+[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="1_yxs7j"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ojh8q"]
+_data = PackedByteArray("AAADAAUAAAABAAAAGAAAABgAAAByAAAAUklGRmoAAABXRUJQVlA4TF0AAAAvF8AFEBegIG0DFtbOrkAgyR9hl90EAikOZYvnP8CrHtREslp5oWLwg4GUKCHIoArPZv4OIvqvsG0bZMzwhi5YAGDdnaitojiD7RIegFhJxrBFnO/8HfT90Sp0ogIA")
+size_override = Vector2(24, 24)
+
+[sub_resource type="Gradient" id="Gradient_l1wwq"]
+colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yxs7j"]
+gradient = SubResource("Gradient_l1wwq")
+
+[sub_resource type="Curve" id="Curve_xm11h"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.006591335, -0.0018525124), 0.0, 0.0, 0, 0, Vector2(0.1685499, -0.10781765), 0.0, 0.0, 0, 0, Vector2(0.30414313, 0.21489441), 0.0, 0.0, 0, 0, Vector2(0.413371, -0.18969989), 0.0, 0.0, 0, 0, Vector2(0.5376648, 0.08966291), 0.0, 0.0, 0, 0, Vector2(0.61864406, -0.08855128), 0.0, 0.0, 0, 0, Vector2(0.78248584, 0.046313524), 0.0, 0.0, 0, 0, Vector2(0.9990583, -0.011485696), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Curve" id="Curve_yxs7j"]
+_data = [Vector2(0.0028248578, 0), 0.0, 0.0, 0, 0, Vector2(0.18549907, 0.49425715), 0.0, 0.0, 0, 0, Vector2(0.43032014, 0.6243053), 0.0, 0.0, 0, 0, Vector2(0.6167608, 0.41237497), 0.0, 0.0, 0, 0, Vector2(0.76553667, 0.53760654), 0.0, 0.0, 0, 0, Vector2(0.9952919, 0.4195999), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ojh8q"]
+curve_x = SubResource("Curve_xm11h")
+curve_y = SubResource("Curve_yxs7j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xm11h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+angle_min = -14.9999895
+angle_max = 15.0000105
+direction = Vector3(0, -1, 0)
+spread = 0.0
+directional_velocity_min = -75.000015
+directional_velocity_max = -75.000015
+directional_velocity_curve = SubResource("CurveXYZTexture_ojh8q")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_yxs7j")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxs7j"]
+custom_solver_bias = 1.0
+size = Vector2(21, 21)
+
+[node name="FireVent" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+color = Color(0, 0.6627451, 0.7019608, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+texture_filter = 1
+position = Vector2(0, -12)
+texture = SubResource("PortableCompressedTexture2D_ojh8q")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/floor/fire_vent/fire_vent.aseprite",
+"source_uid": 3820406594145921271
+}
+metadata/_aseprite_wizard_source_file_hash_ = "62c3c9f22db912b2bf2b77e134014408"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -12)
+amount = 200
+texture = ExtResource("1_ojh8q")
+lifetime = 0.5
+preprocess = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xm11h")
+
+[node name="Hitbox" parent="." instance=ExtResource("1_yxs7j")]
+grounded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_yxs7j")

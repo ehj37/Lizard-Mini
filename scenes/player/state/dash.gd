@@ -77,6 +77,7 @@ func enter(_data := {}):
 	ghost_timer.start()
 
 	player.hurtbox.disable()
+	player.hurtbox_feet.disable()
 
 
 func exit() -> void:
@@ -86,6 +87,7 @@ func exit() -> void:
 	ghost_timer.stop()
 	player.velocity = Vector2.ZERO
 	player.hurtbox.enable()
+	player.hurtbox_feet.enable()
 
 	# For chain dashes, we don't check the cooldown timer, so this is fine.
 	player.dash_cooldown_timer.start()

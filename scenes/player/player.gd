@@ -22,6 +22,7 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hurtbox_feet: Hurtbox = $HurtboxFeet
 @onready var hitbox_sword: Hitbox = $HitboxSword
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
