@@ -1,6 +1,7 @@
 extends PlayerState
 
 @onready var impatient_timer: Timer = $ImpatientTimer
+@onready var sit_timer: Timer = $SitTimer
 
 
 func update(_delta: float) -> void:
@@ -23,7 +24,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Run")
 
 
-func enter(_data := {}):
+func enter(data := {}):
 	player.velocity = Vector2.ZERO
 
 	var animation = _get_animation(player.orientation)
@@ -31,7 +32,11 @@ func enter(_data := {}):
 
 	player.sprite.flip_h = player.orientation.x < 0
 
-	impatient_timer.start()
+	var impatient = data.get("impatient", false)
+	if !impatient:
+		impatient_timer.start()
+	else:
+		sit_timer.start()
 
 
 func exit() -> void:
@@ -39,6 +44,7 @@ func exit() -> void:
 		animation_player.stop()
 
 	impatient_timer.stop()
+	sit_timer.stop()
 
 
 func _get_animation(dir: Vector2) -> String:
@@ -67,3 +73,7 @@ func _get_animation(dir: Vector2) -> String:
 
 func _on_impatient_timer_timeout():
 	state_machine.transition_to("Impatient")
+
+
+func _on_sit_timer_timeout():
+	state_machine.transition_to("Sit")

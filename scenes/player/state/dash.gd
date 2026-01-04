@@ -99,6 +99,8 @@ func _exit_movement_window():
 
 	_in_move_window = false
 	player.velocity = Vector2.ZERO
+	player.hurtbox.enable()
+	player.hurtbox_feet.enable()
 	ghost_timer.stop()
 
 

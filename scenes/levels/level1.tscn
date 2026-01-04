@@ -45,7 +45,7 @@ scroll_offset = Vector2(280, -104)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-46, -246)
+position = Vector2(-49, -239)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -244,7 +244,7 @@ position = Vector2(214, -258)
 position = Vector2(238, -227)
 
 [node name="Wisp3" parent="Wisps" instance=ExtResource("18_g7tkf")]
-position = Vector2(554, -235)
+position = Vector2(535, -244)
 
 [node name="FireVents" type="Node2D" parent="."]
 y_sort_enabled = true
