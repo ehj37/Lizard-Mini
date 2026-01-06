@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cby315x0cecxx"]
+
+[ext_resource type="Script" uid="uid://dn3woo47bjtr8" path="res://scenes/hitbox_explosive/hitbox_explosive.gd" id="1_2tk6e"]
+
+[node name="HitboxExplosive" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_2tk6e")
+metadata/_custom_type_script = "uid://qpruw2ligjga"

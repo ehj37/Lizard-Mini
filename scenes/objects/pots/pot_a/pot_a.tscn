@@ -42,6 +42,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "1df05c45c846d391d98e502f143e53af"
 polygon = PackedVector2Array(-8, 0, -8, -5, 2, -5, 2, 0)
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_14q5d")]
+fragile = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
 polygon = PackedVector2Array(-8, 0, -8, -11, 2, -11, 2, 0)

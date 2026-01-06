@@ -101,7 +101,7 @@ func enter(data := {}) -> void:
 
 	_speed = INITIAL_LUNGE_SPEED
 	player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
-	player.hitbox_sword.damage_direction = player.orientation
+	player.hitbox_sword.orientation = player.orientation
 
 	get_tree().create_timer(POLYGON_ENABLE_TIME).timeout.connect(_enable_sword)
 	get_tree().create_timer(POLYGON_DISABLE_TIME).timeout.connect(_disable_sword)

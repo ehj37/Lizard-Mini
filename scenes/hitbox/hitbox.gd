@@ -4,8 +4,7 @@ extends Area2D
 
 signal blood_drawn
 
-@export var damage_amount := 100
-@export var damage_direction := Vector2.ZERO
+@export var damage_amount: int = 100
 @export var grounded := false
 @export var disabled := false
 
@@ -16,6 +15,10 @@ func enable() -> void:
 
 func disable() -> void:
 	disabled = true
+
+
+func damage_direction(_hurtbox: Hurtbox) -> Vector2:
+	return Vector2.ZERO
 
 
 func on_hurtbox_connect(hurtbox: Hurtbox) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://c4h6yag0775nv"]
 
 [ext_resource type="Script" uid="uid://by1teia6ickjv" path="res://scenes/objects/explosive_canister/explosion/explosive_canister_explosion.gd" id="1_sjeal"]
-[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="2_kdac4"]
+[ext_resource type="PackedScene" uid="uid://cby315x0cecxx" path="res://scenes/hitbox_explosive/hitbox_explosive.tscn" id="2_luv0o"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_luv0o"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAEAACABAACWAwAAUklGRo4DAABXRUJQVlA4TIIDAAAvf8FHECcgECC8+2ZDIED4X/Fjh4Cg6LrlBAJJ/gLjHsB/oQGBYiRJchuowaEBWMoBChYMo2WAIrj+OwVgn97F3H+M6P8E4L+xacEjGTruI8fo+ZFNbU1qTh0aT+eVDhchHpoKS6e1HqWUFhE/ImkCxmJEjFeQiheS/VgqwCtIlSStF8u7+QWsqfZFso9zJJN7bjeBJMdak7AzSD+327Zt263bKudizj38yKS28+fWKTUkaT04RKHSs2DbbgPQpoEa09nKb2tKS7NVzuve925+4GJbTRqASrnb8REH2VJKqVlqZs3Y4C5yqrI1WRqtTV5dvEHu5DUmcgsMNJ9bm7Qul8RK03hurVLSwiQ8QO9OrMVoS4vUlHtrxep37uMVhqBAxiArtTZ5dfG6rATZbbQXpd5CEO6RNHgMkZzzvQuGeI72krujr4+wtXx0gBwuKs3r3Q/T83YmknNGbz+xWfGrjr1+ynLO927AEZTFWPU6QfNcc4fizpS+uyxVTrKGx9YhD6Ce+qQmX23QI/8UYUapwaMTm6Djb845/xy9831Ca0rfdal06fbqBxS8c8Y1PLp9DZAz+c45Y8apRepGNeA3H9+vCNUHXyXUwO8B5pxSSjWPsqXKd/w6e6lMffddkRTII55fXSp7dIIf1drlfRc8Um0DtkUgUrywS98njzpUexsEoKOGXdvaCRKGwCwShotPfdGyzhCZpYmXGa5/1YOThhNEBxH+Y7OEKP2hQfSWGK0dFgR5bYcwr39UljgBjRC8BaFeWyDaa9myLoh3GUK+pvVsiRmAkwVxTwlrWvDx/1/6bmpOCwZJk3KSUyPlnCSVuJ8ZB+DedHwAUspJqPvsnGK8CFPiVUCXh2LQNsgzGgOOYUpmCIPzzDBhtwGcLDAFZwFmzEF4BkUe6TpteiyBopOmRTWDvp+AkHSSEDMM6lRxkrSdKAfAuYlRhiQNWnZGShQ6TcoJPTopYTh2ijnFYCNQopR6mL6ak7RYkKQpkSRCSTUPCiXIydH0SCqRJyZELepxf2b9/EyYNCknIe4FToPgAK6HYVTHgJaNYTOj2oAcwqScCN70XQ47xANiFgqApEk5EU0nPv7/+P8zWQ9fQBkPV7MLMDGn2gVSzsKHaLrhz0kPn8XD1C7QTczjQTnEA38cXc7iYWKOcBLRj98/t03NwuFy8XR8/P/x/8f/f+sE")
@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox:disabled")
+tracks/0/path = NodePath("HitboxExplosive:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,26 +27,26 @@ length = 1.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox:disabled")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0125, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.125, 0.225, 0.325, 0.425, 0.525, 0.625, 0.725, 0.825, 0.925),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxExplosive:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0125, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kdac4"]
@@ -95,8 +95,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_kdac4")
 }
 
-[node name="Hitbox" parent="." instance=ExtResource("2_kdac4")]
+[node name="HitboxExplosive" parent="." instance=ExtResource("2_luv0o")]
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxExplosive"]
 shape = SubResource("CircleShape2D_kdac4")

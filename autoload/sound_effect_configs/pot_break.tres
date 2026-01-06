@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_wen2n")
 type = 3
+pitch_variance = 0.2
 audio_stream = ExtResource("1_6t6ts")
 metadata/_custom_type_script = "uid://5bb6jyeajy31"
