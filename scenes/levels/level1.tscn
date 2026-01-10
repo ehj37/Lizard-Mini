@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=28 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="PackedScene" uid="uid://cpmodhwgy5ijt" path="res://scenes/backgrounds/test/test_1.tscn" id="1_db1r7"]
 [ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="1_x6ivy"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bjkktw14vfsrq" path="res://scenes/progress_indicator/progress_indicator.tscn" id="20_gvm5i"]
 [ext_resource type="PackedScene" uid="uid://dm6i1rj3r0ko6" path="res://scenes/wall/door/door.tscn" id="21_jrfo0"]
 [ext_resource type="PackedScene" uid="uid://b8agbdu84gnwv" path="res://scenes/floor/fire_vent/fire_vent.tscn" id="23_6gwlt"]
+[ext_resource type="PackedScene" uid="uid://dxkhkxl2g7k0c" path="res://scenes/objects/snail/snail.tscn" id="24_c2nc4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
 size = Vector2(712, 56)
@@ -45,7 +46,7 @@ scroll_offset = Vector2(280, -104)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-49, -239)
+position = Vector2(-57, -233)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -260,3 +261,12 @@ position = Vector2(529, -211)
 
 [node name="FireVent4" parent="FireVents" instance=ExtResource("23_6gwlt")]
 position = Vector2(529, -237)
+
+[node name="Snail" parent="." instance=ExtResource("24_c2nc4")]
+position = Vector2(-54, -212)
+
+[node name="Snail2" parent="." instance=ExtResource("24_c2nc4")]
+position = Vector2(212, -267)
+
+[node name="Snail3" parent="." instance=ExtResource("24_c2nc4")]
+position = Vector2(546, -267)

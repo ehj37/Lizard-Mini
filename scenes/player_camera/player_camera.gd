@@ -24,8 +24,27 @@ func _ready() -> void:
 	player.hurt.connect(_begin_shake)
 	EventBus.explosion.connect(_begin_shake)
 
+	position_smoothing_enabled = false
+	_set_global_position_from_player()
+	await get_tree().process_frame
+
+	position_smoothing_enabled = true
+
 
 func _process(delta: float) -> void:
+	_set_global_position_from_player()
+
+	if _current_shake_magnitude > 0:
+		var shake_offset_x = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
+		var shake_offset_y = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
+		offset = Vector2(shake_offset_x, shake_offset_y)
+
+		_current_shake_magnitude = max(_current_shake_magnitude - delta * SHAKE_DIMINISH_SPEED, 0)
+	else:
+		offset = Vector2.ZERO
+
+
+func _set_global_position_from_player() -> void:
 	var target_x
 	var target_y
 
@@ -44,15 +63,6 @@ func _process(delta: float) -> void:
 		target_y = target_position_from_player.y
 
 	global_position = Vector2(target_x, target_y)
-
-	if _current_shake_magnitude > 0:
-		var shake_offset_x = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
-		var shake_offset_y = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
-		offset = Vector2(shake_offset_x, shake_offset_y)
-
-		_current_shake_magnitude = max(_current_shake_magnitude - delta * SHAKE_DIMINISH_SPEED, 0)
-	else:
-		offset = Vector2.ZERO
 
 
 func _begin_shake() -> void:

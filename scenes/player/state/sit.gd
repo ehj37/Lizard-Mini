@@ -24,3 +24,8 @@ func update(_delta: float) -> void:
 func enter(_data := {}) -> void:
 	animation_player.play("sit_right")
 	player.sprite.flip_h = player.orientation.x < 0
+	player.sprite_shadow.visible = false
+
+
+func exit() -> void:
+	player.sprite_shadow.visible = true

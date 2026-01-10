@@ -1,0 +1,169 @@
+[gd_scene load_steps=15 format=4 uid="uid://dxkhkxl2g7k0c"]
+
+[ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="1_l0ukk"]
+[ext_resource type="Script" uid="uid://csww1dvbl7b8d" path="res://scenes/objects/snail/snail.gd" id="1_q0ap6"]
+[ext_resource type="Script" uid="uid://h70tajc6405h" path="res://scenes/objects/snail/state/move.gd" id="3_8hb86"]
+[ext_resource type="Script" uid="uid://o6vh8hm6v08w" path="res://scenes/objects/snail/state/idle.gd" id="3_tt47h"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="5_atrqb"]
+[ext_resource type="Script" uid="uid://dise2j6vlna4x" path="res://scenes/objects/snail/state/hide.gd" id="5_u5prx"]
+[ext_resource type="Script" uid="uid://y07naeqb2ju2" path="res://scenes/objects/snail/emerge.gd" id="6_eilry"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_eilry"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAACYAAAAUklGRpAAAABXRUJQVlA4TIMAAAAvL8ALECdApG2bG5+C0Us4QbZtbhLDmMMdPg3zH8CmUvyBTSNJjiZYArtHxBF4M/xRrQsvjOg/wSTNdoCDfYGL6DxdYKw2YOcJAMQD4qLKCEi6g6TLQ7qAFOBOfo+p/06V/Gc71T5VCQCi4pv9HJU76TxdYKw2YKcLqLIEwu90wEMSAAA=")
+size_override = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_tt47h"]
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_8hb86"]
+length = 0.325
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_l0ukk"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_atrqb"]
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateMachine/Move")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_move"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_atrqb"]
+_data = {
+&"emerge": SubResource("Animation_tt47h"),
+&"hide": SubResource("Animation_8hb86"),
+&"idle": SubResource("Animation_l0ukk"),
+&"move": SubResource("Animation_atrqb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5prx"]
+size = Vector2(14, 13)
+
+[node name="Snail" type="Node2D"]
+script = ExtResource("1_q0ap6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_eilry")
+offset = Vector2(0, -8)
+hframes = 3
+vframes = 3
+frame = 6
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/snail/snail.aseprite",
+"source_uid": 6414314630887751317
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b6b07aad4c8d73da2d20c869b287ab17"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_atrqb")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_l0ukk")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://b023dqmvy1wyg"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_tt47h")
+metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("3_8hb86")
+metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
+
+[node name="Hide" type="Node" parent="StateMachine"]
+script = ExtResource("5_u5prx")
+metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
+
+[node name="Emerge" type="Node" parent="StateMachine"]
+script = ExtResource("6_eilry")
+metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_atrqb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_u5prx")
+
+[node name="HideTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="HideTimer" to="StateMachine/Hide" method="_on_hide_timer_timeout"]

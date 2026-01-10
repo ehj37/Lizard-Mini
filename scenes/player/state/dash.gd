@@ -49,7 +49,10 @@ func update(_delta: float) -> void:
 func enter(_data := {}):
 	var movement_dir = player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
-		_dash_direction = Vector2.RIGHT
+		if player.orientation == Vector2.ZERO:
+			_dash_direction = Vector2.RIGHT
+		else:
+			_dash_direction = player.orientation
 	else:
 		_dash_direction = movement_dir
 	player.velocity = _dash_direction * DASH_SPEED
@@ -122,9 +125,6 @@ func _enter_chain_dash_window() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	if dir == Vector2.ZERO:
-		return "dash_right"
-
 	var smallest_angle = INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
