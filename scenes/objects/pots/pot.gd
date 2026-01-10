@@ -12,7 +12,7 @@ const MAX_IMPULSE_MAGNITUDE := 800.0
 @onready var hurtbox: Hurtbox = $Hurtbox
 
 
-func take_damage(_amount: int, direction: Vector2):
+func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2):
 	_spawn_fragments(direction)
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.POT_BREAK)
 	_spawn_dust_puff()

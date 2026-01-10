@@ -93,7 +93,9 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_xm11h")
 
 [node name="Hitbox" parent="." instance=ExtResource("1_yxs7j")]
+damage_amount = 100
 grounded = true
+disabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -12)

@@ -4,7 +4,10 @@ extends Area2D
 
 signal blood_drawn
 
+enum DamageType { ENEMY, PLAYER, EXPLOSIVE }
+
 @export var damage_amount: int = 100
+@export var damage_type: DamageType
 @export var grounded := false
 @export var disabled := false
 

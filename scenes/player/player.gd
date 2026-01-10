@@ -18,6 +18,7 @@ var orientation: Vector2 = Vector2.ZERO
 var _pressed_movement_inputs: Array[String] = []
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
@@ -53,11 +54,18 @@ func _process(_delta):
 			_pressed_movement_inputs.erase(movement_input)
 
 
-func take_damage(_damage_amount: int, _damage_direction: Vector2) -> void:
+func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> void:
 	hurt.emit()
 	shader_animation_player.play("hurt_flash")
-	HitStopManager.hit_stop()
-	state_machine.transition_to("Hurt")
+
+	# The player can get hurt in the fall and rise states, but they don't get
+	# transitioned to the hurt state from it.
+	# They just flash magenta, and continue with falling/getting up.
+	var current_state_name = state_machine.current_state.name
+	if current_state_name == "Fall" || current_state_name == "Rise":
+		return
+
+	state_machine.transition_to("Hurt", {"amount": amount, "type": type, "direction": direction})
 
 
 func get_movement_direction() -> Vector2:

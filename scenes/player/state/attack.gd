@@ -121,6 +121,9 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2, combo_num: int) -> String:
+	if dir == Vector2.ZERO:
+		return ANIMATION_R_1
+
 	var smallest_angle = INF
 	var closest_dir: Vector2
 	# Order matters here for diagonal tiebreaking.

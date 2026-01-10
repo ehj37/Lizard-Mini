@@ -28,8 +28,8 @@ func transition_to(state_name: String, data := {}) -> void:
 	assert(next_state_i != -1, "Cannot find state with name " + state_name)
 
 	var next_state = _states[next_state_i]
-	next_state.enter(data)
 	current_state = next_state
+	current_state.enter(data)
 
 
 func _physics_process(delta: float) -> void:

@@ -38,7 +38,15 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(_data := {}):
+func enter(data := {}):
+	HitStopManager.hit_stop()
+
+	var damage_type = data.get("type")
+	if damage_type == Hitbox.DamageType.EXPLOSIVE:
+		var damage_direction = data.get("direction")
+		state_machine.transition_to("Fall", {"damage_direction": damage_direction})
+		return
+
 	player.velocity = Vector2.ZERO
 
 	var animation = _get_animation(player.orientation)

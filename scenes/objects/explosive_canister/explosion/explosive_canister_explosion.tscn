@@ -96,6 +96,7 @@ libraries = {
 }
 
 [node name="HitboxExplosive" parent="." instance=ExtResource("2_luv0o")]
+damage_type = 2
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxExplosive"]

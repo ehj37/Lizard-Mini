@@ -16,7 +16,7 @@ var _elapsed_time := 0.0
 @onready var hurtbox: Hurtbox = $Hurtbox
 
 
-func take_damage(_damage_amount: int, _damage_direction: Vector2) -> void:
+func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) -> void:
 	state_machine.transition_to("Death")
 
 

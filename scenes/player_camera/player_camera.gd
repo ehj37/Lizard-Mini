@@ -22,6 +22,7 @@ func unregister_lock_area(lock_area: CameraLockArea) -> void:
 
 func _ready() -> void:
 	player.hurt.connect(_begin_shake)
+	EventBus.explosion.connect(_begin_shake)
 
 
 func _process(delta: float) -> void:

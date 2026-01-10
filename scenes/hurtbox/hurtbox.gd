@@ -50,7 +50,7 @@ func _process(_delta) -> void:
 		if hitbox_on_cooldown:
 			continue
 
-		owner.take_damage(hitbox.damage_amount, hitbox.damage_direction(self))
+		owner.take_damage(hitbox.damage_amount, hitbox.damage_type, hitbox.damage_direction(self))
 		hitbox.on_hurtbox_connect(self)
 
 		if repetitive_hitbox_damage_cooldown > 0:
