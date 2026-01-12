@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://b4rahgqf6i6tg"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_ijsnm"]
+[ext_resource type="AudioStream" uid="uid://kcc8wxk8xki" path="res://sound_effects/Singe.ogg" id="1_ppys8"]
+
+[resource]
+script = ExtResource("1_ijsnm")
+type = 10
+audio_stream = ExtResource("1_ppys8")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

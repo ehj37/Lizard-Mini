@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://b8agbdu84gnwv"]
+[gd_scene load_steps=12 format=4 uid="uid://b8agbdu84gnwv"]
 
+[ext_resource type="Script" uid="uid://dugvsrvvqyjn7" path="res://scenes/floor/fire_vent/fire_vent.gd" id="1_epv8t"]
 [ext_resource type="Texture2D" uid="uid://drpj8v0ka3q2c" path="res://scenes/fire/flame.png" id="1_ojh8q"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="1_yxs7j"]
 
@@ -47,6 +48,7 @@ custom_solver_bias = 1.0
 size = Vector2(21, 21)
 
 [node name="FireVent" type="Node2D"]
+script = ExtResource("1_epv8t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4
@@ -102,3 +104,5 @@ disabled = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_yxs7j")
+
+[connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]

@@ -9,8 +9,7 @@ var _audio_players_by_type: Dictionary = {}
 func _ready() -> void:
 	for sound_effect_type in SoundEffectConfiguration.Type.values():
 		var config_i = sound_effect_configs.find_custom(func(c): return c.type == sound_effect_type)
-		if config_i == -1:
-			continue
+		assert(config_i != -1, "Sound effect must be defined in AudioManager")
 
 		var config = sound_effect_configs[config_i]
 		_sound_effect_configs[config.type] = config

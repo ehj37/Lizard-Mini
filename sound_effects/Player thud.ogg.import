@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ldekinh5x12v"
+path="res://.godot/imported/Player thud.ogg-fb5baf46028d98cc407a93e089b8952f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Player thud.ogg"
+dest_files=["res://.godot/imported/Player thud.ogg-fb5baf46028d98cc407a93e089b8952f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -30,3 +30,9 @@ func enter(data := {}) -> void:
 	player.velocity = _current_velocity
 
 	player.animation_player.play("fall_right")
+
+
+func _play_thud_sound() -> void:
+	AudioManager.play_effect_at(
+		player.global_position, SoundEffectConfiguration.Type.PLAYER_FALL_THUD
+	)

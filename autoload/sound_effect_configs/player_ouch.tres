@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://vplyp3sg0vcj"]
+
+[ext_resource type="AudioStream" uid="uid://ddmhwnlfbmqas" path="res://sound_effects/Player ouch.ogg" id="1_n6oml"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_nntb5"]
+
+[resource]
+script = ExtResource("1_nntb5")
+type = 9
+pitch_variance = 0.05
+audio_stream = ExtResource("1_n6oml")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

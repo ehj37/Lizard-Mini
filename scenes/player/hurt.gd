@@ -41,6 +41,8 @@ func update(_delta: float) -> void:
 func enter(data := {}):
 	HitStopManager.hit_stop()
 
+	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
+
 	var damage_type = data.get("type")
 	if damage_type == Hitbox.DamageType.EXPLOSIVE:
 		var damage_direction = data.get("direction")

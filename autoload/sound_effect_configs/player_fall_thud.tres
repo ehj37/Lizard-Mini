@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://cxok1huv3l0nf"]
+
+[ext_resource type="AudioStream" uid="uid://ldekinh5x12v" path="res://sound_effects/Player thud.ogg" id="1_dheni"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_jxvai"]
+
+[resource]
+script = ExtResource("1_jxvai")
+type = 8
+audio_stream = ExtResource("1_dheni")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"
