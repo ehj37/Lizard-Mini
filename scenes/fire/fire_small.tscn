@@ -8,9 +8,11 @@ point_count = 5
 curve = SubResource("Curve_jagov")
 
 [sub_resource type="Gradient" id="Gradient_l1wwq"]
+resource_local_to_scene = true
 colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_r6bn0"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_l1wwq")
 
 [sub_resource type="Curve" id="Curve_l1wwq"]
@@ -27,6 +29,7 @@ curve_x = SubResource("Curve_l1wwq")
 curve_y = SubResource("Curve_r6bn0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1wwq"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
 emission_shape = 3

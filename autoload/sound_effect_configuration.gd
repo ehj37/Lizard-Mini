@@ -13,7 +13,8 @@ enum Type {
 	DOOR_DOWN,
 	PLAYER_FALL_THUD,
 	PLAYER_OUCH,
-	SINGE
+	SINGE,
+	WISP_ALERT
 }
 
 enum LimitBehavior { REPLACE_OLD, NOOP }

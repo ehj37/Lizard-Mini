@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl6owq4e0tk58"
+path="res://.godot/imported/Wisp alert.ogg-455024be7b827ddf1a2e11d8dd10d326.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Wisp alert.ogg"
+dest_files=["res://.godot/imported/Wisp alert.ogg-455024be7b827ddf1a2e11d8dd10d326.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

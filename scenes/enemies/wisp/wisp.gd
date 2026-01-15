@@ -22,7 +22,7 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) ->
 
 func alert():
 	if state_machine.current_state.name == "Idle":
-		state_machine.transition_to("Pursue")
+		state_machine.transition_to("Alert")
 
 
 func _physics_process(delta: float) -> void:
