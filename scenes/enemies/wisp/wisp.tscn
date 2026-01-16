@@ -11,10 +11,12 @@
 [ext_resource type="Script" uid="uid://brdpm8vjgdsb6" path="res://scenes/enemies/wisp/state/death.gd" id="7_q6b6h"]
 
 [sub_resource type="Gradient" id="Gradient_6up6a"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0, 0.99450547)
 colors = PackedColorArray(0, 0.9411765, 0.99215686, 1, 0, 0.9411765, 0.99215686, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ova0x"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_6up6a")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -74,9 +76,11 @@ radius = 4.0
 radius = 3.0
 
 [sub_resource type="Gradient" id="Gradient_b2b4a"]
+resource_local_to_scene = true
 colors = PackedColorArray(0, 0.9411765, 0.99215686, 1, 0, 0.9411765, 0.99215686, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6up6a"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_b2b4a")
 fill = 1
 fill_from = Vector2(0.5, 0.5)

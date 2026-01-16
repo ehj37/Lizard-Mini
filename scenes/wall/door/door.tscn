@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dm6i1rj3r0ko6"]
+[gd_scene load_steps=7 format=4 uid="uid://dm6i1rj3r0ko6"]
 
 [ext_resource type="Script" uid="uid://c8omcgxopsnda" path="res://scenes/wall/door/door.gd" id="1_fbcep"]
 [ext_resource type="PackedScene" uid="uid://cptjdaxdxm8lq" path="res://scenes/interact_area/interact_area.tscn" id="2_lxbtu"]
+[ext_resource type="PackedScene" uid="uid://bjkktw14vfsrq" path="res://scenes/progress_indicator/progress_indicator.tscn" id="2_v73jn"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lxbtu"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAADCAAAAUklGRroAAABXRUJQVlA4TK4AAAAvP8APEDegppEUOHvHT0WNAcygpI0kaPni7ywcPMUnVUEbKcyzlwMU45r5DwB8ZCvMjeW6Pf8PjGrbVoI0gAbfxliEX+EXEG7/EPAWF4dRRP/Vtm3DKF1jzihuJLpRiHoboxjXZJJot2GUEM1RBBovHL+ejgC4IyoXDyOsIbVzrAZYIo7WysWL/12BPgBa4+J/d+zfFVitIsEqDiTQeP44GrsIpUC3CLYpsE2JRwE=")
@@ -15,6 +16,9 @@ size = Vector2(32, 18)
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_fbcep")
+
+[node name="ProgressIndicator" parent="." instance=ExtResource("2_v73jn")]
+position = Vector2(31, -45)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_contents = true

@@ -31,6 +31,10 @@ func fade_out() -> void:
 	_alpha_tween.set_trans(Tween.TRANS_EXPO)
 
 
+func _ready() -> void:
+	modulate = Color.TRANSPARENT
+
+
 func _process(delta: float) -> void:
 	if progress_bar.value == 0.0:
 		_undulate_time += delta

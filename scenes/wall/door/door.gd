@@ -2,14 +2,13 @@ class_name Door
 
 extends StaticBody2D
 
-@export var progress_indicator: ProgressIndicator
-
 @onready var dust_cloud_resource := preload("./door_dust_cloud/door_dust_cloud.tscn")
 @onready var sprite: Sprite2D = $ColorRect/Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var interact_area: InteractArea = $InteractArea
 @onready var right_dust_spawn: Marker2D = $RightDustSpawn
 @onready var left_dust_spawn: Marker2D = $LeftDustSpawn
+@onready var progress_indicator: ProgressIndicator = $ProgressIndicator
 
 
 func _ready() -> void:

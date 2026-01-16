@@ -51,7 +51,7 @@ func _get_animation(dir: Vector2) -> String:
 	var smallest_angle = INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal run animations over vertical.
+	# Favoring horizontal idle animations over vertical.
 	for cardinal_dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
 		var wrapped_angle = wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
 		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)

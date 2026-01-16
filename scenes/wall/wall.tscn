@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dxql26svhjhf3" path="res://scenes/wall/wall.png" id="1_t8knd"]
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_t8knd"]
-tile_data = PackedInt32Array(0, 0, 0, 65544, 524288, 0, 16, 2359296, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_toau8"]
 tile_data = PackedInt32Array(65536, 0, 16, 65541, 393216, 16, 10, 1441792, 16, 11, 1507328, 16)
 
@@ -13,6 +10,9 @@ tile_data = PackedInt32Array(65536, 0, 32, 5, 1245184, 32, 65546, 1703936, 32)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xqidk"]
 tile_data = PackedInt32Array(65536, 1703936, 32, 5, 1245184, 32, 65546, 393216, 32)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_t8knd"]
+tile_data = PackedInt32Array(0, 0, 0, 65544, 524288, 0, 16, 524288, 80)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8knd"]
 texture = ExtResource("1_t8knd")
@@ -197,10 +197,10 @@ texture_region_size = Vector2i(4, 4)
 tile_size = Vector2i(4, 4)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t8knd")
-pattern_0 = SubResource("TileMapPattern_t8knd")
-pattern_1 = SubResource("TileMapPattern_toau8")
-pattern_2 = SubResource("TileMapPattern_1d3bp")
-pattern_3 = SubResource("TileMapPattern_xqidk")
+pattern_0 = SubResource("TileMapPattern_toau8")
+pattern_1 = SubResource("TileMapPattern_1d3bp")
+pattern_2 = SubResource("TileMapPattern_xqidk")
+pattern_3 = SubResource("TileMapPattern_t8knd")
 
 [node name="Wall" type="TileMapLayer"]
 y_sort_enabled = true
