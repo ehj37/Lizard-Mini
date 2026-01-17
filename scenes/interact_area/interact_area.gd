@@ -4,30 +4,42 @@ extends Area2D
 
 signal interaction_complete
 
-@export var completion_time := 2.5
+enum InteractionLength { SHORT, MEDIUM }
 
-var progress_indicator: ProgressIndicator
+const INTERACTION_LENGTH_DURATIONS := {InteractionLength.SHORT: 1.0, InteractionLength.MEDIUM: 2.0}
+
+@export var interaction_length := InteractionLength.MEDIUM
+@export var progress_indicator: ProgressIndicator
+
 var _completion_progress := 0.0
 
 
 func interact(delta: float) -> void:
 	if _completion_progress == 0.0:
-		AudioManager.play_effect_at(
-			global_position, SoundEffectConfiguration.Type.PROGRESS_INDICATOR
-		)
+		AudioManager.play_effect_at(global_position, _get_sound_effect())
 
+	var completion_time = INTERACTION_LENGTH_DURATIONS[interaction_length]
 	_completion_progress = min(_completion_progress + delta, completion_time)
 	var completion_percentage = _completion_progress / completion_time
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()
-		monitoring = false
+		disable()
 
 
 func reset_progress() -> void:
 	_completion_progress = 0.0
-	AudioManager.cancel_audio(SoundEffectConfiguration.Type.PROGRESS_INDICATOR)
+	AudioManager.cancel_audio(_get_sound_effect())
 	progress_indicator.update_progress_bar(0.0)
+
+
+func enable() -> void:
+	reset_progress()
+	monitoring = true
+
+
+func disable() -> void:
+	monitoring = false
 
 
 func _on_body_entered(_body) -> void:
@@ -38,3 +50,14 @@ func _on_body_entered(_body) -> void:
 func _on_body_exited(_body) -> void:
 	progress_indicator.fade_out()
 	InteractionManager.unregister_area(self)
+
+
+func _get_sound_effect() -> SoundEffectConfiguration.Type:
+	match interaction_length:
+		InteractionLength.SHORT:
+			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_SHORT
+		InteractionLength.MEDIUM:
+			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_MEDIUM
+		_:
+			assert(false, "Interaction length does not have corresponding sound effect")
+			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_MEDIUM

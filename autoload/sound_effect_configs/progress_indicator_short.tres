@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://ipkq31tyw24x"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_nsb0p"]
+[ext_resource type="AudioStream" uid="uid://d1omyxdhvf8s0" path="res://sound_effects/Progress indicator (short).ogg" id="1_u27gx"]
+
+[resource]
+script = ExtResource("1_nsb0p")
+type = 12
+audio_stream = ExtResource("1_u27gx")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

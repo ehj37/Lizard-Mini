@@ -58,8 +58,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "b25873782c44c3ef406501843b5a3cf8"
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_fbcep")
 
-[node name="InteractArea" parent="." instance=ExtResource("2_lxbtu")]
-completion_time = 2.0
+[node name="InteractArea" parent="." node_paths=PackedStringArray("progress_indicator") instance=ExtResource("2_lxbtu")]
+progress_indicator = NodePath("../ProgressIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(0, 9)

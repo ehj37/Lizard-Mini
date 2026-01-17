@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpy6ktanniqrq"]
+[gd_scene load_steps=16 format=3 uid="uid://bpy6ktanniqrq"]
 
 [ext_resource type="Script" uid="uid://dsuxsfcvtx25x" path="res://autoload/audio_manager/audio_manager.gd" id="1_418ss"]
 [ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="2_veri3"]
@@ -8,13 +8,14 @@
 [ext_resource type="Resource" uid="uid://dqqjfa47vkt8y" path="res://autoload/sound_effect_configs/pot_break.tres" id="6_d6pjd"]
 [ext_resource type="Resource" uid="uid://dukcpq43qnamd" path="res://autoload/sound_effect_configs/wisp_death.tres" id="7_iwjvn"]
 [ext_resource type="Resource" uid="uid://71odf10npc7w" path="res://autoload/sound_effect_configs/canister_explosion.tres" id="8_180s8"]
-[ext_resource type="Resource" uid="uid://uspkcv0l16qe" path="res://autoload/sound_effect_configs/progress_indicator.tres" id="9_b4cw0"]
+[ext_resource type="Resource" uid="uid://uspkcv0l16qe" path="res://autoload/sound_effect_configs/progress_indicator_medium.tres" id="9_b4cw0"]
 [ext_resource type="Resource" uid="uid://dti270baefxxa" path="res://autoload/sound_effect_configs/door_down.tres" id="10_d6pjd"]
 [ext_resource type="Resource" uid="uid://cxok1huv3l0nf" path="res://autoload/sound_effect_configs/player_fall_thud.tres" id="11_iwjvn"]
 [ext_resource type="Resource" uid="uid://vplyp3sg0vcj" path="res://autoload/sound_effect_configs/player_ouch.tres" id="12_k3xk4"]
 [ext_resource type="Resource" uid="uid://b4rahgqf6i6tg" path="res://autoload/sound_effect_configs/singe.tres" id="13_tn4hp"]
 [ext_resource type="Resource" uid="uid://bjalqs146jh0m" path="res://autoload/sound_effect_configs/wisp_alert.tres" id="14_2d5ut"]
+[ext_resource type="Resource" uid="uid://ipkq31tyw24x" path="res://autoload/sound_effect_configs/progress_indicator_short.tres" id="15_yt718"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_418ss")
-sound_effect_configs = Array[ExtResource("2_veri3")]([ExtResource("3_3bhmr"), ExtResource("4_180s8"), ExtResource("5_b4cw0"), ExtResource("6_d6pjd"), ExtResource("7_iwjvn"), ExtResource("8_180s8"), ExtResource("9_b4cw0"), ExtResource("10_d6pjd"), ExtResource("11_iwjvn"), ExtResource("12_k3xk4"), ExtResource("13_tn4hp"), ExtResource("14_2d5ut")])
+sound_effect_configs = Array[ExtResource("2_veri3")]([ExtResource("3_3bhmr"), ExtResource("4_180s8"), ExtResource("5_b4cw0"), ExtResource("6_d6pjd"), ExtResource("7_iwjvn"), ExtResource("8_180s8"), ExtResource("9_b4cw0"), ExtResource("10_d6pjd"), ExtResource("11_iwjvn"), ExtResource("12_k3xk4"), ExtResource("13_tn4hp"), ExtResource("14_2d5ut"), ExtResource("15_yt718")])

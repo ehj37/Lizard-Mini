@@ -12,7 +12,6 @@ extends StaticBody2D
 
 
 func _ready() -> void:
-	interact_area.progress_indicator = progress_indicator
 	interact_area.interaction_complete.connect(_unlock)
 
 

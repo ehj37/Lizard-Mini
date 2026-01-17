@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://gd81jp17ork"
+path="res://.godot/imported/toggle_switch.aseprite-fc11d515cc0241c2a05dcd7ebe573d2c.res"
+
+[deps]
+
+source_file="res://scenes/objects/toggle_switch/toggle_switch.aseprite"
+dest_files=["res://.godot/imported/toggle_switch.aseprite-fc11d515cc0241c2a05dcd7ebe573d2c.res"]
+
+[params]
+
