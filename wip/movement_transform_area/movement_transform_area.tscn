@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blbrgdboj4ygj"]
+
+[ext_resource type="Script" uid="uid://k8jetor8f3p6" path="res://wip/movement_transform_area/movement_transform_area.gd" id="1_1lucy"]
+
+[node name="MovementTransformArea" type="Area2D"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_1lucy")
