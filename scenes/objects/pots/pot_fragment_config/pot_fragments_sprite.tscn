@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsx681dsxvuna"]
+
+[ext_resource type="Texture2D" uid="uid://dfoxc46vt387y" path="res://scenes/objects/pots/pot_fragment_config/pot_fragments.png" id="1_e063f"]
+
+[node name="PotFragmentsSprite" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_e063f")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/pots/pot_fragment_config/pot_fragments.aseprite",
+"source_uid": 4004495538936978442
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9c09c8636ab92029aaedfe5296a868f2"

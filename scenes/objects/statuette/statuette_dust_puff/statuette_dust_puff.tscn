@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=4 uid="uid://cirev8e7flm3w"]
+
+[ext_resource type="Script" uid="uid://bm0ttjyxjdqix" path="res://scripts/dust_puff.gd" id="1_2xcee"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2xcee"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAADwAAAAUklGRugAAABXRUJQVlA4TNwAAAAvX8APEBcgEEjyZ1hpP4FAkj/RRHMIBJL8CWaaav4D/hXAcW07bnP1Mwns3bskuAovIdPfz0dKr4JwJXCb/ORn5jai/xPA394kZOLUWPOOFLGWIqe5KlW8Z3Wydwj+szrWrMmcqm5AHWT8i6o+AEexxvT7BAUwDk8HNe1XAaQ4zyO4VvoUsVsCKEigftwKUAu+s8GRqpMG7x3QWk2dTD049BPPkVlV3TpZQW8hnk9Oi102p8T+3hY7e0goD+Lrzst8CeVBPC378jv7IpBVtsyXkHlGOHsLy7J92b8b")
+size_override = Vector2(96, 64)
+
+[sub_resource type="Animation" id="Animation_152r7"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfky4"]
+_data = {
+&"poof": SubResource("Animation_152r7")
+}
+
+[node name="StatuetteDustPuff" type="Sprite2D"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_2xcee")
+offset = Vector2(-4, -18)
+hframes = 3
+vframes = 2
+script = ExtResource("1_2xcee")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/statuette/statuette_dust_puff/statuette_dust_puff.aseprite",
+"source_uid": 3526339880226472810
+}
+metadata/_aseprite_wizard_source_file_hash_ = "319ee39f81c10ad768516f654a14d039"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mfky4")
+}

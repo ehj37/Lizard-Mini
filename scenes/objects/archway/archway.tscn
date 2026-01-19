@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=4 uid="uid://ex8okscf2ye6"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jpwyv"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAAAAQAAUklGRvgAAABXRUJQVlA4TOsAAAAvP8APEDegqI0UaJcb2TjFAn+EKGjbhimJs+EfsQtETSQpzAdCR4t/xKFj/gMAT2+2qXU9Hmf/wW1t7U0jYs1HUO1cc87PAA5awQNo/zFA/6ffsY3o/wS4/3AWEbvDejVL5WYRYY4ba0lS58QzVRGHlGS5ihzWPZArCNKLyLJR60ZFSBNQFtfRhVB3lKOpIsPttxrfzWH/drCK3gxWMItZnBpv0BPRZ4AOeD0Q3TfyZrCKLVNRIPoce9WcI16sANUVqDmvE1QcVC5IBk+EmsOb7Zib3eisUDLdqwHFp4ucZ8CBiJHzXgdwgM4SAA==")
+size_override = Vector2(64, 64)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_j52ht"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABAAAAAUklGRjgAAABXRUJQVlA4TCwAAAAvP8APEA8wjxM9IfMf8FATSVI09194DrCCdGShgYwsov8TwH9uhT0vXIOzAA==")
+size_override = Vector2(64, 64)
+
+[node name="Archway" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="SpriteArchway" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_jpwyv")
+offset = Vector2(0, -31)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Archway"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/archway/archway.aseprite",
+"source_uid": 4716218884115811090
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c205c161ae24c105697919f9ae763bde"
+
+[node name="SpriteGround" type="Sprite2D" parent="."]
+z_index = -4
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_j52ht")
+offset = Vector2(0, -31)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Ground"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/archway/archway.aseprite",
+"source_uid": 4716218884115811090
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c205c161ae24c105697919f9ae763bde"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, 0, -20, 0, -20, -5, -15, -5)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20, 0, 15, 0, 15, -5, 20, -5)

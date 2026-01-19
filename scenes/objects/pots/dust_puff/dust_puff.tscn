@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://b2i8x7i81mb3y"]
 
-[ext_resource type="Script" uid="uid://ca5tnv8mrndxf" path="res://scenes/objects/pots/dust_puff/dust_puff.gd" id="1_hdnef"]
+[ext_resource type="Script" uid="uid://bm0ttjyxjdqix" path="res://scripts/dust_puff.gd" id="1_hdnef"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_hdnef"]
 _data = PackedByteArray("AAADAAUAAAABAAAAwAAAAIAAAADKAAAAUklGRsIAAABXRUJQVlA4TLUAAAAvv8AfEB8gECD899jQZEMgQPjvsaGJQIDw32NDk/kNwF9Vgdtae9VGocpUeY8MYBohpH3eKC5zPEVgEcaKGV4nRaqTnIj+TwD8Ss3LDFOWKgqflk8dVlaimeIe0K425WQY0vKNpZk3K0NO983YWlaDtbLanpyefQIPZVJQUCF98COgq2crciFNPkOs6QJE+PPSlapzXJCPGPKRAuPTUpA2w1FAc8VGhydDfhtoewbbiq4efFMFAA==")

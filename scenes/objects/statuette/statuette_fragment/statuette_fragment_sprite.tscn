@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0dt1c15inng8"]
+
+[ext_resource type="Texture2D" uid="uid://0335co5c64tu" path="res://scenes/objects/statuette/statuette_fragment/statuette_fragments.png" id="1_mixfu"]
+
+[node name="StatuetteFragmentSprite" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_mixfu")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/statuette/statuette_fragment/statuette_fragments.aseprite",
+"source_uid": 3189610524181797936
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7d3294b31a73e0396615ca49e9571a82"

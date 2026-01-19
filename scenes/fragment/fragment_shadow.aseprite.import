@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://vsingecm4sk2"
+path="res://.godot/imported/fragment_shadow.aseprite-465d8b91de21f0663000d2201024f83d.res"
+
+[deps]
+
+source_file="res://scenes/fragment/fragment_shadow.aseprite"
+dest_files=["res://.godot/imported/fragment_shadow.aseprite-465d8b91de21f0663000d2201024f83d.res"]
+
+[params]
+

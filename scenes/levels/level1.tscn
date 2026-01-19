@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=30 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="PackedScene" uid="uid://cpmodhwgy5ijt" path="res://scenes/backgrounds/test/test_1.tscn" id="1_db1r7"]
 [ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="1_x6ivy"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://b8agbdu84gnwv" path="res://scenes/floor/fire_vent/fire_vent.tscn" id="23_6gwlt"]
 [ext_resource type="PackedScene" uid="uid://dxkhkxl2g7k0c" path="res://scenes/objects/snail/snail.tscn" id="24_c2nc4"]
 [ext_resource type="PackedScene" uid="uid://bvrvdh211j41c" path="res://scenes/objects/toggle_switch/toggle_switch.tscn" id="24_vhxpm"]
+[ext_resource type="PackedScene" uid="uid://ex8okscf2ye6" path="res://scenes/objects/archway/archway.tscn" id="25_vhxpm"]
+[ext_resource type="PackedScene" uid="uid://cm4fn38crxxpm" path="res://scenes/objects/statuette/statuette.tscn" id="26_arkx4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
 size = Vector2(712, 56)
@@ -45,7 +47,7 @@ scroll_offset = Vector2(280, -104)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(601, -235)
+position = Vector2(-832, 120)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -274,6 +276,9 @@ position = Vector2(546, -267)
 [node name="WispIntroArea" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Archway" parent="WispIntroArea" instance=ExtResource("25_vhxpm")]
+position = Vector2(-832, 125)
+
 [node name="Door" parent="WispIntroArea" instance=ExtResource("21_jrfo0")]
 position = Vector2(-832, -72)
 
@@ -306,5 +311,14 @@ position = Vector2(-784, -40)
 
 [node name="ActiveWisps" type="Node2D" parent="WispIntroArea"]
 
-[node name="Door2" parent="WispIntroArea" instance=ExtResource("21_jrfo0")]
-position = Vector2(-832, 128)
+[node name="Statuette" parent="WispIntroArea" instance=ExtResource("26_arkx4")]
+position = Vector2(-880, 102)
+
+[node name="Statuette2" parent="WispIntroArea" instance=ExtResource("26_arkx4")]
+position = Vector2(-784, 102)
+
+[node name="Statuette3" parent="WispIntroArea" instance=ExtResource("26_arkx4")]
+position = Vector2(-879, 62)
+
+[node name="Statuette4" parent="WispIntroArea" instance=ExtResource("26_arkx4")]
+position = Vector2(-784, 62)

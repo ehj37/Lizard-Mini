@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clucfk5m5ntuc"]
+
+[ext_resource type="Script" uid="uid://c8womih1r7np5" path="res://scenes/fragment_spawner/fragment_spawner.gd" id="1_nb4f8"]
+
+[node name="FragmentSpawner" type="Node2D"]
+script = ExtResource("1_nb4f8")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bxb2prw13kusg"
+path="res://.godot/imported/pot_fragments.aseprite-2c289b491e63eb3beedcd398e8104693.res"
+
+[deps]
+
+source_file="res://scenes/objects/pots/pot_fragment_config/pot_fragments.aseprite"
+dest_files=["res://.godot/imported/pot_fragments.aseprite-2c289b491e63eb3beedcd398e8104693.res"]
+
+[params]
+

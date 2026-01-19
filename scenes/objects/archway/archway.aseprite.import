@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b8gto28qwrpbm"
+path="res://.godot/imported/archway.aseprite-da8709f0031362fc1c4ae6823dd28ba3.res"
+
+[deps]
+
+source_file="res://scenes/objects/archway/archway.aseprite"
+dest_files=["res://.godot/imported/archway.aseprite-da8709f0031362fc1c4ae6823dd28ba3.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bqigkj3jrkua1"
+path="res://.godot/imported/statuette_dust_puff.aseprite-9f9490449bfbe4b7edc734b68495b346.res"
+
+[deps]
+
+source_file="res://scenes/objects/statuette/statuette_dust_puff/statuette_dust_puff.aseprite"
+dest_files=["res://.godot/imported/statuette_dust_puff.aseprite-9f9490449bfbe4b7edc734b68495b346.res"]
+
+[params]
+

@@ -1,11 +1,11 @@
-class_name PotFragment
+class_name Fragment
 
 extends RigidBody2D
 
-const NUM_FRAGMENT_VARIANTS := 12
 const INITIAL_VERTICAL_SPEED := -50.0
 const GRAVITY := 575.0
 
+var fragment_config: FragmentConfig
 var _vertical_speed := INITIAL_VERTICAL_SPEED
 var _airborne := true
 
@@ -14,9 +14,20 @@ var _airborne := true
 
 
 func _ready() -> void:
-	var variant_number = randi_range(0, NUM_FRAGMENT_VARIANTS)
-	sprite.region_rect.position.x = 8 & variant_number
+	sprite.texture = fragment_config.fragments_texture
+	sprite.region_enabled = true
+	sprite.region_rect.size.x = fragment_config.fragment_region_width
+	sprite.region_rect.size.y = fragment_config.fragment_region_height
+
+	var variant_number = randi_range(0, fragment_config.num_fragment_variants)
+	sprite.region_rect.position.x = fragment_config.fragment_region_width * variant_number
 	sprite.rotation = randf_range(0, 2 * PI)
+
+	mass = fragment_config.mass
+	linear_damp = fragment_config.linear_damp
+
+	gravity_scale = 0.0
+	lock_rotation = true
 
 
 func _process(delta: float) -> void:

@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=4 uid="uid://cm4fn38crxxpm"]
+
+[ext_resource type="Script" uid="uid://cxwlac7bho4sc" path="res://scenes/objects/statuette/statuette.gd" id="1_dgcue"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="1_qpumi"]
+[ext_resource type="PackedScene" uid="uid://clucfk5m5ntuc" path="res://scenes/fragment_spawner/fragment_spawner.tscn" id="3_tudps"]
+[ext_resource type="Resource" uid="uid://b4dhey5n8fbgm" path="res://scenes/objects/statuette/statuette_fragment/statuette_fragment_config.tres" id="4_ir5qn"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_gyitp"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAACAAAACUAAAAUklGRowAAABXRUJQVlA4TIAAAAAvD8AHED+gqI0kNHUMvxOBCtq2YVOFsP+pTEEkG9R7zy+JjgKJJoeZ/wCAtk0v/63nEK2+UfvANrJtJe9jsTfwNacIcjrwS/qH/rOHSx7R/wmgP/XJ1oINPzUJI4A2u2RDApKtgGMDYK+RUkqWZplgVCvalHIry7baaifbynY2AQ==")
+size_override = Vector2(16, 32)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qpumi"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAACAAAABQAAAAUklGRkgAAABXRUJQVlA4TDwAAAAvD8AHEB8gECBTCnRYIhAgU4oc2CEkIGQ//P9mwfwHQF35wWjAJHsKK49wmqcSrfaI/k8Af9YQwc4VQQ0=")
+size_override = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyitp"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgcue"]
+size = Vector2(8, 18)
+
+[node name="Statuette" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_dgcue")
+
+[node name="SpriteStatuette" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_gyitp")
+offset = Vector2(0, -15)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Statuette"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/statuette/statuette.aseprite",
+"source_uid": 2723661682951726240
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f9913e9cd7ddd7b0875884f16aeaea67"
+
+[node name="SpriteGround" type="Sprite2D" parent="."]
+z_index = -4
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_qpumi")
+offset = Vector2(0, -15)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": ["Ground"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/statuette/statuette.aseprite",
+"source_uid": 2723661682951726240
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f9913e9cd7ddd7b0875884f16aeaea67"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_gyitp")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_qpumi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_dgcue")
+
+[node name="FragmentSpawner" parent="." instance=ExtResource("3_tudps")]
+fragment_config = ExtResource("4_ir5qn")
