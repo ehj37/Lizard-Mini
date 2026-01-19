@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://bnrqjpequl6ak"]
+
+[ext_resource type="AudioStream" uid="uid://bipnak85td263" path="res://sound_effects/Footstep (tile).ogg" id="1_ny4fo"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="2_a2uf6"]
+
+[resource]
+script = ExtResource("2_a2uf6")
+type = 1
+pitch_variance = 0.1
+audio_stream = ExtResource("1_ny4fo")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

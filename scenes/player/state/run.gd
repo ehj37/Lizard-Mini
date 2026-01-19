@@ -5,6 +5,7 @@ const MOVE_ACCELERATION := 360.0
 const FOOTSTEP_PITCH_VARIANCE := 0.1
 
 var _move_speed := 0.0
+var _ground_tilemap_layers: Array[TileMapLayer] = []
 
 @onready var footstep_dust_cloud_resource := preload(
 	"res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.tscn"
@@ -45,6 +46,12 @@ func update(delta: float) -> void:
 
 
 func enter(_data := {}) -> void:
+	if _ground_tilemap_layers.size() == 0:
+		var ground_nodes = get_tree().get_nodes_in_group("ground")
+		for ground_node in ground_nodes:
+			if ground_node is TileMapLayer:
+				_ground_tilemap_layers.append(ground_node)
+
 	_move_speed = 0.0
 	var animation = _get_animation(player.orientation)
 	animation_player.play(animation)
@@ -58,9 +65,24 @@ func exit() -> void:
 
 
 func play_footstep_sound_effect() -> void:
-	AudioManager.play_effect_at(
-		player.global_position, SoundEffectConfiguration.Type.PLAYER_FOOTSTEP
-	)
+	var tile_data = []
+	for tilemap_layer: TileMapLayer in _ground_tilemap_layers:
+		var tile_position = tilemap_layer.local_to_map(player.position)
+		var data_at_position = tilemap_layer.get_cell_tile_data(tile_position)
+		if data_at_position:
+			tile_data.append(data_at_position)
+
+	var effect_type = SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
+
+	if tile_data.size() > 0:
+		var tile_type = tile_data.back().get_custom_data("ground_type")
+		match tile_type:
+			"tile":
+				effect_type = SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
+			"clay":
+				effect_type = SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_CLAY
+
+	AudioManager.play_effect_at(player.global_position, effect_type)
 
 
 func _get_animation(dir: Vector2) -> String:

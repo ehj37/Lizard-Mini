@@ -69,7 +69,7 @@ scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_rcdd1")
 alpha_curve = SubResource("CurveTexture_viv4t")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q6b6h"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ova0x"]
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6up6a"]
@@ -127,10 +127,11 @@ process_material = SubResource("ParticleProcessMaterial_e8vpj")
 
 [node name="Hitbox" parent="OffsetContainer" instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
+grounded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OffsetContainer/Hitbox"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_q6b6h")
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_ova0x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6up6a")

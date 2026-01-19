@@ -306,9 +306,12 @@ tracks/0/path = NodePath("StateMachine/Run")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"play_footstep_sound_effect"
+}, {
 "args": [],
 "method": &"play_footstep_sound_effect"
 }]
@@ -366,9 +369,12 @@ tracks/0/path = NodePath("StateMachine/Run")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"play_footstep_sound_effect"
+}, {
 "args": [],
 "method": &"play_footstep_sound_effect"
 }]
@@ -726,7 +732,7 @@ texture = SubResource("PortableCompressedTexture2D_kvlxm")
 offset = Vector2(0, -16)
 hframes = 12
 vframes = 12
-frame = 113
+frame = 43
 script = ExtResource("9_je7p5")
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
@@ -824,6 +830,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_8afob")
 
 [node name="Hurtbox" parent="." instance=ExtResource("6_75vfm")]
+visible = false
 repetitive_hitbox_damage_cooldown = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -831,6 +838,7 @@ position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_fm80t")
 
 [node name="HurtboxFeet" parent="." instance=ExtResource("6_75vfm")]
+visible = false
 repetitive_hitbox_damage_cooldown = 0.6
 grounded = true
 
@@ -839,6 +847,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_gx1jg")
 
 [node name="HitboxSword" parent="." instance=ExtResource("10_h17s1")]
+visible = false
 script = ExtResource("15_fcs02")
 damage_amount = 100
 grounded = false
@@ -895,6 +904,7 @@ polygon = PackedVector2Array(3, -5, 15, -20, 14, 4, 8, 9, 1, 10, -6, 7, -11, -3,
 disabled = true
 
 [node name="HitboxFeet" parent="." instance=ExtResource("10_h17s1")]
+visible = false
 damage_amount = -1
 grounded = false
 disabled = true
