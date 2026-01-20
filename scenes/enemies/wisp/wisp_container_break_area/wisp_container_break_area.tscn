@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ke413mqp3qw"]
+
+[ext_resource type="Script" uid="uid://hyfb2ar818h" path="res://scenes/enemies/wisp/wisp_container_break_area/wisp_container_break_area.gd" id="1_3flsx"]
+
+[node name="WispContainerBreakArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_3flsx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

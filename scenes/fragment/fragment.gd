@@ -27,7 +27,7 @@ func _ready() -> void:
 	linear_damp = fragment_config.linear_damp
 
 	gravity_scale = 0.0
-	lock_rotation = true
+	set_deferred("lock_rotation", true)
 
 
 func _process(delta: float) -> void:

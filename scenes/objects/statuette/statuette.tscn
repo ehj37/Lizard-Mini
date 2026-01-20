@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cm4fn38crxxpm"]
+[gd_scene load_steps=10 format=4 uid="uid://cm4fn38crxxpm"]
 
 [ext_resource type="Script" uid="uid://cxwlac7bho4sc" path="res://scenes/objects/statuette/statuette.gd" id="1_dgcue"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="1_qpumi"]
@@ -18,6 +18,9 @@ size = Vector2(4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgcue"]
 size = Vector2(8, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dypgv"]
+size = Vector2(10, 8)
 
 [node name="Statuette" type="StaticBody2D"]
 collision_mask = 0
@@ -89,6 +92,13 @@ shape = SubResource("RectangleShape2D_gyitp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_dgcue")
+
+[node name="HurtboxGround" parent="." instance=ExtResource("1_qpumi")]
+grounded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxGround"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_dypgv")
 
 [node name="FragmentSpawner" parent="." instance=ExtResource("3_tudps")]
 fragment_config = ExtResource("4_ir5qn")

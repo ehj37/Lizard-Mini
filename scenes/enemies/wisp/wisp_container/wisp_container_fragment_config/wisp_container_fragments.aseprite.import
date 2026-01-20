@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bqd8enkx1ol25"
+path="res://.godot/imported/wisp_container_fragments.aseprite-5a4c5a47a53d816cc083bc4ae3818a62.res"
+
+[deps]
+
+source_file="res://scenes/enemies/wisp/wisp_container/wisp_container_fragment_config/wisp_container_fragments.aseprite"
+dest_files=["res://.godot/imported/wisp_container_fragments.aseprite-5a4c5a47a53d816cc083bc4ae3818a62.res"]
+
+[params]
+

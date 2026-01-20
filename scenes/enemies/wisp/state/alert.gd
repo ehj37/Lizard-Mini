@@ -1,6 +1,6 @@
 extends WispState
 
-const ALERT_TIME := 0.15
+const ALERT_TIME := 0.35
 const TARGET_COLOR := Color("#FD0D00")
 
 var _color: Color
@@ -35,6 +35,8 @@ func enter(_data := {}) -> void:
 
 	_sprite_texture = wisp.sprite.texture as GradientTexture2D
 	_sprite_shadow_texture = wisp.sprite_shadow.texture as GradientTexture2D
+
+	wisp.oscillating = true
 
 	# Gets set back to normal amount on exit
 	wisp.fire_small.amount *= 2

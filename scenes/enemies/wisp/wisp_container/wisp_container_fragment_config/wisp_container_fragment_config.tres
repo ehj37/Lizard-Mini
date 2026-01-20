@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FragmentConfig" load_steps=3 format=3 uid="uid://co4smbptfeleq"]
+
+[ext_resource type="Script" uid="uid://35cg2ksw3w5r" path="res://scripts/fragment_config.gd" id="1_7ycj0"]
+[ext_resource type="Texture2D" uid="uid://cmbfm1gi2543a" path="res://scenes/enemies/wisp/wisp_container/wisp_container_fragment_config/wisp_container_fragments.png" id="1_517am"]
+
+[resource]
+script = ExtResource("1_7ycj0")
+mass = 4.0
+fragments_texture = ExtResource("1_517am")
+fragment_region_width = 8.0
+fragment_region_height = 8.0
+num_fragment_variants = 16
+metadata/_custom_type_script = "uid://35cg2ksw3w5r"

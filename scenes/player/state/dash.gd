@@ -1,7 +1,7 @@
 extends PlayerState
 
-const DASH_SPEED := 320.0
-const MOVEMENT_DURATION := 0.2
+const DASH_SPEED := 400.0
+const MOVEMENT_DURATION := 0.18
 const CHAIN_ATTACK_WINDOW_START := 0.25
 const CHAIN_DASH_WINDOW_START := 0.3
 

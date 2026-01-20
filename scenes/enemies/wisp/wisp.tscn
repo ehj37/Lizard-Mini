@@ -72,9 +72,6 @@ alpha_curve = SubResource("CurveTexture_viv4t")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ova0x"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6up6a"]
-radius = 3.0
-
 [sub_resource type="Gradient" id="Gradient_b2b4a"]
 resource_local_to_scene = true
 colors = PackedColorArray(0, 0.9411765, 0.99215686, 1, 0, 0.9411765, 0.99215686, 0)
@@ -89,6 +86,9 @@ fill_to = Vector2(0.75, 0.75)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b2b4a"]
 radius = 4.0
 height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6up6a"]
+radius = 2.0
 
 [node name="Wisp" type="CharacterBody2D"]
 collision_layer = 0
@@ -125,16 +125,13 @@ texture = SubResource("GradientTexture2D_ova0x")
 position = Vector2(0, -9)
 process_material = SubResource("ParticleProcessMaterial_e8vpj")
 
-[node name="Hitbox" parent="OffsetContainer" instance=ExtResource("2_57p5f")]
+[node name="Hitbox" parent="." instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
 grounded = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OffsetContainer/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_ova0x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6up6a")
 
 [node name="SpriteShadow" type="Sprite2D" parent="."]
 z_index = -4
@@ -171,4 +168,12 @@ position = Vector2(0, -9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_b2b4a")
 
-[connection signal="blood_drawn" from="OffsetContainer/Hitbox" to="." method="_on_hitbox_blood_drawn"]
+[node name="ObstacleDetector" type="Area2D" parent="."]
+collision_layer = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
+shape = SubResource("CircleShape2D_6up6a")
+
+[connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]
+[connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]

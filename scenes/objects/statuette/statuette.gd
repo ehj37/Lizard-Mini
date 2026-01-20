@@ -6,6 +6,7 @@ extends StaticBody2D
 @onready var sprite_statuette: Sprite2D = $SpriteStatuette
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hurtbox_ground: Hurtbox = $HurtboxGround
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
 
 
@@ -19,3 +20,4 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> 
 	collision_shape.disabled = true
 
 	hurtbox.disable()
+	hurtbox_ground.disable()

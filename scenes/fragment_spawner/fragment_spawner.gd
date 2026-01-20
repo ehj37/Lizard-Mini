@@ -20,8 +20,12 @@ func spawn_fragments(direction: Vector2) -> void:
 			-MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE, MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE
 		)
 		fragment.global_position = global_position
-		owner.owner.add_child(fragment)
+		(func(): owner.owner.add_child(fragment)).call_deferred()
 
 		var impulse_magnitude = randf_range(MIN_IMPULSE_MAGNITUDE, MAX_IMPULSE_MAGNITUDE)
-		var spawn_direction = direction.rotated(spawn_angle_offset)
+		var spawn_direction: Vector2
+		if direction == Vector2.ZERO:
+			spawn_direction = Vector2.from_angle(randf_range(0.0, 2.0 * PI))
+		else:
+			spawn_direction = direction.rotated(spawn_angle_offset)
 		fragment.apply_central_impulse(spawn_direction * impulse_magnitude)

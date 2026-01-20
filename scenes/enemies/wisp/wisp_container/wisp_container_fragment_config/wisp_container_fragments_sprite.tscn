@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc2ubiwmgod01"]
+
+[ext_resource type="Texture2D" uid="uid://cmbfm1gi2543a" path="res://scenes/enemies/wisp/wisp_container/wisp_container_fragment_config/wisp_container_fragments.png" id="1_6pw4g"]
+
+[node name="WispContainerFragmentsSprite" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_6pw4g")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/enemies/wisp/wisp_container/wisp_container_fragment_config/wisp_container_fragments.aseprite",
+"source_uid": 3517646818432630864
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e5041288611e4d6c6887468609d02f7f"
