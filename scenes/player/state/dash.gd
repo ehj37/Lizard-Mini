@@ -38,7 +38,7 @@ func update(_delta: float) -> void:
 	if animation_player.is_playing():
 		return
 
-	var movement_dir = player.get_movement_direction()
+	var movement_dir := player.get_movement_direction()
 	if movement_dir != Vector2.ZERO:
 		state_machine.transition_to("Run")
 		return
@@ -46,8 +46,8 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(_data := {}):
-	var movement_dir = player.get_movement_direction()
+func enter(_data := {}) -> void:
+	var movement_dir := player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
 		if player.orientation == Vector2.ZERO:
 			_dash_direction = Vector2.RIGHT
@@ -70,7 +70,7 @@ func enter(_data := {}):
 	player.sprite.flip_h = _dash_direction.x < 0
 	player.orientation = _dash_direction
 
-	var animation = _get_animation(_dash_direction)
+	var animation := _get_animation(_dash_direction)
 	animation_player.play(animation)
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
@@ -98,7 +98,7 @@ func exit() -> void:
 	player.dash_cooldown_timer.start()
 
 
-func _exit_movement_window():
+func _exit_movement_window() -> void:
 	if !is_current_state():
 		return
 
@@ -125,13 +125,13 @@ func _enter_chain_dash_window() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle = INF
+	var smallest_angle := INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
 	# Favoring horizontal run animations over vertical.
-	for cardinal_dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle = wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)
+	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
+		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
+		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
 		# Some tolerance here for the diagonal behavior described above.
 		if angle_diff_magnitude + .01 < smallest_angle:
 			smallest_angle = angle_diff_magnitude
@@ -153,7 +153,7 @@ func _get_animation(dir: Vector2) -> String:
 
 
 func _spawn_ghost() -> void:
-	var dash_ghost = dash_ghost_resource.instantiate() as PlayerDashGhost
+	var dash_ghost: PlayerDashGhost = dash_ghost_resource.instantiate()
 	dash_ghost.global_position = player.global_position
 	dash_ghost.direction = _dash_direction
 	dash_ghost.animation = _get_animation(_dash_direction)

@@ -29,7 +29,7 @@ func disable() -> void:
 	disabled = true
 
 
-func _process(_delta) -> void:
+func _process(_delta: float) -> void:
 	if disabled:
 		return
 
@@ -46,10 +46,12 @@ func _process(_delta) -> void:
 		if hitbox.damage_amount <= 0 && !fragile:
 			continue
 
-		var hitbox_on_cooldown = _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
+		var hitbox_on_cooldown := _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
 		if hitbox_on_cooldown:
 			continue
 
+		# In _ready() we check that the owner implements take_damage
+		@warning_ignore("unsafe_method_access")
 		owner.take_damage(hitbox.damage_amount, hitbox.damage_type, hitbox.damage_direction(self))
 		hitbox.on_hurtbox_connect(self)
 
@@ -58,7 +60,7 @@ func _process(_delta) -> void:
 
 
 func _add_cooldown_for(hitbox: Hitbox) -> void:
-	var hitbox_instance_id = hitbox.get_instance_id()
+	var hitbox_instance_id := hitbox.get_instance_id()
 	_hitbox_instance_ids_on_cooldown.append(hitbox_instance_id)
 	await get_tree().create_timer(repetitive_hitbox_damage_cooldown).timeout
 

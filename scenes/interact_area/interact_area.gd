@@ -18,9 +18,9 @@ func interact(delta: float) -> void:
 	if _completion_progress == 0.0:
 		AudioManager.play_effect_at(global_position, _get_sound_effect())
 
-	var completion_time = INTERACTION_LENGTH_DURATIONS[interaction_length]
+	var completion_time: float = INTERACTION_LENGTH_DURATIONS[interaction_length]
 	_completion_progress = min(_completion_progress + delta, completion_time)
-	var completion_percentage = _completion_progress / completion_time
+	var completion_percentage := _completion_progress / completion_time
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()
@@ -42,12 +42,12 @@ func disable() -> void:
 	monitoring = false
 
 
-func _on_body_entered(_body) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	progress_indicator.fade_in()
 	InteractionManager.register_area(self)
 
 
-func _on_body_exited(_body) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	progress_indicator.fade_out()
 	InteractionManager.unregister_area(self)
 

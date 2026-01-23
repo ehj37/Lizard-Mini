@@ -78,7 +78,7 @@ func update(_delta: float) -> void:
 func enter(data := {}) -> void:
 	player.hitbox_sword.disabled = false
 
-	var movement_direction = player.get_movement_direction()
+	var movement_direction := player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		_lunge_dir = movement_direction
 		player.orientation = movement_direction
@@ -86,7 +86,7 @@ func enter(data := {}) -> void:
 		_lunge_dir = player.orientation
 
 	_combo_num = data.get("combo_num", 0)
-	var animation = _get_animation(_lunge_dir, _combo_num)
+	var animation := _get_animation(_lunge_dir, _combo_num)
 	animation_player.play(animation)
 	AudioManager.play_effect_at(
 		player.global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_SWING
@@ -124,19 +124,19 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 	if dir == Vector2.ZERO:
 		return ANIMATION_R_1
 
-	var smallest_angle = INF
+	var smallest_angle := INF
 	var closest_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
 	# Favoring horizontal run animations over vertical.
 	for candidate_dir in ATTACK_DIRECTIONS:
-		var wrapped_angle = wrapf(dir.angle_to(candidate_dir), 0.0, TAU)
-		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)
+		var wrapped_angle := wrapf(dir.angle_to(candidate_dir), 0.0, TAU)
+		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
 		# Some tolerance here for the diagonal behavior described above.
 		if angle_diff_magnitude + .01 < smallest_angle:
 			smallest_angle = angle_diff_magnitude
 			closest_dir = candidate_dir
 
-	var animation = ""
+	var animation := ""
 	match closest_dir:
 		Vector2.UP:
 			match combo_num:
@@ -188,9 +188,10 @@ func _enable_sword() -> void:
 		return
 
 	player.hitbox_sword.enable()
-	var collision_polygon = (
-		animation_to_collision_polygon.get(animation_player.current_animation) as CollisionPolygon2D
+	var collision_polygon: CollisionPolygon2D = animation_to_collision_polygon.get(
+		animation_player.current_animation
 	)
+
 	collision_polygon.disabled = false
 	collision_polygon.visible = true
 
@@ -200,8 +201,8 @@ func _disable_sword() -> void:
 		return
 
 	player.hitbox_sword.disable()
-	var collision_polygon = (
-		animation_to_collision_polygon.get(animation_player.current_animation) as CollisionPolygon2D
+	var collision_polygon: CollisionPolygon2D = animation_to_collision_polygon.get(
+		animation_player.current_animation
 	)
 	collision_polygon.disabled = true
 	collision_polygon.visible = false

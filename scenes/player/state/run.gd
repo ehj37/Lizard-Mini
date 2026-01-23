@@ -14,7 +14,7 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 
 
 func update(delta: float) -> void:
-	var movement_dir = player.get_movement_direction()
+	var movement_dir := player.get_movement_direction()
 
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
@@ -25,7 +25,7 @@ func update(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		var interact_area = InteractionManager.get_interact_area()
+		var interact_area := InteractionManager.get_interact_area()
 		if interact_area:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
@@ -34,7 +34,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Idle")
 		return
 
-	var animation = _get_animation(movement_dir)
+	var animation := _get_animation(movement_dir)
 	if animation_player.current_animation != animation:
 		animation_player.current_animation = animation
 
@@ -47,13 +47,13 @@ func update(delta: float) -> void:
 
 func enter(_data := {}) -> void:
 	if _ground_tilemap_layers.size() == 0:
-		var ground_nodes = get_tree().get_nodes_in_group("ground")
+		var ground_nodes: Array[Node] = get_tree().get_nodes_in_group("ground")
 		for ground_node in ground_nodes:
 			if ground_node is TileMapLayer:
 				_ground_tilemap_layers.append(ground_node)
 
 	_move_speed = 0.0
-	var animation = _get_animation(player.orientation)
+	var animation := _get_animation(player.orientation)
 	animation_player.play(animation)
 	dust_cloud_timer.start()
 
@@ -65,17 +65,18 @@ func exit() -> void:
 
 
 func play_footstep_sound_effect() -> void:
-	var tile_data = []
+	var tile_data: Array[TileData] = []
 	for tilemap_layer: TileMapLayer in _ground_tilemap_layers:
-		var tile_position = tilemap_layer.local_to_map(player.position)
-		var data_at_position = tilemap_layer.get_cell_tile_data(tile_position)
+		var tile_position := tilemap_layer.local_to_map(player.position)
+		var data_at_position := tilemap_layer.get_cell_tile_data(tile_position)
 		if data_at_position:
 			tile_data.append(data_at_position)
 
-	var effect_type = SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
+	var effect_type := SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
 
 	if tile_data.size() > 0:
-		var tile_type = tile_data.back().get_custom_data("ground_type")
+		var uppermost_tile_data: TileData = tile_data.back()
+		var tile_type: String = uppermost_tile_data.get_custom_data("ground_type")
 		match tile_type:
 			"tile":
 				effect_type = SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
@@ -86,13 +87,13 @@ func play_footstep_sound_effect() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle = INF
+	var smallest_angle := INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
 	# Favoring horizontal run animations over vertical.
-	for cardinal_dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle = wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)
+	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
+		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
+		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
 		# Some tolerance here for the diagonal behavior described above.
 		if angle_diff_magnitude + .01 < smallest_angle:
 			smallest_angle = angle_diff_magnitude
@@ -113,8 +114,8 @@ func _get_animation(dir: Vector2) -> String:
 	return animation
 
 
-func _on_dust_cloud_timer_timeout():
-	var dust_cloud = footstep_dust_cloud_resource.instantiate()
+func _on_dust_cloud_timer_timeout() -> void:
+	var dust_cloud: Sprite2D = footstep_dust_cloud_resource.instantiate()
 	dust_cloud.global_position = player.global_position
 	dust_cloud.flip_h = player.sprite.flip_h
 	player.owner.add_child(dust_cloud)

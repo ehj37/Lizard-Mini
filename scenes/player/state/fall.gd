@@ -16,7 +16,7 @@ func update(delta: float) -> void:
 
 func enter(data := {}) -> void:
 	player.sprite_shadow.visible = false
-	var damage_direction = data.get("damage_direction") as Vector2
+	var damage_direction: Vector2 = data.get("damage_direction")
 	# Set orientation to left or right because the player transitions to idle
 	# right/idle left out of the Rise state.
 	if damage_direction.x < 0:

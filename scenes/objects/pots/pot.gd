@@ -15,7 +15,7 @@ var _fragment_spawner_resource := preload("res://scenes/fragment_spawner/fragmen
 @onready var _dust_puff_resource := preload("res://scenes/objects/pots/dust_puff/dust_puff.tscn")
 
 
-func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2):
+func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> void:
 	_spawn_fragments(direction)
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.POT_BREAK)
 	_spawn_dust_puff()
@@ -33,6 +33,6 @@ func _spawn_fragments(direction: Vector2) -> void:
 
 
 func _spawn_dust_puff() -> void:
-	var dust_puff = _dust_puff_resource.instantiate() as Sprite2D
+	var dust_puff: Sprite2D = _dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
 	owner.add_child(dust_puff)

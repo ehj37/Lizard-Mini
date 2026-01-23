@@ -35,8 +35,8 @@ func _process(delta: float) -> void:
 	_set_global_position_from_player()
 
 	if _current_shake_magnitude > 0:
-		var shake_offset_x = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
-		var shake_offset_y = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
+		var shake_offset_x := randf_range(-_current_shake_magnitude, _current_shake_magnitude)
+		var shake_offset_y := randf_range(-_current_shake_magnitude, _current_shake_magnitude)
 		offset = Vector2(shake_offset_x, shake_offset_y)
 
 		_current_shake_magnitude = max(_current_shake_magnitude - delta * SHAKE_DIMINISH_SPEED, 0)
@@ -45,8 +45,8 @@ func _process(delta: float) -> void:
 
 
 func _set_global_position_from_player() -> void:
-	var target_x
-	var target_y
+	var target_x := INF
+	var target_y := INF
 
 	for lock_area in _registed_lock_areas:
 		if lock_area.lock_x:
@@ -54,12 +54,12 @@ func _set_global_position_from_player() -> void:
 		if lock_area.lock_y:
 			target_y = lock_area.global_position.y
 
-	var target_position_from_player = (
+	var target_position_from_player := (
 		player.global_position + player.orientation * ORIENTATION_OFFSET
 	)
-	if target_x == null:
+	if target_x == INF:
 		target_x = target_position_from_player.x
-	if target_y == null:
+	if target_y == INF:
 		target_y = target_position_from_player.y
 
 	global_position = Vector2(target_x, target_y)

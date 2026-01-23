@@ -14,26 +14,26 @@ var _current_speed: float
 @onready var sprite: Sprite2D = $Sprite2D
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	position += direction * _current_speed * delta
 	_current_speed = max(_current_speed - delta * DECELERATION, 0)
 
 
-func _ready():
+func _ready() -> void:
 	_current_speed = INITIAL_SPEED
 
 	animation_player.play(animation)
 	sprite.flip_h = flip_h
 
-	var fuchsia_tween = get_tree().create_tween()
+	var fuchsia_tween := get_tree().create_tween()
 	fuchsia_tween.tween_property(self, "modulate", Color.FUCHSIA, 0.1)
 	await fuchsia_tween.finished
 
-	var cyan_tween = get_tree().create_tween()
+	var cyan_tween := get_tree().create_tween()
 	cyan_tween.tween_property(self, "modulate", Color.CYAN, 0.1)
 	await cyan_tween.finished
 
-	var fuchsia_tween_2 = get_tree().create_tween()
+	var fuchsia_tween_2 := get_tree().create_tween()
 	fuchsia_tween_2.tween_property(self, "modulate", Color.FUCHSIA, 0.1)
 	await fuchsia_tween_2.finished
 

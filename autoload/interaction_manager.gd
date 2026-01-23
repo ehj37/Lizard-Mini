@@ -12,7 +12,7 @@ func unregister_area(interact_area: InteractArea) -> void:
 
 
 # Returns null if there are no registered areas.
-func get_interact_area():
+func get_interact_area() -> InteractArea:
 	if _registered_areas.size() == 0:
 		return
 

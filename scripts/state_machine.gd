@@ -24,10 +24,12 @@ func _ready() -> void:
 func transition_to(state_name: String, data := {}) -> void:
 	current_state.exit()
 
-	var next_state_i = _states.find_custom(func(state: State): return state.name == state_name)
+	var next_state_i := _states.find_custom(
+		func(state: State) -> bool: return state.name == state_name
+	)
 	assert(next_state_i != -1, "Cannot find state with name " + state_name)
 
-	var next_state = _states[next_state_i]
+	var next_state := _states[next_state_i]
 	current_state = next_state
 	current_state.enter(data)
 

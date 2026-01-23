@@ -27,26 +27,28 @@ const COLOR_NEITHER_X_OR_Y := Color.YELLOW
 @onready var color_rect: ColorRect = $ColorRect
 
 
-func _ready():
+func _ready() -> void:
 	if owner:
 		assert(player_camera != null, "Must provide player camera export var")
 
 	if Engine.is_editor_hint():
-		var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
-		var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
+		var viewport_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+		var viewport_height: int = ProjectSettings.get_setting(
+			"display/window/size/viewport_height"
+		)
 		color_rect.set_size(Vector2(viewport_width, viewport_height))
-		color_rect.set_position(Vector2(-viewport_width / 2, -viewport_height / 2))
+		color_rect.set_position(Vector2(-viewport_width / 2.0, -viewport_height / 2.0))
 
 		_set_color()
 	else:
 		color_rect.visible = false
 
 
-func _on_body_entered(_body) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	player_camera.register_lock_area(self)
 
 
-func _on_body_exited(_body) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	player_camera.unregister_lock_area(self)
 
 

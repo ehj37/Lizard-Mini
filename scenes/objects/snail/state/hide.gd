@@ -6,5 +6,5 @@ func enter(_data := {}) -> void:
 	snail.hide_timer.start()
 
 
-func _on_hide_timer_timeout():
+func _on_hide_timer_timeout() -> void:
 	state_machine.transition_to("Emerge")

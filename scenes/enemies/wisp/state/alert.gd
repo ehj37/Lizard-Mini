@@ -26,8 +26,8 @@ func update(_delta: float) -> void:
 
 
 func enter(_data := {}) -> void:
-	var process_material = wisp.fire_small.process_material as ParticleProcessMaterial
-	_particle_color_ramp = process_material.color_ramp as GradientTexture1D
+	var process_material: ParticleProcessMaterial = wisp.fire_small.process_material
+	_particle_color_ramp = process_material.color_ramp
 	_color = _particle_color_ramp.gradient.get_color(0)
 
 	_color_tween = get_tree().create_tween()

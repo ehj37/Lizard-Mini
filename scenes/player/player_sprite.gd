@@ -3,7 +3,7 @@ extends Sprite2D
 @onready var silhouette: Sprite2D = $Silhouette
 
 
-func _ready():
+func _ready() -> void:
 	silhouette.flip_h = flip_h
 	silhouette.hframes = hframes
 	silhouette.offset = offset

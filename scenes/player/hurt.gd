@@ -8,7 +8,7 @@ var _attack_queued := false
 
 
 func update(_delta: float) -> void:
-	var movement_dir = player.get_movement_direction()
+	var movement_dir := player.get_movement_direction()
 
 	if movement_dir != Vector2.ZERO:
 		player.sprite.flip_h = movement_dir.x < 0
@@ -38,20 +38,20 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(data := {}):
+func enter(data := {}) -> void:
 	HitStopManager.hit_stop()
 
 	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
 
-	var damage_type = data.get("type")
+	var damage_type: Hitbox.DamageType = data.get("type")
 	if damage_type == Hitbox.DamageType.EXPLOSIVE:
-		var damage_direction = data.get("direction")
+		var damage_direction: Vector2 = data.get("direction")
 		state_machine.transition_to("Fall", {"damage_direction": damage_direction})
 		return
 
 	player.velocity = Vector2.ZERO
 
-	var animation = _get_animation(player.orientation)
+	var animation := _get_animation(player.orientation)
 	animation_player.play(animation)
 
 	if player.orientation.x < 0:
@@ -68,13 +68,13 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle = INF
+	var smallest_angle := INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
 	# Favoring horizontal run animations over vertical.
-	for cardinal_dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle = wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)
+	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
+		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
+		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
 		# Some tolerance here for the diagonal behavior described above.
 		if angle_diff_magnitude + .01 < smallest_angle:
 			smallest_angle = angle_diff_magnitude

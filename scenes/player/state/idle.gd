@@ -14,25 +14,25 @@ func update(_delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		var interact_area = InteractionManager.get_interact_area()
+		var interact_area := InteractionManager.get_interact_area()
 		if interact_area:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
 
-	var movement_direction = player.get_movement_direction()
+	var movement_direction := player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		state_machine.transition_to("Run")
 
 
-func enter(data := {}):
+func enter(data := {}) -> void:
 	player.velocity = Vector2.ZERO
 
-	var animation = _get_animation(player.orientation)
+	var animation := _get_animation(player.orientation)
 	animation_player.play(animation)
 
 	player.sprite.flip_h = player.orientation.x < 0
 
-	var impatient = data.get("impatient", false)
+	var impatient: bool = data.get("impatient", false)
 	if !impatient:
 		impatient_timer.start()
 	else:
@@ -48,13 +48,13 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle = INF
+	var smallest_angle := INF
 	var closest_cardinal_dir: Vector2
 	# Order matters here for diagonal tiebreaking.
 	# Favoring horizontal idle animations over vertical.
-	for cardinal_dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle = wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude = min(wrapped_angle, TAU - wrapped_angle)
+	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
+		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
+		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
 		# Some tolerance here for the diagonal behavior described above.
 		if angle_diff_magnitude + .01 < smallest_angle:
 			smallest_angle = angle_diff_magnitude
@@ -75,9 +75,9 @@ func _play_blink_sound_effect() -> void:
 	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_BLINK)
 
 
-func _on_impatient_timer_timeout():
+func _on_impatient_timer_timeout() -> void:
 	state_machine.transition_to("Impatient")
 
 
-func _on_sit_timer_timeout():
+func _on_sit_timer_timeout() -> void:
 	state_machine.transition_to("Sit")

@@ -41,11 +41,11 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var sword_polygon_d_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown2
 
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	for movement_input in MOVEMENT_INPUTS:
 		if Input.is_action_pressed(movement_input):
 			if !_pressed_movement_inputs.has(movement_input):
@@ -61,7 +61,7 @@ func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> vo
 	# The player can get hurt in the fall and rise states, but they don't get
 	# transitioned to the hurt state from it.
 	# They just flash magenta, and continue with falling/getting up.
-	var current_state_name = state_machine.current_state.name
+	var current_state_name := state_machine.current_state.name
 	if current_state_name == "Fall" || current_state_name == "Rise":
 		return
 
@@ -69,23 +69,23 @@ func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> vo
 
 
 func get_movement_direction() -> Vector2:
-	var movement_vector = Vector2.ZERO
-	var vertical_movement_input_i = _pressed_movement_inputs.rfind_custom(
-		func(movement_input): return VERTICAL_MOVEMENT_INPUTS.has(movement_input)
+	var movement_vector := Vector2.ZERO
+	var vertical_movement_input_i := _pressed_movement_inputs.rfind_custom(
+		func(movement_input: String) -> bool: return VERTICAL_MOVEMENT_INPUTS.has(movement_input)
 	)
-	var horizontal_movement_input_i = _pressed_movement_inputs.rfind_custom(
-		func(movement_input): return HORIZONTAL_MOVEMENT_INPUTS.has(movement_input)
+	var horizontal_movement_input_i := _pressed_movement_inputs.rfind_custom(
+		func(movement_input: String) -> bool: return HORIZONTAL_MOVEMENT_INPUTS.has(movement_input)
 	)
 	if vertical_movement_input_i != -1:
-		var vertical_movement_input = _pressed_movement_inputs[vertical_movement_input_i]
+		var vertical_movement_input := _pressed_movement_inputs[vertical_movement_input_i]
 		movement_vector += MOVEMENT_INPUT_TO_DIR[vertical_movement_input]
 
 	if horizontal_movement_input_i != -1:
-		var horizontal_movement_input = _pressed_movement_inputs[horizontal_movement_input_i]
+		var horizontal_movement_input := _pressed_movement_inputs[horizontal_movement_input_i]
 		movement_vector += MOVEMENT_INPUT_TO_DIR[horizontal_movement_input]
 
 	return movement_vector.normalized()
 
 
-func _on_hitbox_sword_blood_drawn():
+func _on_hitbox_sword_blood_drawn() -> void:
 	pass

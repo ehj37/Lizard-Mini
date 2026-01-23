@@ -22,7 +22,7 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) ->
 	state_machine.transition_to("Death")
 
 
-func alert():
+func alert() -> void:
 	if state_machine.current_state.name == "Idle":
 		state_machine.transition_to("Alert")
 
@@ -37,12 +37,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_hitbox_blood_drawn():
+func _on_hitbox_blood_drawn() -> void:
 	if state_machine.current_state.name == "Alert":
 		return
 
 	state_machine.transition_to("Death")
 
 
-func _on_obstacle_detector_body_entered(_body):
+func _on_obstacle_detector_body_entered(_body: Node2D) -> void:
 	state_machine.transition_to("Death")

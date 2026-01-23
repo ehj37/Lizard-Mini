@@ -9,7 +9,7 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) ->
 	hurtbox.disable()
 	hurtbox_ground.disable()
 
-	var explosion = explosion_resource.instantiate() as Node2D
+	var explosion: Node2D = explosion_resource.instantiate()
 	explosion.global_position = global_position
 	owner.add_child(explosion)
 

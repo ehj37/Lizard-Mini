@@ -24,6 +24,14 @@ InteractionManager="*res://autoload/interaction_manager.gd"
 EventBus="*res://autoload/event_bus.gd"
 ScreenFader="*res://autoload/screen_fader/screen_fader.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=2
+
 [display]
 
 window/size/viewport_width=480

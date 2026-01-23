@@ -17,7 +17,7 @@ func enter(_data := {}) -> void:
 
 
 func _move() -> void:
-	var movement = snail.global_position.x - snail.initial_x
+	var movement := snail.global_position.x - snail.initial_x
 	match direction:
 		MoveDirection.LEFT:
 			if movement > -MOVE_RADIUS:

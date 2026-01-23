@@ -13,7 +13,7 @@ var popped := false
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
 
 
-func shatter(direction = Vector2.ZERO) -> void:
+func shatter(direction := Vector2.ZERO) -> void:
 	popped = true
 	collision_polygon.set_deferred("disabled", true)
 	sprite_back.visible = false

@@ -18,16 +18,16 @@ func _ready() -> void:
 func _unlock() -> void:
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.DOOR_DOWN)
 
-	var right_dust_cloud = dust_cloud_resource.instantiate() as Sprite2D
+	var right_dust_cloud: Sprite2D = dust_cloud_resource.instantiate()
 	right_dust_cloud.global_position = right_dust_spawn.global_position
 	owner.add_child(right_dust_cloud)
 
-	var left_dust_cloud = dust_cloud_resource.instantiate() as Sprite2D
+	var left_dust_cloud: Sprite2D = dust_cloud_resource.instantiate()
 	left_dust_cloud.flip_h = true
 	left_dust_cloud.global_position = left_dust_spawn.global_position
 	owner.add_child(left_dust_cloud)
 
-	var sprite_pos_tween = get_tree().create_tween()
+	var sprite_pos_tween := get_tree().create_tween()
 	sprite_pos_tween.tween_property(sprite, "position:y", 86, 1.5).set_trans(Tween.TRANS_CUBIC)
 	await sprite_pos_tween.finished
 

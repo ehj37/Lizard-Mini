@@ -12,24 +12,24 @@ func enter(_data := {}) -> void:
 	wisp.hitbox.disable()
 	wisp.hurtbox.disable()
 
-	var death_particle_burst = death_particle_burst_resource.instantiate() as Node2D
+	var death_particle_burst: Node2D = death_particle_burst_resource.instantiate()
 	death_particle_burst.global_position = wisp.global_position
 	wisp.owner.add_child(death_particle_burst)
 
 	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
 
-	var lifetime = wisp.fire_small.lifetime
+	var lifetime := wisp.fire_small.lifetime
 
-	var shadow_mod_tween = get_tree().create_tween()
+	var shadow_mod_tween := get_tree().create_tween()
 	shadow_mod_tween.tween_property(wisp.sprite_shadow, "modulate", Color.TRANSPARENT, lifetime / 3)
 
-	var sprite_mod_tween = get_tree().create_tween()
+	var sprite_mod_tween := get_tree().create_tween()
 	sprite_mod_tween.tween_property(wisp.sprite, "modulate", Color.TRANSPARENT, lifetime / 3)
 
 	wisp.fire_small.emitting = false
 	await get_tree().create_timer(lifetime).timeout
 
-	var death_smoke = death_smoke_resource.instantiate() as Sprite2D
+	var death_smoke: Sprite2D = death_smoke_resource.instantiate()
 	death_smoke.global_position = wisp.global_position
 	wisp.owner.add_child(death_smoke)
 

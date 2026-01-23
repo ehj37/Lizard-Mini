@@ -22,5 +22,5 @@ func disable() -> void:
 	smoke_particles.emitting = true
 
 
-func _on_hitbox_blood_drawn():
+func _on_hitbox_blood_drawn() -> void:
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)

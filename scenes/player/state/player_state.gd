@@ -6,7 +6,7 @@ var player: Player
 var animation_player: AnimationPlayer
 
 
-func _ready():
+func _ready() -> void:
 	await owner.ready
 
 	player = owner

@@ -34,20 +34,26 @@ func _ready() -> void:
 func _toggle() -> void:
 	for toggleable_element in toggleable_elements:
 		if toggled_on:
+			# We check that disable is implemented in _ready
+			@warning_ignore("unsafe_method_access")
 			toggleable_element.disable()
 			animation_player.play("disable")
-			var glyphs_tween = get_tree().create_tween()
+			var glyphs_tween := get_tree().create_tween()
 			glyphs_tween.tween_property(
 				sprite_glyphs, "modulate", GLYPHS_DISABLED_COLOR, GLYPH_COLOR_TWEEN_DURATION
 			)
 		else:
+			# We check that enable is implemented in _ready
+			@warning_ignore("unsafe_method_access")
 			toggleable_element.enable()
 			animation_player.play("enable")
-			var glyphs_tween = get_tree().create_tween()
+			var glyphs_tween := get_tree().create_tween()
 			glyphs_tween.tween_property(
 				sprite_glyphs, "modulate", GLYPHS_ENABLED_COLOR, GLYPH_COLOR_TWEEN_DURATION
 			)
 
 	toggled_on = !toggled_on
 
-	get_tree().create_timer(TIME_BETWEEN_TOGGLES).timeout.connect(func(): interact_area.enable())
+	get_tree().create_timer(TIME_BETWEEN_TOGGLES).timeout.connect(
+		func() -> void: interact_area.enable()
+	)

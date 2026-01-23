@@ -11,7 +11,7 @@ var _current_direction: Vector2
 
 func update(delta: float) -> void:
 	_current_speed = min(_current_speed + ACCELERATION * delta, MAX_SPEED)
-	var to_player = wisp.global_position.direction_to(_player.global_position)
+	var to_player := wisp.global_position.direction_to(_player.global_position)
 
 	_current_direction = _current_direction.move_toward(to_player, delta * STEERING_CONST)
 	wisp.velocity = _current_direction * _current_speed

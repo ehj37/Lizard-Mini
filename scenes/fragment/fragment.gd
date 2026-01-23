@@ -19,7 +19,7 @@ func _ready() -> void:
 	sprite.region_rect.size.x = fragment_config.fragment_region_width
 	sprite.region_rect.size.y = fragment_config.fragment_region_height
 
-	var variant_number = randi_range(0, fragment_config.num_fragment_variants)
+	var variant_number := randi_range(0, fragment_config.num_fragment_variants)
 	sprite.region_rect.position.x = fragment_config.fragment_region_width * variant_number
 	sprite.rotation = randf_range(0, 2 * PI)
 
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		return
 
 	_vertical_speed = _vertical_speed + delta * GRAVITY
-	var new_y = min(sprite.position.y + _vertical_speed * delta, 0.0)
+	var new_y: float = min(sprite.position.y + _vertical_speed * delta, 0.0)
 	sprite.position.y = new_y
 
 	if new_y == 0:
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		lock_rotation = false
 		sprite_shadow.visible = false
 
-		var scale_tween = get_tree().create_tween()
+		var scale_tween := get_tree().create_tween()
 		scale_tween.tween_property(self, "scale", Vector2.ZERO, 3.0)
 		await scale_tween.finished
 
