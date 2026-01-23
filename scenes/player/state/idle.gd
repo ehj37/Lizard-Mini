@@ -71,6 +71,10 @@ func _get_animation(dir: Vector2) -> String:
 			return "idle_right"
 
 
+func _play_blink_sound_effect() -> void:
+	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_BLINK)
+
+
 func _on_impatient_timer_timeout():
 	state_machine.transition_to("Impatient")
 

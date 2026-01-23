@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj376oquwdvgi"
+path="res://.godot/imported/Player blink.ogg-f5a396f6b7becd6e0b921e04582da4dc.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Player blink.ogg"
+dest_files=["res://.godot/imported/Player blink.ogg-f5a396f6b7becd6e0b921e04582da4dc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
