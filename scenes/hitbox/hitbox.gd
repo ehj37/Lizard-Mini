@@ -4,7 +4,12 @@ extends Area2D
 
 signal blood_drawn
 
-enum DamageType { ENEMY, PLAYER, EXPLOSIVE }
+# Difference between FIRE and BURN:
+# FIRE is intended to impart a burn effect.
+# BURN is intended to deal burn damage and impart a burn effect.
+# E.g. walking on a fire vent does nothing if the player is already burning.
+# Getting hit by a wisp will damage the player even if they're already burning.
+enum DamageType { ENEMY, PLAYER, EXPLOSIVE, FIRE, BURN }
 
 @export var damage_amount: int = 100
 @export var damage_type: DamageType

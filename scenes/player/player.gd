@@ -13,11 +13,16 @@ const MOVEMENT_INPUT_TO_DIR := {
 	"move_down": Vector2.DOWN,
 	"move_left": Vector2.LEFT
 }
+const MAX_BURNS := 3
 
 var orientation: Vector2 = Vector2.ZERO
 var _pressed_movement_inputs: Array[String] = []
+var _burning := false
+var _times_burnt := 0
 
+@onready var burn_particles_back: GPUParticles2D = $BurnParticlesBack
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var burn_particles_front: GPUParticles2D = $BurnParticlesFront
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
@@ -26,8 +31,12 @@ var _pressed_movement_inputs: Array[String] = []
 @onready var hurtbox_feet: Hurtbox = $HurtboxFeet
 @onready var hitbox_sword: HitboxSword = $HitboxSword
 @onready var hitbox_feet: Hitbox = $HitboxFeet
+
+# Timers
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+@onready var burn_timer: Timer = $BurnTimer
+
 # Sword collision polygons
 @onready var sword_polygon_u_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp1
 @onready var sword_polygon_u_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonUp2
@@ -55,6 +64,12 @@ func _process(_delta: float) -> void:
 
 
 func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> void:
+	# If the type is FIRE, this will no-op if the player is already burning.
+	# For BURN, damage is dealt regardless of if the player is already burning.
+	if type == Hitbox.DamageType.FIRE || type == Hitbox.DamageType.BURN && !_burning:
+		add_burn()
+		return
+
 	hurt.emit()
 	shader_animation_player.play("hurt_flash")
 
@@ -66,6 +81,29 @@ func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> vo
 		return
 
 	state_machine.transition_to("Hurt", {"amount": amount, "type": type, "direction": direction})
+
+
+func add_burn() -> void:
+	if _burning:
+		return
+
+	_burning = true
+	burn_particles_back.emitting = true
+	burn_particles_front.emitting = true
+	burn_timer.start()
+
+	_take_burn_damage()
+
+
+func clear_burn() -> void:
+	if !_burning:
+		return
+
+	_burning = false
+	_times_burnt = 0
+	burn_particles_back.emitting = false
+	burn_particles_front.emitting = false
+	burn_timer.stop()
 
 
 func get_movement_direction() -> Vector2:
@@ -89,3 +127,11 @@ func get_movement_direction() -> Vector2:
 
 func _on_hitbox_sword_blood_drawn() -> void:
 	pass
+
+
+func _take_burn_damage() -> void:
+	take_damage(1, Hitbox.DamageType.BURN, Vector2.ZERO)
+	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)
+	_times_burnt += 1
+	if _times_burnt == MAX_BURNS:
+		clear_burn()

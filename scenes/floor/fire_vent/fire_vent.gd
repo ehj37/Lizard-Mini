@@ -30,10 +30,6 @@ func disable() -> void:
 	smoke_particles.emitting = true
 
 
-func _on_hitbox_blood_drawn() -> void:
-	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)
-
-
 func _play_ambience() -> void:
 	_ambience_identifier = AudioManager.play_effect_at(
 		global_position, SoundEffectConfiguration.Type.FIRE_VENT

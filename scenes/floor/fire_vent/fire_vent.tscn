@@ -131,6 +131,7 @@ process_material = SubResource("ParticleProcessMaterial_xm11h")
 
 [node name="Hitbox" parent="." instance=ExtResource("1_yxs7j")]
 damage_amount = 100
+damage_type = 3
 grounded = true
 disabled = false
 
@@ -147,5 +148,3 @@ one_shot = true
 trail_enabled = true
 trail_lifetime = 0.15000000000000002
 process_material = SubResource("ParticleProcessMaterial_epv8t")
-
-[connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]

@@ -31,6 +31,8 @@ func enter(data := {}) -> void:
 
 	player.animation_player.play("fall_right")
 
+	player.clear_burn()
+
 
 func _play_thud_sound() -> void:
 	AudioManager.play_effect_at(

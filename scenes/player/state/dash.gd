@@ -91,6 +91,8 @@ func enter(data := {}) -> void:
 	player.hurtbox_feet.disable()
 	player.hitbox_feet.enable()
 
+	player.clear_burn()
+
 
 func exit() -> void:
 	if animation_player.is_playing():
