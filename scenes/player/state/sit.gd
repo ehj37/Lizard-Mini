@@ -2,6 +2,9 @@ extends PlayerState
 
 
 func update(_delta: float) -> void:
+	if !animation_player.is_playing():
+		animation_player.play("sit_right")
+
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
@@ -22,10 +25,14 @@ func update(_delta: float) -> void:
 
 
 func enter(_data := {}) -> void:
-	animation_player.play("sit_right")
+	animation_player.play("sit_down_right")
 	player.sprite.flip_h = player.orientation.x < 0
 	player.sprite_shadow.visible = false
 
 
 func exit() -> void:
 	player.sprite_shadow.visible = true
+
+
+func _play_blink_sound_effect() -> void:
+	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_BLINK)

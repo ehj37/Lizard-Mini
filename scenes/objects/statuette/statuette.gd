@@ -15,7 +15,7 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> 
 	fragment_spawner.spawn_fragments(direction)
 	var dust_puff: Sprite2D = dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
-	owner.add_child(dust_puff)
+	LevelManager.current_level.add_child(dust_puff)
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.STATUETTE_BREAK)
 	collision_shape.disabled = true
 

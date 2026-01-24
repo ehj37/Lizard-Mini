@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://d1qvywnrtu231"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_a6nun"]
+[ext_resource type="AudioStream" uid="uid://b67j3tpt7x43n" path="res://sound_effects/Fire vent.ogg" id="1_gnvto"]
+
+[resource]
+script = ExtResource("1_a6nun")
+type = 17
+limit = -1
+audio_stream = ExtResource("1_gnvto")
+random_start_time = true
+loop_audio = true
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

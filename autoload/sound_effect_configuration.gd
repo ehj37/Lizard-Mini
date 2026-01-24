@@ -18,13 +18,20 @@ enum Type {
 	PROGRESS_INDICATOR_SHORT,
 	STATUETTE_BREAK,
 	PLAYER_FOOTSTEP_CLAY,
-	PLAYER_BLINK
+	PLAYER_BLINK,
+	CANISTER_AMBIENCE,
+	FIRE_VENT
 }
 
 enum LimitBehavior { REPLACE_OLD, NOOP }
 
 @export var type: Type
-@export var limit: int = 1
-@export var limit_behavior: LimitBehavior = LimitBehavior.REPLACE_OLD
-@export var pitch_variance: float = 0.0
+# The max number of times this effect can be played at once. Set to -1 if there
+# should not be a limit.
+@export var limit := 1
+@export var limit_behavior := LimitBehavior.REPLACE_OLD
+@export var pitch_variance := 0.0
 @export var audio_stream: AudioStreamOggVorbis
+# Best used for effects that loop.
+@export var random_start_time := false
+@export var loop_audio := false

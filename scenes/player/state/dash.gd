@@ -4,8 +4,11 @@ const DASH_SPEED := 400.0
 const MOVEMENT_DURATION := 0.18
 const CHAIN_ATTACK_WINDOW_START := 0.25
 const CHAIN_DASH_WINDOW_START := 0.3
+const PITCH_MULTIPLIER_PER_DASH := 0.05
+const MAX_PITCH_MULTIPLIER := 1.2
 
 var _dash_direction: Vector2
+var _dash_num: int
 var _in_move_window: bool
 var _in_chain_attack_window: bool
 var _in_chain_dash_window: bool
@@ -30,7 +33,7 @@ func update(_delta: float) -> void:
 		if _in_chain_dash_window:
 			# Punish spamming dash too early by not allowing a chain dash.
 			if !_dash_attempted_before_dash_window:
-				state_machine.transition_to("Dash")
+				state_machine.transition_to("Dash", {"dash_num": _dash_num + 1})
 				return
 		else:
 			_dash_attempted_before_dash_window = true
@@ -46,7 +49,7 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(_data := {}) -> void:
+func enter(data := {}) -> void:
 	var movement_dir := player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
 		if player.orientation == Vector2.ZERO:
@@ -74,7 +77,12 @@ func enter(_data := {}) -> void:
 	animation_player.play(animation)
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
-	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_DASH)
+
+	_dash_num = data.get("dash_num", 0)
+	var pitch_multiplier := minf(1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER)
+	AudioManager.play_effect_at(
+		player.global_position, SoundEffectConfiguration.Type.PLAYER_DASH, pitch_multiplier
+	)
 
 	_spawn_ghost()
 	ghost_timer.start()
@@ -158,4 +166,4 @@ func _spawn_ghost() -> void:
 	dash_ghost.direction = _dash_direction
 	dash_ghost.animation = _get_animation(_dash_direction)
 	dash_ghost.flip_h = player.sprite.flip_h
-	player.owner.add_child(dash_ghost)
+	LevelManager.current_level.add_child(dash_ghost)

@@ -5,6 +5,7 @@ enum SwingDirection {}
 const INITIAL_LUNGE_SPEED := 80.0
 const LUNGE_DECELERATION := 350.0
 const MAX_COMBO_NUM := 2
+const PITCH_MULTIPLIER_PER_ATTACK := 0.03
 # TIMINGS
 const POLYGON_ENABLE_TIME := 0.025
 const POLYGON_DISABLE_TIME := 0.15
@@ -87,9 +88,10 @@ func enter(data := {}) -> void:
 
 	_combo_num = data.get("combo_num", 0)
 	var animation := _get_animation(_lunge_dir, _combo_num)
+	var pitch_multiplier := 1.0 + _combo_num * PITCH_MULTIPLIER_PER_ATTACK
 	animation_player.play(animation)
 	AudioManager.play_effect_at(
-		player.global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_SWING
+		player.global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_SWING, pitch_multiplier
 	)
 
 	if _lunge_dir.x < 0:

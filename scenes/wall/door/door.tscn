@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cptjdaxdxm8lq" path="res://scenes/interact_area/interact_area.tscn" id="2_lxbtu"]
 [ext_resource type="PackedScene" uid="uid://bjkktw14vfsrq" path="res://scenes/progress_indicator/progress_indicator.tscn" id="2_v73jn"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lxbtu"]
-_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAADCAAAAUklGRroAAABXRUJQVlA4TK4AAAAvP8APEDegppEUOHvHT0WNAcygpI0kaPni7ywcPMUnVUEbKcyzlwMU45r5DwB8ZCvMjeW6Pf8PjGrbVoI0gAbfxliEX+EXEG7/EPAWF4dRRP/Vtm3DKF1jzihuJLpRiHoboxjXZJJot2GUEM1RBBovHL+ejgC4IyoXDyOsIbVzrAZYIo7WysWL/12BPgBa4+J/d+zfFVitIsEqDiTQeP44GrsIpUC3CLYpsE2JRwE=")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_v73jn"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACuAAAAUklGRqYAAABXRUJQVlA4TJoAAAAvP8APECegtm0bNuaSOmWOmrYN2FT/3pNGFbRtw+ba7m8MNv8BQM6uyv08H1w1tu1UKwcHYOBkBwFVAv5VwQmb9spXRP/Vtm3DKF1jzuBFYpiLaI4xl/FMloruGL2KaK8Cm7U4/no6AO8IZVwGe0yd6WpwCa7Wynj434V9gK15+N/T/btwtcJgFxeCzeofV5ObkLBb4DbhNpUH")
 size_override = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbcep"]
@@ -27,11 +27,29 @@ offset_top = -64.0
 offset_right = 12.0
 color = Color(1, 1, 1, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+[node name="DoorVisuals" type="Node2D" parent="ColorRect"]
+
+[node name="LeftBacklight" type="ColorRect" parent="ColorRect/DoorVisuals"]
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 14.0
+offset_bottom = 64.0
+color = Color(0.58431375, 0.36078432, 0.7176471, 1)
+
+[node name="RightBacklight" type="ColorRect" parent="ColorRect/DoorVisuals"]
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 23.0
+offset_bottom = 64.0
+color = Color(0.20784314, 0.654902, 0.7137255, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/DoorVisuals"]
 texture_filter = 1
 position = Vector2(12, 32)
-texture = SubResource("PortableCompressedTexture2D_lxbtu")
+texture = SubResource("PortableCompressedTexture2D_v73jn")
 metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
@@ -45,14 +63,14 @@ metadata/_aseprite_wizard_config_ = {
 "o_ex_p": "",
 "o_folder": "",
 "o_name": "",
-"only_visible": false,
+"only_visible": true,
 "player": "",
 "scale": "1.0",
 "slice": "",
 "source": "res://scenes/wall/door/door.aseprite",
 "source_uid": 1542259906303295537
 }
-metadata/_aseprite_wizard_source_file_hash_ = "b25873782c44c3ef406501843b5a3cf8"
+metadata/_aseprite_wizard_source_file_hash_ = "5236c56675c696f83c1b4bcc55e3cd42"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

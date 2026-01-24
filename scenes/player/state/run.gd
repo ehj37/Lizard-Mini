@@ -118,6 +118,6 @@ func _on_dust_cloud_timer_timeout() -> void:
 	var dust_cloud: Sprite2D = footstep_dust_cloud_resource.instantiate()
 	dust_cloud.global_position = player.global_position
 	dust_cloud.flip_h = player.sprite.flip_h
-	player.owner.add_child(dust_cloud)
+	LevelManager.current_level.add_child(dust_cloud)
 
 	dust_cloud_timer.start()

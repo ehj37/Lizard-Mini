@@ -7,6 +7,9 @@ extends Area2D
 @export var repetitive_hitbox_damage_cooldown := 0.0
 @export var self_damage_disabled := true
 @export var grounded := false
+# A fragile hurtbox will cause damage to be taken even if the intersecting
+# hitbox imparts 0 damage.
+# E.g. the player dash won't hurt an enemy, but might break some pottery.
 @export var fragile := false
 @export var disabled := false
 

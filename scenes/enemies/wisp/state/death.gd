@@ -14,7 +14,7 @@ func enter(_data := {}) -> void:
 
 	var death_particle_burst: Node2D = death_particle_burst_resource.instantiate()
 	death_particle_burst.global_position = wisp.global_position
-	wisp.owner.add_child(death_particle_burst)
+	LevelManager.current_level.add_child(death_particle_burst)
 
 	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
 
@@ -31,6 +31,6 @@ func enter(_data := {}) -> void:
 
 	var death_smoke: Sprite2D = death_smoke_resource.instantiate()
 	death_smoke.global_position = wisp.global_position
-	wisp.owner.add_child(death_smoke)
+	LevelManager.current_level.add_child(death_smoke)
 
 	wisp.queue_free()

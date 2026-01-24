@@ -25,9 +25,9 @@ func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> 
 
 func _spawn_fragments(direction: Vector2) -> void:
 	var fragment_spawner: FragmentSpawner = _fragment_spawner_resource.instantiate()
+	fragment_spawner.global_position = global_position
 	fragment_spawner.fragment_config = _fragment_config
-	add_child(fragment_spawner)
-	fragment_spawner.owner = self
+	LevelManager.current_level.add_child(fragment_spawner)
 
 	fragment_spawner.spawn_fragments(direction)
 
@@ -35,4 +35,4 @@ func _spawn_fragments(direction: Vector2) -> void:
 func _spawn_dust_puff() -> void:
 	var dust_puff: Sprite2D = _dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
-	owner.add_child(dust_puff)
+	LevelManager.current_level.add_child(dust_puff)

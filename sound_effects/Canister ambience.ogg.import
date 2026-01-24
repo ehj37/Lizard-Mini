@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ce8eosyk2b5js"
+path="res://.godot/imported/Canister ambience.ogg-bde71e3063ef0b6e8e1f7b900792a659.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Canister ambience.ogg"
+dest_files=["res://.godot/imported/Canister ambience.ogg-bde71e3063ef0b6e8e1f7b900792a659.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -20,7 +20,7 @@ func spawn_fragments(direction: Vector2) -> void:
 			-MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE, MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE
 		)
 		fragment.global_position = global_position
-		(func() -> void: owner.owner.add_child(fragment)).call_deferred()
+		(func() -> void: LevelManager.current_level.add_child(fragment)).call_deferred()
 
 		var impulse_magnitude := randf_range(MIN_IMPULSE_MAGNITUDE, MAX_IMPULSE_MAGNITUDE)
 		var spawn_direction: Vector2
