@@ -11,6 +11,12 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 	"res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.tscn"
 )
 @onready var dust_cloud_timer: Timer = $DustCloudTimer
+@onready var animation_map := {
+	Vector2.UP.angle(): "run_up",
+	Vector2.RIGHT.angle(): "run_right",
+	Vector2.DOWN.angle(): "run_down",
+	Vector2.LEFT.angle(): "run_right"
+}
 
 
 func update(delta: float) -> void:
@@ -91,31 +97,7 @@ func play_footstep_sound_effect() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal run animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	var animation: String = ""
-	match closest_cardinal_dir:
-		Vector2.UP:
-			animation = "run_up"
-		Vector2.RIGHT:
-			animation = "run_right"
-		Vector2.DOWN:
-			animation = "run_down"
-		Vector2.LEFT:
-			animation = "run_right"
-
-	assert(animation != "", "Could not match direction to run animation.")
-	return animation
+	return AnimationPicker.pick_animation(animation_map, dir.angle())
 
 
 func _on_dust_cloud_timer_timeout() -> void:

@@ -36,6 +36,26 @@ var _can_combo := false
 var _combo_num: int
 
 @onready var animation_to_collision_polygon: Dictionary
+@onready var combo_1_animation_map := {
+	Vector2.UP.angle(): ANIMATION_U_1,
+	Vector2(1, -1).angle(): ANIMATION_UR_1,
+	Vector2.RIGHT.angle(): ANIMATION_R_1,
+	Vector2(1, 1).angle(): ANIMATION_DR_1,
+	Vector2.DOWN.angle(): ANIMATION_D_1,
+	Vector2(-1, 1).angle(): ANIMATION_DR_1,
+	Vector2.LEFT.angle(): ANIMATION_R_1,
+	Vector2(-1, -1).angle(): ANIMATION_UR_1
+}
+@onready var combo_2_animation_map := {
+	Vector2.UP.angle(): ANIMATION_U_2,
+	Vector2(1, -1).angle(): ANIMATION_UR_2,
+	Vector2.RIGHT.angle(): ANIMATION_R_2,
+	Vector2(1, 1).angle(): ANIMATION_DR_2,
+	Vector2.DOWN.angle(): ANIMATION_D_2,
+	Vector2(-1, 1).angle(): ANIMATION_DR_2,
+	Vector2.LEFT.angle(): ANIMATION_R_2,
+	Vector2(-1, -1).angle(): ANIMATION_UR_2
+}
 
 
 func _ready() -> void:
@@ -129,66 +149,18 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2, combo_num: int) -> String:
+	# Happens on player spawn.
 	if dir == Vector2.ZERO:
-		return ANIMATION_R_1
+		dir = Vector2.RIGHT
 
-	var smallest_angle := INF
-	var closest_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal run animations over vertical.
-	for candidate_dir in ATTACK_DIRECTIONS:
-		var wrapped_angle := wrapf(dir.angle_to(candidate_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_dir = candidate_dir
+	var angle := dir.angle()
+	if combo_num == 2:
+		return AnimationPicker.pick_animation(combo_2_animation_map, angle)
 
-	var animation := ""
-	match closest_dir:
-		Vector2.UP:
-			match combo_num:
-				0:
-					animation = ANIMATION_U_1
-				1:
-					animation = ANIMATION_U_2
-				2:
-					animation = ANIMATION_U_1  # TODO
-		DIR_UR, DIR_UL:
-			match combo_num:
-				0:
-					animation = ANIMATION_UR_1
-				1:
-					animation = ANIMATION_UR_2
-				2:
-					animation = ANIMATION_UR_1  # TODO
-		Vector2.RIGHT, Vector2.LEFT:
-			match combo_num:
-				0:
-					animation = ANIMATION_R_1
-				1:
-					animation = ANIMATION_R_2
-				2:
-					animation = ANIMATION_R_1  # TODO
-		DIR_DR, DIR_DL:
-			match combo_num:
-				0:
-					animation = ANIMATION_DR_1
-				1:
-					animation = ANIMATION_DR_2
-				2:
-					animation = ANIMATION_DR_1  # TODO
-		Vector2.DOWN:
-			match combo_num:
-				0:
-					animation = ANIMATION_D_1
-				1:
-					animation = ANIMATION_D_2
-				2:
-					animation = ANIMATION_D_1  # TODO
-
-	assert(animation != "", "Unhandled direction, could not find attack animation.")
-	return animation
+	# Right now, the first and third animations are the exact same.
+	# Might makes sense to change it up down the line, but for now it looks
+	# okay enough.
+	return AnimationPicker.pick_animation(combo_1_animation_map, angle)
 
 
 func _enable_sword() -> void:

@@ -3,6 +3,13 @@ extends PlayerState
 var _interact_area: InteractArea
 var _interaction_complete := false
 
+@onready var animation_map := {
+	Vector2.UP.angle(): "interact_up",
+	Vector2.RIGHT.angle(): "interact_right",
+	Vector2.DOWN.angle(): "interact_down",
+	Vector2.LEFT.angle(): "interact_right"
+}
+
 
 func update(delta: float) -> void:
 	if !Input.is_action_pressed("interact") || _interaction_complete:
@@ -30,28 +37,4 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal interact animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	var animation: String
-	match closest_cardinal_dir:
-		Vector2.UP:
-			animation = "interact_up"
-		Vector2.RIGHT:
-			animation = "interact_right"
-		Vector2.DOWN:
-			animation = "interact_down"
-		Vector2.LEFT:
-			animation = "interact_right"
-
-	assert(animation != "", "Could not find interact animation.")
-	return animation
+	return AnimationPicker.pick_animation(animation_map, dir.angle())

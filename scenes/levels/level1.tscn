@@ -46,7 +46,7 @@ size = Vector2(32, 18)
 size = Vector2(160, 352)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07dy8"]
-size = Vector2(160, 184)
+size = Vector2(160, 216)
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -393,5 +393,5 @@ player_camera = NodePath("../../PlayerCamera")
 lock_x = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WispIntroArea/YCameraLockArea2"]
-position = Vector2(0, -12)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_07dy8")

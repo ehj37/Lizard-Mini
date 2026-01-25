@@ -6,6 +6,13 @@ const ATTACK_QUEUE_WINDOW_START := 0.06
 var _in_attack_queue_window := false
 var _attack_queued := false
 
+@onready var animation_map := {
+	Vector2.UP.angle(): "hurt_up",
+	Vector2.RIGHT.angle(): "hurt_right",
+	Vector2.DOWN.angle(): "hurt_down",
+	Vector2.LEFT.angle(): "hurt_right"
+}
+
 
 func update(_delta: float) -> void:
 	var movement_dir := player.get_movement_direction()
@@ -68,31 +75,7 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal run animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	var animation: String = ""
-	match closest_cardinal_dir:
-		Vector2.UP:
-			animation = "hurt_up"
-		Vector2.RIGHT:
-			animation = "hurt_right"
-		Vector2.DOWN:
-			animation = "hurt_down"
-		Vector2.LEFT:
-			animation = "hurt_right"
-
-	assert(animation != "", "Could not match direction to run animation.")
-	return animation
+	return AnimationPicker.pick_animation(animation_map, dir.angle())
 
 
 func _enter_attack_queue_window() -> void:

@@ -16,6 +16,12 @@ var _dash_attempted_before_dash_window: bool
 
 @onready var dash_ghost_resource := preload("res://scenes/player/dash_ghost/dash_ghost.tscn")
 @onready var ghost_timer: Timer = $GhostTimer
+@onready var animation_map := {
+	Vector2.UP.angle(): "dash_up",
+	Vector2.RIGHT.angle(): "dash_right",
+	Vector2.DOWN.angle(): "dash_down",
+	Vector2.LEFT.angle(): "dash_right"
+}
 
 
 func update(_delta: float) -> void:
@@ -135,31 +141,7 @@ func _enter_chain_dash_window() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal run animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	var animation: String = ""
-	match closest_cardinal_dir:
-		Vector2.UP:
-			animation = "dash_up"
-		Vector2.RIGHT:
-			animation = "dash_right"
-		Vector2.DOWN:
-			animation = "dash_down"
-		Vector2.LEFT:
-			animation = "dash_right"
-
-	assert(animation != "", "Could not match direction to dash animation.")
-	return animation
+	return AnimationPicker.pick_animation(animation_map, dir.angle())
 
 
 func _spawn_ghost() -> void:

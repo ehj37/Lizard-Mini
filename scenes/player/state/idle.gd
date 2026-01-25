@@ -2,6 +2,12 @@ extends PlayerState
 
 @onready var impatient_timer: Timer = $ImpatientTimer
 @onready var sit_timer: Timer = $SitTimer
+@onready var animation_map := {
+	Vector2.UP.angle(): "idle_up",
+	Vector2.RIGHT.angle(): "idle_right",
+	Vector2.DOWN.angle(): "idle_down",
+	Vector2.LEFT.angle(): "idle_right"
+}
 
 
 func update(_delta: float) -> void:
@@ -48,27 +54,7 @@ func exit() -> void:
 
 
 func _get_animation(dir: Vector2) -> String:
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal idle animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(dir.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	match closest_cardinal_dir:
-		Vector2.UP:
-			return "idle_up"
-		Vector2.RIGHT:
-			return "idle_right"
-		Vector2.DOWN:
-			return "idle_down"
-		_:
-			return "idle_right"
+	return AnimationPicker.pick_animation(animation_map, dir.angle())
 
 
 func _play_blink_sound_effect() -> void:

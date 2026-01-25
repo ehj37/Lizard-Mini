@@ -2,6 +2,13 @@ extends PlayerState
 
 var _most_recent_animation: String
 
+@onready var animation_map := {
+	Vector2.UP.angle(): "ledge_peer_up",
+	Vector2.RIGHT.angle(): "ledge_peer_right",
+	Vector2.DOWN.angle(): "ledge_peer_down",
+	Vector2.LEFT.angle(): "ledge_peer_right"
+}
+
 
 func update(_delta: float) -> void:
 	var movement_dir := player.get_movement_direction()
@@ -42,28 +49,7 @@ func enter(_data := {}) -> void:
 func _update_sprite(movement_direction: Vector2) -> void:
 	player.sprite.flip_h = movement_direction.x < 0
 
-	var smallest_angle := INF
-	var closest_cardinal_dir: Vector2
-	# Order matters here for diagonal tiebreaking.
-	# Favoring horizontal ledge peer animations over vertical.
-	for cardinal_dir: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
-		var wrapped_angle := wrapf(movement_direction.angle_to(cardinal_dir), 0.0, TAU)
-		var angle_diff_magnitude: float = min(wrapped_angle, TAU - wrapped_angle)
-		# Some tolerance here for the diagonal behavior described above.
-		if angle_diff_magnitude + .01 < smallest_angle:
-			smallest_angle = angle_diff_magnitude
-			closest_cardinal_dir = cardinal_dir
-
-	var animation: String
-	match closest_cardinal_dir:
-		Vector2.UP:
-			animation = "ledge_peer_up"
-		Vector2.RIGHT:
-			animation = "ledge_peer_right"
-		Vector2.DOWN:
-			animation = "ledge_peer_down"
-		_:
-			animation = "ledge_peer_right"
+	var animation := AnimationPicker.pick_animation(animation_map, movement_direction.angle())
 
 	if _most_recent_animation != animation:
 		animation_player.current_animation = animation
