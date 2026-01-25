@@ -26,6 +26,7 @@ var _times_burnt := 0
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
+@onready var ledge_detector: PlayerLedgeDetector = $LedgeDetector
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_feet: Hurtbox = $HurtboxFeet

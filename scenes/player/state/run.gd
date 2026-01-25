@@ -14,8 +14,6 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 
 
 func update(delta: float) -> void:
-	var movement_dir := player.get_movement_direction()
-
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
@@ -29,6 +27,12 @@ func update(delta: float) -> void:
 		if interact_area:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
+
+	var movement_dir := player.get_movement_direction()
+
+	if player.ledge_detector.on_ledge(movement_dir):
+		state_machine.transition_to("LedgePeer")
+		return
 
 	if movement_dir == Vector2.ZERO:
 		state_machine.transition_to("Idle")
