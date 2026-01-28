@@ -1,4 +1,4 @@
-class_name PlayerGroundDetector
+class_name TransformAreaGroundDetector
 
 extends Area2D
 

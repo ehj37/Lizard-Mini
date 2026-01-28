@@ -30,6 +30,10 @@ func update(_delta: float) -> void:
 	else:
 		player.velocity = Vector2.ZERO
 
+	if !_in_move_window && !player.ground_detector.on_floor():
+		state_machine.transition_to("FallPit")
+		return
+
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		if _in_chain_attack_window:
 			state_machine.transition_to("Attack")
@@ -56,6 +60,9 @@ func update(_delta: float) -> void:
 
 
 func enter(data := {}) -> void:
+	if player.ground_detector.on_floor():
+		player.last_safe_global_position = player.global_position
+
 	var movement_dir := player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
 		if player.orientation == Vector2.ZERO:

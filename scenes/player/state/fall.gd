@@ -34,7 +34,10 @@ func enter(data := {}) -> void:
 	player.clear_burn()
 
 
-func _play_thud_sound() -> void:
-	AudioManager.play_effect_at(
-		player.global_position, SoundEffectConfiguration.Type.PLAYER_FALL_THUD
-	)
+func _thud() -> void:
+	if player.ground_detector.on_floor():
+		AudioManager.play_effect_at(
+			player.global_position, SoundEffectConfiguration.Type.PLAYER_FALL_THUD
+		)
+	else:
+		state_machine.transition_to("FallPit")

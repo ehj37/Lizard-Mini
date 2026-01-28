@@ -78,7 +78,7 @@ func _ready() -> void:
 
 func physics_update(delta: float) -> void:
 	_speed = max(_speed - LUNGE_DECELERATION * delta, 0.0)
-	if player.ledge_detector.on_ledge(_lunge_dir):
+	if player.ground_detector.on_ledge(_lunge_dir):
 		player.velocity = Vector2.ZERO
 	else:
 		player.velocity = player.orientation * _speed
@@ -125,7 +125,7 @@ func enter(data := {}) -> void:
 		player.hitbox_sword.scale.x = 1
 
 	_speed = INITIAL_LUNGE_SPEED
-	if player.ledge_detector.on_ledge(_lunge_dir):
+	if player.ground_detector.on_ledge(_lunge_dir):
 		player.velocity = Vector2.ZERO
 	else:
 		player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED

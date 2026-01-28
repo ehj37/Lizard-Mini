@@ -1,4 +1,4 @@
-class_name PlayerLedgeDetector
+class_name PlayerGroundDetector
 
 extends Node2D
 
@@ -10,7 +10,7 @@ const PIT_DETECTOR_RADIUS := 6.0
 
 var _pit_detectors: Array[Area2D] = []
 
-@onready var ground_detector: Area2D = $GroundDetector
+@onready var floor_detector: Area2D = $FloorDetector
 
 
 func _ready() -> void:
@@ -31,9 +31,13 @@ func _ready() -> void:
 		add_child(pit_detector)
 
 
+func on_floor() -> bool:
+	return floor_detector.has_overlapping_bodies()
+
+
 func on_ledge(direction: Vector2) -> bool:
 	# If this is the case, the player isn't on a ledge, they're mid-air!
-	if !ground_detector.has_overlapping_bodies():
+	if !floor_detector.has_overlapping_bodies():
 		return false
 
 	if direction == Vector2.ZERO:

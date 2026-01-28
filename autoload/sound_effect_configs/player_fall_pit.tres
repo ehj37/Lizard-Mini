@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://dbqlty27e5bnh"]
+
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_8fa6q"]
+[ext_resource type="AudioStream" uid="uid://cf1n7bk6mhdjw" path="res://sound_effects/Player fall pit.ogg" id="1_44p04"]
+
+[resource]
+script = ExtResource("1_8fa6q")
+type = 18
+audio_stream = ExtResource("1_44p04")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

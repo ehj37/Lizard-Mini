@@ -33,7 +33,7 @@ func update(_delta: float) -> void:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
 
-	if player.ledge_detector.on_ledge(movement_dir):
+	if player.ground_detector.on_ledge(movement_dir):
 		_update_sprite(movement_dir)
 		return
 

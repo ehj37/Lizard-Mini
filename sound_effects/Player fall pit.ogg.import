@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf1n7bk6mhdjw"
+path="res://.godot/imported/Player fall pit.ogg-77b020d53e75b32b5b53b5c6c0805cb3.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Player fall pit.ogg"
+dest_files=["res://.godot/imported/Player fall pit.ogg-77b020d53e75b32b5b53b5c6c0805cb3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

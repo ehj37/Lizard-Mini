@@ -321,37 +321,37 @@ y_sort_enabled = true
 position = Vector2(-888, 72)
 
 [node name="Statuette2" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, 72)
+position = Vector2(-776, 72)
 
 [node name="Statuette3" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
 position = Vector2(-888, 8)
 
 [node name="Statuette4" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, 8)
+position = Vector2(-776, 8)
 
 [node name="Statuette5" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
 position = Vector2(-888, -56)
 
 [node name="Statuette6" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, -56)
+position = Vector2(-776, -56)
 
 [node name="Statuette7" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
 position = Vector2(-888, 48)
 
 [node name="Statuette8" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, 48)
+position = Vector2(-776, 48)
 
 [node name="Statuette9" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
 position = Vector2(-888, -16)
 
 [node name="Statuette10" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, -16)
+position = Vector2(-776, -16)
 
 [node name="Statuette11" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
 position = Vector2(-888, -80)
 
 [node name="Statuette12" parent="WispIntroArea/Statuettes" instance=ExtResource("26_arkx4")]
-position = Vector2(-784, -80)
+position = Vector2(-776, -80)
 
 [node name="WispContainerBreakArea" parent="WispIntroArea" instance=ExtResource("28_noix2")]
 position = Vector2(-832, -64)
@@ -364,16 +364,16 @@ shape = SubResource("RectangleShape2D_025c5")
 position = Vector2(-56, 128)
 
 [node name="WispContainer2" parent="WispIntroArea/WispContainerBreakArea" instance=ExtResource("27_jqv5m")]
-position = Vector2(48, 128)
+position = Vector2(56, 128)
 
 [node name="WispContainer3" parent="WispIntroArea/WispContainerBreakArea" instance=ExtResource("27_jqv5m")]
 position = Vector2(-56, 64)
 
 [node name="WispContainer4" parent="WispIntroArea/WispContainerBreakArea" instance=ExtResource("27_jqv5m")]
-position = Vector2(48, 64)
+position = Vector2(56, 64)
 
 [node name="WispContainer5" parent="WispIntroArea/WispContainerBreakArea" instance=ExtResource("27_jqv5m")]
-position = Vector2(48, 0)
+position = Vector2(56, 0)
 
 [node name="WispContainer6" parent="WispIntroArea/WispContainerBreakArea" instance=ExtResource("27_jqv5m")]
 position = Vector2(-56, 0)

@@ -11,6 +11,10 @@ extends PlayerState
 
 
 func update(_delta: float) -> void:
+	if !player.ground_detector.on_floor():
+		state_machine.transition_to("FallPit")
+		return
+
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
@@ -32,6 +36,9 @@ func update(_delta: float) -> void:
 
 func enter(data := {}) -> void:
 	player.velocity = Vector2.ZERO
+
+	if player.ground_detector.on_floor():
+		player.last_safe_global_position = player.global_position
 
 	var animation := _get_animation(player.orientation)
 	animation_player.play(animation)

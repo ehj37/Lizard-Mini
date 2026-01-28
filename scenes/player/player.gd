@@ -16,6 +16,7 @@ const MOVEMENT_INPUT_TO_DIR := {
 const MAX_BURNS := 3
 
 var orientation: Vector2 = Vector2.ZERO
+var last_safe_global_position: Vector2
 var _pressed_movement_inputs: Array[String] = []
 var _burning := false
 var _times_burnt := 0
@@ -26,7 +27,8 @@ var _times_burnt := 0
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
-@onready var ledge_detector: PlayerLedgeDetector = $LedgeDetector
+@onready var ground_detector: PlayerGroundDetector = $GroundDetector
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_feet: Hurtbox = $HurtboxFeet

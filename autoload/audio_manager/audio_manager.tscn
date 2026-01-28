@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpy6ktanniqrq"]
+[gd_scene load_steps=22 format=3 uid="uid://bpy6ktanniqrq"]
 
 [ext_resource type="Script" uid="uid://dsuxsfcvtx25x" path="res://autoload/audio_manager/audio_manager.gd" id="1_418ss"]
 [ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="2_veri3"]
@@ -20,7 +20,8 @@
 [ext_resource type="Resource" uid="uid://bfp4kgyn5tq33" path="res://autoload/sound_effect_configs/player_blink.tres" id="18_7kt7h"]
 [ext_resource type="Resource" uid="uid://bctqan3n3aw7q" path="res://autoload/sound_effect_configs/canister_ambience.tres" id="19_86qal"]
 [ext_resource type="Resource" uid="uid://d1qvywnrtu231" path="res://autoload/sound_effect_configs/fire_vent.tres" id="20_hbkv1"]
+[ext_resource type="Resource" uid="uid://dbqlty27e5bnh" path="res://autoload/sound_effect_configs/player_fall_pit.tres" id="21_bvwe8"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_418ss")
-sound_effect_configs = Array[ExtResource("2_veri3")]([ExtResource("3_3bhmr"), ExtResource("4_180s8"), ExtResource("5_b4cw0"), ExtResource("6_d6pjd"), ExtResource("7_iwjvn"), ExtResource("8_180s8"), ExtResource("9_b4cw0"), ExtResource("10_d6pjd"), ExtResource("11_iwjvn"), ExtResource("12_k3xk4"), ExtResource("13_tn4hp"), ExtResource("14_2d5ut"), ExtResource("15_yt718"), ExtResource("16_ljgh5"), ExtResource("17_7gwo0"), ExtResource("18_7kt7h"), ExtResource("19_86qal"), ExtResource("20_hbkv1")])
+sound_effect_configs = Array[ExtResource("2_veri3")]([ExtResource("3_3bhmr"), ExtResource("4_180s8"), ExtResource("5_b4cw0"), ExtResource("6_d6pjd"), ExtResource("7_iwjvn"), ExtResource("8_180s8"), ExtResource("9_b4cw0"), ExtResource("10_d6pjd"), ExtResource("11_iwjvn"), ExtResource("12_k3xk4"), ExtResource("13_tn4hp"), ExtResource("14_2d5ut"), ExtResource("15_yt718"), ExtResource("16_ljgh5"), ExtResource("17_7gwo0"), ExtResource("18_7kt7h"), ExtResource("19_86qal"), ExtResource("20_hbkv1"), ExtResource("21_bvwe8")])

@@ -20,6 +20,12 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 
 
 func update(delta: float) -> void:
+	if player.ground_detector.on_floor():
+		player.last_safe_global_position = player.global_position
+	else:
+		state_machine.transition_to("FallPit")
+		return
+
 	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
 		state_machine.transition_to("Attack")
 		return
@@ -36,7 +42,7 @@ func update(delta: float) -> void:
 
 	var movement_dir := player.get_movement_direction()
 
-	if player.ledge_detector.on_ledge(movement_dir):
+	if player.ground_detector.on_ledge(movement_dir):
 		state_machine.transition_to("LedgePeer")
 		return
 
