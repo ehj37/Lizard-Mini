@@ -154,7 +154,7 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 		dir = Vector2.RIGHT
 
 	var angle := dir.angle()
-	if combo_num == 2:
+	if combo_num == 1:
 		return AnimationPicker.pick_animation(combo_2_animation_map, angle)
 
 	# Right now, the first and third animations are the exact same.
