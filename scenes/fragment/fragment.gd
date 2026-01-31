@@ -7,10 +7,13 @@ const GRAVITY := 575.0
 
 var fragment_config: FragmentConfig
 var _vertical_speed := INITIAL_VERTICAL_SPEED
-var _airborne := true
+var _falling_from_spawn := true
+var _falling_into_pit := false
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var ground_detector: Area2D = $GroundDetector
 
 
 func _ready() -> void:
@@ -26,25 +29,36 @@ func _ready() -> void:
 	mass = fragment_config.mass
 	linear_damp = fragment_config.linear_damp
 
-	gravity_scale = 0.0
-	set_deferred("lock_rotation", true)
-
 
 func _process(delta: float) -> void:
-	if !_airborne:
-		return
+	if _falling_from_spawn:
+		_vertical_speed = _vertical_speed + delta * GRAVITY
+		var new_y: float = sprite.position.y + _vertical_speed * delta
 
-	_vertical_speed = _vertical_speed + delta * GRAVITY
-	var new_y: float = min(sprite.position.y + _vertical_speed * delta, 0.0)
-	sprite.position.y = new_y
+		if new_y < 0:
+			sprite.position.y = new_y
+		else:
+			_falling_from_spawn = false
+			sprite_shadow.visible = false
 
-	if new_y == 0:
-		_airborne = false
-		lock_rotation = false
-		sprite_shadow.visible = false
+			if _on_ground():
+				sprite.position.y = 0
+				_vertical_speed = 0
+			else:
+				_falling_into_pit = true
+				sprite.position.y = new_y
 
-		var scale_tween := get_tree().create_tween()
-		scale_tween.tween_property(self, "scale", Vector2.ZERO, 3.0)
-		await scale_tween.finished
+			var scale_tween := get_tree().create_tween()
+			scale_tween.tween_property(sprite, "scale", Vector2.ZERO, 3.0)
+			scale_tween.finished.connect(queue_free)
 
-		queue_free()
+	if !_falling_from_spawn && (!_falling_into_pit && !_on_ground()):
+		_falling_into_pit = true
+
+	if _falling_into_pit:
+		_vertical_speed = _vertical_speed + delta * GRAVITY
+		sprite.position.y = sprite.position.y + _vertical_speed * delta
+
+
+func _on_ground() -> bool:
+	return ground_detector.has_overlapping_bodies()
