@@ -43,7 +43,14 @@ position = Vector2(0, 14)
 polygon = PackedVector2Array(2, -14, 2, -19, -4, -19, -4, -14)
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_5lhnu")]
-fragile = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
 polygon = PackedVector2Array(2, 0, -4, 0, -4, -18, 2, -18)
+
+[node name="HurtboxGrounded" parent="." instance=ExtResource("2_5lhnu")]
+grounded = true
+fragile = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HurtboxGrounded"]
+position = Vector2(0, 14)
+polygon = PackedVector2Array(2, -14, 2, -19, -4, -19, -4, -14)

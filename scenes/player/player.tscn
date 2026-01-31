@@ -1193,7 +1193,7 @@ disabled = true
 [node name="HitboxFeet" parent="." instance=ExtResource("10_h17s1")]
 visible = false
 damage_amount = -1
-grounded = false
+grounded = true
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxFeet"]

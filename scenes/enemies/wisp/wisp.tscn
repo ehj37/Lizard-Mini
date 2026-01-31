@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://g7iyyiv2xqy6"]
+[gd_scene load_steps=26 format=3 uid="uid://g7iyyiv2xqy6"]
 
 [ext_resource type="Script" uid="uid://bdat7muj1lv3w" path="res://scenes/enemies/wisp/wisp.gd" id="1_pdocg"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="2_57p5f"]
@@ -88,7 +88,10 @@ radius = 4.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6up6a"]
-radius = 2.0
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcdd1"]
+radius = 0.01
 
 [node name="Wisp" type="CharacterBody2D"]
 collision_layer = 0
@@ -127,8 +130,10 @@ process_material = SubResource("ParticleProcessMaterial_e8vpj")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
+damage_amount = 100
 damage_type = 4
 grounded = true
+disabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 9)
@@ -175,6 +180,9 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
 shape = SubResource("CircleShape2D_6up6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rcdd1")
 
 [connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]
 [connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]

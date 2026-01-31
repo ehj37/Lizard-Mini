@@ -61,7 +61,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-64, -232)
+position = Vector2(-58, -241)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -128,7 +128,7 @@ position = Vector2(-64, -267)
 position = Vector2(-30, -268)
 
 [node name="PotD" parent="Pots" instance=ExtResource("10_nfihu")]
-position = Vector2(-44, -273)
+position = Vector2(-43, -264)
 
 [node name="PotC" parent="Pots" instance=ExtResource("11_lgguw")]
 position = Vector2(14, -267)
@@ -231,7 +231,7 @@ position = Vector2(135, 8)
 shape = SubResource("RectangleShape2D_g7tkf")
 
 [node name="EnemyAlertArea" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("19_4fww7")]
-position = Vector2(127, -243)
+position = Vector2(43, -243)
 enemies = [NodePath("../Wisps/Wisp"), NodePath("../Wisps/Wisp2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlertArea"]

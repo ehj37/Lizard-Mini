@@ -128,7 +128,7 @@ func get_movement_direction() -> Vector2:
 	return movement_vector.normalized()
 
 
-func _on_hitbox_sword_blood_drawn() -> void:
+func _on_hitbox_sword_blood_drawn(_hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:
 	pass
 
 

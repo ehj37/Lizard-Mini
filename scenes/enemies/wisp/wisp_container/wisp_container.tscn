@@ -147,7 +147,7 @@ trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_n8nvc")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6, 0, 6, 0, 6, -10, 6, -11, -6, -11)
+polygon = PackedVector2Array(-6, 0, 6, 0, 5, -1, -5, -1, -5, -10, 5, -10, 5, -1, 6, 0, 6, -10, 6, -11, -6, -11)
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_54q02")]
 
