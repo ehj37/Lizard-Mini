@@ -1,7 +1,7 @@
 extends WispState
 
 const ALERT_TIME := 0.35
-const TARGET_COLOR := Color("#FD0D00")
+const TARGET_COLOR := ColorsOfLizard.RAGE
 
 var _color: Color
 var _color_tween: Tween

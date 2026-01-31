@@ -2,7 +2,7 @@ extends StaticBody2D
 
 const TIME_BETWEEN_TOGGLES := 0.75
 const GLYPH_COLOR_TWEEN_DURATION := 0.5
-const GLYPHS_ENABLED_COLOR := Color("00f0fd")
+const GLYPHS_ENABLED_COLOR := ColorsOfLizard.FIRE_CYAN
 const GLYPHS_DISABLED_COLOR := Color("01262a")
 
 @export var toggled_on: bool
@@ -10,8 +10,18 @@ const GLYPHS_DISABLED_COLOR := Color("01262a")
 
 @onready var sprite_glyphs: Sprite2D = $SpriteGlyphs
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var interact_area: InteractArea = $InteractArea
 @onready var progress_indicator: ProgressIndicator = $ProgressIndicator
+@onready var hurtbox: Hurtbox = $Hurtbox
+
+
+func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) -> void:
+	shader_animation_player.play("toggle")
+	HitStopManager.hit_stop()
+
+	interact_area.disable()
+	_toggle()
 
 
 func _ready() -> void:
@@ -52,8 +62,9 @@ func _toggle() -> void:
 				sprite_glyphs, "modulate", GLYPHS_ENABLED_COLOR, GLYPH_COLOR_TWEEN_DURATION
 			)
 
+	hurtbox.disable()
 	toggled_on = !toggled_on
 
 	get_tree().create_timer(TIME_BETWEEN_TOGGLES).timeout.connect(
-		func() -> void: interact_area.enable()
+		func() -> void: interact_area.enable() ; hurtbox.enable()
 	)

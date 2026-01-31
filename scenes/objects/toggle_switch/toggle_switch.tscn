@@ -1,72 +1,23 @@
-[gd_scene load_steps=13 format=4 uid="uid://bvrvdh211j41c"]
+[gd_scene load_steps=20 format=4 uid="uid://bvrvdh211j41c"]
 
+[ext_resource type="Shader" uid="uid://cxh0heipkp55q" path="res://scenes/objects/toggle_switch/toggle_shader.gdshader" id="1_83aun"]
 [ext_resource type="PackedScene" uid="uid://cptjdaxdxm8lq" path="res://scenes/interact_area/interact_area.tscn" id="1_f66wk"]
 [ext_resource type="Script" uid="uid://ygr75n8qe1j7" path="res://scenes/objects/toggle_switch/toggle_switch.gd" id="1_qfc8m"]
 [ext_resource type="PackedScene" uid="uid://bjkktw14vfsrq" path="res://scenes/progress_indicator/progress_indicator.tscn" id="2_qqbqr"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="4_j7k4l"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qfc8m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83aun"]
+shader = ExtResource("1_83aun")
+shader_parameter/toggle_color = Color(0.918, 0, 0.447, 1)
+shader_parameter/event_type = 0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_83aun"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACeAAAAUklGRpYAAABXRUJQVlA4TIkAAAAvP8APECdApG0zX0Pzb+Lomoi0bebf0AwNXcIRmbRN/durh17TMOY/APleK9+AUQBGbcABAQWcA4iExr+tdK9XRP8VtG3DtAS8gyLdfouUjQMwji5V44ioNkc7yB2yeQ8bHQ0Y2xyTXH4Yx71W2pgiZeMAjKNL9WAHeXy2OiI2OhowvMP/3a/jSAA=")
 size_override = Vector2(64, 64)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_j7k4l"]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_762pk"]
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAABuAAAAUklGRmYAAABXRUJQVlA4TFoAAAAvX8APEA8w//M///Mf8FAaAGgyO4BInEVO4P/HYC45ov9o27aNNYWd+oa5LhRvBspvjLpeux5bXzhGcetL/wod/3XYHUw8nYrEm1XxZlF84ZiJxZf/FZRfnAE=")
 size_override = Vector2(96, 64)
-
-[sub_resource type="Animation" id="Animation_83aun"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePillar:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteGlyphs:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_762pk"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePillar:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteGlyphs:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
 
 [sub_resource type="Animation" id="Animation_qel6r"]
 length = 0.45
@@ -122,6 +73,62 @@ tracks/1/keys = {
 "values": [3, 0, 2]
 }
 
+[sub_resource type="Animation" id="Animation_762pk"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePillar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteGlyphs:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_83aun"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePillar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteGlyphs:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_loy6b"]
 _data = {
 &"disable": SubResource("Animation_qel6r"),
@@ -130,18 +137,59 @@ _data = {
 &"on": SubResource("Animation_83aun")
 }
 
+[sub_resource type="Animation" id="Animation_loy6b"]
+resource_name = "toggle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePillar:material:shader_parameter/event_type")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_e5eku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePillar:material:shader_parameter/event_type")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n21y6"]
+_data = {
+&"RESET": SubResource("Animation_e5eku"),
+&"toggle": SubResource("Animation_loy6b")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqbqr"]
 size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfc8m"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83aun"]
+size = Vector2(8, 24.25)
+
 [node name="ToggleSwitch" type="StaticBody2D"]
 script = ExtResource("1_qfc8m")
 
 [node name="SpritePillar" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_qfc8m")
+material = SubResource("ShaderMaterial_83aun")
+texture = SubResource("PortableCompressedTexture2D_83aun")
 offset = Vector2(16, -16)
 hframes = 2
 vframes = 2
@@ -167,11 +215,11 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/objects/toggle_switch/toggle_switch.aseprite",
 "source_uid": 12628728929413700
 }
-metadata/_aseprite_wizard_source_file_hash_ = "e42cfa3aed11ae6c7a6877007714d150"
+metadata/_aseprite_wizard_source_file_hash_ = "d8dd1326cc7e4ad72933fe0c603c1ca9"
 
 [node name="SpriteGlyphs" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_j7k4l")
+use_parent_material = true
+texture = SubResource("PortableCompressedTexture2D_762pk")
 offset = Vector2(16, -16)
 hframes = 3
 vframes = 2
@@ -204,6 +252,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_loy6b")
 }
 
+[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n21y6")
+}
+
 [node name="InteractArea" parent="." node_paths=PackedStringArray("progress_indicator") instance=ExtResource("1_f66wk")]
 position = Vector2(4, -4)
 interaction_length = 0
@@ -218,3 +271,9 @@ position = Vector2(19, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -4)
 shape = SubResource("RectangleShape2D_qfc8m")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_j7k4l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(4, -12)
+shape = SubResource("RectangleShape2D_83aun")

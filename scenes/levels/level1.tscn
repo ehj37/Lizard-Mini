@@ -61,7 +61,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-58, -241)
+position = Vector2(577, -220)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")

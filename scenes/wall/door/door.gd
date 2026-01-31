@@ -4,8 +4,8 @@ extends StaticBody2D
 
 const DOOR_LOWER_TIME := 1.5
 const BACKLIGHT_TWEEN_TIME := 0.2
-const LEFT_BACKLIGHT_LIT_UP_COLOR := Color("b741fe")
-const RIGHT_BACKLIGHT_LIT_UP_COLOR := Color("00f0fd")
+const LEFT_BACKLIGHT_LIT_UP_COLOR := ColorsOfLizard.FIRE_FUCHSIA
+const RIGHT_BACKLIGHT_LIT_UP_COLOR := ColorsOfLizard.FIRE_CYAN
 
 @onready var dust_cloud_resource := preload("./door_dust_cloud/door_dust_cloud.tscn")
 @onready var door_visuals: Node2D = $ColorRect/DoorVisuals
