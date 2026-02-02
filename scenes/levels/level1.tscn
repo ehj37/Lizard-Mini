@@ -61,7 +61,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(577, -220)
+position = Vector2(-63, -237)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -153,6 +153,42 @@ position = Vector2(305, -257)
 
 [node name="PotA10" parent="Pots" instance=ExtResource("9_plydf")]
 position = Vector2(236, -272)
+
+[node name="PotB3" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(285, -266)
+
+[node name="PotB4" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(249, -264)
+
+[node name="PotC3" parent="Pots" instance=ExtResource("11_lgguw")]
+position = Vector2(258, -260)
+
+[node name="PotD3" parent="Pots" instance=ExtResource("10_nfihu")]
+position = Vector2(360, -220)
+
+[node name="PotD4" parent="Pots" instance=ExtResource("10_nfihu")]
+position = Vector2(414, -265)
+
+[node name="PotB5" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(445, -237)
+
+[node name="PotB6" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(437, -265)
+
+[node name="PotA11" parent="Pots" instance=ExtResource("9_plydf")]
+position = Vector2(499, -265)
+
+[node name="PotB7" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(523, -267)
+
+[node name="PotB8" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(57, -210)
+
+[node name="PotB9" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(55, -217)
+
+[node name="PotB10" parent="Pots" instance=ExtResource("12_jprdt")]
+position = Vector2(38, -211)
 
 [node name="ExplosiveCanisters" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -112,6 +112,7 @@ alignment = 1
 [node name="ResumeButton" type="Button" parent="Control/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+disabled = true
 text = "Resume"
 
 [connection signal="pressed" from="Control/VBoxContainer/ResumeButton" to="." method="resume"]

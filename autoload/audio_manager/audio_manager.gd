@@ -82,6 +82,9 @@ func cancel_audio(type: SoundEffectConfiguration.Type, identifier: int = -1) -> 
 				audio_player.get_instance_id() == identifier
 			)
 		)
+		if kill_index == -1:
+			return
+
 		var audio_player_to_kill: AudioStreamPlayer2D = audio_players[kill_index]
 		audio_players.erase(audio_player_to_kill)
 		audio_player_to_kill.queue_free()

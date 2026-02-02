@@ -29,3 +29,5 @@ func spawn_fragments(direction: Vector2) -> void:
 		else:
 			spawn_direction = direction.rotated(spawn_angle_offset)
 		fragment.apply_central_impulse(spawn_direction * impulse_magnitude)
+
+	queue_free()
