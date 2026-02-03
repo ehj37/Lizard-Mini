@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dt17gbye114w5"
+path="res://.godot/imported/Wisp container break.ogg-35fb896dbec817a6b9b8895f7fb37dfd.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Wisp container break.ogg"
+dest_files=["res://.godot/imported/Wisp container break.ogg-35fb896dbec817a6b9b8895f7fb37dfd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

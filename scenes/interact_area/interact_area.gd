@@ -24,6 +24,9 @@ func interact(delta: float) -> void:
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()
+		AudioManager.play_effect_at(
+			global_position, SoundEffectConfiguration.Type.INTERACT_COMPLETE
+		)
 		disable()
 
 

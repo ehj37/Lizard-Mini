@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://uspkcv0l16qe"]
 
 [ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_gyss0"]
-[ext_resource type="AudioStream" uid="uid://cvm524wjopwsl" path="res://sound_effects/Progress indicator.ogg" id="1_p6jla"]
+[ext_resource type="AudioStream" uid="uid://bklg0slnlq40x" path="res://sound_effects/Progress indicator (medium).ogg" id="1_nxj3x"]
 
 [resource]
 script = ExtResource("1_gyss0")
 type = 6
-audio_stream = ExtResource("1_p6jla")
+audio_stream = ExtResource("1_nxj3x")
 metadata/_custom_type_script = "uid://5bb6jyeajy31"

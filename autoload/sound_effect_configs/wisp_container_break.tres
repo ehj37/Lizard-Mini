@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://xy5qob170top"]
+
+[ext_resource type="AudioStream" uid="uid://dt17gbye114w5" path="res://sound_effects/Wisp container break.ogg" id="1_5nbmq"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_op4fp"]
+
+[resource]
+script = ExtResource("1_op4fp")
+type = 19
+audio_stream = ExtResource("1_5nbmq")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"

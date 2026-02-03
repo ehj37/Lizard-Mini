@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i7jt350whx7y"
+path="res://.godot/imported/Interact complete.ogg-9cf7fb71687750470a397a1bf4155def.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound_effects/Interact complete.ogg"
+dest_files=["res://.godot/imported/Interact complete.ogg-9cf7fb71687750470a397a1bf4155def.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

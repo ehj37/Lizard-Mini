@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://bguyiob3ie0ac"]
+
+[ext_resource type="AudioStream" uid="uid://i7jt350whx7y" path="res://sound_effects/Interact complete.ogg" id="1_6cem3"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_xqloa"]
+
+[resource]
+script = ExtResource("1_xqloa")
+type = 20
+audio_stream = ExtResource("1_6cem3")
+metadata/_custom_type_script = "uid://5bb6jyeajy31"
