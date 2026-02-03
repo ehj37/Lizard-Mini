@@ -9,7 +9,7 @@ extends Node2D
 @onready var hide_timer: Timer = $HideTimer
 
 
-func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) -> void:
+func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	# If already hiding, stay in shell
 	if state_machine.current_state.name == "Hide":
 		hide_timer.start()

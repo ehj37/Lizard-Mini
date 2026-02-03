@@ -13,6 +13,7 @@ func update(_delta: float) -> void:
 
 func enter(_data := {}) -> void:
 	player.velocity = Vector2.ZERO
+	player.clear_burn()
 
 	# Setting state that'll be restored on exit
 	player.hurtbox.disable()

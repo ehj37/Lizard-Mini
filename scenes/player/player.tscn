@@ -155,6 +155,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -16)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BurnParticlesBack:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -13)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BurnParticlesFront:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -11)]
+}
 
 [sub_resource type="Animation" id="Animation_yj68g"]
 length = 0.35
@@ -267,6 +291,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [136, 137, 138, 139, 140, 141, 142, 143]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BurnParticlesBack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -13), Vector2(6, -3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BurnParticlesFront:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -11), Vector2(6, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_ugbui"]
@@ -522,6 +570,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [148, 149, 150, 151, 152, 153, 154]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BurnParticlesBack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -3), Vector2(0, -11)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BurnParticlesFront:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -3), Vector2(0, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_qek5x"]
@@ -991,7 +1063,7 @@ script = ExtResource("8_5gtgg")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
 [node name="GhostTimer" type="Timer" parent="StateMachine/Dash"]
-wait_time = 0.03
+wait_time = 0.030000000000000002
 
 [node name="Interact" type="Node" parent="StateMachine"]
 script = ExtResource("9_gx1jg")
@@ -1009,7 +1081,7 @@ texture = SubResource("PortableCompressedTexture2D_yj68g")
 offset = Vector2(0, -16)
 hframes = 13
 vframes = 12
-frame = 80
+frame = 152
 script = ExtResource("9_je7p5")
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
@@ -1137,6 +1209,7 @@ shape = SubResource("CircleShape2D_gx1jg")
 visible = false
 script = ExtResource("15_fcs02")
 damage_amount = 100
+damage_types = Array[int]([1])
 grounded = false
 disabled = false
 
@@ -1193,6 +1266,7 @@ disabled = true
 [node name="HitboxFeet" parent="." instance=ExtResource("10_h17s1")]
 visible = false
 damage_amount = -1
+damage_types = Array[int]([1])
 grounded = true
 disabled = true
 

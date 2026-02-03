@@ -18,7 +18,7 @@ var _elapsed_time := 0.0
 @onready var obstacle_detector: Area2D = $ObstacleDetector
 
 
-func take_damage(_amount: int, _type: Hitbox.DamageType, _direction: Vector2) -> void:
+func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	state_machine.transition_to("Death")
 
 

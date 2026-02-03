@@ -10,7 +10,7 @@ extends StaticBody2D
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
 
 
-func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> void:
+func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	sprite_statuette.visible = false
 	fragment_spawner.spawn_fragments(direction)
 	var dust_puff: Sprite2D = dust_puff_resource.instantiate()

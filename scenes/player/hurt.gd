@@ -48,10 +48,8 @@ func update(_delta: float) -> void:
 func enter(data := {}) -> void:
 	HitStopManager.hit_stop()
 
-	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
-
-	var damage_type: Hitbox.DamageType = data.get("type")
-	if damage_type == Hitbox.DamageType.EXPLOSIVE:
+	var damage_types: Array[Hitbox.DamageType] = data.get("types")
+	if damage_types.has(Hitbox.DamageType.EXPLOSIVE):
 		var damage_direction: Vector2 = data.get("direction")
 		state_machine.transition_to("Fall", {"damage_direction": damage_direction})
 		return

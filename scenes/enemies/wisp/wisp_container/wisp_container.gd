@@ -28,5 +28,5 @@ func shatter(direction := Vector2.ZERO) -> void:
 		wisp.alert()
 
 
-func take_damage(_amount: int, _type: Hitbox.DamageType, direction: Vector2) -> void:
+func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	shatter(direction)

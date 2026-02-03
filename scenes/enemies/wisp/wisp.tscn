@@ -131,7 +131,7 @@ process_material = SubResource("ParticleProcessMaterial_e8vpj")
 [node name="Hitbox" parent="." instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
 damage_amount = 100
-damage_type = 4
+damage_types = Array[int]([0, 3])
 grounded = true
 disabled = false
 

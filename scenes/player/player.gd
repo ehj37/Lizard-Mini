@@ -66,36 +66,41 @@ func _process(_delta: float) -> void:
 			_pressed_movement_inputs.erase(movement_input)
 
 
-func take_damage(amount: int, type: Hitbox.DamageType, direction: Vector2) -> void:
+func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	# If the type is FIRE, this will no-op if the player is already burning.
 	# For BURN, damage is dealt regardless of if the player is already burning.
-	if type == Hitbox.DamageType.FIRE || type == Hitbox.DamageType.BURN && !_burning:
-		add_burn()
-		return
+	if types.has(Hitbox.DamageType.FIRE):
+		if !_burning:
+			_burning = true
+			burn_particles_back.emitting = true
+			burn_particles_front.emitting = true
+			burn_timer.start()
+			_take_burn_damage()
+			return
+		# No-op if the player is already burning and the only damage type is
+		# fire.
+		if types.size() == 1:
+			return
 
 	hurt.emit()
 	shader_animation_player.play("hurt_flash")
+	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
+
+	if types.has(Hitbox.DamageType.BURN):
+		AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)
+		# Only transition to hurt state on first burn
+		if _times_burnt > 0:
+			return
 
 	# The player can get hurt in the fall and rise states, but they don't get
 	# transitioned to the hurt state from it.
 	# They just flash magenta, and continue with falling/getting up.
 	var current_state_name := state_machine.current_state.name
-	if current_state_name == "Fall" || current_state_name == "Rise":
+	var state_exempt_from_hurt_transition: bool = ["Fall", "Rise"].has(current_state_name)
+	if state_exempt_from_hurt_transition:
 		return
 
-	state_machine.transition_to("Hurt", {"amount": amount, "type": type, "direction": direction})
-
-
-func add_burn() -> void:
-	if _burning:
-		return
-
-	_burning = true
-	burn_particles_back.emitting = true
-	burn_particles_front.emitting = true
-	burn_timer.start()
-
-	_take_burn_damage()
+	state_machine.transition_to("Hurt", {"amount": amount, "types": types, "direction": direction})
 
 
 func clear_burn() -> void:
@@ -133,8 +138,11 @@ func _on_hitbox_sword_blood_drawn(_hurtbox_owner_type: Hitbox.HurtboxOwnerType) 
 
 
 func _take_burn_damage() -> void:
-	take_damage(1, Hitbox.DamageType.BURN, Vector2.ZERO)
-	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)
+	take_damage(1, [Hitbox.DamageType.BURN], Vector2.ZERO)
 	_times_burnt += 1
 	if _times_burnt == MAX_BURNS:
-		clear_burn()
+		_burning = false
+		_times_burnt = 0
+		burn_particles_back.emitting = false
+		burn_particles_front.emitting = false
+		burn_timer.stop()

@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 
 		# In _ready() we check that the owner implements take_damage
 		@warning_ignore("unsafe_method_access")
-		owner.take_damage(hitbox.damage_amount, hitbox.damage_type, hitbox.damage_direction(self))
+		owner.take_damage(hitbox.damage_amount, hitbox.damage_types, hitbox.damage_direction(self))
 		hitbox.on_hurtbox_connect(self)
 
 		if repetitive_hitbox_damage_cooldown > 0:

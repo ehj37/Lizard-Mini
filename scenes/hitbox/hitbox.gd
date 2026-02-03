@@ -4,16 +4,11 @@ extends Area2D
 
 signal blood_drawn(hurtbox_owner_type: HurtboxOwnerType)
 
-# Difference between FIRE and BURN:
-# FIRE is intended to impart a burn effect.
-# BURN is intended to deal burn damage and impart a burn effect.
-# E.g. walking on a fire vent does nothing if the player is already burning.
-# Getting hit by a wisp will damage the player even if they're already burning.
 enum DamageType { ENEMY, PLAYER, EXPLOSIVE, FIRE, BURN }
 enum HurtboxOwnerType { UNCATEGORIZED, PLAYER, ENEMY }
 
 @export var damage_amount: int = 100
-@export var damage_type: DamageType
+@export var damage_types: Array[DamageType] = []
 @export var grounded := false
 @export var disabled := false
 
@@ -41,3 +36,10 @@ func on_hurtbox_connect(hurtbox: Hurtbox) -> void:
 		hurtbox_owner_type = HurtboxOwnerType.UNCATEGORIZED
 
 	blood_drawn.emit(hurtbox_owner_type)
+
+
+func _ready() -> void:
+	assert(
+		damage_types.size() > 0,
+		"Hitbox owned by" + str(owner) + "must specify at least one damage type"
+	)

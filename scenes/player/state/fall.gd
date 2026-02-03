@@ -28,17 +28,8 @@ func enter(data := {}) -> void:
 
 	_current_velocity = damage_direction * INITIAL_SPEED
 	player.velocity = _current_velocity
-	player.hurtbox.disable()
-	player.hurtbox_feet.disable()
-
-	player.animation_player.play("fall_right")
-
 	player.clear_burn()
-
-
-func exit() -> void:
-	player.hurtbox.enable()
-	player.hurtbox_feet.enable()
+	player.animation_player.play("fall_right")
 
 
 func _thud() -> void:
