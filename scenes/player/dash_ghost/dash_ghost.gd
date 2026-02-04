@@ -10,6 +10,7 @@ var animation: String
 var flip_h: bool
 var _current_speed: float
 
+@onready var ground_effect_resource := preload("./ground_effect/ground_effect.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -21,6 +22,10 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	_current_speed = INITIAL_SPEED
+
+	var ground_effect: Sprite2D = ground_effect_resource.instantiate()
+	ground_effect.global_position = global_position + Vector2(0, -2)
+	LevelManager.current_level.add_child(ground_effect)
 
 	animation_player.play(animation)
 	sprite.flip_h = flip_h

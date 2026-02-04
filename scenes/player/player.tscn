@@ -1063,7 +1063,7 @@ script = ExtResource("8_5gtgg")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
 [node name="GhostTimer" type="Timer" parent="StateMachine/Dash"]
-wait_time = 0.030000000000000002
+wait_time = 0.015
 
 [node name="Interact" type="Node" parent="StateMachine"]
 script = ExtResource("9_gx1jg")

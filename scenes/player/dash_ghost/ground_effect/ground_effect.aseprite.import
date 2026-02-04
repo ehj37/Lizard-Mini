@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://8ww3mwfhwwou"
+path="res://.godot/imported/ground_effect.aseprite-0459b278f2a8b21c19489eb4fa8093cf.res"
+
+[deps]
+
+source_file="res://scenes/player/dash_ghost/ground_effect/ground_effect.aseprite"
+dest_files=["res://.godot/imported/ground_effect.aseprite-0459b278f2a8b21c19489eb4fa8093cf.res"]
+
+[params]
+

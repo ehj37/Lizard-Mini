@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=4 uid="uid://bnox1catkx3mw"]
+
+[ext_resource type="Script" uid="uid://d17sy2iqj46pv" path="res://scenes/player/dash_ghost/ground_effect/ground_effect.gd" id="1_okdao"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_okdao"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAACiAAAAUklGRpoAAABXRUJQVlA4TI4AAAAvf8AfECcw//M//wrZRoDxaRzTH8AJQTgYN5Lk5FwAbAboIkDaBDCXf1D41twXEdF/Nm7bSLILzrVbzXwifI06F5op07RG405trUDdM5Xie6k70B0mxU/VRz+RH9H/SH5vO3g3P0cdE80QaWqlMaPWmqBmkUqxvdQd6A6TYqfqo5/Ij+h/JL+3Hbybj1ED")
+size_override = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_o7kuh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_byin6"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 1, 1), Color(1, 0, 1, 1), Color(0, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cciy"]
+_data = {
+&"RESET": SubResource("Animation_o7kuh"),
+&"loop": SubResource("Animation_byin6")
+}
+
+[node name="GroundEffect" type="Sprite2D"]
+modulate = Color(0, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 0.5)
+z_index = -4
+texture_filter = 1
+rotation = 6.2831855
+scale = Vector2(0.75, 0.75)
+texture = SubResource("PortableCompressedTexture2D_okdao")
+hframes = 2
+vframes = 2
+script = ExtResource("1_okdao")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/player/dash_ghost/ground_effect/ground_effect.aseprite",
+"source_uid": 2363034591217904008
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3ca8fcef297e6d42f9825c2cb8ddb573"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0cciy")
+}
