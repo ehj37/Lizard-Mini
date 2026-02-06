@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=4 uid="uid://bjkktw14vfsrq"]
+[gd_scene load_steps=34 format=4 uid="uid://bjkktw14vfsrq"]
 
 [ext_resource type="Script" uid="uid://vlnyrwxmk45p" path="res://scenes/progress_indicator/progress_indicator.gd" id="1_ajmdn"]
+[ext_resource type="PackedScene" uid="uid://cusjjbupujcq7" path="res://scenes/progress_indicator/screen_line/screen_line.tscn" id="2_n0cpm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajmdn"]
 bg_color = Color(0, 0, 0, 0.5882353)
@@ -307,3 +308,6 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 4608442408231717584
 }
 metadata/_aseprite_wizard_source_file_hash_ = "008f3aa7deb83895166720ae5f06222d"
+
+[node name="ScreenLine" parent="SineMovementContainer" instance=ExtResource("2_n0cpm")]
+position = Vector2(-3, -6)

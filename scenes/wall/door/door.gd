@@ -2,6 +2,8 @@ class_name Door
 
 extends StaticBody2D
 
+signal unlocked
+
 const DOOR_LOWER_TIME := 1.5
 const BACKLIGHT_TWEEN_TIME := 0.2
 const LEFT_BACKLIGHT_LIT_UP_COLOR := ColorsOfLizard.FIRE_FUCHSIA
@@ -23,6 +25,8 @@ func _ready() -> void:
 
 
 func _unlock() -> void:
+	unlocked.emit()
+
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.DOOR_DOWN)
 
 	var right_dust_cloud: Sprite2D = dust_cloud_resource.instantiate()

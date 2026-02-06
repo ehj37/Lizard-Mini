@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=37 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="Script" uid="uid://ddrve4myklki5" path="res://scripts/level.gd" id="1_025c5"]
 [ext_resource type="PackedScene" uid="uid://cpmodhwgy5ijt" path="res://scenes/backgrounds/test/test_1.tscn" id="1_db1r7"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4fn38crxxpm" path="res://scenes/objects/statuette/statuette.tscn" id="26_arkx4"]
 [ext_resource type="PackedScene" uid="uid://bcupauqdc6cwp" path="res://scenes/enemies/wisp/wisp_container/wisp_container.tscn" id="27_jqv5m"]
 [ext_resource type="PackedScene" uid="uid://b0ke413mqp3qw" path="res://scenes/enemies/wisp/wisp_container_break_area/wisp_container_break_area.tscn" id="28_noix2"]
+[ext_resource type="PackedScene" uid="uid://b0g7n831jais4" path="res://scenes/concentric_squares/concentric_squares.tscn" id="31_07dy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
 size = Vector2(712, 56)
@@ -61,7 +62,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-835, 110)
+position = Vector2(595, -244)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -71,6 +72,9 @@ y_sort_enabled = true
 
 [node name="Door" parent="Wall" instance=ExtResource("21_jrfo0")]
 position = Vector2(592, -268)
+
+[node name="ConcentricSquares" parent="Wall/Door" instance=ExtResource("31_07dy8")]
+position = Vector2(0, -32)
 
 [node name="Wall" parent="Wall" instance=ExtResource("4_bfxgj")]
 tile_map_data = PackedByteArray("AACLALT/AAAAAAAAAACTALX/AAAIAAAAAACbALT/AAAIAFAAAAB+ALT/AAAAABAAAACDALT/AAAGABAAAACIALP/AAAWABAAAACJALP/AAAXABAAAABxALT/AAAAABAAAAB2ALT/AAAGABAAAAB7ALP/AAAWABAAAAB8ALP/AAAXABAAAABkALT/AAAAABAAAABpALT/AAAGABAAAABuALP/AAAWABAAAABvALP/AAAXABAAAABXALT/AAAAABAAAABcALT/AAAGABAAAABhALP/AAAWABAAAABiALP/AAAXABAAAAA9ALT/AAAaACAAAABCALP/AAATACAAAABHALT/AAAGACAAAAAoALT/AAAAACAAAAAtALP/AAATACAAAAAyALT/AAAaACAAAABKALT/AAAAABAAAABPALT/AAAGABAAAABUALP/AAAWABAAAABVALP/AAAXABAAAAAbALT/AAAAABAAAAAgALT/AAAGABAAAAAlALP/AAAWABAAAAAmALP/AAAXABAAAAAOALT/AAAAABAAAAATALT/AAAGABAAAAAYALP/AAAWABAAAAAZALP/AAAXABAAAAABALT/AAAAABAAAAAGALT/AAAGABAAAAALALP/AAAWABAAAAAMALP/AAAXABAAAAD0/7T/AAAAABAAAAD5/7T/AAAGABAAAAD+/7P/AAAWABAAAAD//7P/AAAXABAAAAA3ALL/AAAIAGAAAADw/7T/AAAAAAAAAADt/7T/AAAAABAAAAA=")
@@ -431,3 +435,5 @@ lock_x = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WispIntroArea/YCameraLockArea2"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_07dy8")
+
+[connection signal="unlocked" from="Wall/Door" to="Wall/Door/ConcentricSquares" method="kill"]

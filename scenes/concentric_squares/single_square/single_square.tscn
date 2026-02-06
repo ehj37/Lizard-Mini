@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://eldeir3k2ud6"]
+
+[ext_resource type="Script" uid="uid://cxufm72u6gb38" path="res://scenes/concentric_squares/single_square/single_square.gd" id="1_0cxbb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ufap"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="SingleSquare" type="Node2D"]
+rotation = 0.7853982
+script = ExtResource("1_0cxbb")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ufap")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0g7n831jais4"]
+
+[ext_resource type="Script" uid="uid://n5mg3udvk6mn" path="res://scenes/concentric_squares/concentric_squares.gd" id="1_sb7yr"]
+
+[node name="ConcentricSquares" type="Node2D"]
+z_index = 4096
+script = ExtResource("1_sb7yr")
