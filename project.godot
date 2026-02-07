@@ -112,6 +112,8 @@ break={
 2d_physics/layer_7="Hurtbox"
 2d_physics/layer_8="Player"
 2d_physics/layer_9="MovementTransformArea"
+2d_physics/layer_10="UnsafeGround"
+2d_physics/layer_13="CameraLockAreaDetectable"
 
 [rendering]
 

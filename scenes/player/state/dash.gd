@@ -1,3 +1,5 @@
+class_name PlayerDashState
+
 extends PlayerState
 
 const DASH_SPEED := 400.0
@@ -66,7 +68,7 @@ func update(_delta: float) -> void:
 
 
 func enter(data := {}) -> void:
-	if player.ground_detector.on_floor():
+	if player.ground_detector.current_status() == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
 	var movement_dir := player.get_movement_direction()

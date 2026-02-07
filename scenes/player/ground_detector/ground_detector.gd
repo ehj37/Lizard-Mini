@@ -2,6 +2,8 @@ class_name PlayerGroundDetector
 
 extends Node2D
 
+enum Status { ON_SAFE_GROUND, ON_UNSAFE_GROUND, NOT_GROUNDED }
+
 const NUM_PIT_DETECTORS := 16
 const PIT_DETECTOR_RADIUS := 6.0
 
@@ -10,7 +12,8 @@ const PIT_DETECTOR_RADIUS := 6.0
 
 var _pit_detectors: Array[Area2D] = []
 
-@onready var floor_detector: Area2D = $FloorDetector
+@onready var safe_floor_detector: Area2D = $SafeFloorDetector
+@onready var unsafe_floor_detector: Area2D = $UnsafeFloorDetector
 
 
 func _ready() -> void:
@@ -32,12 +35,27 @@ func _ready() -> void:
 
 
 func on_floor() -> bool:
-	return floor_detector.has_overlapping_bodies()
+	return (
+		safe_floor_detector.has_overlapping_bodies()
+		|| unsafe_floor_detector.has_overlapping_bodies()
+	)
+
+
+func current_status() -> Status:
+	var safe_overlapping_bodies := safe_floor_detector.get_overlapping_bodies()
+	var unsafe_overlapping_bodies := unsafe_floor_detector.get_overlapping_bodies()
+
+	if safe_overlapping_bodies.size() == 0 && unsafe_overlapping_bodies.size() == 0:
+		return Status.NOT_GROUNDED
+
+	if unsafe_overlapping_bodies.size() > 0:
+		return Status.ON_UNSAFE_GROUND
+
+	return Status.ON_SAFE_GROUND
 
 
 func on_ledge(direction: Vector2) -> bool:
-	# If this is the case, the player isn't on a ledge, they're mid-air!
-	if !floor_detector.has_overlapping_bodies():
+	if !on_floor():
 		return false
 
 	if direction == Vector2.ZERO:

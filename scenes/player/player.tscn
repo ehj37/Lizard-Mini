@@ -986,7 +986,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
 radius = 5.0
@@ -999,7 +999,7 @@ radius = 4.0
 radius = 6.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 128
+collision_layer = 4224
 collision_mask = 257
 script = ExtResource("1_8afob")
 
@@ -1275,7 +1275,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fcs02")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.25
 one_shot = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]

@@ -7,7 +7,7 @@ func update(_delta: float) -> void:
 
 	player.global_position = player.last_safe_global_position
 
-	if player.ground_detector.on_floor():
+	if player.ground_detector.current_status() == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		state_machine.transition_to("Idle")
 
 
@@ -18,7 +18,8 @@ func enter(_data := {}) -> void:
 	# Setting state that'll be restored on exit
 	player.hurtbox.disable()
 	player.hurtbox_feet.disable()
-	player.collision_shape.disabled = true
+	_toggle_collision(false)
+
 	player.sprite_shadow.visible = false
 
 	AudioManager.play_effect_at(
@@ -31,5 +32,15 @@ func exit() -> void:
 	# Restoring state that was changed on enter
 	player.hurtbox.enable()
 	player.hurtbox_feet.enable()
-	player.collision_shape.disabled = false
+	_toggle_collision(true)
 	player.sprite_shadow.visible = true
+
+
+# We do this instead of changing the disabled value for the player collision
+# shape so the player is still detectable via a camera lock area (via the
+# "CameraLockAreaDetectable" layer).
+# If we disabled the collision shape on fall while in a camera lock zone,
+# the camera lock would break, and potentially re-snap if the player spawned
+# back into the same lock zone.
+func _toggle_collision(on: bool) -> void:
+	player.set_collision_layer_value(8, on)

@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 const ENABLED_COLOR := Color("00a9b3")
 const DISABLED_COLOR := Color("01262a")

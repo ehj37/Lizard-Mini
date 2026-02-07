@@ -28,7 +28,6 @@ var _times_burnt := 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var ground_detector: PlayerGroundDetector = $GroundDetector
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_feet: Hurtbox = $HurtboxFeet

@@ -19,7 +19,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Attack")
 		return
 
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && player.dash_cooldown_timer.is_stopped():
 		state_machine.transition_to("Dash")
 		return
 
@@ -37,7 +37,7 @@ func update(_delta: float) -> void:
 func enter(data := {}) -> void:
 	player.velocity = Vector2.ZERO
 
-	if player.ground_detector.on_floor():
+	if player.ground_detector.current_status() == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
 	var animation := _get_animation(player.orientation)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b8agbdu84gnwv"]
+[gd_scene load_steps=19 format=4 uid="uid://b8agbdu84gnwv"]
 
 [ext_resource type="Script" uid="uid://dugvsrvvqyjn7" path="res://scenes/floor/fire_vent/fire_vent.gd" id="1_epv8t"]
 [ext_resource type="Texture2D" uid="uid://drpj8v0ka3q2c" path="res://scenes/fire/flame.png" id="1_ojh8q"]
@@ -83,7 +83,12 @@ scale_max = 2.0
 color = Color(0.5021107, 0.5021107, 0.5021107, 0.5)
 alpha_curve = SubResource("CurveTexture_a0nvp")
 
-[node name="FireVent" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epv8t"]
+size = Vector2(24, 24)
+
+[node name="FireVent" type="StaticBody2D"]
+collision_layer = 514
+collision_mask = 0
 script = ExtResource("1_epv8t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -148,3 +153,7 @@ one_shot = true
 trail_enabled = true
 trail_lifetime = 0.15000000000000002
 process_material = SubResource("ParticleProcessMaterial_epv8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_epv8t")
