@@ -82,6 +82,7 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 			return
 
 	hurt.emit()
+	HurtOverlay.play_effect()
 	shader_animation_player.play("hurt_flash")
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
 

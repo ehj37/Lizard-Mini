@@ -26,6 +26,7 @@ ScreenFader="*res://autoload/screen_fader/screen_fader.tscn"
 LevelManager="*res://autoload/level_manager.gd"
 PauseMenu="*res://ui/pause_menu/pause_menu.tscn"
 DebugStuff="*res://autoload/debug_stuff.gd"
+HurtOverlay="*res://ui/hurt_overlay/hurt_overlay.tscn"
 
 [debug]
 

@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://odkw7xkf8lge"]
+
+[ext_resource type="Shader" uid="uid://bdhpyxrj6vhuv" path="res://ui/hurt_overlay/aberration_vignette.gdshader" id="1_05t7w"]
+[ext_resource type="Script" uid="uid://dy2p7lf5ekgtn" path="res://ui/hurt_overlay/hurt_overlay.gd" id="1_n305s"]
+[ext_resource type="Shader" uid="uid://b05xfchvtcnmj" path="res://ui/hurt_overlay/vignette.gdshader" id="3_jwq0s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n305s"]
+shader = ExtResource("1_05t7w")
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(0, 0)
+shader_parameter/height = 0.7
+shader_parameter/width = 0.5
+shader_parameter/fade = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gsns"]
+shader = ExtResource("3_jwq0s")
+shader_parameter/radius = 1.0
+shader_parameter/softness = 0.50000002375
+shader_parameter/intensity = 3.0
+shader_parameter/contrast = 2.2
+shader_parameter/vignette_color = Color(0.91764706, 0, 0.44705883, 1)
+
+[sub_resource type="Animation" id="Animation_n305s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AberrationVignetteColorRect:material:shader_parameter/r_displacement")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AberrationVignetteColorRect:material:shader_parameter/b_displacement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VignetteColorRect:material:shader_parameter/radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jwq0s"]
+resource_name = "effect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AberrationVignetteColorRect:material:shader_parameter/r_displacement")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AberrationVignetteColorRect:material:shader_parameter/b_displacement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VignetteColorRect:material:shader_parameter/radius")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.800000038, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gsns"]
+_data = {
+&"RESET": SubResource("Animation_n305s"),
+&"effect": SubResource("Animation_jwq0s")
+}
+
+[node name="HurtOverlay" type="CanvasLayer"]
+script = ExtResource("1_n305s")
+
+[node name="AberrationVignetteColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_n305s")
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="VignetteColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5gsns")
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5gsns")
+}
