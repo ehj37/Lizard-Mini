@@ -69,6 +69,8 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 	# If the type is FIRE, this will no-op if the player is already burning.
 	# For BURN, damage is dealt regardless of if the player is already burning.
 	if types.has(Hitbox.DamageType.FIRE):
+		_times_burnt = 0
+
 		if !_burning:
 			_burning = true
 			burn_particles_back.emitting = true
@@ -76,13 +78,14 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 			burn_timer.start()
 			_take_burn_damage()
 			return
-		# No-op if the player is already burning and the only damage type is
-		# fire.
+
+		# Don't take additional damage if the player is already burning and the
+		# only damage type is fire.
 		if types.size() == 1:
 			return
 
 	hurt.emit()
-	HurtOverlay.play_effect()
+	Overlays.add_hurt()
 	shader_animation_player.play("hurt_flash")
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
 

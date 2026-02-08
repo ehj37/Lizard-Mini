@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://ctd2t8xf41xrg" path="res://dev/dash_ruler/dash_ruler.tscn" id="32_3gp1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
-size = Vector2(698, 56)
+size = Vector2(698, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gp1u"]
 size = Vector2(323, 219)
@@ -67,7 +67,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(-834, 106)
+position = Vector2(610, -240)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -272,7 +272,7 @@ player_camera = NodePath("../PlayerCamera")
 lock_x = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLockArea"]
-position = Vector2(128, 8)
+position = Vector2(128, -0.5)
 shape = SubResource("RectangleShape2D_g7tkf")
 
 [node name="CameraLockArea2" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("17_1xax6")]
