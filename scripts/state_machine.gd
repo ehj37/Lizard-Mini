@@ -3,6 +3,7 @@ class_name StateMachine
 extends Node
 
 @export var initial_state: State
+@export var log_state_transitions := false
 
 var current_state: State
 var _states: Array[State] = []
@@ -22,6 +23,9 @@ func _ready() -> void:
 
 
 func transition_to(state_name: String, data := {}) -> void:
+	if log_state_transitions:
+		print("-----------")
+		print("Exiting: " + current_state.name)
 	current_state.exit()
 
 	var next_state_i := _states.find_custom(
@@ -31,6 +35,8 @@ func transition_to(state_name: String, data := {}) -> void:
 
 	var next_state := _states[next_state_i]
 	current_state = next_state
+	if log_state_transitions:
+		print("Entering: " + current_state.name)
 	current_state.enter(data)
 
 

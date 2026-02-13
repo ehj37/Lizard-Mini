@@ -11,6 +11,7 @@ func enter(_data := {}) -> void:
 	wisp.velocity = Vector2.ZERO
 	wisp.hitbox.disable()
 	wisp.hurtbox.disable()
+	wisp.collision_shape.disabled = true
 
 	var death_particle_burst: Node2D = death_particle_burst_resource.instantiate()
 	death_particle_burst.global_position = wisp.global_position

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c2lyjdvxwlj45"
+path="res://.godot/imported/wip_enemy_ideas.aseprite-0e77288383dc396c83dd0daa3db2dc3f.res"
+
+[deps]
+
+source_file="res://aseprite/scribbles/wip_enemy_ideas.aseprite"
+dest_files=["res://.godot/imported/wip_enemy_ideas.aseprite-0e77288383dc396c83dd0daa3db2dc3f.res"]
+
+[params]
+

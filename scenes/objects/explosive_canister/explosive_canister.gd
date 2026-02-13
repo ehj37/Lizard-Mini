@@ -23,6 +23,6 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 	explosion.global_position = global_position
 	LevelManager.current_level.add_child(explosion)
 
-	EventBus.explosion.emit()
+	EventBus.shake_camera.emit()
 
 	queue_free()

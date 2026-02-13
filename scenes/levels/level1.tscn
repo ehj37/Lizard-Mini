@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://me34t8g57f8h"]
+[gd_scene load_steps=41 format=4 uid="uid://me34t8g57f8h"]
 
 [ext_resource type="Script" uid="uid://ddrve4myklki5" path="res://scripts/level.gd" id="1_025c5"]
 [ext_resource type="PackedScene" uid="uid://cpmodhwgy5ijt" path="res://scenes/backgrounds/test/test_1.tscn" id="1_db1r7"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://c4kdib5saiq85" path="res://scenes/floor/collapsing_floor/collapsing_floor.tscn" id="31_3gp1u"]
 [ext_resource type="PackedScene" uid="uid://b0g7n831jais4" path="res://scenes/concentric_squares/concentric_squares.tscn" id="31_07dy8"]
 [ext_resource type="PackedScene" uid="uid://ctd2t8xf41xrg" path="res://dev/dash_ruler/dash_ruler.tscn" id="32_3gp1u"]
+[ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/wip_enemy/wip_enemy.tscn" id="33_igeo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
 size = Vector2(698, 73)
@@ -67,7 +68,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." instance=ExtResource("1_x6ivy")]
-position = Vector2(610, -240)
+position = Vector2(-838, 101)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -463,5 +464,11 @@ position = Vector2(592, -240)
 
 [node name="DashRuler2" parent="." instance=ExtResource("32_3gp1u")]
 position = Vector2(624, -224)
+
+[node name="WipEnemy" parent="." instance=ExtResource("33_igeo0")]
+position = Vector2(-839, -46)
+
+[node name="WipEnemy2" parent="." instance=ExtResource("33_igeo0")]
+position = Vector2(-781, 35)
 
 [connection signal="unlocked" from="Wall/Door" to="Wall/Door/ConcentricSquares" method="kill"]

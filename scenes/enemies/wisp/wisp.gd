@@ -16,6 +16,7 @@ var _elapsed_time := 0.0
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var obstacle_detector: Area2D = $ObstacleDetector
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:

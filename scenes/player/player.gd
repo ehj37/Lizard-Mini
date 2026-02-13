@@ -106,6 +106,11 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 	state_machine.transition_to("Hurt", {"amount": amount, "types": types, "direction": direction})
 
 
+# For enemies: can the player be reached in their current state.
+func in_reachable_state() -> bool:
+	return state_machine.current_state.name != "FallPit"
+
+
 func clear_burn() -> void:
 	if !_burning:
 		return
@@ -136,8 +141,11 @@ func get_movement_direction() -> Vector2:
 	return movement_vector.normalized()
 
 
-func _on_hitbox_sword_blood_drawn(_hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:
-	pass
+func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:
+	match hurtbox_owner_type:
+		Hitbox.HurtboxOwnerType.ENEMY:
+			EventBus.shake_camera.emit()
+			# TODO: Sound effect
 
 
 func _take_burn_damage() -> void:

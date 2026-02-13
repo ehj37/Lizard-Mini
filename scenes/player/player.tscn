@@ -283,38 +283,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("BurnParticlesBack:position")
 tracks/1/interp = 1
-tracks/1/loop_wrap = false
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [136, 137, 138, 139, 140, 141, 142, 143]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -13), Vector2(6, -3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BurnParticlesBack:position")
+tracks/2/path = NodePath("BurnParticlesFront:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -13), Vector2(6, -3)]
+"values": [Vector2(0, -11), Vector2(6, -3)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BurnParticlesFront:position")
+tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -11), Vector2(6, -3)]
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [136, 137, 138, 139, 140, 141, 142, 143]
 }
 
 [sub_resource type="Animation" id="Animation_ugbui"]
@@ -562,19 +562,19 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("BurnParticlesBack:position")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [148, 149, 150, 151, 152, 153, 154]
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -3), Vector2(0, -11)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BurnParticlesBack:position")
+tracks/1/path = NodePath("BurnParticlesFront:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -586,14 +586,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BurnParticlesFront:position")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(6, -3), Vector2(0, -11)]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [148, 149, 150, 151, 152, 153, 154]
 }
 
 [sub_resource type="Animation" id="Animation_qek5x"]
@@ -738,7 +738,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_fm80t"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -753,7 +753,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_iqsei"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -768,7 +768,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_007i1"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -783,7 +783,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_tffgl"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -798,7 +798,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_h17s1"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -813,7 +813,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_j4nxn"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -828,7 +828,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_je7p5"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -843,7 +843,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_uniwh"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -858,7 +858,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_cnsyf"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -873,7 +873,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_4hvnv"]
-length = 0.3
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -986,7 +986,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
-radius = 4.0
+radius = 3.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
 radius = 5.0
@@ -1000,7 +1000,8 @@ radius = 6.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4224
-collision_mask = 257
+collision_mask = 273
+platform_floor_layers = 4278190080
 script = ExtResource("1_8afob")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -1105,7 +1106,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/player/player.aseprite",
 "source_uid": 439575620103134135
 }
-metadata/_aseprite_wizard_source_file_hash_ = "6e5bd0ef7acdf9758003ffbc8357bf4e"
+metadata/_aseprite_wizard_source_file_hash_ = "26663a94c81fcaf2d7b67d0f8c2e6f83"
 
 [node name="Silhouette" type="Sprite2D" parent="Sprite2D"]
 visible = false
