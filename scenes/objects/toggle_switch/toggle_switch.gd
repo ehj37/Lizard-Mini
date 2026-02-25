@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-const TIME_BETWEEN_TOGGLES := 0.75
-const GLYPH_COLOR_TWEEN_DURATION := 0.5
-const GLYPHS_ENABLED_COLOR := ColorsOfLizard.FIRE_CYAN
-const GLYPHS_DISABLED_COLOR := Color("01262a")
+const TIME_BETWEEN_TOGGLES: float = 0.75
+const GLYPH_COLOR_TWEEN_DURATION: float = 0.5
+const GLYPHS_ENABLED_COLOR: Color = ColorsOfLizard.FIRE_CYAN
+const GLYPHS_DISABLED_COLOR: Color = Color("01262a")
 
 @export var toggled_on: bool
 @export var toggleable_elements: Array[Node2D]
@@ -33,7 +33,7 @@ func _ready() -> void:
 		animation_player.play("off")
 		sprite_glyphs.modulate = GLYPHS_DISABLED_COLOR
 
-	for toggleable_element in toggleable_elements:
+	for toggleable_element: Node2D in toggleable_elements:
 		assert(toggleable_element.has_method("enable"), "Toggleable element must implement enable")
 		assert(
 			toggleable_element.has_method("disable"), "Toggleable element must implement disable"
@@ -43,13 +43,13 @@ func _ready() -> void:
 
 
 func _toggle() -> void:
-	for toggleable_element in toggleable_elements:
+	for toggleable_element: Node2D in toggleable_elements:
 		if toggled_on:
 			# We check that disable is implemented in _ready
 			@warning_ignore("unsafe_method_access")
 			toggleable_element.disable()
 			animation_player.play("disable")
-			var glyphs_tween := get_tree().create_tween()
+			var glyphs_tween: Tween = get_tree().create_tween()
 			glyphs_tween.tween_property(
 				sprite_glyphs, "modulate", GLYPHS_DISABLED_COLOR, GLYPH_COLOR_TWEEN_DURATION
 			)
@@ -58,7 +58,7 @@ func _toggle() -> void:
 			@warning_ignore("unsafe_method_access")
 			toggleable_element.enable()
 			animation_player.play("enable")
-			var glyphs_tween := get_tree().create_tween()
+			var glyphs_tween: Tween = get_tree().create_tween()
 			glyphs_tween.tween_property(
 				sprite_glyphs, "modulate", GLYPHS_ENABLED_COLOR, GLYPH_COLOR_TWEEN_DURATION
 			)

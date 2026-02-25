@@ -1,8 +1,8 @@
 extends WipEnemyState
 
-const ATTACK_LUNGE_SPEED = 300.0
-const ATTACK_LUNGE_DURATION = 0.2
-const DECELERATION_START = 0.1
+const ATTACK_LUNGE_SPEED: float = 300.0
+const ATTACK_LUNGE_DURATION: float = 0.2
+const DECELERATION_START: float = 0.1
 
 var _direction: Vector2
 var _deceleration_tween: Tween
@@ -12,7 +12,7 @@ func update(_delta: float) -> void:
 	wip_enemy.velocity = _direction * ATTACK_LUNGE_SPEED
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	wip_enemy.collision_shape.set_deferred("disabled", true)
 	wip_enemy.hitbox_ground.enable()
 
@@ -36,7 +36,7 @@ func _on_deceleration_start_timer_timeout() -> void:
 	if state_machine.current_state != self:
 		return
 
-	var deceleration_time := ATTACK_LUNGE_DURATION - DECELERATION_START
+	var deceleration_time: float = ATTACK_LUNGE_DURATION - DECELERATION_START
 	_deceleration_tween = get_tree().create_tween()
 	_deceleration_tween.tween_property(wip_enemy, "velocity", Vector2.ZERO, deceleration_time)
 

@@ -4,7 +4,7 @@ extends Area2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	for enemy in enemies:
+	for enemy: Enemy in enemies:
 		if is_instance_valid(enemy):
 			enemy.alert()
 

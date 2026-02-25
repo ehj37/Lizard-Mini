@@ -1,12 +1,12 @@
 extends PlayerState
 
-const HURT_MOVE_SPEED := 30.0
-const ATTACK_QUEUE_WINDOW_START := 0.06
+const HURT_MOVE_SPEED: float = 30.0
+const ATTACK_QUEUE_WINDOW_START: float = 0.06
 
-var _in_attack_queue_window := false
-var _attack_queued := false
+var _in_attack_queue_window: bool = false
+var _attack_queued: bool = false
 
-@onready var animation_map := {
+@onready var animation_map: Dictionary = {
 	Vector2.UP.angle(): "hurt_up",
 	Vector2.RIGHT.angle(): "hurt_right",
 	Vector2.DOWN.angle(): "hurt_down",
@@ -15,7 +15,7 @@ var _attack_queued := false
 
 
 func update(_delta: float) -> void:
-	var movement_dir := player.get_movement_direction()
+	var movement_dir: Vector2 = player.get_movement_direction()
 
 	if movement_dir != Vector2.ZERO:
 		player.sprite.flip_h = movement_dir.x < 0
@@ -45,7 +45,7 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	HitStopManager.hit_stop()
 
 	var damage_types: Array[Hitbox.DamageType] = data.get("types")
@@ -56,7 +56,7 @@ func enter(data := {}) -> void:
 
 	player.velocity = Vector2.ZERO
 
-	var animation := _get_animation(player.orientation)
+	var animation: String = _get_animation(player.orientation)
 	animation_player.play(animation)
 
 	if player.orientation.x < 0:

@@ -2,11 +2,11 @@ class_name Wisp
 
 extends Enemy
 
-const OSCILLATION_FREQUENCY := 4.0
-const OSCILLATION_AMPLITUDE := 3.0
+const OSCILLATION_FREQUENCY: float = 4.0
+const OSCILLATION_AMPLITUDE: float = 3.0
 
-var oscillating := false
-var _elapsed_time := 0.0
+var oscillating: bool = false
+var _elapsed_time: float = 0.0
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var offset_container: Node2D = $OffsetContainer

@@ -1,7 +1,7 @@
 extends PlayerState
 
-const INITIAL_SPEED := 120.0
-const DECELERATION := 350.0
+const INITIAL_SPEED: float = 120.0
+const DECELERATION: float = 350.0
 
 var _current_velocity: Vector2
 
@@ -14,7 +14,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Rise")
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	player.sprite_shadow.visible = false
 	var damage_direction: Vector2 = data.get("damage_direction")
 	# Set orientation to left or right because the player transitions to idle

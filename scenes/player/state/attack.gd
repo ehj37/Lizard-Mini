@@ -2,41 +2,41 @@ extends PlayerState
 
 enum SwingDirection {}
 
-const INITIAL_LUNGE_SPEED := 80.0
-const LUNGE_DECELERATION := 350.0
-const MAX_COMBO_NUM := 2
-const PITCH_MULTIPLIER_PER_ATTACK := 0.03
+const INITIAL_LUNGE_SPEED: float = 80.0
+const LUNGE_DECELERATION: float = 350.0
+const MAX_COMBO_NUM: int = 2
+const PITCH_MULTIPLIER_PER_ATTACK: float = 0.03
 # TIMINGS
-const POLYGON_ENABLE_TIME := 0.05
-const POLYGON_DISABLE_TIME := 0.15
-const COMBO_WINDOW_START := 0.225
+const POLYGON_ENABLE_TIME: float = 0.05
+const POLYGON_DISABLE_TIME: float = 0.15
+const COMBO_WINDOW_START: float = 0.225
 # DIRECTIONS
-const DIR_UR := Vector2(1, -1)
-const DIR_DR := Vector2(1, 1)
-const DIR_DL := Vector2(-1, 1)
-const DIR_UL := Vector2(-1, -1)
+const DIR_UR: Vector2 = Vector2(1, -1)
+const DIR_DR: Vector2 = Vector2(1, 1)
+const DIR_DL: Vector2 = Vector2(-1, 1)
+const DIR_UL: Vector2 = Vector2(-1, -1)
 const ATTACK_DIRECTIONS: Array[Vector2] = [
 	Vector2.UP, DIR_UR, Vector2.RIGHT, DIR_DR, Vector2.DOWN, DIR_DL, Vector2.LEFT, DIR_UL
 ]
 # ANIMATIONS
-const ANIMATION_U_1 := "swing_up_1"
-const ANIMATION_U_2 := "swing_up_2"
-const ANIMATION_UR_1 := "swing_up_right_1"
-const ANIMATION_UR_2 := "swing_up_right_2"
-const ANIMATION_R_1 := "swing_right_1"
-const ANIMATION_R_2 := "swing_right_2"
-const ANIMATION_DR_1 := "swing_down_right_1"
-const ANIMATION_DR_2 := "swing_down_right_2"
-const ANIMATION_D_1 := "swing_down_1"
-const ANIMATION_D_2 := "swing_down_2"
+const ANIMATION_U_1: String = "swing_up_1"
+const ANIMATION_U_2: String = "swing_up_2"
+const ANIMATION_UR_1: String = "swing_up_right_1"
+const ANIMATION_UR_2: String = "swing_up_right_2"
+const ANIMATION_R_1: String = "swing_right_1"
+const ANIMATION_R_2: String = "swing_right_2"
+const ANIMATION_DR_1: String = "swing_down_right_1"
+const ANIMATION_DR_2: String = "swing_down_right_2"
+const ANIMATION_D_1: String = "swing_down_1"
+const ANIMATION_D_2: String = "swing_down_2"
 
 var _lunge_dir: Vector2
-var _speed := 0.0
-var _can_combo := false
+var _speed: float = 0.0
+var _can_combo: bool = false
 var _combo_num: int
 
 @onready var animation_to_collision_polygon: Dictionary
-@onready var combo_1_animation_map := {
+@onready var combo_1_animation_map: Dictionary = {
 	Vector2.UP.angle(): ANIMATION_U_1,
 	Vector2(1, -1).angle(): ANIMATION_UR_1,
 	Vector2.RIGHT.angle(): ANIMATION_R_1,
@@ -46,7 +46,7 @@ var _combo_num: int
 	Vector2.LEFT.angle(): ANIMATION_R_1,
 	Vector2(-1, -1).angle(): ANIMATION_UR_1
 }
-@onready var combo_2_animation_map := {
+@onready var combo_2_animation_map: Dictionary = {
 	Vector2.UP.angle(): ANIMATION_U_2,
 	Vector2(1, -1).angle(): ANIMATION_UR_2,
 	Vector2.RIGHT.angle(): ANIMATION_R_2,
@@ -99,10 +99,10 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	player.hitbox_sword.disabled = false
 
-	var movement_direction := player.get_movement_direction()
+	var movement_direction: Vector2 = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		_lunge_dir = movement_direction
 		player.orientation = movement_direction
@@ -110,8 +110,8 @@ func enter(data := {}) -> void:
 		_lunge_dir = player.orientation
 
 	_combo_num = data.get("combo_num", 0)
-	var animation := _get_animation(_lunge_dir, _combo_num)
-	var pitch_multiplier := 1.0 + _combo_num * PITCH_MULTIPLIER_PER_ATTACK
+	var animation: String = _get_animation(_lunge_dir, _combo_num)
+	var pitch_multiplier: float = 1.0 + _combo_num * PITCH_MULTIPLIER_PER_ATTACK
 	animation_player.play(animation)
 	AudioManager.play_effect_at(
 		player.global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_SWING, pitch_multiplier
@@ -153,7 +153,7 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 	if dir == Vector2.ZERO:
 		dir = Vector2.RIGHT
 
-	var angle := dir.angle()
+	var angle: float = dir.angle()
 	if combo_num == 1:
 		return AnimationPicker.pick_animation(combo_2_animation_map, angle)
 

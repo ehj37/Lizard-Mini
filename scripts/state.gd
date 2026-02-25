@@ -13,7 +13,7 @@ func update(_delta: float) -> void:
 	pass
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	pass
 
 

@@ -1,7 +1,7 @@
 extends WispState
 
-const ALERT_TIME := 0.35
-const TARGET_COLOR := ColorsOfLizard.RAGE
+const ALERT_TIME: float = 0.35
+const TARGET_COLOR: Color = ColorsOfLizard.RAGE
 
 var _color: Color
 var _color_tween: Tween
@@ -25,7 +25,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Pursue")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	var process_material: ParticleProcessMaterial = wisp.fire_small.process_material
 	_particle_color_ramp = process_material.color_ramp
 	_color = _particle_color_ramp.gradient.get_color(0)

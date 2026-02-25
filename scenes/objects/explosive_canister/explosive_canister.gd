@@ -2,7 +2,8 @@ extends StaticBody2D
 
 var _ambience_identifier: int
 
-@onready var explosion_resource := preload("./explosion/explosive_canister_explosion.tscn")
+@onready
+var explosion_resource: PackedScene = preload("./explosion/explosive_canister_explosion.tscn")
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_ground: Hurtbox = $HurtboxGround
 

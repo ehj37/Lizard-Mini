@@ -7,19 +7,19 @@ signal hurt
 const MOVEMENT_INPUTS: Array[String] = ["move_up", "move_right", "move_down", "move_left"]
 const VERTICAL_MOVEMENT_INPUTS: Array[String] = ["move_up", "move_down"]
 const HORIZONTAL_MOVEMENT_INPUTS: Array[String] = ["move_right", "move_left"]
-const MOVEMENT_INPUT_TO_DIR := {
+const MOVEMENT_INPUT_TO_DIR: Dictionary = {
 	"move_up": Vector2.UP,
 	"move_right": Vector2.RIGHT,
 	"move_down": Vector2.DOWN,
 	"move_left": Vector2.LEFT
 }
-const MAX_BURNS := 3
+const MAX_BURNS: int = 3
 
 var orientation: Vector2 = Vector2.ZERO
 var last_safe_global_position: Vector2
 var _pressed_movement_inputs: Array[String] = []
-var _burning := false
-var _times_burnt := 0
+var _burning: bool = false
+var _times_burnt: int = 0
 
 @onready var burn_particles_back: GPUParticles2D = $BurnParticlesBack
 @onready var sprite: Sprite2D = $Sprite2D
@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	for movement_input in MOVEMENT_INPUTS:
+	for movement_input: String in MOVEMENT_INPUTS:
 		if Input.is_action_pressed(movement_input):
 			if !_pressed_movement_inputs.has(movement_input):
 				_pressed_movement_inputs.append(movement_input)
@@ -98,7 +98,7 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 	# The player can get hurt in the fall and rise states, but they don't get
 	# transitioned to the hurt state from it.
 	# They just flash magenta, and continue with falling/getting up.
-	var current_state_name := state_machine.current_state.name
+	var current_state_name: String = state_machine.current_state.name
 	var state_exempt_from_hurt_transition: bool = ["Fall", "Rise"].has(current_state_name)
 	if state_exempt_from_hurt_transition:
 		return
@@ -123,19 +123,19 @@ func clear_burn() -> void:
 
 
 func get_movement_direction() -> Vector2:
-	var movement_vector := Vector2.ZERO
-	var vertical_movement_input_i := _pressed_movement_inputs.rfind_custom(
+	var movement_vector: Vector2 = Vector2.ZERO
+	var vertical_movement_input_i: int = _pressed_movement_inputs.rfind_custom(
 		func(movement_input: String) -> bool: return VERTICAL_MOVEMENT_INPUTS.has(movement_input)
 	)
-	var horizontal_movement_input_i := _pressed_movement_inputs.rfind_custom(
+	var horizontal_movement_input_i: int = _pressed_movement_inputs.rfind_custom(
 		func(movement_input: String) -> bool: return HORIZONTAL_MOVEMENT_INPUTS.has(movement_input)
 	)
 	if vertical_movement_input_i != -1:
-		var vertical_movement_input := _pressed_movement_inputs[vertical_movement_input_i]
+		var vertical_movement_input: String = _pressed_movement_inputs[vertical_movement_input_i]
 		movement_vector += MOVEMENT_INPUT_TO_DIR[vertical_movement_input]
 
 	if horizontal_movement_input_i != -1:
-		var horizontal_movement_input := _pressed_movement_inputs[horizontal_movement_input_i]
+		var horizontal_movement_input: String = _pressed_movement_inputs[horizontal_movement_input_i]
 		movement_vector += MOVEMENT_INPUT_TO_DIR[horizontal_movement_input]
 
 	return movement_vector.normalized()

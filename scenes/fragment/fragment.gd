@@ -2,13 +2,13 @@ class_name Fragment
 
 extends RigidBody2D
 
-const INITIAL_VERTICAL_SPEED := -50.0
-const GRAVITY := 575.0
+const INITIAL_VERTICAL_SPEED: float = -50.0
+const GRAVITY: float = 575.0
 
 var fragment_config: FragmentConfig
-var _vertical_speed := INITIAL_VERTICAL_SPEED
-var _falling_from_spawn := true
-var _falling_into_pit := false
+var _vertical_speed: float = INITIAL_VERTICAL_SPEED
+var _falling_from_spawn: bool = true
+var _falling_into_pit: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
@@ -22,7 +22,7 @@ func _ready() -> void:
 	sprite.region_rect.size.x = fragment_config.fragment_region_width
 	sprite.region_rect.size.y = fragment_config.fragment_region_height
 
-	var variant_number := randi_range(0, fragment_config.num_fragment_variants)
+	var variant_number: int = randi_range(0, fragment_config.num_fragment_variants)
 	sprite.region_rect.position.x = fragment_config.fragment_region_width * variant_number
 	sprite.rotation = randf_range(0, 2 * PI)
 
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 				_falling_into_pit = true
 				sprite.position.y = new_y
 
-			var scale_tween := get_tree().create_tween()
+			var scale_tween: Tween = get_tree().create_tween()
 			scale_tween.tween_property(sprite, "scale", Vector2.ZERO, 3.0)
 			scale_tween.finished.connect(queue_free)
 

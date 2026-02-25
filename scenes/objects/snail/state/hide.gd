@@ -1,7 +1,7 @@
 extends SnailState
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	snail.animation_player.play("hide")
 	snail.hide_timer.start()
 

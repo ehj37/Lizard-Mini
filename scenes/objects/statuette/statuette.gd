@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var dust_puff_resource := preload(
+@onready var dust_puff_resource: PackedScene = preload(
 	"res://scenes/objects/statuette/statuette_dust_puff/statuette_dust_puff.tscn"
 )
 @onready var sprite_statuette: Sprite2D = $SpriteStatuette

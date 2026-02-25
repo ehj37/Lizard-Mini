@@ -15,5 +15,5 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Alerted")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	wip_enemy.animation_player.play("idle")

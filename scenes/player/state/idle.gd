@@ -2,7 +2,7 @@ extends PlayerState
 
 @onready var impatient_timer: Timer = $ImpatientTimer
 @onready var sit_timer: Timer = $SitTimer
-@onready var animation_map := {
+@onready var animation_map: Dictionary = {
 	Vector2.UP.angle(): "idle_up",
 	Vector2.RIGHT.angle(): "idle_right",
 	Vector2.DOWN.angle(): "idle_down",
@@ -24,23 +24,23 @@ func update(_delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		var interact_area := InteractionManager.get_interact_area()
+		var interact_area: InteractArea = InteractionManager.get_interact_area()
 		if interact_area:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
 
-	var movement_direction := player.get_movement_direction()
+	var movement_direction: Vector2 = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		state_machine.transition_to("Run")
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	player.velocity = Vector2.ZERO
 
 	if player.ground_detector.current_status() == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
-	var animation := _get_animation(player.orientation)
+	var animation: String = _get_animation(player.orientation)
 	animation_player.play(animation)
 
 	player.sprite.flip_h = player.orientation.x < 0

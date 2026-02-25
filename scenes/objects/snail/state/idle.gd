@@ -6,5 +6,5 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Move")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	snail.animation_player.play("idle")

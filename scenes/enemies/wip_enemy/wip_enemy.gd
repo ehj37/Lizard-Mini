@@ -4,12 +4,12 @@ extends Enemy
 
 #const STEP_SPEED = 75.0
 
-const MAX_HEALTH = 3
+const MAX_HEALTH: int = 3
 
-@export var log_state_transitions := false
+@export var log_state_transitions: bool = false
 
 var _player: Player
-var _health := MAX_HEALTH
+var _health: int = MAX_HEALTH
 
 @onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
@@ -27,7 +27,7 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 	# To consider: burn?
 	# Probably not the best way of doing this since (from the other enemy's perspective)
 	# the attack will have landed (i.e. take_damage was called).
-	var relevant_damage_types := _types.filter(
+	var relevant_damage_types: Array[Hitbox.DamageType] = _types.filter(
 		func(type: Hitbox.DamageType) -> bool: return type != Hitbox.DamageType.ENEMY
 	)
 	if relevant_damage_types.is_empty():
@@ -48,8 +48,10 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if _player:
 		navigation_agent.target_position = _player.global_position
-		var next_path_position := navigation_agent.get_next_path_position()
-		var direction_to_next_path_position := global_position.direction_to(next_path_position)
+		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+		var direction_to_next_path_position: Vector2 = global_position.direction_to(
+			next_path_position
+		)
 		navigation_agent.set_velocity(
 			direction_to_next_path_position * WipEnemyStepState.STEP_SPEED
 		)

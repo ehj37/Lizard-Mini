@@ -3,7 +3,7 @@ class_name StateMachine
 extends Node
 
 @export var initial_state: State
-@export var log_state_transitions := false
+@export var log_state_transitions: bool = false
 
 var current_state: State
 var _states: Array[State] = []
@@ -22,18 +22,18 @@ func _ready() -> void:
 	current_state.enter({})
 
 
-func transition_to(state_name: String, data := {}) -> void:
+func transition_to(state_name: String, data: Dictionary = {}) -> void:
 	if log_state_transitions:
 		print("-----------")
 		print("Exiting: " + current_state.name)
 	current_state.exit()
 
-	var next_state_i := _states.find_custom(
+	var next_state_i: int = _states.find_custom(
 		func(state: State) -> bool: return state.name == state_name
 	)
 	assert(next_state_i != -1, "Cannot find state with name " + state_name)
 
-	var next_state := _states[next_state_i]
+	var next_state: State = _states[next_state_i]
 	current_state = next_state
 	if log_state_transitions:
 		print("Entering: " + current_state.name)

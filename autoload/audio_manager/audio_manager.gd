@@ -1,6 +1,6 @@
 extends Node2D
 
-const AUDIO_STREAM_PLAYER_MAX_DISTANCE := 500
+const AUDIO_STREAM_PLAYER_MAX_DISTANCE: float = 500
 
 @export var sound_effect_configs: Array[SoundEffectConfiguration]
 
@@ -41,21 +41,21 @@ func play_effect_at(
 				var oldest_audio_player: AudioStreamPlayer2D = audio_players_for_type.pop_front()
 				oldest_audio_player.queue_free()
 
-	var audio_player := AudioStreamPlayer2D.new()
+	var audio_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 	audio_player.max_distance = AUDIO_STREAM_PLAYER_MAX_DISTANCE
 	add_child(audio_player)
 	audio_player.global_position = global_pos
-	var audio_stream := config.audio_stream
+	var audio_stream: AudioStreamOggVorbis = config.audio_stream
 	if config.loop_audio:
 		audio_stream.loop = true
 	audio_player.stream = audio_stream
-	var start_time := 0.0
+	var start_time: float = 0.0
 	if config.random_start_time:
-		var stream_length := audio_player.stream.get_length()
+		var stream_length: float = audio_player.stream.get_length()
 		start_time = randf_range(0.0, stream_length)
 
-	var min_pitch_scale := 1.0 - config.pitch_variance
-	var max_pitch_scale := 1.0 + config.pitch_variance
+	var min_pitch_scale: float = 1.0 - config.pitch_variance
+	var max_pitch_scale: float = 1.0 + config.pitch_variance
 	audio_player.pitch_scale = pitch_multiplier * randf_range(min_pitch_scale, max_pitch_scale)
 	audio_player.finished.connect(func() -> void: audio_player.queue_free())
 	audio_player.play(start_time)
@@ -77,7 +77,7 @@ func cancel_audio(type: SoundEffectConfiguration.Type, identifier: int = -1) -> 
 
 		audio_players.clear()
 	else:
-		var kill_index := audio_players.find_custom(
+		var kill_index: int = audio_players.find_custom(
 			func(audio_player: AudioStreamPlayer2D) -> bool: return (
 				audio_player.get_instance_id() == identifier
 			)

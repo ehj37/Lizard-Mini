@@ -9,8 +9,8 @@ enum HurtboxOwnerType { UNCATEGORIZED, PLAYER, ENEMY }
 
 @export var damage_amount: int = 100
 @export var damage_types: Array[DamageType] = []
-@export var grounded := false
-@export var disabled := false
+@export var grounded: bool = false
+@export var disabled: bool = false
 
 
 func enable() -> void:

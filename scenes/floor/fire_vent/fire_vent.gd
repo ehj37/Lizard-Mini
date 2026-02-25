@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-const ENABLED_COLOR := Color("00a9b3")
-const DISABLED_COLOR := Color("01262a")
+const ENABLED_COLOR: Color = Color("00a9b3")
+const DISABLED_COLOR: Color = Color("01262a")
 
 var _ambience_identifier: int
 

@@ -1,9 +1,9 @@
 extends PlayerState
 
 var _interact_area: InteractArea
-var _interaction_complete := false
+var _interaction_complete: bool = false
 
-@onready var animation_map := {
+@onready var animation_map: Dictionary = {
 	Vector2.UP.angle(): "interact_up",
 	Vector2.RIGHT.angle(): "interact_right",
 	Vector2.DOWN.angle(): "interact_down",
@@ -13,7 +13,7 @@ var _interaction_complete := false
 
 func update(delta: float) -> void:
 	if !Input.is_action_pressed("interact") || _interaction_complete:
-		var movement_direction := player.get_movement_direction()
+		var movement_direction: Vector2 = player.get_movement_direction()
 		if movement_direction != Vector2.ZERO:
 			state_machine.transition_to("Run")
 		else:
@@ -23,7 +23,7 @@ func update(delta: float) -> void:
 	_interact_area.interact(delta)
 
 
-func enter(msg := {}) -> void:
+func enter(msg: Dictionary = {}) -> void:
 	_interact_area = msg.get("interact_area")
 	_interaction_complete = false
 	_interact_area.interaction_complete.connect(func() -> void: _interaction_complete = true)

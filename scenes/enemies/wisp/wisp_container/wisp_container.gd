@@ -2,7 +2,7 @@ class_name WispContainer
 
 extends StaticBody2D
 
-var popped := false
+var popped: bool = false
 
 @onready var wisp: Wisp = $Wisp
 @onready var sprite_back: Sprite2D = $SpriteBack
@@ -13,7 +13,7 @@ var popped := false
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
 
 
-func shatter(direction := Vector2.ZERO) -> void:
+func shatter(direction: Vector2 = Vector2.ZERO) -> void:
 	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.WISP_CONTAINER_BREAK)
 
 	popped = true

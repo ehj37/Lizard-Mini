@@ -6,5 +6,5 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Decide")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	wip_enemy.animation_player.play("alerted")

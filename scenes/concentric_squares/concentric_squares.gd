@@ -1,18 +1,18 @@
 extends Node2D
 
-const DELAY_BETWEEN_SQUARES = 0.6
-const DELAY_BETWEEN_WAVES = 1.0
-const KILL_TIME = 0.3
+const DELAY_BETWEEN_SQUARES: float = 0.6
+const DELAY_BETWEEN_WAVES: float = 1.0
+const KILL_TIME: float = 0.3
 
-@export var num_squares := 4
+@export var num_squares: int = 4
 
 var _squares: Array[SingleSquare] = []
 
-@onready var single_square_resource := preload("./single_square/single_square.tscn")
+@onready var single_square_resource: PackedScene = preload("./single_square/single_square.tscn")
 
 
 func _ready() -> void:
-	for i in num_squares:
+	for i: int in num_squares:
 		var square: SingleSquare = single_square_resource.instantiate()
 		add_child(square)
 		_squares.append(square)
@@ -21,11 +21,11 @@ func _ready() -> void:
 
 
 func _wave() -> void:
-	for i in _squares.size():
+	for i: int in _squares.size():
 		if i > 0:
 			await get_tree().create_timer(DELAY_BETWEEN_SQUARES).timeout
 
-		var square := _squares[i]
+		var square: SingleSquare = _squares[i]
 		square.expand()
 
 	var last_square: SingleSquare = _squares.back()
@@ -37,7 +37,7 @@ func _wave() -> void:
 
 
 func kill() -> void:
-	var alpha_tween := get_tree().create_tween()
+	var alpha_tween: Tween = get_tree().create_tween()
 	alpha_tween.tween_property(self, "modulate", Color.TRANSPARENT, KILL_TIME)
 	await alpha_tween.finished
 

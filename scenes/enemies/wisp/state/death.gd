@@ -1,13 +1,14 @@
 extends WispState
 
-@onready var death_particle_burst_resource := preload(
+@onready var death_particle_burst_resource: PackedScene = preload(
 	"res://scenes/enemies/wisp/death_particle_burst/death_particle_burst.tscn"
 )
-@onready
-var death_smoke_resource := preload("res://scenes/enemies/wisp/death_smoke/death_smoke.tscn")
+@onready var death_smoke_resource: PackedScene = preload(
+	"res://scenes/enemies/wisp/death_smoke/death_smoke.tscn"
+)
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	wisp.velocity = Vector2.ZERO
 	wisp.hitbox.disable()
 	wisp.hurtbox.disable()
@@ -19,12 +20,12 @@ func enter(_data := {}) -> void:
 
 	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
 
-	var lifetime := wisp.fire_small.lifetime
+	var lifetime: float = wisp.fire_small.lifetime
 
-	var shadow_mod_tween := get_tree().create_tween()
+	var shadow_mod_tween: Tween = get_tree().create_tween()
 	shadow_mod_tween.tween_property(wisp.sprite_shadow, "modulate", Color.TRANSPARENT, lifetime / 3)
 
-	var sprite_mod_tween := get_tree().create_tween()
+	var sprite_mod_tween: Tween = get_tree().create_tween()
 	sprite_mod_tween.tween_property(wisp.sprite, "modulate", Color.TRANSPARENT, lifetime / 3)
 
 	wisp.fire_small.emitting = false

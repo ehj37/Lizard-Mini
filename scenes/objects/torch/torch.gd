@@ -2,7 +2,7 @@
 
 extends StaticBody2D
 
-@export var flame_on := true:
+@export var flame_on: bool = true:
 	set(new_flame_on):
 		flame_on = new_flame_on
 		if Engine.is_editor_hint() && is_node_ready():

@@ -1,12 +1,12 @@
 extends WipEnemyState
 
-const BASE_PAUSE_DURATION = 0.6
-const PAUSE_DURATION_VARIANCE = 0.2
+const BASE_PAUSE_DURATION: float = 0.6
+const PAUSE_DURATION_VARIANCE: float = 0.2
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	wip_enemy.velocity = Vector2.ZERO
-	var pause_duration := randf_range(
+	var pause_duration: float = randf_range(
 		BASE_PAUSE_DURATION - PAUSE_DURATION_VARIANCE, BASE_PAUSE_DURATION + PAUSE_DURATION_VARIANCE
 	)
 	get_tree().create_timer(pause_duration).timeout.connect(_on_pause_timer_timeout)

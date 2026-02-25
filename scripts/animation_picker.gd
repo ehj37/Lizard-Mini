@@ -11,10 +11,10 @@ extends Node
 # animation is chosen
 static func pick_animation(animation_map: Dictionary, angle: float) -> String:
 	var animation: String
-	var closest_angle := INF
-	var closest_angle_diff_magnitude := INF
+	var closest_angle: float = INF
+	var closest_angle_diff_magnitude: float = INF
 	for animation_angle: float in animation_map:
-		var angle_diff_magnitude := absf(angle_difference(animation_angle, angle))
+		var angle_diff_magnitude: float = absf(angle_difference(animation_angle, angle))
 		if is_equal_approx(angle_diff_magnitude, closest_angle_diff_magnitude):
 			if (
 				absf(Vector2.from_angle(animation_angle).x)

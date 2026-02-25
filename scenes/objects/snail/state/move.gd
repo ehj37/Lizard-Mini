@@ -2,9 +2,9 @@ extends SnailState
 
 enum MoveDirection { LEFT, RIGHT }
 
-const MOVE_RADIUS := 4
+const MOVE_RADIUS: int = 4
 
-var direction := MoveDirection.RIGHT
+var direction: MoveDirection = MoveDirection.RIGHT
 
 
 func update(_delta: float) -> void:
@@ -12,12 +12,12 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	snail.animation_player.play("move")
 
 
 func _move() -> void:
-	var movement := snail.global_position.x - snail.initial_x
+	var movement: float = snail.global_position.x - snail.initial_x
 	match direction:
 		MoveDirection.LEFT:
 			if movement > -MOVE_RADIUS:

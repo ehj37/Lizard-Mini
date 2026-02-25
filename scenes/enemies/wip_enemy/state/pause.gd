@@ -1,10 +1,10 @@
 extends WipEnemyState
 
-const ATTACK_RANGE = 40
+const ATTACK_RANGE: int = 40
 
 
-func enter(_data := {}) -> void:
-	var player_in_range := (
+func enter(_data: Dictionary = {}) -> void:
+	var player_in_range: bool = (
 		wip_enemy.global_position.distance_to(player.global_position) < ATTACK_RANGE
 	)
 	if player_in_range && player.in_reachable_state():

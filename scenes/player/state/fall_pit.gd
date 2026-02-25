@@ -11,7 +11,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	player.velocity = Vector2.ZERO
 	player.clear_burn()
 

@@ -1,12 +1,12 @@
 extends Area2D
 
-const TIME_BETWEEN_BREAKS := 1.2
+const TIME_BETWEEN_BREAKS: float = 1.2
 
 var wisp_containers: Array[WispContainer]
 
 
 func _ready() -> void:
-	for child in get_children():
+	for child: Node in get_children():
 		if child is WispContainer:
 			wisp_containers.append(child)
 

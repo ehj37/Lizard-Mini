@@ -2,10 +2,10 @@ class_name ProgressIndicator
 
 extends Node2D
 
-const OSC_FREQUENCY := 2.0
-const OSC_AMPLITUDE := 2.0
+const OSC_FREQUENCY: float = 2.0
+const OSC_AMPLITUDE: float = 2.0
 
-var _undulate_time := 0.0
+var _undulate_time: float = 0.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sine_movement_container: Node2D = $SineMovementContainer

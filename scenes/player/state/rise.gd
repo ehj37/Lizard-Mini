@@ -6,7 +6,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	animation_player.play("rise_right")
 
 

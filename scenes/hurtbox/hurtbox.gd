@@ -4,14 +4,14 @@ extends Area2D
 
 # If the hurtbox's owner has been damaged by a hitbox, the amount of time before
 # the hitbox can hurt the hurtbox's owner again.
-@export var repetitive_hitbox_damage_cooldown := 0.0
-@export var self_damage_disabled := true
-@export var grounded := false
+@export var repetitive_hitbox_damage_cooldown: float = 0.0
+@export var self_damage_disabled: bool = true
+@export var grounded: bool = false
 # A fragile hurtbox will cause damage to be taken even if the intersecting
 # hitbox imparts 0 damage.
 # E.g. the player dash won't hurt an enemy, but might break some pottery.
-@export var fragile := false
-@export var disabled := false
+@export var fragile: bool = false
+@export var disabled: bool = false
 
 var _overlapping_hitboxes: Array[Hitbox] = []
 var _hitbox_instance_ids_on_cooldown: Array[int] = []
@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 	if disabled:
 		return
 
-	for hitbox in _overlapping_hitboxes:
+	for hitbox: Hitbox in _overlapping_hitboxes:
 		if hitbox.disabled:
 			continue
 
@@ -49,7 +49,9 @@ func _process(_delta: float) -> void:
 		if hitbox.damage_amount <= 0 && !fragile:
 			continue
 
-		var hitbox_on_cooldown := _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
+		var hitbox_on_cooldown: bool = _hitbox_instance_ids_on_cooldown.has(
+			hitbox.get_instance_id()
+		)
 		if hitbox_on_cooldown:
 			continue
 
@@ -63,7 +65,7 @@ func _process(_delta: float) -> void:
 
 
 func _add_cooldown_for(hitbox: Hitbox) -> void:
-	var hitbox_instance_id := hitbox.get_instance_id()
+	var hitbox_instance_id: int = hitbox.get_instance_id()
 	_hitbox_instance_ids_on_cooldown.append(hitbox_instance_id)
 	await get_tree().create_timer(repetitive_hitbox_damage_cooldown).timeout
 

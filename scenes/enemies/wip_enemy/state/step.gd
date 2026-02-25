@@ -2,14 +2,14 @@ class_name WipEnemyStepState
 
 extends WipEnemyState
 
-const STEP_DURATION = 0.3
-const STEP_SPEED = 125.0
-const STEP_ANGLE_MAX_OFFSET_MAGNITUDE = PI / 8
+const STEP_DURATION: float = 0.3
+const STEP_SPEED: float = 125.0
+const STEP_ANGLE_MAX_OFFSET_MAGNITUDE: float = PI / 8
 
 var _safe_velocity: Vector2
 var _speed: float
 
-var _angle_sign := -1
+var _angle_sign: int = -1
 
 
 func physics_update(_delta: float) -> void:
@@ -23,7 +23,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Fall")
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	_speed = STEP_SPEED
 	get_tree().create_tween().tween_property(self, "_speed", 0, STEP_DURATION)
 

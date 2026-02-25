@@ -4,21 +4,21 @@ class_name CameraLockArea
 
 extends Area2D
 
-const COLOR_RECT_A := 0.05
-const COLOR_X_ONLY := Color.RED
-const COLOR_Y_ONLY := Color.GREEN
-const COLOR_X_AND_Y := Color.PURPLE
-const COLOR_NEITHER_X_OR_Y := Color.YELLOW
+const COLOR_RECT_A: float = 0.05
+const COLOR_X_ONLY: Color = Color.RED
+const COLOR_Y_ONLY: Color = Color.GREEN
+const COLOR_X_AND_Y: Color = Color.PURPLE
+const COLOR_NEITHER_X_OR_Y: Color = Color.YELLOW
 
 @export var player_camera: PlayerCamera
 
-@export var lock_x := true:
+@export var lock_x: bool = true:
 	set(new_lock_x):
 		lock_x = new_lock_x
 		if Engine.is_editor_hint() && is_node_ready():
 			_set_color()
 
-@export var lock_y := true:
+@export var lock_y: bool = true:
 	set(new_lock_y):
 		lock_y = new_lock_y
 		if Engine.is_editor_hint() && is_node_ready():

@@ -2,17 +2,17 @@ class_name PlayerDashState
 
 extends PlayerState
 
-const DASH_SPEED := 400.0
-const MOVEMENT_DURATION := 0.18
+const DASH_SPEED: float = 400.0
+const MOVEMENT_DURATION: float = 0.18
 # If the movement window concludes and the player is still over a pit, then
 # they get a few extra milliseconds of movement to see if that'll put them on
 # dry land.
-const MOVEMENT_EXTENSION_DURATION := 0.04
-const CHAIN_ATTACK_WINDOW_START := 0.25
-const CHAIN_DASH_WINDOW_START := 0.3
+const MOVEMENT_EXTENSION_DURATION: float = 0.04
+const CHAIN_ATTACK_WINDOW_START: float = 0.25
+const CHAIN_DASH_WINDOW_START: float = 0.3
 # SOUND EFFECT CONSTANTS
-const PITCH_MULTIPLIER_PER_DASH := 0.05
-const MAX_PITCH_MULTIPLIER := 1.2
+const PITCH_MULTIPLIER_PER_DASH: float = 0.05
+const MAX_PITCH_MULTIPLIER: float = 1.2
 
 var _dash_direction: Vector2
 var _dash_num: int
@@ -22,9 +22,10 @@ var _in_chain_attack_window: bool
 var _in_chain_dash_window: bool
 var _dash_attempted_before_dash_window: bool
 
-@onready var dash_ghost_resource := preload("res://scenes/player/dash_ghost/dash_ghost.tscn")
+@onready
+var dash_ghost_resource: PackedScene = preload("res://scenes/player/dash_ghost/dash_ghost.tscn")
 @onready var ghost_timer: Timer = $GhostTimer
-@onready var animation_map := {
+@onready var animation_map: Dictionary = {
 	Vector2.UP.angle(): "dash_up",
 	Vector2.RIGHT.angle(): "dash_right",
 	Vector2.DOWN.angle(): "dash_down",
@@ -59,7 +60,7 @@ func update(_delta: float) -> void:
 	if animation_player.is_playing():
 		return
 
-	var movement_dir := player.get_movement_direction()
+	var movement_dir: Vector2 = player.get_movement_direction()
 	if movement_dir != Vector2.ZERO:
 		state_machine.transition_to("Run")
 		return
@@ -67,11 +68,11 @@ func update(_delta: float) -> void:
 	state_machine.transition_to("Idle")
 
 
-func enter(data := {}) -> void:
+func enter(data: Dictionary = {}) -> void:
 	if player.ground_detector.current_status() == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
-	var movement_dir := player.get_movement_direction()
+	var movement_dir: Vector2 = player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
 		if player.orientation == Vector2.ZERO:
 			_dash_direction = Vector2.RIGHT
@@ -95,13 +96,15 @@ func enter(data := {}) -> void:
 	player.sprite.flip_h = _dash_direction.x < 0
 	player.orientation = _dash_direction
 
-	var animation := _get_animation(_dash_direction)
+	var animation: String = _get_animation(_dash_direction)
 	animation_player.play(animation)
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
 
 	_dash_num = data.get("dash_num", 0)
-	var pitch_multiplier := minf(1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER)
+	var pitch_multiplier: float = minf(
+		1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER
+	)
 	AudioManager.play_effect_at(
 		player.global_position, SoundEffectConfiguration.Type.PLAYER_DASH, pitch_multiplier
 	)

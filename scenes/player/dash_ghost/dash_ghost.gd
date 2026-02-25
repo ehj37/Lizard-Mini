@@ -2,15 +2,15 @@ class_name PlayerDashGhost
 
 extends Node2D
 
-const INITIAL_SPEED := 50.0
-const DECELERATION := 100.0
+const INITIAL_SPEED: float = 50.0
+const DECELERATION: float = 100.0
 
 var direction: Vector2
 var animation: String
 var flip_h: bool
 var _current_speed: float
 
-@onready var ground_effect_resource := preload("./ground_effect/ground_effect.tscn")
+@onready var ground_effect_resource: PackedScene = preload("./ground_effect/ground_effect.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -30,15 +30,15 @@ func _ready() -> void:
 	animation_player.play(animation)
 	sprite.flip_h = flip_h
 
-	var fuchsia_tween := get_tree().create_tween()
+	var fuchsia_tween: Tween = get_tree().create_tween()
 	fuchsia_tween.tween_property(self, "modulate", Color.FUCHSIA, 0.1)
 	await fuchsia_tween.finished
 
-	var cyan_tween := get_tree().create_tween()
+	var cyan_tween: Tween = get_tree().create_tween()
 	cyan_tween.tween_property(self, "modulate", Color.CYAN, 0.1)
 	await cyan_tween.finished
 
-	var fuchsia_tween_2 := get_tree().create_tween()
+	var fuchsia_tween_2: Tween = get_tree().create_tween()
 	fuchsia_tween_2.tween_property(self, "modulate", Color.FUCHSIA, 0.1)
 	await fuchsia_tween_2.finished
 

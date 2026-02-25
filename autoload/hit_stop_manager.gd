@@ -1,6 +1,6 @@
 extends Node
 
-const HIT_STOP_DURATION := 0.15
+const HIT_STOP_DURATION: float = 0.15
 
 
 func hit_stop() -> void:

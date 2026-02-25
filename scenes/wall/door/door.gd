@@ -4,12 +4,12 @@ extends StaticBody2D
 
 signal unlocked
 
-const DOOR_LOWER_TIME := 1.5
-const BACKLIGHT_TWEEN_TIME := 0.2
-const LEFT_BACKLIGHT_LIT_UP_COLOR := ColorsOfLizard.FIRE_FUCHSIA
-const RIGHT_BACKLIGHT_LIT_UP_COLOR := ColorsOfLizard.FIRE_CYAN
+const DOOR_LOWER_TIME: float = 1.5
+const BACKLIGHT_TWEEN_TIME: float = 0.2
+const LEFT_BACKLIGHT_LIT_UP_COLOR: Color = ColorsOfLizard.FIRE_FUCHSIA
+const RIGHT_BACKLIGHT_LIT_UP_COLOR: Color = ColorsOfLizard.FIRE_CYAN
 
-@onready var dust_cloud_resource := preload("./door_dust_cloud/door_dust_cloud.tscn")
+@onready var dust_cloud_resource: PackedScene = preload("./door_dust_cloud/door_dust_cloud.tscn")
 @onready var door_visuals: Node2D = $ColorRect/DoorVisuals
 @onready var left_backlight: ColorRect = $ColorRect/DoorVisuals/LeftBacklight
 @onready var right_backlight: ColorRect = $ColorRect/DoorVisuals/RightBacklight
@@ -38,17 +38,17 @@ func _unlock() -> void:
 	left_dust_cloud.global_position = left_dust_spawn.global_position
 	LevelManager.current_level.add_child(left_dust_cloud)
 
-	var left_backlight_tween := get_tree().create_tween()
+	var left_backlight_tween: Tween = get_tree().create_tween()
 	left_backlight_tween.tween_property(
 		left_backlight, "color", LEFT_BACKLIGHT_LIT_UP_COLOR, BACKLIGHT_TWEEN_TIME
 	)
 
-	var right_backlight_tween := get_tree().create_tween()
+	var right_backlight_tween: Tween = get_tree().create_tween()
 	right_backlight_tween.tween_property(
 		right_backlight, "color", RIGHT_BACKLIGHT_LIT_UP_COLOR, BACKLIGHT_TWEEN_TIME
 	)
 
-	var door_visuals_pos_tween := get_tree().create_tween()
+	var door_visuals_pos_tween: Tween = get_tree().create_tween()
 	(
 		door_visuals_pos_tween
 		. tween_property(door_visuals, "position:y", 54, DOOR_LOWER_TIME)

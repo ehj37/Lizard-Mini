@@ -6,12 +6,14 @@ signal interaction_complete
 
 enum InteractionLength { SHORT, MEDIUM }
 
-const INTERACTION_LENGTH_DURATIONS := {InteractionLength.SHORT: 1.0, InteractionLength.MEDIUM: 2.0}
+const INTERACTION_LENGTH_DURATIONS: Dictionary = {
+	InteractionLength.SHORT: 1.0, InteractionLength.MEDIUM: 2.0
+}
 
-@export var interaction_length := InteractionLength.MEDIUM
+@export var interaction_length: InteractionLength = InteractionLength.MEDIUM
 @export var progress_indicator: ProgressIndicator
 
-var _completion_progress := 0.0
+var _completion_progress: float = 0.0
 
 
 func interact(delta: float) -> void:
@@ -20,7 +22,7 @@ func interact(delta: float) -> void:
 
 	var completion_time: float = INTERACTION_LENGTH_DURATIONS[interaction_length]
 	_completion_progress = min(_completion_progress + delta, completion_time)
-	var completion_percentage := _completion_progress / completion_time
+	var completion_percentage: float = _completion_progress / completion_time
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()

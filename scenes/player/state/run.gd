@@ -1,17 +1,17 @@
 extends PlayerState
 
-const MAX_MOVE_SPEED := 80.0
-const MOVE_ACCELERATION := 360.0
-const FOOTSTEP_PITCH_VARIANCE := 0.1
+const MAX_MOVE_SPEED: float = 80.0
+const MOVE_ACCELERATION: float = 360.0
+const FOOTSTEP_PITCH_VARIANCE: float = 0.1
 
-var _move_speed := 0.0
+var _move_speed: float = 0.0
 var _ground_tilemap_layers: Array[TileMapLayer] = []
 
-@onready var footstep_dust_cloud_resource := preload(
+@onready var footstep_dust_cloud_resource: PackedScene = preload(
 	"res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.tscn"
 )
 @onready var dust_cloud_timer: Timer = $DustCloudTimer
-@onready var animation_map := {
+@onready var animation_map: Dictionary = {
 	Vector2.UP.angle(): "run_up",
 	Vector2.RIGHT.angle(): "run_right",
 	Vector2.DOWN.angle(): "run_down",
@@ -20,7 +20,9 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 
 
 func update(delta: float) -> void:
-	var ground_detector_status := player.ground_detector.current_status()
+	var ground_detector_status: PlayerGroundDetector.Status = (
+		player.ground_detector.current_status()
+	)
 	if ground_detector_status == PlayerGroundDetector.Status.NOT_GROUNDED:
 		state_machine.transition_to("FallPit")
 		return
@@ -37,12 +39,12 @@ func update(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("interact"):
-		var interact_area := InteractionManager.get_interact_area()
+		var interact_area: InteractArea = InteractionManager.get_interact_area()
 		if interact_area:
 			state_machine.transition_to("Interact", {"interact_area": interact_area})
 			return
 
-	var movement_dir := player.get_movement_direction()
+	var movement_dir: Vector2 = player.get_movement_direction()
 
 	if player.ground_detector.on_ledge(movement_dir):
 		state_machine.transition_to("LedgePeer")
@@ -52,7 +54,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Idle")
 		return
 
-	var animation := _get_animation(movement_dir)
+	var animation: String = _get_animation(movement_dir)
 	if animation_player.current_animation != animation:
 		animation_player.current_animation = animation
 
@@ -63,15 +65,15 @@ func update(delta: float) -> void:
 	player.orientation = movement_dir
 
 
-func enter(_data := {}) -> void:
+func enter(_data: Dictionary = {}) -> void:
 	if _ground_tilemap_layers.size() == 0:
 		var ground_nodes: Array[Node] = get_tree().get_nodes_in_group("ground")
-		for ground_node in ground_nodes:
+		for ground_node: Node2D in ground_nodes:
 			if ground_node is TileMapLayer:
 				_ground_tilemap_layers.append(ground_node)
 
 	_move_speed = 0.0
-	var animation := _get_animation(player.orientation)
+	var animation: String = _get_animation(player.orientation)
 	animation_player.play(animation)
 	dust_cloud_timer.start()
 
@@ -85,12 +87,14 @@ func exit() -> void:
 func play_footstep_sound_effect() -> void:
 	var tile_data: Array[TileData] = []
 	for tilemap_layer: TileMapLayer in _ground_tilemap_layers:
-		var tile_position := tilemap_layer.local_to_map(player.position)
-		var data_at_position := tilemap_layer.get_cell_tile_data(tile_position)
+		var tile_position: Vector2i = tilemap_layer.local_to_map(player.position)
+		var data_at_position: TileData = tilemap_layer.get_cell_tile_data(tile_position)
 		if data_at_position:
 			tile_data.append(data_at_position)
 
-	var effect_type := SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
+	var effect_type: SoundEffectConfiguration.Type = (
+		SoundEffectConfiguration.Type.PLAYER_FOOTSTEP_TILE
+	)
 
 	if tile_data.size() > 0:
 		var uppermost_tile_data: TileData = tile_data.back()

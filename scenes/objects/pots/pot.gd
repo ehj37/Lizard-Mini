@@ -2,17 +2,19 @@ class_name Pot
 
 extends StaticBody2D
 
-const NUM_FRAGMENTS := 3
-const MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE := PI / 4
-const MIN_IMPULSE_MAGNITUDE := 400.0
-const MAX_IMPULSE_MAGNITUDE := 800.0
+const NUM_FRAGMENTS: int = 3
+const MAX_SPAWN_ANGLE_OFFSET_MAGNITUDE: float = PI / 4
+const MIN_IMPULSE_MAGNITUDE: float = 400.0
+const MAX_IMPULSE_MAGNITUDE: float = 800.0
 
-@onready
-var _fragment_spawner_resource := preload("res://scenes/fragment_spawner/fragment_spawner.tscn")
+@onready var _fragment_spawner_resource: PackedScene = preload(
+	"res://scenes/fragment_spawner/fragment_spawner.tscn"
+)
 @onready var _fragment_config: FragmentConfig = preload(
 	"res://scenes/objects/pots/pot_fragment_config/pot_fragment_config.tres"
 )
-@onready var _dust_puff_resource := preload("res://scenes/objects/pots/dust_puff/dust_puff.tscn")
+@onready
+var _dust_puff_resource: PackedScene = preload("res://scenes/objects/pots/dust_puff/dust_puff.tscn")
 
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
