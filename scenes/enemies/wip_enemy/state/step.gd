@@ -3,10 +3,11 @@ class_name WipEnemyStepState
 extends WipEnemyState
 
 const STEP_DURATION: float = 0.3
-const STEP_SPEED: float = 125.0
+const STEP_SPEED: float = 150.0
 const STEP_ANGLE_MAX_OFFSET_MAGNITUDE: float = PI / 8
 
 var _safe_velocity: Vector2
+var _direction: Vector2
 var _speed: float
 
 var _angle_sign: int = -1
@@ -14,7 +15,7 @@ var _angle_sign: int = -1
 
 func physics_update(_delta: float) -> void:
 	wip_enemy.velocity = (
-		_safe_velocity.normalized().rotated(_angle_sign * STEP_ANGLE_MAX_OFFSET_MAGNITUDE) * _speed
+		_direction.rotated(_angle_sign * STEP_ANGLE_MAX_OFFSET_MAGNITUDE) * _speed
 	)
 
 
@@ -25,9 +26,14 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	_speed = STEP_SPEED
+	_direction = _safe_velocity.normalized()
 	get_tree().create_tween().tween_property(self, "_speed", 0, STEP_DURATION)
 
 	get_tree().create_timer(STEP_DURATION).timeout.connect(_on_step_timer_timeout)
+	wip_enemy.sprite.flip_h = _safe_velocity.x < 0
+	# A previously played step animation may be still playing
+	if wip_enemy.animation_player.is_playing():
+		wip_enemy.animation_player.stop()
 	wip_enemy.animation_player.play("step")
 
 

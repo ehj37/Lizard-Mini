@@ -1,11 +1,10 @@
 extends Node
 
-const HIT_STOP_DURATION: float = 0.15
+const HIT_STOP_DURATION: float = 0.1
 
 
 func hit_stop() -> void:
-	Engine.time_scale = 0
-	# Fourth param of ignore_time_scale, the others are just defaults.
-	await get_tree().create_timer(HIT_STOP_DURATION, true, false, true).timeout
+	get_tree().paused = true
+	await get_tree().create_timer(HIT_STOP_DURATION).timeout
 
-	Engine.time_scale = 1.0
+	get_tree().paused = false

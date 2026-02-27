@@ -1,6 +1,6 @@
 extends WipEnemyState
 
-const ATTACK_LUNGE_SPEED: float = 300.0
+const ATTACK_LUNGE_SPEED: float = 350.0
 const ATTACK_LUNGE_DURATION: float = 0.2
 const DECELERATION_START: float = 0.1
 

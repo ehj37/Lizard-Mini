@@ -12,8 +12,11 @@ var _player: Player
 var _health: int = MAX_HEALTH
 
 @onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_ground: Hurtbox = $HurtboxGround
@@ -35,7 +38,12 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 
 	_health -= 1
 	health_label.text = str(_health)
-	if _health <= 0:
+	if _health > 0:
+		shader_animation_player.play("hurt_flash")
+	else:
+		shader_animation_player.play("death_flash")
+		death.emit()
+		HitStopManager.hit_stop()
 		state_machine.transition_to("Death")
 
 

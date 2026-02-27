@@ -3,8 +3,8 @@ class_name PlayerCamera
 extends Camera2D
 
 const ORIENTATION_OFFSET: int = 30
-const INITIAL_SHAKE_MAGNITUDE: float = 5.0
-const SHAKE_DIMINISH_SPEED: float = 200.0
+const INITIAL_SHAKE_MAGNITUDE: float = 7.0
+const SHAKE_DIMINISH_SPEED: float = 50.0
 
 @export var player: Player
 

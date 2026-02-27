@@ -43,6 +43,8 @@ func play_effect_at(
 
 	var audio_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 	audio_player.max_distance = AUDIO_STREAM_PLAYER_MAX_DISTANCE
+	# So sound effects keep playing during hit stop
+	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(audio_player)
 	audio_player.global_position = global_pos
 	var audio_stream: AudioStreamOggVorbis = config.audio_stream

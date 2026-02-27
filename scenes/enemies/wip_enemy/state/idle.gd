@@ -17,3 +17,5 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	wip_enemy.animation_player.play("idle")
+	var idle_animation_length: float = wip_enemy.animation_player.get_animation("idle").length
+	wip_enemy.animation_player.advance(randf_range(0.0, idle_animation_length))

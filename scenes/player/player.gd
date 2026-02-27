@@ -145,7 +145,9 @@ func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -
 	match hurtbox_owner_type:
 		Hitbox.HurtboxOwnerType.ENEMY:
 			EventBus.shake_camera.emit()
-			# TODO: Sound effect
+			AudioManager.play_effect_at(
+				global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_CONNECT
+			)
 
 
 func _take_burn_damage() -> void:

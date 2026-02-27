@@ -1,4 +1,4 @@
-// Big thanks to both jecovier and axilirate, who's shaders I built upon
+// https://godotshaders.com/shader/chromatic-aberration-vignette/
 
 shader_type canvas_item;
 

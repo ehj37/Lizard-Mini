@@ -1,7 +1,5 @@
 extends WipEnemyState
 
-# TODO: Shake camera or something when the enemy has offically died (done falling)
-
 
 func update(_delta: float) -> void:
 	if !wip_enemy.animation_player.is_playing():
@@ -9,6 +7,7 @@ func update(_delta: float) -> void:
 
 
 func enter(_data: Dictionary = {}) -> void:
+	wip_enemy.sprite_shadow.visible = false
 	wip_enemy.velocity = Vector2.ZERO
 	wip_enemy.collision_shape.disabled = true
 	wip_enemy.hurtbox.disable()

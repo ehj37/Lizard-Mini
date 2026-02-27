@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://efcjx1cvfhtq"
+path="res://.godot/imported/shadow.aseprite-f80ab9b3fd90ff7e5489fe09354f014d.res"
+
+[deps]
+
+source_file="res://scenes/enemies/wip_enemy/shadow.aseprite"
+dest_files=["res://.godot/imported/shadow.aseprite-f80ab9b3fd90ff7e5489fe09354f014d.res"]
+
+[params]
+
