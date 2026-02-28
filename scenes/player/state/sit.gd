@@ -35,4 +35,4 @@ func exit() -> void:
 
 
 func _play_blink_sound_effect() -> void:
-	AudioManager.play_effect_at(player.global_position, SoundEffectConfiguration.Type.PLAYER_BLINK)
+	SoundEffectManager.play_effect_at(player.global_position, SoundEffectConfig.Type.PLAYER_BLINK)

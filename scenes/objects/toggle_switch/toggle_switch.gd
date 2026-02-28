@@ -19,7 +19,7 @@ const GLYPHS_DISABLED_COLOR: Color = Color("01262a")
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	shader_animation_player.play("toggle")
 	HitStopManager.hit_stop()
-	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.INTERACT_COMPLETE)
+	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.INTERACT_COMPLETE)
 
 	interact_area.disable()
 	_toggle()

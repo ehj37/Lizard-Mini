@@ -18,7 +18,7 @@ var _completion_progress: float = 0.0
 
 func interact(delta: float) -> void:
 	if _completion_progress == 0.0:
-		AudioManager.play_effect_at(global_position, _get_sound_effect())
+		SoundEffectManager.play_effect_at(global_position, _get_sound_effect())
 
 	var completion_time: float = INTERACTION_LENGTH_DURATIONS[interaction_length]
 	_completion_progress = min(_completion_progress + delta, completion_time)
@@ -26,15 +26,13 @@ func interact(delta: float) -> void:
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()
-		AudioManager.play_effect_at(
-			global_position, SoundEffectConfiguration.Type.INTERACT_COMPLETE
-		)
+		SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.INTERACT_COMPLETE)
 		disable()
 
 
 func reset_progress() -> void:
 	_completion_progress = 0.0
-	AudioManager.cancel_audio(_get_sound_effect())
+	SoundEffectManager.cancel_audio(_get_sound_effect())
 	progress_indicator.update_progress_bar(0.0)
 
 
@@ -57,12 +55,12 @@ func _on_body_exited(_body: Node2D) -> void:
 	InteractionManager.unregister_area(self)
 
 
-func _get_sound_effect() -> SoundEffectConfiguration.Type:
+func _get_sound_effect() -> SoundEffectConfig.Type:
 	match interaction_length:
 		InteractionLength.SHORT:
-			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_SHORT
+			return SoundEffectConfig.Type.PROGRESS_INDICATOR_SHORT
 		InteractionLength.MEDIUM:
-			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_MEDIUM
+			return SoundEffectConfig.Type.PROGRESS_INDICATOR_MEDIUM
 		_:
 			assert(false, "Interaction length does not have corresponding sound effect")
-			return SoundEffectConfiguration.Type.PROGRESS_INDICATOR_MEDIUM
+			return SoundEffectConfig.Type.PROGRESS_INDICATOR_MEDIUM

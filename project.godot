@@ -23,9 +23,9 @@ run/canvas_textures/default_texture_filter=0
 [autoload]
 
 HitStopManager="*res://autoload/hit_stop_manager.gd"
-AudioManager="*res://autoload/audio_manager/audio_manager.tscn"
+SoundEffectManager="*res://autoload/sound_effect_manager/sound_effect_manager.tscn"
 InteractionManager="*res://autoload/interaction_manager.gd"
-EventBus="*res://autoload/event_bus.gd"
+SignalBus="*res://autoload/signal_bus.gd"
 ScreenFader="*res://autoload/screen_fader/screen_fader.tscn"
 LevelManager="*res://autoload/level_manager.gd"
 PauseMenu="*res://ui/pause_menu/pause_menu.tscn"

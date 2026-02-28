@@ -1,4 +1,4 @@
-class_name SoundEffectConfiguration
+class_name SoundEffectConfig
 
 extends Resource
 

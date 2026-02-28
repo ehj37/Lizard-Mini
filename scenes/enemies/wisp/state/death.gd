@@ -18,7 +18,7 @@ func enter(_data: Dictionary = {}) -> void:
 	death_particle_burst.global_position = wisp.global_position
 	LevelManager.current_level.add_child(death_particle_burst)
 
-	AudioManager.play_effect_at(wisp.global_position, SoundEffectConfiguration.Type.WISP_DEATH)
+	SoundEffectManager.play_effect_at(wisp.global_position, SoundEffectConfig.Type.WISP_DEATH)
 
 	var lifetime: float = wisp.fire_small.lifetime
 

@@ -105,8 +105,8 @@ func enter(data: Dictionary = {}) -> void:
 	var pitch_multiplier: float = minf(
 		1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER
 	)
-	AudioManager.play_effect_at(
-		player.global_position, SoundEffectConfiguration.Type.PLAYER_DASH, pitch_multiplier
+	SoundEffectManager.play_effect_at(
+		player.global_position, SoundEffectConfig.Type.PLAYER_DASH, pitch_multiplier
 	)
 
 	_spawn_ghost()

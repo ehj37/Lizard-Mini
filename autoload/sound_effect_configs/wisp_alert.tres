@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://bjalqs146jh0m"]
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bjalqs146jh0m"]
 
 [ext_resource type="AudioStream" uid="uid://dl6owq4e0tk58" path="res://sound_effects/Wisp alert.ogg" id="1_0a8jo"]
-[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_85a0m"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_config.gd" id="1_85a0m"]
 
 [resource]
 script = ExtResource("1_85a0m")

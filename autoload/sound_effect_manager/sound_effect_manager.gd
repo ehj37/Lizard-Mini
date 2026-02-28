@@ -2,23 +2,23 @@ extends Node2D
 
 const AUDIO_STREAM_PLAYER_MAX_DISTANCE: float = 500
 
-@export var sound_effect_configs: Array[SoundEffectConfiguration]
+@export var sound_effect_configs: Array[SoundEffectConfig]
 
 var _sound_effect_configs: Dictionary = {}
 var _audio_players_by_type: Dictionary = {}
 
 
 func _ready() -> void:
-	for sound_effect_type: SoundEffectConfiguration.Type in SoundEffectConfiguration.Type.values():
+	for sound_effect_type: SoundEffectConfig.Type in SoundEffectConfig.Type.values():
 		var config_i: int = sound_effect_configs.find_custom(
-			func(c: SoundEffectConfiguration) -> bool: return c.type == sound_effect_type
+			func(c: SoundEffectConfig) -> bool: return c.type == sound_effect_type
 		)
 		assert(
 			config_i != -1,
-			"Sound effect " + str(sound_effect_type) + " must be defined in AudioManager"
+			"Sound effect " + str(sound_effect_type) + " must be defined in SoundEffectManager"
 		)
 
-		var config: SoundEffectConfiguration = sound_effect_configs[config_i]
+		var config: SoundEffectConfig = sound_effect_configs[config_i]
 		_sound_effect_configs[config.type] = config
 		_audio_players_by_type[config.type] = []
 
@@ -26,18 +26,18 @@ func _ready() -> void:
 # Returns an identifier that can be used to cancel the sound with, or -1 if the
 # sound was not played.
 func play_effect_at(
-	global_pos: Vector2, type: SoundEffectConfiguration.Type, pitch_multiplier: float = 1.0
+	global_pos: Vector2, type: SoundEffectConfig.Type, pitch_multiplier: float = 1.0
 ) -> int:
-	var config: SoundEffectConfiguration = _sound_effect_configs.get(type)
-	assert(config != null, "Sound effect must be defined in AudioManager")
+	var config: SoundEffectConfig = _sound_effect_configs.get(type)
+	assert(config != null, "Sound effect must be defined in SoundEffectManager")
 
 	var audio_players_for_type: Array = _audio_players_by_type[type]
 	var sound_effect_count: int = audio_players_for_type.size()
 	if config.limit != -1 && sound_effect_count > config.limit:
 		match config.limit_behavior:
-			SoundEffectConfiguration.LimitBehavior.NOOP:
+			SoundEffectConfig.LimitBehavior.NOOP:
 				return -1
-			SoundEffectConfiguration.LimitBehavior.REPLACE_OLD:
+			SoundEffectConfig.LimitBehavior.REPLACE_OLD:
 				var oldest_audio_player: AudioStreamPlayer2D = audio_players_for_type.pop_front()
 				oldest_audio_player.queue_free()
 
@@ -71,7 +71,7 @@ func play_effect_at(
 	return audio_player.get_instance_id()
 
 
-func cancel_audio(type: SoundEffectConfiguration.Type, identifier: int = -1) -> void:
+func cancel_audio(type: SoundEffectConfig.Type, identifier: int = -1) -> void:
 	var audio_players: Array = _audio_players_by_type[type]
 	if identifier == -1:
 		for audio_player: AudioStreamPlayer2D in audio_players:

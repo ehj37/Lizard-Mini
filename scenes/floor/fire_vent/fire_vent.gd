@@ -31,10 +31,10 @@ func disable() -> void:
 
 
 func _play_ambience() -> void:
-	_ambience_identifier = AudioManager.play_effect_at(
-		global_position, SoundEffectConfiguration.Type.FIRE_VENT
+	_ambience_identifier = SoundEffectManager.play_effect_at(
+		global_position, SoundEffectConfig.Type.FIRE_VENT
 	)
 
 
 func _stop_ambience() -> void:
-	AudioManager.cancel_audio(SoundEffectConfiguration.Type.FIRE_VENT, _ambience_identifier)
+	SoundEffectManager.cancel_audio(SoundEffectConfig.Type.FIRE_VENT, _ambience_identifier)

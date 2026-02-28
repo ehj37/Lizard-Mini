@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://71odf10npc7w"]
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://71odf10npc7w"]
 
 [ext_resource type="AudioStream" uid="uid://b8dgdk87hqi4q" path="res://sound_effects/Canister explosion.ogg" id="1_8eche"]
-[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_i4muh"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_config.gd" id="1_i4muh"]
 
 [resource]
 script = ExtResource("1_i4muh")

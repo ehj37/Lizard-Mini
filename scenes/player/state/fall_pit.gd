@@ -22,8 +22,8 @@ func enter(_data: Dictionary = {}) -> void:
 
 	player.sprite_shadow.visible = false
 
-	AudioManager.play_effect_at(
-		player.global_position, SoundEffectConfiguration.Type.PLAYER_FALL_PIT
+	SoundEffectManager.play_effect_at(
+		player.global_position, SoundEffectConfig.Type.PLAYER_FALL_PIT
 	)
 	animation_player.play("fall_pit")
 

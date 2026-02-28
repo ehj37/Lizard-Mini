@@ -87,10 +87,10 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 	hurt.emit()
 	Overlays.add_hurt()
 	shader_animation_player.play("hurt_flash")
-	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.PLAYER_OUCH)
+	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.PLAYER_OUCH)
 
 	if types.has(Hitbox.DamageType.BURN):
-		AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.SINGE)
+		SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.SINGE)
 		# Only transition to hurt state on first burn
 		if _times_burnt > 0:
 			return
@@ -144,9 +144,9 @@ func get_movement_direction() -> Vector2:
 func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:
 	match hurtbox_owner_type:
 		Hitbox.HurtboxOwnerType.ENEMY:
-			EventBus.shake_camera.emit()
-			AudioManager.play_effect_at(
-				global_position, SoundEffectConfiguration.Type.PLAYER_SWORD_CONNECT
+			SignalBus.shake_camera.emit()
+			SoundEffectManager.play_effect_at(
+				global_position, SoundEffectConfig.Type.PLAYER_SWORD_CONNECT
 			)
 
 

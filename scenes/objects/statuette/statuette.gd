@@ -16,7 +16,7 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vect
 	var dust_puff: Sprite2D = dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
 	LevelManager.current_level.add_child(dust_puff)
-	AudioManager.play_effect_at(global_position, SoundEffectConfiguration.Type.STATUETTE_BREAK)
+	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.STATUETTE_BREAK)
 	collision_shape.disabled = true
 
 	hurtbox.disable()

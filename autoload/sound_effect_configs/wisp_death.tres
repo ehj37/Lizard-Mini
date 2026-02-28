@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SoundEffectConfiguration" load_steps=3 format=3 uid="uid://dukcpq43qnamd"]
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://dukcpq43qnamd"]
 
 [ext_resource type="AudioStream" uid="uid://bi1cqxvfjry8u" path="res://sound_effects/Wisp death.ogg" id="1_p8tts"]
-[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_configuration.gd" id="1_vb0p2"]
+[ext_resource type="Script" uid="uid://5bb6jyeajy31" path="res://autoload/sound_effect_config.gd" id="1_vb0p2"]
 
 [resource]
 script = ExtResource("1_vb0p2")

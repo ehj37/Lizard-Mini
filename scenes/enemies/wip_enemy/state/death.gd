@@ -3,9 +3,7 @@ extends WipEnemyState
 
 func enter(_data: Dictionary = {}) -> void:
 	# TODO: Replace with a dedicated sound
-	AudioManager.play_effect_at(
-		wip_enemy.global_position, SoundEffectConfiguration.Type.PLAYER_OUCH
-	)
+	SoundEffectManager.play_effect_at(wip_enemy.global_position, SoundEffectConfig.Type.PLAYER_OUCH)
 	wip_enemy.sprite_shadow.visible = false
 	wip_enemy.velocity = Vector2.ZERO
 	wip_enemy.collision_shape.disabled = true
