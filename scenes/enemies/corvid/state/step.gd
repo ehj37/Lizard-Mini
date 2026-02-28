@@ -1,9 +1,9 @@
-class_name WipEnemyStepState
+class_name CorvidStepState
 
-extends WipEnemyState
+extends CorvidState
 
 const STEP_DURATION: float = 0.3
-const STEP_SPEED: float = 150.0
+const STEP_SPEED: float = 175.0
 const STEP_ANGLE_MAX_OFFSET_MAGNITUDE: float = PI / 8
 
 var _safe_velocity: Vector2
@@ -14,9 +14,7 @@ var _angle_sign: int = -1
 
 
 func physics_update(_delta: float) -> void:
-	wip_enemy.velocity = (
-		_direction.rotated(_angle_sign * STEP_ANGLE_MAX_OFFSET_MAGNITUDE) * _speed
-	)
+	corvid.velocity = (_direction.rotated(_angle_sign * STEP_ANGLE_MAX_OFFSET_MAGNITUDE) * _speed)
 
 
 func update(_delta: float) -> void:
@@ -30,11 +28,11 @@ func enter(_data: Dictionary = {}) -> void:
 	get_tree().create_tween().tween_property(self, "_speed", 0, STEP_DURATION)
 
 	get_tree().create_timer(STEP_DURATION).timeout.connect(_on_step_timer_timeout)
-	wip_enemy.sprite.flip_h = _safe_velocity.x < 0
+	corvid.sprite.flip_h = _safe_velocity.x < 0
 	# A previously played step animation may be still playing
-	if wip_enemy.animation_player.is_playing():
-		wip_enemy.animation_player.stop()
-	wip_enemy.animation_player.play("step")
+	if corvid.animation_player.is_playing():
+		corvid.animation_player.stop()
+	corvid.animation_player.play("step")
 
 
 func exit() -> void:

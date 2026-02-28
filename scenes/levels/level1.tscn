@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://c4kdib5saiq85" path="res://scenes/floor/collapsing_floor/collapsing_floor.tscn" id="31_3gp1u"]
 [ext_resource type="PackedScene" uid="uid://b0g7n831jais4" path="res://scenes/concentric_squares/concentric_squares.tscn" id="31_07dy8"]
 [ext_resource type="PackedScene" uid="uid://ctd2t8xf41xrg" path="res://dev/dash_ruler/dash_ruler.tscn" id="32_3gp1u"]
-[ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/wip_enemy/wip_enemy.tscn" id="33_igeo0"]
+[ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/corvid/corvid.tscn" id="33_igeo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7tkf"]
 size = Vector2(698, 73)
@@ -68,7 +68,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" unique_id=944110735 instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." unique_id=1646083049 instance=ExtResource("1_x6ivy")]
-position = Vector2(597, -244)
+position = Vector2(-834, 110)
 
 [node name="PlayerCamera" parent="." unique_id=854111214 node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -465,10 +465,10 @@ position = Vector2(592, -240)
 [node name="DashRuler2" parent="." unique_id=971648374 instance=ExtResource("32_3gp1u")]
 position = Vector2(624, -224)
 
-[node name="WipEnemy" parent="." unique_id=401209250 instance=ExtResource("33_igeo0")]
+[node name="Corvid" parent="." unique_id=401209250 instance=ExtResource("33_igeo0")]
 position = Vector2(-839, -46)
 
-[node name="WipEnemy2" parent="." unique_id=2047035455 instance=ExtResource("33_igeo0")]
+[node name="Corvid2" parent="." unique_id=2047035455 instance=ExtResource("33_igeo0")]
 position = Vector2(-781, 35)
 
 [connection signal="unlocked" from="Wall/Door" to="Wall/Door/ConcentricSquares" method="kill"]

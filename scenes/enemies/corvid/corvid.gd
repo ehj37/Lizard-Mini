@@ -1,8 +1,6 @@
-class_name WipEnemy
+class_name Corvid
 
 extends Enemy
-
-#const STEP_SPEED = 75.0
 
 const MAX_HEALTH: int = 3
 
@@ -11,7 +9,7 @@ const MAX_HEALTH: int = 3
 var _player: Player
 var _health: int = MAX_HEALTH
 
-@onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
+@onready var state_machine: CorvidStateMachine = $CorvidStateMachine
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
@@ -20,7 +18,7 @@ var _health: int = MAX_HEALTH
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_ground: Hurtbox = $HurtboxGround
-@onready var hitbox_ground: Hitbox = $HitboxGround
+@onready var hitbox: Hitbox = $Hitbox
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var ground_detector: Area2D = $GroundDetector
 @onready var health_label: Label = $HealthLabel
@@ -60,9 +58,7 @@ func _physics_process(_delta: float) -> void:
 		var direction_to_next_path_position: Vector2 = global_position.direction_to(
 			next_path_position
 		)
-		navigation_agent.set_velocity(
-			direction_to_next_path_position * WipEnemyStepState.STEP_SPEED
-		)
+		navigation_agent.set_velocity(direction_to_next_path_position * CorvidStepState.STEP_SPEED)
 
 	move_and_slide()
 

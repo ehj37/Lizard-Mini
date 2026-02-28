@@ -1,11 +1,11 @@
-extends WipEnemyState
+extends CorvidState
 
 const BASE_PAUSE_DURATION: float = 0.6
 const PAUSE_DURATION_VARIANCE: float = 0.2
 
 
 func enter(_data: Dictionary = {}) -> void:
-	wip_enemy.velocity = Vector2.ZERO
+	corvid.velocity = Vector2.ZERO
 	var pause_duration: float = randf_range(
 		BASE_PAUSE_DURATION - PAUSE_DURATION_VARIANCE, BASE_PAUSE_DURATION + PAUSE_DURATION_VARIANCE
 	)

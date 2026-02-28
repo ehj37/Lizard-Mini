@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://fkmtv41g72kp"]
+[gd_scene format=4 uid="uid://fkmtv41g72kp"]
 
 [ext_resource type="Script" uid="uid://bslt7m2op841j" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="2_dovo2"]
@@ -29,13 +29,13 @@ point_count = 5
 [sub_resource type="CurveTexture" id="CurveTexture_viv4t"]
 curve = SubResource("Curve_jagov")
 
-[sub_resource type="Gradient" id="Gradient_lgqa7"]
+[sub_resource type="Gradient" id="Gradient_3j4b4"]
 resource_local_to_scene = true
 colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ydkj"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yj68g"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_lgqa7")
+gradient = SubResource("Gradient_3j4b4")
 
 [sub_resource type="Curve" id="Curve_l1wwq"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -46,11 +46,16 @@ point_count = 8
 _data = [Vector2(0.0028248578, 0), 0.0, 0.0, 0, 0, Vector2(0.18549907, 0.49425715), 0.0, 0.0, 0, 0, Vector2(0.43032014, 0.6243053), 0.0, 0.0, 0, 0, Vector2(0.6167608, 0.41237497), 0.0, 0.0, 0, 0, Vector2(0.76553667, 0.53760654), 0.0, 0.0, 0, 0, Vector2(0.9952919, 0.4195999), 0.0, 0.0, 0, 0]
 point_count = 6
 
+[sub_resource type="Curve" id="Curve_ioxgp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_jagov"]
 curve_x = SubResource("Curve_l1wwq")
 curve_y = SubResource("Curve_r6bn0")
+curve_z = SubResource("Curve_ioxgp")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3j4b4"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cnsyf"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
@@ -66,7 +71,7 @@ directional_velocity_curve = SubResource("CurveXYZTexture_jagov")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_8ydkj")
+color_ramp = SubResource("GradientTexture1D_yj68g")
 alpha_curve = SubResource("CurveTexture_viv4t")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_yj68g"]
@@ -86,15 +91,15 @@ shader_parameter/event_type = 0
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvP8APECcgECBToow4ICQgU5o7NhESELabKhsx/wEAnnQdsIokqdVRICAKoFYCCtL690V68Sei/xMg/0uOKjSDGIdxUBqGcY2yVALMML0WkG+OFVFrqe298QA=")
 size_override = Vector2(64, 64)
 
-[sub_resource type="Gradient" id="Gradient_8ydkj"]
+[sub_resource type="Gradient" id="Gradient_007i1"]
 resource_local_to_scene = true
 colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3j4b4"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6cv16"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_8ydkj")
+gradient = SubResource("Gradient_007i1")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yj68g"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j4nxn"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
@@ -110,7 +115,7 @@ directional_velocity_curve = SubResource("CurveXYZTexture_jagov")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_3j4b4")
+color_ramp = SubResource("GradientTexture1D_6cv16")
 alpha_curve = SubResource("CurveTexture_viv4t")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lgqa7"]
@@ -986,7 +991,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
-radius = 3.0
+radius = 2.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
 radius = 5.0
@@ -998,85 +1003,85 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcs02"]
 radius = 6.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=155206965 groups=["player"]]
 collision_layer = 4224
 collision_mask = 273
 platform_floor_layers = 4278190080
 script = ExtResource("1_8afob")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=129738 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_dovo2")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://b023dqmvy1wyg"
 
-[node name="Sit" type="Node" parent="StateMachine"]
+[node name="Sit" type="Node" parent="StateMachine" unique_id=149344698]
 script = ExtResource("3_ugbui")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1488814214]
 script = ExtResource("3_lvxji")
 metadata/_custom_type_script = "uid://njl8klldojvv"
 
-[node name="ImpatientTimer" type="Timer" parent="StateMachine/Idle"]
+[node name="ImpatientTimer" type="Timer" parent="StateMachine/Idle" unique_id=531515880]
 wait_time = 15.0
 one_shot = true
 
-[node name="SitTimer" type="Timer" parent="StateMachine/Idle"]
+[node name="SitTimer" type="Timer" parent="StateMachine/Idle" unique_id=1237998759]
 wait_time = 20.0
 
-[node name="Impatient" type="Node" parent="StateMachine"]
+[node name="Impatient" type="Node" parent="StateMachine" unique_id=2124664143]
 script = ExtResource("4_fm80t")
 
-[node name="Run" type="Node" parent="StateMachine"]
+[node name="Run" type="Node" parent="StateMachine" unique_id=1952265766]
 script = ExtResource("4_p47bc")
 metadata/_custom_type_script = "uid://njl8klldojvv"
 
-[node name="DustCloudTimer" type="Timer" parent="StateMachine/Run"]
+[node name="DustCloudTimer" type="Timer" parent="StateMachine/Run" unique_id=1790079445]
 wait_time = 1.2
 one_shot = true
 
-[node name="LedgePeer" type="Node" parent="StateMachine"]
+[node name="LedgePeer" type="Node" parent="StateMachine" unique_id=2000924541]
 script = ExtResource("7_lgqa7")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=2111435021]
 script = ExtResource("5_p47bc")
 metadata/_custom_type_script = "uid://njl8klldojvv"
 
-[node name="Hurt" type="Node" parent="StateMachine"]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1253280347]
 script = ExtResource("6_0owmy")
 metadata/_custom_type_script = "uid://njl8klldojvv"
 
-[node name="FallPit" type="Node" parent="StateMachine"]
+[node name="FallPit" type="Node" parent="StateMachine" unique_id=982073630]
 script = ExtResource("14_3j4b4")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="Fall" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine" unique_id=818366126]
 script = ExtResource("9_myrg7")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="Rise" type="Node" parent="StateMachine"]
+[node name="Rise" type="Node" parent="StateMachine" unique_id=1027030772]
 script = ExtResource("10_kvlxm")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="Dash" type="Node" parent="StateMachine"]
+[node name="Dash" type="Node" parent="StateMachine" unique_id=1058445703]
 script = ExtResource("8_5gtgg")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="GhostTimer" type="Timer" parent="StateMachine/Dash"]
+[node name="GhostTimer" type="Timer" parent="StateMachine/Dash" unique_id=1057799296]
 wait_time = 0.015
 
-[node name="Interact" type="Node" parent="StateMachine"]
+[node name="Interact" type="Node" parent="StateMachine" unique_id=1891805792]
 script = ExtResource("9_gx1jg")
 metadata/_custom_type_script = "uid://ctigeyiermart"
 
-[node name="BurnParticlesBack" parent="." instance=ExtResource("18_uf5tr")]
+[node name="BurnParticlesBack" parent="." unique_id=1899336827 instance=ExtResource("18_uf5tr")]
 position = Vector2(0, -13)
 emitting = false
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_3j4b4")
+process_material = SubResource("ParticleProcessMaterial_cnsyf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=328535929]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_yj68g")
 offset = Vector2(0, -16)
@@ -1108,7 +1113,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "26663a94c81fcaf2d7b67d0f8c2e6f83"
 
-[node name="Silhouette" type="Sprite2D" parent="Sprite2D"]
+[node name="Silhouette" type="Sprite2D" parent="Sprite2D" unique_id=1625450478]
 visible = false
 z_index = 999
 texture_filter = 1
@@ -1137,13 +1142,13 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "6e5bd0ef7acdf9758003ffbc8357bf4e"
 
-[node name="BurnParticlesFront" parent="." instance=ExtResource("18_uf5tr")]
+[node name="BurnParticlesFront" parent="." unique_id=1963889612 instance=ExtResource("18_uf5tr")]
 position = Vector2(0, -11)
 emitting = false
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_yj68g")
+process_material = SubResource("ParticleProcessMaterial_j4nxn")
 
-[node name="SpriteShadow" type="Sprite2D" parent="."]
+[node name="SpriteShadow" type="Sprite2D" parent="." unique_id=2074119340]
 z_index = -3
 texture_filter = 1
 position = Vector2(0, -2)
@@ -1171,42 +1176,38 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "f52b3ad65a587fe02df1153879404dbe"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lvxji")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=381678848]
+libraries/ = SubResource("AnimationLibrary_lvxji")
 
-[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lgqa7")
-}
+[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2088778319]
+libraries/ = SubResource("AnimationLibrary_lgqa7")
 
-[node name="GroundDetector" parent="." instance=ExtResource("20_8ydkj")]
+[node name="GroundDetector" parent="." unique_id=1155214108 instance=ExtResource("20_8ydkj")]
 position = Vector2(0, -1)
 debug_mode = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=362558856]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_8afob")
 
-[node name="Hurtbox" parent="." instance=ExtResource("6_75vfm")]
+[node name="Hurtbox" parent="." unique_id=514634384 instance=ExtResource("6_75vfm")]
 visible = false
 repetitive_hitbox_damage_cooldown = 0.6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=429426904]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_fm80t")
 
-[node name="HurtboxFeet" parent="." instance=ExtResource("6_75vfm")]
+[node name="HurtboxFeet" parent="." unique_id=1877183130 instance=ExtResource("6_75vfm")]
 visible = false
 repetitive_hitbox_damage_cooldown = 0.6
 grounded = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxFeet"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxFeet" unique_id=1603057960]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_gx1jg")
 
-[node name="HitboxSword" parent="." instance=ExtResource("10_h17s1")]
+[node name="HitboxSword" parent="." unique_id=165453400 instance=ExtResource("10_h17s1")]
 visible = false
 script = ExtResource("15_fcs02")
 damage_amount = 100
@@ -1214,76 +1215,76 @@ damage_types = Array[int]([1])
 grounded = false
 disabled = false
 
-[node name="CollisionPolygonUp1" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonUp1" type="CollisionPolygon2D" parent="HitboxSword" unique_id=675376762]
 visible = false
 polygon = PackedVector2Array(8, -27, 1, -32, -8, -31, -12, -27, -14, -20, -13, -9, -10, -1, 10, -14)
 disabled = true
 
-[node name="CollisionPolygonUp2" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonUp2" type="CollisionPolygon2D" parent="HitboxSword" unique_id=102846462]
 visible = false
 polygon = PackedVector2Array(-9, -3, -13, -18, -9, -27, -4, -31, 1, -32, 8, -29, 14, -19, 13, -11, 7, -3)
 disabled = true
 
-[node name="CollisionPolygonUpRight1" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonUpRight1" type="CollisionPolygon2D" parent="HitboxSword" unique_id=1043794527]
 visible = false
 polygon = PackedVector2Array(2, -28, 10, -30, 16, -28, 20, -23, 20, -15, 17, -10, 6, -4, -2, -2, -7, -21)
 disabled = true
 
-[node name="CollisionPolygonUpRight2" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonUpRight2" type="CollisionPolygon2D" parent="HitboxSword" unique_id=467058958]
 visible = false
 polygon = PackedVector2Array(14, -4, 17, -13, 16, -23, 11, -28, 4, -29, -3, -26, -7, -18, -8, -10, -6, -7, 2, -9, 3, -3)
 disabled = true
 
-[node name="CollisionPolygonRight1" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonRight1" type="CollisionPolygon2D" parent="HitboxSword" unique_id=1016725640]
 visible = false
 polygon = PackedVector2Array(-2, -23, 13, -21, 19, -16, 20, -11, 15, -4, 5, -2, -3, -2)
 disabled = true
 
-[node name="CollisionPolygonRight2" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonRight2" type="CollisionPolygon2D" parent="HitboxSword" unique_id=677237532]
 visible = false
 polygon = PackedVector2Array(9, 2, 13, 1, 19, -4, 22, -9, 21, -13, 19, -17, 13, -21, -4, -22, 1, -2)
 disabled = true
 
-[node name="CollisionPolygonDownRight1" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonDownRight1" type="CollisionPolygon2D" parent="HitboxSword" unique_id=297571973]
 visible = false
 polygon = PackedVector2Array(7, -19, 13, -15, 16, -9, 16, -3, 12, 1, 4, 3, -4, 0, -10, -8)
 disabled = true
 
-[node name="CollisionPolygonDownRight2" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonDownRight2" type="CollisionPolygon2D" parent="HitboxSword" unique_id=1368486181]
 visible = false
 polygon = PackedVector2Array(-11, -3, -3, 5, 3, 7, 8, 7, 13, 4, 15, -1, 12, -13, 9, -19, 2, -13, -10, -14)
 disabled = true
 
-[node name="CollisionPolygonDown1" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonDown1" type="CollisionPolygon2D" parent="HitboxSword" unique_id=1260061601]
 visible = false
 polygon = PackedVector2Array(12, -12, 15, -1, 10, 7, 5, 10, -2, 9, -9, 2, -10, -13)
 disabled = true
 
-[node name="CollisionPolygonDown2" type="CollisionPolygon2D" parent="HitboxSword"]
+[node name="CollisionPolygonDown2" type="CollisionPolygon2D" parent="HitboxSword" unique_id=202893702]
 visible = false
 polygon = PackedVector2Array(3, -5, 15, -20, 14, 4, 8, 9, 1, 10, -6, 7, -11, -3, -6, -17)
 disabled = true
 
-[node name="HitboxFeet" parent="." instance=ExtResource("10_h17s1")]
+[node name="HitboxFeet" parent="." unique_id=41201828 instance=ExtResource("10_h17s1")]
 visible = false
 damage_amount = -1
 damage_types = Array[int]([1])
 grounded = true
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxFeet"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxFeet" unique_id=1031705646]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fcs02")
 
-[node name="DashCooldownTimer" type="Timer" parent="."]
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=1897968668]
 wait_time = 0.25
 one_shot = true
 
-[node name="AttackCooldownTimer" type="Timer" parent="."]
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=2058269517]
 wait_time = 0.12
 one_shot = true
 
-[node name="BurnTimer" type="Timer" parent="."]
+[node name="BurnTimer" type="Timer" parent="." unique_id=542155501]
 wait_time = 0.75
 
 [connection signal="timeout" from="StateMachine/Idle/ImpatientTimer" to="StateMachine/Idle" method="_on_impatient_timer_timeout"]

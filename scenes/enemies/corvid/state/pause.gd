@@ -1,4 +1,4 @@
-extends WipEnemyState
+extends CorvidState
 
 const ATTACK_RANGE: int = 40
 const DECIDE_DURATION: float = 0.2
@@ -13,7 +13,7 @@ func _on_decide_timer_timeout() -> void:
 		return
 
 	var player_in_range: bool = (
-		wip_enemy.global_position.distance_to(player.global_position) < ATTACK_RANGE
+		corvid.global_position.distance_to(player.global_position) < ATTACK_RANGE
 	)
 	if player_in_range && player.in_reachable_state():
 		state_machine.transition_to("PreAttack")

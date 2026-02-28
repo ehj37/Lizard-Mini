@@ -1,21 +1,21 @@
 [gd_scene format=4 uid="uid://bj3qcibeaijal"]
 
-[ext_resource type="Script" uid="uid://by64cr6q7hf2q" path="res://scenes/enemies/wip_enemy/wip_enemy.gd" id="1_5383a"]
-[ext_resource type="Script" uid="uid://dd1ahw456m2p2" path="res://scenes/enemies/wip_enemy/state/wip_enemy_state_machine.gd" id="2_f2tsk"]
-[ext_resource type="Script" uid="uid://djmgg55800hfb" path="res://scenes/enemies/wip_enemy/state/idle.gd" id="3_sv2x5"]
-[ext_resource type="Script" uid="uid://d0wgto7u87a5y" path="res://scenes/enemies/wip_enemy/state/alerted.gd" id="4_gbuk4"]
-[ext_resource type="Script" uid="uid://q4d5r8wjofkb" path="res://scenes/enemies/wip_enemy/state/step.gd" id="5_f2tsk"]
-[ext_resource type="Script" uid="uid://cgnkmidxm3pke" path="res://scenes/enemies/wip_enemy/state/attack_1.gd" id="6_3w1av"]
-[ext_resource type="Script" uid="uid://b2g37xv5lcnch" path="res://scenes/enemies/wip_enemy/state/pause.gd" id="6_kp0d4"]
-[ext_resource type="Script" uid="uid://blboaxbckdrdv" path="res://scenes/enemies/wip_enemy/state/pre_attack.gd" id="7_htmdt"]
-[ext_resource type="Script" uid="uid://cvlqir8ougg5u" path="res://scenes/enemies/wip_enemy/state/attack_2.gd" id="7_kp0d4"]
-[ext_resource type="Script" uid="uid://cghb616o3t5ul" path="res://scenes/enemies/wip_enemy/state/dash.gd" id="8_s18xg"]
-[ext_resource type="Script" uid="uid://iqp2wfs8mglu" path="res://scenes/enemies/wip_enemy/state/post_attack.gd" id="10_1fnqe"]
-[ext_resource type="Script" uid="uid://bvtthbae21ewf" path="res://scenes/enemies/wip_enemy/state/death.gd" id="10_kp0d4"]
-[ext_resource type="Script" uid="uid://g846fox2vs24" path="res://scenes/enemies/wip_enemy/state/fall.gd" id="11_s18xg"]
+[ext_resource type="Script" uid="uid://by64cr6q7hf2q" path="res://scenes/enemies/corvid/corvid.gd" id="1_5383a"]
+[ext_resource type="Script" uid="uid://dd1ahw456m2p2" path="res://scenes/enemies/corvid/state/corvid_state_machine.gd" id="2_f2tsk"]
+[ext_resource type="Script" uid="uid://djmgg55800hfb" path="res://scenes/enemies/corvid/state/idle.gd" id="3_sv2x5"]
+[ext_resource type="Script" uid="uid://d0wgto7u87a5y" path="res://scenes/enemies/corvid/state/alerted.gd" id="4_gbuk4"]
+[ext_resource type="Script" uid="uid://q4d5r8wjofkb" path="res://scenes/enemies/corvid/state/step.gd" id="5_f2tsk"]
+[ext_resource type="Script" uid="uid://cgnkmidxm3pke" path="res://scenes/enemies/corvid/state/attack_1.gd" id="6_3w1av"]
+[ext_resource type="Script" uid="uid://b2g37xv5lcnch" path="res://scenes/enemies/corvid/state/pause.gd" id="6_kp0d4"]
+[ext_resource type="Script" uid="uid://blboaxbckdrdv" path="res://scenes/enemies/corvid/state/pre_attack.gd" id="7_htmdt"]
+[ext_resource type="Script" uid="uid://cvlqir8ougg5u" path="res://scenes/enemies/corvid/state/attack_2.gd" id="7_kp0d4"]
+[ext_resource type="Script" uid="uid://cghb616o3t5ul" path="res://scenes/enemies/corvid/state/dash.gd" id="8_s18xg"]
+[ext_resource type="Script" uid="uid://iqp2wfs8mglu" path="res://scenes/enemies/corvid/state/post_attack.gd" id="10_1fnqe"]
+[ext_resource type="Script" uid="uid://bvtthbae21ewf" path="res://scenes/enemies/corvid/state/death.gd" id="10_kp0d4"]
+[ext_resource type="Script" uid="uid://g846fox2vs24" path="res://scenes/enemies/corvid/state/fall.gd" id="11_s18xg"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="12_037im"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="14_cc55l"]
-[ext_resource type="Script" uid="uid://dfwil651t71we" path="res://scenes/enemies/wip_enemy/state/bide.gd" id="14_ssfqn"]
+[ext_resource type="Script" uid="uid://dfwil651t71we" path="res://scenes/enemies/corvid/state/bide.gd" id="14_ssfqn"]
 [ext_resource type="Shader" uid="uid://5dvrnk5mplh2" path="res://shaders/uniform_color.gdshader" id="15_s24oj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfiqa"]
@@ -28,11 +28,11 @@ shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
 shader_parameter/color = 0
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_s24oj"]
-_data = PackedByteArray("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")
-size_override = Vector2(384, 320)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_146f2"]
+_data = PackedByteArray("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")
+size_override = Vector2(384, 384)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_sfiqa"]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2pwpj"]
 _data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAAAqAAAAUklGRiIAAABXRUJQVlA4TBYAAAAvB8ABEA8QEQMYQiCQRL76GhH9D+gD")
 size_override = Vector2(8, 8)
 
@@ -62,6 +62,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_s24oj"]
 length = 0.6
@@ -78,6 +90,33 @@ tracks/0/keys = {
 "values": [5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_u04mt"]
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.2, 0.275),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22]
+}
+
 [sub_resource type="Animation" id="Animation_wixr1"]
 length = 0.6
 tracks/0/type = "value"
@@ -90,7 +129,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [22, 23, 24, 25, 26, 27]
+"values": [27, 28, 29, 30, 31, 32]
 }
 
 [sub_resource type="Animation" id="Animation_cc55l"]
@@ -103,10 +142,10 @@ tracks/0/path = NodePath("Sprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75, 0.751),
-"transitions": PackedFloat32Array(2, 1, 1),
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(0, -16), Vector2(0, 172), Vector2(0, -16)]
+"values": [Vector2(0, -16), Vector2(0, 236)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,10 +166,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [18, 19]
+"values": [23, 24, 25, 26]
 }
 
 [sub_resource type="Animation" id="Animation_1fnqe"]
@@ -183,6 +222,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_ssfqn"),
 &"alerted": SubResource("Animation_s24oj"),
+&"attack": SubResource("Animation_u04mt"),
 &"death": SubResource("Animation_wixr1"),
 &"fall": SubResource("Animation_cc55l"),
 &"idle": SubResource("Animation_1fnqe"),
@@ -281,7 +321,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kp0d4"]
-radius = 2.0
+radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htmdt"]
 radius = 5.0
@@ -293,74 +333,78 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ssfqn"]
 radius = 4.0
 
-[node name="WipEnemy" type="CharacterBody2D" unique_id=1133567921]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s24oj"]
+radius = 11.0
+
+[node name="Corvid" type="CharacterBody2D" unique_id=1133567921]
 collision_layer = 16
 collision_mask = 129
 platform_floor_layers = 4278190080
 script = ExtResource("1_5383a")
 metadata/_custom_type_script = "uid://bm315wwujblwc"
 
-[node name="WipEnemyStateMachine" type="Node" parent="." unique_id=629698065 node_paths=PackedStringArray("initial_state")]
+[node name="CorvidStateMachine" type="Node" parent="." unique_id=629698065 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_f2tsk")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://b023dqmvy1wyg"
 
-[node name="Idle" type="Node" parent="WipEnemyStateMachine" unique_id=206039036]
+[node name="Idle" type="Node" parent="CorvidStateMachine" unique_id=206039036]
 script = ExtResource("3_sv2x5")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Alerted" type="Node" parent="WipEnemyStateMachine" unique_id=862265472]
+[node name="Alerted" type="Node" parent="CorvidStateMachine" unique_id=862265472]
 script = ExtResource("4_gbuk4")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Step" type="Node" parent="WipEnemyStateMachine" unique_id=1607879789]
+[node name="Step" type="Node" parent="CorvidStateMachine" unique_id=1607879789]
 script = ExtResource("5_f2tsk")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Decide" type="Node" parent="WipEnemyStateMachine" unique_id=2127086434]
+[node name="Decide" type="Node" parent="CorvidStateMachine" unique_id=2127086434]
 script = ExtResource("6_kp0d4")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="PreAttack" type="Node" parent="WipEnemyStateMachine" unique_id=128248955]
+[node name="PreAttack" type="Node" parent="CorvidStateMachine" unique_id=128248955]
 script = ExtResource("7_htmdt")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Attack1" type="Node" parent="WipEnemyStateMachine" unique_id=2085939523]
+[node name="Attack1" type="Node" parent="CorvidStateMachine" unique_id=2085939523]
 script = ExtResource("6_3w1av")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Attack2" type="Node" parent="WipEnemyStateMachine" unique_id=710973069]
+[node name="Attack2" type="Node" parent="CorvidStateMachine" unique_id=710973069]
 script = ExtResource("7_kp0d4")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="PostAttack" type="Node" parent="WipEnemyStateMachine" unique_id=577200422]
+[node name="PostAttack" type="Node" parent="CorvidStateMachine" unique_id=577200422]
 script = ExtResource("10_1fnqe")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Dash" type="Node" parent="WipEnemyStateMachine" unique_id=404940532]
+[node name="Dash" type="Node" parent="CorvidStateMachine" unique_id=404940532]
 script = ExtResource("8_s18xg")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Death" type="Node" parent="WipEnemyStateMachine" unique_id=160263215]
+[node name="Death" type="Node" parent="CorvidStateMachine" unique_id=160263215]
 script = ExtResource("10_kp0d4")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Fall" type="Node" parent="WipEnemyStateMachine" unique_id=277269918]
+[node name="Fall" type="Node" parent="CorvidStateMachine" unique_id=277269918]
 script = ExtResource("11_s18xg")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
-[node name="Bide" type="Node" parent="WipEnemyStateMachine" unique_id=1614225097]
+[node name="Bide" type="Node" parent="CorvidStateMachine" unique_id=1614225097]
 script = ExtResource("14_ssfqn")
 metadata/_custom_type_script = "uid://bcf4v85reopr0"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1947576641]
 texture_filter = 1
 material = SubResource("ShaderMaterial_sfiqa")
-texture = SubResource("PortableCompressedTexture2D_s24oj")
+texture = SubResource("PortableCompressedTexture2D_146f2")
 offset = Vector2(0, -16)
 hframes = 6
-vframes = 5
+vframes = 6
 metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
@@ -378,16 +422,16 @@ metadata/_aseprite_wizard_config_ = {
 "player": "AnimationPlayer",
 "scale": "1.0",
 "slice": "",
-"source": "res://scenes/enemies/wip_enemy/wip_enemy.aseprite",
+"source": "res://scenes/enemies/corvid/corvid.aseprite",
 "source_uid": 3217076038792368738
 }
-metadata/_aseprite_wizard_source_file_hash_ = "bac6c8fe1fcc50a025609969944466f2"
+metadata/_aseprite_wizard_source_file_hash_ = "0efcc6cec1df978f7ccc8f75bfa5c93c"
 
 [node name="SpriteShadow" type="Sprite2D" parent="." unique_id=655501149]
 z_index = -3
 texture_filter = 1
 position = Vector2(0, -3)
-texture = SubResource("PortableCompressedTexture2D_sfiqa")
+texture = SubResource("PortableCompressedTexture2D_2pwpj")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -406,7 +450,7 @@ metadata/_aseprite_wizard_config_ = {
 "player": "",
 "scale": "1.0",
 "slice": "",
-"source": "res://scenes/enemies/wip_enemy/shadow.aseprite",
+"source": "res://scenes/enemies/corvid/shadow.aseprite",
 "source_uid": 291216017774212714
 }
 metadata/_aseprite_wizard_source_file_hash_ = "f52b3ad65a587fe02df1153879404dbe"
@@ -446,6 +490,14 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxGround" unique_id=684014020]
 shape = SubResource("CircleShape2D_ssfqn")
 
+[node name="Hitbox" parent="." unique_id=32202676 instance=ExtResource("14_cc55l")]
+position = Vector2(7, -10)
+damage_types = Array[int]([0])
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=673408076]
+shape = SubResource("CircleShape2D_s24oj")
+
 [node name="GroundDetector" type="Area2D" parent="." unique_id=1059392386]
 collision_layer = 0
 collision_mask = 2
@@ -460,4 +512,4 @@ offset_top = -42.0
 offset_right = 38.0
 offset_bottom = -19.0
 
-[connection signal="velocity_computed" from="NavigationAgent2D" to="WipEnemyStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="CorvidStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
