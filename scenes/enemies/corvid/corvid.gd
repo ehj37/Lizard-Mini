@@ -1,10 +1,26 @@
+@tool
+
 class_name Corvid
 
 extends Enemy
 
+enum InitialOrientation { RIGHT, LEFT }
+
 const MAX_HEALTH: int = 3
 
 @export var log_state_transitions: bool = false
+@export var initial_orientation: InitialOrientation = InitialOrientation.RIGHT:
+	set(new_value):
+		var p_d: CorvidPlayerDetector = $PlayerDetector
+		var spr: Sprite2D = $Sprite2D
+		match new_value:
+			InitialOrientation.RIGHT:
+				spr.flip_h = false
+				p_d.orientation = CorvidPlayerDetector.DetectorOrientation.RIGHT
+			InitialOrientation.LEFT:
+				spr.flip_h = true
+				p_d.orientation = CorvidPlayerDetector.DetectorOrientation.LEFT
+		initial_orientation = new_value
 
 var _player: Player
 var _health: int = MAX_HEALTH
@@ -22,9 +38,15 @@ var _health: int = MAX_HEALTH
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var ground_detector: Area2D = $GroundDetector
 @onready var health_label: Label = $HealthLabel
+# These get freed on alert
+@onready var enemy_alert_chainer: EnemyAlertChainer = $EnemyAlertChainer
+@onready var player_detector: CorvidPlayerDetector = $PlayerDetector
 
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
+	if !alerted:
+		alert()
+
 	# To consider: burn?
 	# Probably not the best way of doing this since (from the other enemy's perspective)
 	# the attack will have landed (i.e. take_damage was called).
@@ -43,6 +65,21 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 		death.emit()
 		HitStopManager.hit_stop()
 		state_machine.transition_to("Death")
+
+
+func alert() -> void:
+	super()
+
+	state_machine.set_player()
+
+	if is_instance_valid(player_detector):
+		player_detector.queue_free()
+
+	if is_instance_valid(enemy_alert_chainer):
+		enemy_alert_chainer.queue_free()
+
+	if state_machine.current_state.name == "Idle":
+		state_machine.transition_to("Alerted")
 
 
 func _ready() -> void:

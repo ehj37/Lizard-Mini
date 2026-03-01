@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://dmpta4hr306vr"]
+[gd_scene format=4 uid="uid://dmpta4hr306vr"]
 
 [ext_resource type="Script" uid="uid://moq83pfkhpkh" path="res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.gd" id="1_wb6cj"]
 
@@ -26,7 +26,7 @@ _data = {
 &"poof": SubResource("Animation_u4ixo")
 }
 
-[node name="FootstepDustCloud" type="Sprite2D"]
+[node name="FootstepDustCloud" type="Sprite2D" unique_id=1320108845]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_wb6cj")
 offset = Vector2(0, -6)
@@ -34,6 +34,7 @@ hframes = 3
 vframes = 2
 script = ExtResource("1_wb6cj")
 metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
@@ -54,9 +55,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/player/footstep_dust_cloud/footstep_dust_cloud.aseprite",
 "source_uid": 6846059153511876693
 }
-metadata/_aseprite_wizard_source_file_hash_ = "2312d890ef856ed7ee2bb2c627b72b2c"
+metadata/_aseprite_wizard_source_file_hash_ = "8c8229d7d598e4f885e0090dc3e41002"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y6sjn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=871030498]
+libraries/ = SubResource("AnimationLibrary_y6sjn")

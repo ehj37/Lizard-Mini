@@ -68,7 +68,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" unique_id=944110735 instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." unique_id=1646083049 instance=ExtResource("1_x6ivy")]
-position = Vector2(-834, 110)
+position = Vector2(-896, 120)
 
 [node name="PlayerCamera" parent="." unique_id=854111214 node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -433,6 +433,7 @@ position = Vector2(56, 0)
 position = Vector2(-56, 0)
 
 [node name="XCameraLockArea" parent="WispIntroArea" unique_id=1936897226 node_paths=PackedStringArray("player_camera") instance=ExtResource("17_1xax6")]
+visible = false
 position = Vector2(-832, 0)
 player_camera = NodePath("../../PlayerCamera")
 lock_y = false
@@ -442,6 +443,7 @@ position = Vector2(0, 56)
 shape = SubResource("RectangleShape2D_bw3ef")
 
 [node name="YCameraLockArea2" parent="WispIntroArea" unique_id=134858728 node_paths=PackedStringArray("player_camera") instance=ExtResource("17_1xax6")]
+visible = false
 position = Vector2(-832, -32)
 player_camera = NodePath("../../PlayerCamera")
 lock_x = false
@@ -465,10 +467,11 @@ position = Vector2(592, -240)
 [node name="DashRuler2" parent="." unique_id=971648374 instance=ExtResource("32_3gp1u")]
 position = Vector2(624, -224)
 
-[node name="Corvid" parent="." unique_id=401209250 instance=ExtResource("33_igeo0")]
-position = Vector2(-839, -46)
+[node name="Corvid" parent="." unique_id=1133567921 instance=ExtResource("33_igeo0")]
+position = Vector2(-896, -32)
 
-[node name="Corvid2" parent="." unique_id=2047035455 instance=ExtResource("33_igeo0")]
-position = Vector2(-781, 35)
+[node name="Corvid2" parent="." unique_id=1948867286 instance=ExtResource("33_igeo0")]
+position = Vector2(-768, 32)
+initial_orientation = 1
 
 [connection signal="unlocked" from="Wall/Door" to="Wall/Door/ConcentricSquares" method="kill"]

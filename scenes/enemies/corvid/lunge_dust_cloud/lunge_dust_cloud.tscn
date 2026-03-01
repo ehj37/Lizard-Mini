@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://cmtdn2pjgumol"]
+
+[ext_resource type="Script" uid="uid://bm0ttjyxjdqix" path="res://scripts/dust_puff.gd" id="1_gcmvu"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_y1x63"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAACmAAAAUklGRp4AAABXRUJQVlA4TJEAAAAvX8APEA8w//M///Mf8HBaa9ubvOm9SFzZANlhlTADA/BtgI2DUTo4Zvg3IA5H6vc5wEb0fwLwZ8eS8VNwnJdGx8aGGqsOKh9OoQFQfRy3L6eIycCn1I6r0slsdO3fCdplaRx3ymEcMpTRorJ08LuPGAJMsBmgc8MU3RpysOc1Qu5y0MAONAjHqaQHaa5JjvimAA==")
+size_override = Vector2(96, 64)
+
+[sub_resource type="Animation" id="Animation_cnk1i"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vguq6"]
+_data = {
+&"poof": SubResource("Animation_cnk1i")
+}
+
+[node name="DustCloud" type="Sprite2D" unique_id=1087416928]
+modulate = Color(1, 1, 1, 0.25)
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_y1x63")
+offset = Vector2(0, -14)
+hframes = 3
+vframes = 2
+script = ExtResource("1_gcmvu")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"source": "res://scenes/enemies/corvid/lunge_dust_cloud/lunge_dust_cloud.aseprite"
+}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/enemies/corvid/dust_cloud/dust_cloud.aseprite",
+"source_uid": 2473827222350128026
+}
+metadata/_aseprite_wizard_source_file_hash_ = "63fc130c119dd5d3d9dab516854391b9"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1573539505]
+libraries/ = SubResource("AnimationLibrary_vguq6")

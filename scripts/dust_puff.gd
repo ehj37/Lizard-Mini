@@ -4,6 +4,7 @@ extends Sprite2D
 
 
 func _ready() -> void:
+	animation_player.get_animation("poof").loop_mode = Animation.LOOP_NONE
 	animation_player.play("poof")
 	await animation_player.animation_finished
 

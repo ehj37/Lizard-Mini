@@ -28,14 +28,13 @@ func _on_lock_target_timer_timeout() -> void:
 	if player.in_reachable_state():
 		_target_locked = true
 		_target = player.global_position
-	else:
-		state_machine.transition_to("Bide")
 
 
 func _on_pre_attack_timer_timeout() -> void:
 	if state_machine.current_state != self:
 		return
 
-	# TODO: Or attack 2, or dash away maybe? Or back to step if the player is
-	# out of range?
-	state_machine.transition_to("Attack1", {"target": _target})
+	if _target_locked:
+		state_machine.transition_to("Attack1", {"target": _target})
+	else:
+		state_machine.transition_to("Step")

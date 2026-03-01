@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://b8ffutsc3hxp3"]
+
+[ext_resource type="Script" uid="uid://bm0ttjyxjdqix" path="res://scripts/dust_puff.gd" id="1_3tfyi"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_3tfyi"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABOAAAAUklGRkYAAABXRUJQVlA4TDkAAAAvH8AHEA8w//M///Mf8GAT2VarQw4VJVWQgiQkIA0pqIEfDET0P/mhR/RwqySxK59NkJ4mNFmD5gQA")
+size_override = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_fgdgb"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxdwd"]
+_data = {
+&"poof": SubResource("Animation_fgdgb")
+}
+
+[node name="StepDustCloud" type="Sprite2D" unique_id=1858439154]
+modulate = Color(1, 1, 1, 0.5)
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_3tfyi")
+offset = Vector2(0, -8)
+hframes = 2
+vframes = 2
+script = ExtResource("1_3tfyi")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/enemies/corvid/step_dust_cloud/step_dust_cloud.aseprite",
+"source_uid": 3608915826198345514
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c830abcee5a3a4f9116434c5881ee653"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2053961878]
+libraries/ = SubResource("AnimationLibrary_bxdwd")

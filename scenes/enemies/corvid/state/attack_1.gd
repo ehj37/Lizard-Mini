@@ -8,6 +8,10 @@ const DECELERATION_START: float = 0.1
 var _direction: Vector2
 var _deceleration_tween: Tween
 
+@onready var dust_cloud_packed_scene: PackedScene = preload(
+	"res://scenes/enemies/corvid/lunge_dust_cloud/lunge_dust_cloud.tscn"
+)
+
 
 func physics_update(_delta: float) -> void:
 	corvid.velocity = _direction * ATTACK_LUNGE_SPEED
@@ -53,5 +57,11 @@ func _on_deceleration_start_timer_timeout() -> void:
 func _on_lunge_timer_timeout() -> void:
 	if state_machine.current_state != self:
 		return
+
+	# Don't spawn a dust cloud mid-air
+	if corvid.ground_detector.has_overlapping_bodies():
+		var dust_cloud: Sprite2D = dust_cloud_packed_scene.instantiate()
+		dust_cloud.global_position = corvid.global_position
+		LevelManager.current_level.add_child(dust_cloud)
 
 	state_machine.transition_to("PostAttack")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://brogk00lb6a1o"
+path="res://.godot/imported/step_dust_cloud.aseprite-2371ce1604375d192268310b7705bc8c.res"
+
+[deps]
+
+source_file="res://scenes/enemies/corvid/step_dust_cloud/step_dust_cloud.aseprite"
+dest_files=["res://.godot/imported/step_dust_cloud.aseprite-2371ce1604375d192268310b7705bc8c.res"]
+
+[params]
+

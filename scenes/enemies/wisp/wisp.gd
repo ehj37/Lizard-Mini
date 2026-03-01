@@ -24,6 +24,8 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 
 
 func alert() -> void:
+	super()
+
 	if state_machine.current_state.name == "Idle":
 		state_machine.transition_to("Alert")
 
