@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cifgxsdrxtsg1"]
+
+[ext_resource type="Script" uid="uid://boh0e3pjg6bit" path="res://ui/debug_menu/debug_menu.gd" id="1_2lwgs"]
+
+[sub_resource type="Theme" id="Theme_2lwgs"]
+default_font_size = 10
+
+[node name="DebugMenu" type="CanvasLayer" unique_id=1427943433]
+process_mode = 3
+visible = false
+script = ExtResource("1_2lwgs")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1710449074]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_2lwgs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=603886765]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1260556110]
+layout_mode = 2
+text = "FPS:"
+
+[node name="ResetButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=510808449]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Reset current level"
+
+[node name="CollisionShapeVisibilityButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=899927300]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Visible collision shapes"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CollisionShapeVisibilityButton" to="." method="_on_collision_shape_visibility_button_pressed"]
