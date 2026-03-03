@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NonPositionalAudioConfig" format=3 uid="uid://c1u4mrl1ofrca"]
+
+[ext_resource type="AudioStream" uid="uid://bipnak85td263" path="res://audio/audio_streams/Footstep (tile).ogg" id="1_ajepx"]
+[ext_resource type="Script" uid="uid://75hj1u18lpvd" path="res://audio/non_positional_audio_config.gd" id="1_wepos"]
+
+[resource]
+script = ExtResource("1_wepos")
+type = 5
+pitch_variance = 0.1
+audio_stream = ExtResource("1_ajepx")
+metadata/_custom_type_script = "uid://75hj1u18lpvd"

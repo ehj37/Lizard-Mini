@@ -113,8 +113,8 @@ func enter(data: Dictionary = {}) -> void:
 	var animation: String = _get_animation(_lunge_dir, _combo_num)
 	var pitch_multiplier: float = 1.0 + _combo_num * PITCH_MULTIPLIER_PER_ATTACK
 	animation_player.play(animation)
-	SoundEffectManager.play_effect_at(
-		player.global_position, SoundEffectConfig.Type.PLAYER_SWORD_SWING, pitch_multiplier
+	NonPositionalAudioManager.play_audio(
+		NonPositionalAudioConfig.Type.PLAYER_SWORD_SWING, pitch_multiplier
 	)
 
 	if _lunge_dir.x < 0:
@@ -141,7 +141,7 @@ func enter(data: Dictionary = {}) -> void:
 func exit() -> void:
 	if animation_player.is_playing():
 		_disable_sword()
-		SoundEffectManager.cancel_audio(SoundEffectConfig.Type.PLAYER_SWORD_SWING)
+		NonPositionalAudioManager.cancel_audio(NonPositionalAudioConfig.Type.PLAYER_SWORD_SWING)
 		animation_player.stop()
 
 	# This is fine for combo attacks since they don't check the timer.

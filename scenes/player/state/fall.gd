@@ -34,8 +34,6 @@ func enter(data: Dictionary = {}) -> void:
 
 func _thud() -> void:
 	if player.ground_detector.on_floor():
-		SoundEffectManager.play_effect_at(
-			player.global_position, SoundEffectConfig.Type.PLAYER_FALL_THUD
-		)
+		NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_FALL_THUD)
 	else:
 		state_machine.transition_to("FallPit")

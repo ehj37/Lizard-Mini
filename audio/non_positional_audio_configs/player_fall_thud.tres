@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NonPositionalAudioConfig" format=3 uid="uid://dridoxn5mg64t"]
+
+[ext_resource type="AudioStream" uid="uid://ldekinh5x12v" path="res://audio/audio_streams/Player thud.ogg" id="1_75ujl"]
+[ext_resource type="Script" uid="uid://75hj1u18lpvd" path="res://audio/non_positional_audio_config.gd" id="1_vsxhg"]
+
+[resource]
+script = ExtResource("1_vsxhg")
+type = 3
+audio_stream = ExtResource("1_75ujl")
+metadata/_custom_type_script = "uid://75hj1u18lpvd"

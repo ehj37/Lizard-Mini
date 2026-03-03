@@ -9,8 +9,8 @@ var explosion_resource: PackedScene = preload("./explosion/explosive_canister_ex
 
 
 func _ready() -> void:
-	_ambience_identifier = SoundEffectManager.play_effect_at(
-		global_position, SoundEffectConfig.Type.CANISTER_AMBIENCE
+	_ambience_identifier = PositionalAudioManager.play_audio_at(
+		global_position, PositionalAudioConfig.Type.CANISTER_AMBIENCE
 	)
 
 
@@ -18,7 +18,9 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vec
 	hurtbox.disable()
 	hurtbox_ground.disable()
 
-	SoundEffectManager.cancel_audio(SoundEffectConfig.Type.CANISTER_AMBIENCE, _ambience_identifier)
+	PositionalAudioManager.cancel_audio(
+		PositionalAudioConfig.Type.CANISTER_AMBIENCE, _ambience_identifier
+	)
 
 	var explosion: Node2D = explosion_resource.instantiate()
 	explosion.global_position = global_position

@@ -19,7 +19,7 @@ var _dust_puff_resource: PackedScene = preload("res://scenes/objects/pots/dust_p
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	_spawn_fragments(direction)
-	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.POT_BREAK)
+	PositionalAudioManager.play_audio_at(global_position, PositionalAudioConfig.Type.POT_BREAK)
 	_spawn_dust_puff()
 
 	queue_free()

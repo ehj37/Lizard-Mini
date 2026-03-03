@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PositionalAudioConfig" format=3 uid="uid://eq3fo8jlnc6a"]
+
+[ext_resource type="Script" uid="uid://c4sy5xvdld5np" path="res://audio/positional_audio_config.gd" id="1_2xv70"]
+[ext_resource type="AudioStream" uid="uid://b67j3tpt7x43n" path="res://audio/audio_streams/Fire vent.ogg" id="1_6bfus"]
+
+[resource]
+script = ExtResource("1_2xv70")
+type = 3
+limit = -1
+audio_stream = ExtResource("1_6bfus")
+random_start_time = true
+loop_audio = true
+metadata/_custom_type_script = "uid://c4sy5xvdld5np"

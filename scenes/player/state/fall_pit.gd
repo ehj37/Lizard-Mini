@@ -22,9 +22,7 @@ func enter(_data: Dictionary = {}) -> void:
 
 	player.sprite_shadow.visible = false
 
-	SoundEffectManager.play_effect_at(
-		player.global_position, SoundEffectConfig.Type.PLAYER_FALL_PIT
-	)
+	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_FALL_PIT)
 	animation_player.play("fall_pit")
 
 

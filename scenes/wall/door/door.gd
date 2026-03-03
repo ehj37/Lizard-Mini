@@ -27,7 +27,7 @@ func _ready() -> void:
 func _unlock() -> void:
 	unlocked.emit()
 
-	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.DOOR_DOWN)
+	PositionalAudioManager.play_audio_at(global_position, PositionalAudioConfig.Type.DOOR_DOWN)
 
 	var right_dust_cloud: Sprite2D = dust_cloud_resource.instantiate()
 	right_dust_cloud.global_position = right_dust_spawn.global_position

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bs5ysnxnafcbk"]
+
+[ext_resource type="Script" uid="uid://boopot438u07x" path="res://audio/positional_audio_manager/positional_audio_manager.gd" id="1_r3ycs"]
+[ext_resource type="Script" uid="uid://c4sy5xvdld5np" path="res://audio/positional_audio_config.gd" id="2_kgad0"]
+[ext_resource type="Resource" uid="uid://n10tpe8u2ia8" path="res://audio/positional_audio_configs/canister_ambience.tres" id="3_o537m"]
+[ext_resource type="Resource" uid="uid://otxh44vf5nsm" path="res://audio/positional_audio_configs/canister_explosion.tres" id="4_jh2l2"]
+[ext_resource type="Resource" uid="uid://dfec800ap8mvu" path="res://audio/positional_audio_configs/door_down.tres" id="5_svl1k"]
+[ext_resource type="Resource" uid="uid://eq3fo8jlnc6a" path="res://audio/positional_audio_configs/fire_vent.tres" id="6_pnc5g"]
+[ext_resource type="Resource" uid="uid://cnkjj2spk7iij" path="res://audio/positional_audio_configs/interact_complete.tres" id="7_8u3f3"]
+[ext_resource type="Resource" uid="uid://6mysmdha54wv" path="res://audio/positional_audio_configs/pot_break.tres" id="8_lis18"]
+[ext_resource type="Resource" uid="uid://cmwyoiky45mh7" path="res://audio/positional_audio_configs/progress_indicator_medium.tres" id="9_5xvw0"]
+[ext_resource type="Resource" uid="uid://buqawnaofc7xu" path="res://audio/positional_audio_configs/progress_indicator_short.tres" id="10_sgrvn"]
+[ext_resource type="Resource" uid="uid://do6ahnywmmjka" path="res://audio/positional_audio_configs/singe.tres" id="11_ebsfw"]
+[ext_resource type="Resource" uid="uid://cdmmuk6dsrilt" path="res://audio/positional_audio_configs/statuette_break.tres" id="12_jxcre"]
+[ext_resource type="Resource" uid="uid://cvgfdb84ybxnn" path="res://audio/positional_audio_configs/wisp_alert.tres" id="13_y0anp"]
+[ext_resource type="Resource" uid="uid://r12x7xuyll3o" path="res://audio/positional_audio_configs/wisp_container_break.tres" id="14_wseta"]
+[ext_resource type="Resource" uid="uid://b4uneu5vxq6r2" path="res://audio/positional_audio_configs/wisp_death.tres" id="15_lx0fx"]
+
+[node name="PositionalAudioManager" type="Node" unique_id=1159045254]
+script = ExtResource("1_r3ycs")
+audio_configs = Array[ExtResource("2_kgad0")]([ExtResource("3_o537m"), ExtResource("4_jh2l2"), ExtResource("5_svl1k"), ExtResource("6_pnc5g"), ExtResource("7_8u3f3"), ExtResource("8_lis18"), ExtResource("9_5xvw0"), ExtResource("10_sgrvn"), ExtResource("11_ebsfw"), ExtResource("12_jxcre"), ExtResource("13_y0anp"), ExtResource("14_wseta"), ExtResource("15_lx0fx")])

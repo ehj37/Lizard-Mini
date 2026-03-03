@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PositionalAudioConfig" format=3 uid="uid://cmwyoiky45mh7"]
+
+[ext_resource type="AudioStream" uid="uid://bklg0slnlq40x" path="res://audio/audio_streams/Progress indicator (medium).ogg" id="1_e1ng8"]
+[ext_resource type="Script" uid="uid://c4sy5xvdld5np" path="res://audio/positional_audio_config.gd" id="1_rf2dp"]
+
+[resource]
+script = ExtResource("1_rf2dp")
+type = 6
+audio_stream = ExtResource("1_e1ng8")
+metadata/_custom_type_script = "uid://c4sy5xvdld5np"

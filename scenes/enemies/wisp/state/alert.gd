@@ -41,7 +41,9 @@ func enter(_data: Dictionary = {}) -> void:
 	# Gets set back to normal amount on exit
 	wisp.fire_small.amount *= 2
 
-	SoundEffectManager.play_effect_at(wisp.global_position, SoundEffectConfig.Type.WISP_ALERT)
+	PositionalAudioManager.play_audio_at(
+		wisp.global_position, PositionalAudioConfig.Type.WISP_ALERT
+	)
 
 
 func exit() -> void:

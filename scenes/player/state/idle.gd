@@ -65,7 +65,7 @@ func _get_animation(dir: Vector2) -> String:
 
 
 func _play_blink_sound_effect() -> void:
-	SoundEffectManager.play_effect_at(player.global_position, SoundEffectConfig.Type.PLAYER_BLINK)
+	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_BLINK)
 
 
 func _on_impatient_timer_timeout() -> void:

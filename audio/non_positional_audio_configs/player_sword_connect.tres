@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NonPositionalAudioConfig" format=3 uid="uid://2pj61rc6jy8m"]
+
+[ext_resource type="AudioStream" uid="uid://c14tijth043pf" path="res://audio/audio_streams/Player sword connect.ogg" id="1_uh5jp"]
+[ext_resource type="Script" uid="uid://75hj1u18lpvd" path="res://audio/non_positional_audio_config.gd" id="1_yr18y"]
+
+[resource]
+script = ExtResource("1_yr18y")
+type = 7
+limit = 2
+audio_stream = ExtResource("1_uh5jp")
+metadata/_custom_type_script = "uid://75hj1u18lpvd"

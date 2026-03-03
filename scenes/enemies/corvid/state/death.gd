@@ -8,8 +8,7 @@ func update(_delta: float) -> void:
 
 
 func enter(_data: Dictionary = {}) -> void:
-	# TODO: Replace with a dedicated sound
-	SoundEffectManager.play_effect_at(corvid.global_position, SoundEffectConfig.Type.PLAYER_OUCH)
+	# TODO: Add dedicated death sound
 	corvid.sprite_shadow.visible = false
 	corvid.velocity = Vector2.ZERO
 	corvid.collision_shape.disabled = true

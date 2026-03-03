@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8dgdk87hqi4q"
+path="res://.godot/imported/Canister explosion.ogg-0dbc441af5c1a1e7087a4b8947ff650a.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/audio_streams/Canister explosion.ogg"
+dest_files=["res://.godot/imported/Canister explosion.ogg-0dbc441af5c1a1e7087a4b8947ff650a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

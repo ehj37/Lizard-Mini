@@ -14,7 +14,9 @@ var popped: bool = false
 
 
 func shatter(direction: Vector2 = Vector2.ZERO) -> void:
-	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.WISP_CONTAINER_BREAK)
+	PositionalAudioManager.play_audio_at(
+		global_position, PositionalAudioConfig.Type.WISP_CONTAINER_BREAK
+	)
 
 	popped = true
 	collision_polygon.set_deferred("disabled", true)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ckvys0kk1vlff"]
+
+[ext_resource type="Script" uid="uid://dupus7yppgbxu" path="res://audio/non_positional_audio_manager/non_positional_audio_manager.gd" id="1_fjs82"]
+[ext_resource type="Script" uid="uid://75hj1u18lpvd" path="res://audio/non_positional_audio_config.gd" id="2_abmpp"]
+[ext_resource type="Resource" uid="uid://mnkbo46lpmd7" path="res://audio/non_positional_audio_configs/player_blink.tres" id="3_e6j50"]
+[ext_resource type="Resource" uid="uid://d1jqpxwm5sxud" path="res://audio/non_positional_audio_configs/player_dash.tres" id="4_8s5vs"]
+[ext_resource type="Resource" uid="uid://c1lt6ctgsayay" path="res://audio/non_positional_audio_configs/player_fall_pit.tres" id="5_4x8wh"]
+[ext_resource type="Resource" uid="uid://dridoxn5mg64t" path="res://audio/non_positional_audio_configs/player_fall_thud.tres" id="6_7bi80"]
+[ext_resource type="Resource" uid="uid://cwu8ba6t1hykm" path="res://audio/non_positional_audio_configs/player_footstep_clay.tres" id="7_s2uqm"]
+[ext_resource type="Resource" uid="uid://c1u4mrl1ofrca" path="res://audio/non_positional_audio_configs/player_footstep_tile.tres" id="8_slh3j"]
+[ext_resource type="Resource" uid="uid://boenwctubvpmy" path="res://audio/non_positional_audio_configs/player_ouch.tres" id="9_smjvs"]
+[ext_resource type="Resource" uid="uid://2pj61rc6jy8m" path="res://audio/non_positional_audio_configs/player_sword_connect.tres" id="10_mx5yl"]
+[ext_resource type="Resource" uid="uid://cka21r30g6wr0" path="res://audio/non_positional_audio_configs/player_sword_swing.tres" id="11_hveu7"]
+
+[node name="NonPositionalAudioManager" type="Node" unique_id=1668407331]
+script = ExtResource("1_fjs82")
+audio_configs = Array[ExtResource("2_abmpp")]([ExtResource("3_e6j50"), ExtResource("4_8s5vs"), ExtResource("5_4x8wh"), ExtResource("6_7bi80"), ExtResource("7_s2uqm"), ExtResource("8_slh3j"), ExtResource("9_smjvs"), ExtResource("10_mx5yl"), ExtResource("11_hveu7")])

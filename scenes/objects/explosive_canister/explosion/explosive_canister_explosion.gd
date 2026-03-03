@@ -4,7 +4,9 @@ extends Node2D
 
 
 func _ready() -> void:
-	SoundEffectManager.play_effect_at(global_position, SoundEffectConfig.Type.CANISTER_EXPLOSION)
+	PositionalAudioManager.play_audio_at(
+		global_position, PositionalAudioConfig.Type.CANISTER_EXPLOSION
+	)
 
 	animation_player.play("boom")
 	await animation_player.animation_finished

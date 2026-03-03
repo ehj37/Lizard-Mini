@@ -92,18 +92,20 @@ func play_footstep_sound_effect() -> void:
 		if data_at_position:
 			tile_data.append(data_at_position)
 
-	var effect_type: SoundEffectConfig.Type = SoundEffectConfig.Type.PLAYER_FOOTSTEP_TILE
+	var audio_config_type: NonPositionalAudioConfig.Type = (
+		NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_TILE
+	)
 
 	if tile_data.size() > 0:
 		var uppermost_tile_data: TileData = tile_data.back()
 		var tile_type: String = uppermost_tile_data.get_custom_data("ground_type")
 		match tile_type:
 			"tile":
-				effect_type = SoundEffectConfig.Type.PLAYER_FOOTSTEP_TILE
+				audio_config_type = NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_TILE
 			"clay":
-				effect_type = SoundEffectConfig.Type.PLAYER_FOOTSTEP_CLAY
+				audio_config_type = NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_CLAY
 
-	SoundEffectManager.play_effect_at(player.global_position, effect_type)
+	NonPositionalAudioManager.play_audio(audio_config_type)
 
 
 func _get_animation(dir: Vector2) -> String:
