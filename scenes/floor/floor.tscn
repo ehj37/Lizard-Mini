@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg7jwekjbmt0j"]
+[gd_scene format=3 uid="uid://dg7jwekjbmt0j"]
 
 [ext_resource type="Texture2D" uid="uid://clbd42idylt8g" path="res://scenes/floor/floor.png" id="1_w0xbj"]
 
@@ -6,6 +6,12 @@
 tile_data = PackedInt32Array(0, 458752, 0, 65536, 458752, 536870912, 1, 458752, 1073741825, 65537, 458752, 1610612737, 2, 458752, 1073741825, 65538, 458752, 1610612737, 3, 458752, 1073741825, 65539, 458752, 1610612737, 4, 458752, 1073741825, 65540, 458752, 1610612737, 5, 458752, 268435456, 65541, 458752, 805306368)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w0xbj"]
+vertices = PackedVector2Array(2, 2, -2, 2, -2, -2, 2, -2)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1w6he"]
 vertices = PackedVector2Array(2, 2, -2, 2, -2, -2, 2, -2)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)])
@@ -129,6 +135,9 @@ texture_region_size = Vector2i(4, 4)
 8:1/0 = 0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 8:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_n0mj7")
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+0:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1w6he")
 
 [sub_resource type="TileSet" id="TileSet_w0xbj"]
 tile_size = Vector2i(4, 4)
@@ -140,11 +149,11 @@ custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_w0xbj")
 pattern_0 = SubResource("TileMapPattern_w0xbj")
 
-[node name="Floor" type="TileMapLayer" groups=["ground"]]
+[node name="Floor" type="TileMapLayer" unique_id=1152027552 groups=["ground"]]
 z_index = -5
 tile_set = SubResource("TileSet_w0xbj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1289134132]
 visible = false
 texture_filter = 1
 texture = ExtResource("1_w0xbj")
@@ -170,4 +179,4 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/floor/floor.aseprite",
 "source_uid": 759404037010263615
 }
-metadata/_aseprite_wizard_source_file_hash_ = "13f25f7f1759d8a01128212126c563be"
+metadata/_aseprite_wizard_source_file_hash_ = "69b7da05b511db558295e12aba234431"

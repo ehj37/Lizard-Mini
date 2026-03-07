@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://btskgccbkw3mo"]
+
+[ext_resource type="Script" uid="uid://cr1o7f2eukqfu" path="res://scenes/enemy_health_bar/enemy_health_bar.gd" id="1_wq5vj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq5vj"]
+bg_color = Color(0.086104214, 0.086104214, 0.086104214, 0.83400005)
+
+[node name="EnemyHealthBar" type="Node2D" unique_id=1587149291]
+script = ExtResource("1_wq5vj")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=797285016]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wq5vj")
+
+[node name="PipsContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1386154187]
+layout_mode = 2
+theme_override_constants/separation = 2

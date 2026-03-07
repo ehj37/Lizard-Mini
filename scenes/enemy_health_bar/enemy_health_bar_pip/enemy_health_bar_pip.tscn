@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://biptpmcpdqkdr"]
+
+[ext_resource type="Script" uid="uid://cknmpygdprlgj" path="res://scenes/enemy_health_bar/enemy_health_bar_pip/enemy_health_bar_pip.gd" id="1_k273g"]
+
+[node name="EnemyHealthBarPip" type="Control" unique_id=1656535237]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k273g")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=441706007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

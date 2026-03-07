@@ -4,7 +4,8 @@ extends Area2D
 
 # If the hurtbox's owner has been damaged by a hitbox, the amount of time before
 # the hitbox can hurt the hurtbox's owner again.
-@export var repetitive_hitbox_damage_cooldown: float = 0.0
+# Default of 0.1 is oriented to player sword hitbox enable time.
+@export var repetitive_hitbox_damage_cooldown: float = 0.1
 @export var self_damage_disabled: bool = true
 @export var grounded: bool = false
 # A fragile hurtbox will cause damage to be taken even if the intersecting

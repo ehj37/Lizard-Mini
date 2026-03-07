@@ -6,9 +6,6 @@ extends Enemy
 
 enum InitialOrientation { RIGHT, LEFT }
 
-const MAX_HEALTH: int = 3
-
-@export var log_state_transitions: bool = false
 @export var initial_orientation: InitialOrientation = InitialOrientation.RIGHT:
 	set(new_value):
 		var p_d: CorvidPlayerDetector = $PlayerDetector
@@ -23,7 +20,6 @@ const MAX_HEALTH: int = 3
 		initial_orientation = new_value
 
 var _player: Player
-var _health: int = MAX_HEALTH
 
 @onready var state_machine: CorvidStateMachine = $CorvidStateMachine
 @onready var sprite: Sprite2D = $Sprite2D
@@ -32,33 +28,34 @@ var _health: int = MAX_HEALTH
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_ground: Hurtbox = $HurtboxGround
 @onready var hitbox: Hitbox = $Hitbox
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var ground_detector: Area2D = $GroundDetector
-@onready var health_label: Label = $HealthLabel
 # These get freed on alert
 @onready var enemy_alert_chainer: EnemyAlertChainer = $EnemyAlertChainer
 @onready var player_detector: CorvidPlayerDetector = $PlayerDetector
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
+func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	if !alerted:
 		alert()
 
 	# To consider: burn?
 	# Probably not the best way of doing this since (from the other enemy's perspective)
 	# the attack will have landed (i.e. take_damage was called).
+	# Could also try to bake something into hurtboxes for this such that this doesn't get called
+	# if the damage type is irrelevant.
 	var relevant_damage_types: Array[Hitbox.DamageType] = _types.filter(
 		func(type: Hitbox.DamageType) -> bool: return type != Hitbox.DamageType.ENEMY
 	)
 	if relevant_damage_types.is_empty():
 		return
 
-	_health -= 1
-	health_label.text = str(_health)
-	if _health > 0:
+	health_component.subtract_health(amount)
+	if health_component.current_health > 0:
 		shader_animation_player.play("hurt_flash")
 	else:
 		shader_animation_player.play("death_flash")
@@ -83,12 +80,14 @@ func alert() -> void:
 
 
 func _ready() -> void:
-	health_label.text = str(_health)
-	call_deferred("_seeker_setup")
-	state_machine.log_state_transitions = log_state_transitions
+	if !Engine.is_editor_hint():
+		call_deferred("_seeker_setup")
 
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+
 	if _player:
 		navigation_agent.target_position = _player.global_position
 		var next_path_position: Vector2 = navigation_agent.get_next_path_position()

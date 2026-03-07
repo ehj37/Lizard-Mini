@@ -3,6 +3,7 @@ class_name CorvidStepState
 extends CorvidState
 
 const STEP_DURATION: float = 0.3
+const STEP_DURATION_VARIATION: float = 0.05
 const STEP_SPEED: float = 175.0
 const STEP_ANGLE_MAX_OFFSET_MAGNITUDE: float = PI / 8
 
@@ -29,9 +30,12 @@ func update(_delta: float) -> void:
 func enter(_data: Dictionary = {}) -> void:
 	_speed = STEP_SPEED
 	_direction = _safe_velocity.normalized()
-	get_tree().create_tween().tween_property(self, "_speed", 0, STEP_DURATION)
+	var duration: float = (
+		STEP_DURATION + randf_range(-STEP_DURATION_VARIATION, STEP_DURATION_VARIATION)
+	)
+	get_tree().create_tween().tween_property(self, "_speed", 0, duration)
 
-	get_tree().create_timer(STEP_DURATION).timeout.connect(_on_step_timer_timeout)
+	get_tree().create_timer(duration).timeout.connect(_on_step_timer_timeout)
 	corvid.sprite.flip_h = _safe_velocity.x < 0
 	# A previously played step animation may be still playing
 	if corvid.animation_player.is_playing():

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cxq0a1g7triur"]
+
+[ext_resource type="Script" uid="uid://cd4ebw3fwgkbl" path="res://scenes/enemies/wip_enemy/wip_enemy.gd" id="1_kajs8"]
+[ext_resource type="Script" uid="uid://bmbr8yuwkrk06" path="res://scenes/enemies/wip_enemy/state/wip_enemy_state_machine.gd" id="2_5383a"]
+[ext_resource type="Script" uid="uid://cfr4nw7ltr75o" path="res://scenes/enemies/wip_enemy/state/idle.gd" id="3_sv2x5"]
+[ext_resource type="Script" uid="uid://bngihwdws3t46" path="res://scenes/enemies/wip_enemy/state/alerted.gd" id="4_gbuk4"]
+[ext_resource type="Script" uid="uid://f71yn7u2mk73" path="res://scenes/enemies/wip_enemy/state/move.gd" id="5_6btuo"]
+[ext_resource type="PackedScene" uid="uid://ctmmrvn5msgq0" path="res://scenes/health_component/health_component.tscn" id="6_3a4gc"]
+[ext_resource type="PackedScene" uid="uid://btskgccbkw3mo" path="res://scenes/enemy_health_bar/enemy_health_bar.tscn" id="7_f2tsk"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="8_f2tsk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2tsk"]
+radius = 15.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2tsk"]
+radius = 6.0
+
+[node name="WipEnemy" type="CharacterBody2D" unique_id=2043209814]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_kajs8")
+metadata/_custom_type_script = "uid://bm315wwujblwc"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1138359519]
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 16.0
+
+[node name="WipEnemyStateMachine" type="Node" parent="." unique_id=160286974 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_5383a")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bmbr8yuwkrk06"
+
+[node name="Idle" type="Node" parent="WipEnemyStateMachine" unique_id=1619568601]
+script = ExtResource("3_sv2x5")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="Alerted" type="Node" parent="WipEnemyStateMachine" unique_id=1411506644]
+script = ExtResource("4_gbuk4")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="Move" type="Node" parent="WipEnemyStateMachine" unique_id=1018077470]
+script = ExtResource("5_6btuo")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="HealthComponent" parent="." unique_id=723412012 instance=ExtResource("6_3a4gc")]
+max_health = 7
+current_health = 7
+
+[node name="EnemyHealthBar" parent="." unique_id=1587149291 node_paths=PackedStringArray("health_component") instance=ExtResource("7_f2tsk")]
+position = Vector2(0, -48)
+health_component = NodePath("../HealthComponent")
+
+[node name="Hurtbox" parent="." unique_id=261575530 instance=ExtResource("8_f2tsk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1523195061]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_f2tsk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008118388]
+shape = SubResource("CircleShape2D_f2tsk")
