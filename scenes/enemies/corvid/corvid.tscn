@@ -93,6 +93,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [5, 6, 7, 8, 9]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CorvidStateMachine/Alerted")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_set_alerted"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_u04mt"]
 length = 0.35
@@ -407,6 +421,7 @@ texture = SubResource("PortableCompressedTexture2D_146f2")
 offset = Vector2(0, -16)
 hframes = 6
 vframes = 6
+frame = 8
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "pending_changes": {}

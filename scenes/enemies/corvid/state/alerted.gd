@@ -8,3 +8,7 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	corvid.animation_player.play("alerted")
+
+
+func _set_alerted() -> void:
+	corvid.alerted = true

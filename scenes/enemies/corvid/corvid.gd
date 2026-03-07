@@ -65,7 +65,8 @@ func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vect
 
 
 func alert() -> void:
-	super()
+	if state_machine.current_state.name == "Alerted":
+		return
 
 	state_machine.set_player()
 
