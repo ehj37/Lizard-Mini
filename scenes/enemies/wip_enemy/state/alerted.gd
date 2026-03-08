@@ -10,7 +10,8 @@ func enter(_data: Dictionary = {}) -> void:
 
 
 func _on_alert_timer_timeout() -> void:
-	# Or I have something on the state machine to make a decision?
-	# state_machine.pick_next_state or .pick_next_state_based_on_player
-	# Instead—transition to decide. Can attack straight out of alert.
-	state_machine.transition_to("Move")
+	wip_enemy.alerted = true
+	if can_attack():
+		state_machine.transition_to("Attack")
+	else:
+		state_machine.transition_to("Step")

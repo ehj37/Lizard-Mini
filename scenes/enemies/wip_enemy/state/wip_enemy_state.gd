@@ -2,11 +2,18 @@ class_name WipEnemyState
 
 extends State
 
+const ATTACK_RANGE: float = 50.0
+
 var wip_enemy: WipEnemy
 var player: Player
 
-#func on_ground() -> bool:
-#return wip_enemy.ground_detector.has_overlapping_bodies()
+
+func can_attack() -> bool:
+	var in_range: bool = (
+		wip_enemy.global_position.distance_to(player.global_position) < ATTACK_RANGE
+	)
+	var cooldown_up: bool = wip_enemy.attack_cooldown_timer.is_stopped()
+	return in_range && cooldown_up
 
 
 func _ready() -> void:

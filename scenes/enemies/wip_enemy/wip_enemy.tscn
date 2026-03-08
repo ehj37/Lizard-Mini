@@ -4,9 +4,12 @@
 [ext_resource type="Script" uid="uid://bmbr8yuwkrk06" path="res://scenes/enemies/wip_enemy/state/wip_enemy_state_machine.gd" id="2_5383a"]
 [ext_resource type="Script" uid="uid://cfr4nw7ltr75o" path="res://scenes/enemies/wip_enemy/state/idle.gd" id="3_sv2x5"]
 [ext_resource type="Script" uid="uid://bngihwdws3t46" path="res://scenes/enemies/wip_enemy/state/alerted.gd" id="4_gbuk4"]
-[ext_resource type="Script" uid="uid://f71yn7u2mk73" path="res://scenes/enemies/wip_enemy/state/move.gd" id="5_6btuo"]
+[ext_resource type="Script" uid="uid://f71yn7u2mk73" path="res://scenes/enemies/wip_enemy/state/step.gd" id="5_6btuo"]
 [ext_resource type="PackedScene" uid="uid://ctmmrvn5msgq0" path="res://scenes/health_component/health_component.tscn" id="6_3a4gc"]
+[ext_resource type="Script" uid="uid://ca45jebjg8li6" path="res://scenes/enemies/wip_enemy/state/attack.gd" id="6_3w1av"]
+[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="6_t3dnm"]
 [ext_resource type="PackedScene" uid="uid://btskgccbkw3mo" path="res://scenes/enemy_health_bar/enemy_health_bar.tscn" id="7_f2tsk"]
+[ext_resource type="Script" uid="uid://dl7mf1tjbxxi5" path="res://scenes/enemies/wip_enemy/state/death.gd" id="7_s18xg"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="8_f2tsk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2tsk"]
@@ -16,9 +19,24 @@ height = 38.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2tsk"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kp0d4"]
+radius = 51.0
+
+[sub_resource type="Gradient" id="Gradient_kp0d4"]
+offsets = PackedFloat32Array(0, 0.57212883, 0.5847339)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s18xg"]
+gradient = SubResource("Gradient_kp0d4")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="WipEnemy" type="CharacterBody2D" unique_id=2043209814]
 collision_layer = 16
 collision_mask = 0
+platform_floor_layers = 0
 script = ExtResource("1_kajs8")
 metadata/_custom_type_script = "uid://bm315wwujblwc"
 
@@ -40,8 +58,16 @@ metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 script = ExtResource("4_gbuk4")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
-[node name="Move" type="Node" parent="WipEnemyStateMachine" unique_id=1018077470]
+[node name="Step" type="Node" parent="WipEnemyStateMachine" unique_id=1018077470]
 script = ExtResource("5_6btuo")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="Attack" type="Node" parent="WipEnemyStateMachine" unique_id=1896783947]
+script = ExtResource("6_3w1av")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="Death" type="Node" parent="WipEnemyStateMachine" unique_id=1911827624]
+script = ExtResource("7_s18xg")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
 [node name="HealthComponent" parent="." unique_id=723412012 instance=ExtResource("6_3a4gc")]
@@ -60,3 +86,30 @@ shape = SubResource("CapsuleShape2D_f2tsk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008118388]
 shape = SubResource("CircleShape2D_f2tsk")
+
+[node name="Hitbox" parent="." unique_id=774470425 instance=ExtResource("6_t3dnm")]
+damage_types = Array[int]([0])
+grounded = true
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1912626547]
+shape = SubResource("CircleShape2D_kp0d4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2066929025]
+simplify_path = true
+avoidance_enabled = true
+radius = 20.0
+avoidance_layers = 2
+avoidance_mask = 2
+debug_enabled = true
+
+[node name="DamageVisual" type="Sprite2D" parent="." unique_id=1560380100]
+visible = false
+z_index = -3
+texture = SubResource("GradientTexture2D_s18xg")
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=2022956709]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="WipEnemyStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]

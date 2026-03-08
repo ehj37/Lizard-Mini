@@ -2,9 +2,17 @@ class_name WipEnemy
 
 extends Enemy
 
-@onready var state_machine: WipEnemyStateMachine
+var _player: Player
+
+@onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var color_rect: ColorRect = $ColorRect
+@onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hitbox: Hitbox = $Hitbox
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var damage_visual: Sprite2D = $DamageVisual
+@onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
 func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
@@ -18,3 +26,23 @@ func alert() -> void:
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+
+	if _player:
+		navigation_agent.target_position = _player.global_position
+		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+		var direction_to_next_path_position: Vector2 = global_position.direction_to(
+			next_path_position
+		)
+		navigation_agent.set_velocity(direction_to_next_path_position * CorvidStepState.STEP_SPEED)
+
+
+func _ready() -> void:
+	call_deferred("_seeker_setup")
+	health_component.health_depleted.connect(func() -> void: state_machine.transition_to("Death"))
+
+
+func _seeker_setup() -> void:
+	await get_tree().physics_frame
+
+	_player = get_tree().get_first_node_in_group("player")
+	navigation_agent.target_position = _player.global_position

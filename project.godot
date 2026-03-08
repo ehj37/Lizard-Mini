@@ -127,6 +127,9 @@ test={
 2d_physics/layer_9="MovementTransformArea"
 2d_physics/layer_10="UnsafeGround"
 2d_physics/layer_13="CameraLockAreaDetectable"
+avoidance/layer_1="Smol bois"
+avoidance/layer_2="Big lads"
+avoidance/main_scene="uid://cdobqytbxuokg"
 
 [rendering]
 
