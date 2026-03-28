@@ -20,13 +20,10 @@ func enter(_data: Dictionary = {}) -> void:
 
 
 func _on_step_timer_timeout() -> void:
-	if state_machine.current_state != self:
-		return
-
 	if can_attack():
-		state_machine.transition_to("Attack")
+		transition_to("PreAttack")
 	else:
-		state_machine.transition_to("Step")
+		transition_to("Step")
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

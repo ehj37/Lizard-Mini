@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://bj6y18qq7gqrd"]
 
-[ext_resource type="Script" uid="uid://ciq0txksgjhuj" path="res://scenes/enemies/corvid/player_detector/player_detector.gd" id="1_eyb2v"]
+[ext_resource type="Script" uid="uid://ciq0txksgjhuj" path="res://scenes/player_detector/player_detector.gd" id="1_eyb2v"]
 
 [node name="PlayerDetector" type="Area2D" unique_id=486908320]
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_eyb2v")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1331995798]
-polygon = PackedVector2Array(0, 0, -8, 88, 40, 96, 128, 64, 144, 0, 128, -64, 40, -96, -8, -88)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1665456202]
 collision_mask = 129

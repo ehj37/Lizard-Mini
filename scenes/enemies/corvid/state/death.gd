@@ -8,7 +8,9 @@ func update(_delta: float) -> void:
 
 
 func enter(_data: Dictionary = {}) -> void:
-	# TODO: Add dedicated death sound
+	PositionalAudioManager.play_audio_at(
+		corvid.global_position, PositionalAudioConfig.Type.CORVID_DEATH
+	)
 	corvid.sprite_shadow.visible = false
 	corvid.velocity = Vector2.ZERO
 	corvid.collision_shape.disabled = true

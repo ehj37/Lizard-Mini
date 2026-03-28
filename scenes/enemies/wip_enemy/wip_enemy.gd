@@ -13,6 +13,7 @@ var _player: Player
 @onready var damage_visual: Sprite2D = $DamageVisual
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var player_detector: PlayerDetector = $PlayerDetector
 
 
 func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
@@ -46,3 +47,8 @@ func _seeker_setup() -> void:
 
 	_player = get_tree().get_first_node_in_group("player")
 	navigation_agent.target_position = _player.global_position
+
+
+func _on_player_detector_player_detected() -> void:
+	player_detector.monitoring = false
+	alert()

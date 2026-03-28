@@ -1,6 +1,6 @@
 @tool
 
-class_name CorvidPlayerDetector
+class_name PlayerDetector
 
 extends Area2D
 

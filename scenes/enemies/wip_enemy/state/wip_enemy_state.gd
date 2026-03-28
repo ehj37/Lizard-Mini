@@ -3,6 +3,7 @@ class_name WipEnemyState
 extends State
 
 const ATTACK_RANGE: float = 50.0
+const HITBOX_ENABLE_DURATION: float = 0.1
 
 var wip_enemy: WipEnemy
 var player: Player

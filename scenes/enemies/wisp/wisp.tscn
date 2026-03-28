@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://g7iyyiv2xqy6"]
+[gd_scene format=3 uid="uid://g7iyyiv2xqy6"]
 
 [ext_resource type="Script" uid="uid://bdat7muj1lv3w" path="res://scenes/enemies/wisp/wisp.gd" id="1_pdocg"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="2_57p5f"]
@@ -46,11 +46,16 @@ point_count = 8
 _data = [Vector2(0.0028248578, 0), 0.0, 0.0, 0, 0, Vector2(0.18549907, 0.49425715), 0.0, 0.0, 0, 0, Vector2(0.43032014, 0.6243053), 0.0, 0.0, 0, 0, Vector2(0.6167608, 0.41237497), 0.0, 0.0, 0, 0, Vector2(0.76553667, 0.53760654), 0.0, 0.0, 0, 0, Vector2(0.9952919, 0.4195999), 0.0, 0.0, 0, 0]
 point_count = 6
 
+[sub_resource type="Curve" id="Curve_e8vpj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_jagov"]
 curve_x = SubResource("Curve_l1wwq")
 curve_y = SubResource("Curve_r6bn0")
+curve_z = SubResource("Curve_e8vpj")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8vpj"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tlere"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
@@ -93,54 +98,54 @@ radius = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcdd1"]
 radius = 0.01
 
-[node name="Wisp" type="CharacterBody2D"]
+[node name="Wisp" type="CharacterBody2D" unique_id=1441045327]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_pdocg")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=762483102 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_t81e8")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://b023dqmvy1wyg"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1442699652]
 script = ExtResource("5_b2b4a")
 metadata/_custom_type_script = "uid://cnn82uyu684ot"
 
-[node name="Alert" type="Node" parent="StateMachine"]
+[node name="Alert" type="Node" parent="StateMachine" unique_id=359976923]
 script = ExtResource("4_6up6a")
 metadata/_custom_type_script = "uid://cnn82uyu684ot"
 
-[node name="Pursue" type="Node" parent="StateMachine"]
+[node name="Pursue" type="Node" parent="StateMachine" unique_id=559431279]
 script = ExtResource("4_b2b4a")
 metadata/_custom_type_script = "uid://cnn82uyu684ot"
 
-[node name="Death" type="Node" parent="StateMachine"]
+[node name="Death" type="Node" parent="StateMachine" unique_id=2132234585]
 script = ExtResource("7_q6b6h")
 metadata/_custom_type_script = "uid://cnn82uyu684ot"
 
-[node name="OffsetContainer" type="Node2D" parent="."]
+[node name="OffsetContainer" type="Node2D" parent="." unique_id=246578930]
 
-[node name="Sprite2D" type="Sprite2D" parent="OffsetContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="OffsetContainer" unique_id=1538974397]
 position = Vector2(0, -10)
 texture = SubResource("GradientTexture2D_ova0x")
 
-[node name="FireSmall" parent="OffsetContainer" instance=ExtResource("3_57p5f")]
+[node name="FireSmall" parent="OffsetContainer" unique_id=1593225803 instance=ExtResource("3_57p5f")]
 position = Vector2(0, -9)
-process_material = SubResource("ParticleProcessMaterial_e8vpj")
+process_material = SubResource("ParticleProcessMaterial_tlere")
 
-[node name="Hitbox" parent="." instance=ExtResource("2_57p5f")]
+[node name="Hitbox" parent="." unique_id=369520586 instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
-damage_amount = 100
+damage_amount = 1
 damage_types = Array[int]([0, 3])
 grounded = true
 disabled = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1609184734]
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_ova0x")
 
-[node name="SpriteShadow" type="Sprite2D" parent="."]
+[node name="SpriteShadow" type="Sprite2D" parent="." unique_id=1750967955]
 z_index = -4
 texture_filter = 1
 scale = Vector2(0.15, 0.15)
@@ -169,20 +174,20 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "988f81b866ba37de1f10b1135b618f54"
 
-[node name="Hurtbox" parent="." instance=ExtResource("4_7tr8l")]
+[node name="Hurtbox" parent="." unique_id=988235844 instance=ExtResource("4_7tr8l")]
 position = Vector2(0, -9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1968325620]
 shape = SubResource("CapsuleShape2D_b2b4a")
 
-[node name="ObstacleDetector" type="Area2D" parent="."]
+[node name="ObstacleDetector" type="Area2D" parent="." unique_id=674685924]
 collision_layer = 0
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector" unique_id=214577308]
 shape = SubResource("CircleShape2D_6up6a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2016140896]
 shape = SubResource("CircleShape2D_rcdd1")
 
 [connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]

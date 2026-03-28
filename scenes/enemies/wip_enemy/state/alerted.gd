@@ -11,7 +11,8 @@ func enter(_data: Dictionary = {}) -> void:
 
 func _on_alert_timer_timeout() -> void:
 	wip_enemy.alerted = true
+
 	if can_attack():
-		state_machine.transition_to("Attack")
+		transition_to("PreAttack")
 	else:
-		state_machine.transition_to("Step")
+		transition_to("Step")

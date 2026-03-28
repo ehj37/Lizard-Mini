@@ -1,3 +1,5 @@
+class_name EnemyHealthBar
+
 extends Node2D
 
 @export var health_component: HealthComponent

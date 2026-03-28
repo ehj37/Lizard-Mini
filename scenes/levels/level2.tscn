@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dg7jwekjbmt0j" path="res://scenes/floor/floor.tscn" id="4_ok6xr"]
 [ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/corvid/corvid.tscn" id="5_d5djh"]
 [ext_resource type="PackedScene" uid="uid://cxq0a1g7triur" path="res://scenes/enemies/wip_enemy/wip_enemy.tscn" id="6_ok6xr"]
+[ext_resource type="PackedScene" uid="uid://db24r4k8yb5md" path="res://scenes/objects/explosive_canister/explosive_canister.tscn" id="7_dj4wq"]
 
 [node name="Level2" type="Node2D" unique_id=66639698]
 y_sort_enabled = true
@@ -38,3 +39,6 @@ position = Vector2(376, -96)
 
 [node name="WipEnemy2" parent="." unique_id=1413503262 instance=ExtResource("6_ok6xr")]
 position = Vector2(336, -216)
+
+[node name="ExplosiveCanister" parent="." unique_id=2118925219 instance=ExtResource("7_dj4wq")]
+position = Vector2(296, 24)

@@ -21,5 +21,13 @@ func exit() -> void:
 	pass
 
 
+# No-ops if attempting to transition while not the current state
+func transition_to(state_name: String, data: Dictionary = {}) -> void:
+	if state_machine.current_state != self:
+		return
+
+	state_machine.transition_to(state_name, data)
+
+
 func is_current_state() -> bool:
 	return state_machine.current_state == self

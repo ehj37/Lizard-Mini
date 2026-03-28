@@ -9,6 +9,8 @@ func enter(_data: Dictionary = {}) -> void:
 	wip_enemy.hurtbox.disable()
 	wip_enemy.navigation_agent.process_mode = Node.PROCESS_MODE_DISABLED
 	wip_enemy.velocity = Vector2.ZERO
+	wip_enemy.z_index = -3
+	wip_enemy.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func exit() -> void:

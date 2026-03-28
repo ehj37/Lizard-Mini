@@ -8,6 +8,9 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	corvid.animation_player.play("alerted")
+	PositionalAudioManager.play_audio_at(
+		corvid.global_position, PositionalAudioConfig.Type.CORVID_ALERT
+	)
 
 
 func _set_alerted() -> void:

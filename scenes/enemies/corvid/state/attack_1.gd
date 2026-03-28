@@ -21,6 +21,10 @@ func physics_update(_delta: float) -> void:
 func enter(data: Dictionary = {}) -> void:
 	corvid.animation_player.play("attack")
 
+	PositionalAudioManager.play_audio_at(
+		corvid.global_position, PositionalAudioConfig.Type.CORVID_ATTACK
+	)
+
 	corvid.set_collision_mask_value(8, false)
 
 	get_tree().create_timer(DECELERATION_START).timeout.connect(

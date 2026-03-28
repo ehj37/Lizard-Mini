@@ -15,7 +15,11 @@
 [ext_resource type="Resource" uid="uid://cvgfdb84ybxnn" path="res://audio/positional_audio_configs/wisp_alert.tres" id="13_y0anp"]
 [ext_resource type="Resource" uid="uid://r12x7xuyll3o" path="res://audio/positional_audio_configs/wisp_container_break.tres" id="14_wseta"]
 [ext_resource type="Resource" uid="uid://b4uneu5vxq6r2" path="res://audio/positional_audio_configs/wisp_death.tres" id="15_lx0fx"]
+[ext_resource type="Resource" uid="uid://7lo7mto0d2um" path="res://audio/positional_audio_configs/corvid_attack.tres" id="16_o537m"]
+[ext_resource type="Resource" uid="uid://b1aed57mg1a53" path="res://audio/positional_audio_configs/corvid_death.tres" id="17_jh2l2"]
+[ext_resource type="Resource" uid="uid://lpcpyxfjpfrm" path="res://audio/positional_audio_configs/corvid_alert.tres" id="18_svl1k"]
+[ext_resource type="Resource" uid="uid://ctdpnsqir24at" path="res://audio/positional_audio_configs/wip_enemy_slam.tres" id="19_pnc5g"]
 
 [node name="PositionalAudioManager" type="Node" unique_id=1159045254]
 script = ExtResource("1_r3ycs")
-audio_configs = Array[ExtResource("2_kgad0")]([ExtResource("3_o537m"), ExtResource("4_jh2l2"), ExtResource("5_svl1k"), ExtResource("6_pnc5g"), ExtResource("7_8u3f3"), ExtResource("8_lis18"), ExtResource("9_5xvw0"), ExtResource("10_sgrvn"), ExtResource("11_ebsfw"), ExtResource("12_jxcre"), ExtResource("13_y0anp"), ExtResource("14_wseta"), ExtResource("15_lx0fx")])
+audio_configs = Array[ExtResource("2_kgad0")]([ExtResource("3_o537m"), ExtResource("4_jh2l2"), ExtResource("5_svl1k"), ExtResource("6_pnc5g"), ExtResource("7_8u3f3"), ExtResource("8_lis18"), ExtResource("9_5xvw0"), ExtResource("10_sgrvn"), ExtResource("11_ebsfw"), ExtResource("12_jxcre"), ExtResource("13_y0anp"), ExtResource("14_wseta"), ExtResource("15_lx0fx"), ExtResource("16_o537m"), ExtResource("17_jh2l2"), ExtResource("18_svl1k"), ExtResource("19_pnc5g")])

@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ctmmrvn5msgq0" path="res://scenes/health_component/health_component.tscn" id="16_0ti2y"]
 [ext_resource type="PackedScene" uid="uid://btskgccbkw3mo" path="res://scenes/enemy_health_bar/enemy_health_bar.tscn" id="16_vta46"]
 [ext_resource type="PackedScene" uid="uid://d25cfuqijjroy" path="res://scenes/enemy_alert_chainer/enemy_alert_chainer.tscn" id="18_2pwpj"]
-[ext_resource type="PackedScene" uid="uid://bj6y18qq7gqrd" path="res://scenes/enemies/corvid/player_detector/player_detector.tscn" id="19_qyci8"]
+[ext_resource type="PackedScene" uid="uid://bj6y18qq7gqrd" path="res://scenes/player_detector/player_detector.tscn" id="19_qyci8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfiqa"]
 resource_local_to_scene = true
@@ -485,6 +485,7 @@ libraries/ = SubResource("AnimationLibrary_oo5jp")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1617728487]
 simplify_path = true
 avoidance_enabled = true
+neighbor_distance = 100.0
 avoidance_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1236799024]
@@ -540,6 +541,10 @@ shape = SubResource("CircleShape2D_kp0d4")
 radius = 100.0
 
 [node name="PlayerDetector" parent="." unique_id=486908320 instance=ExtResource("19_qyci8")]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PlayerDetector" unique_id=86759917]
+visible = false
+polygon = PackedVector2Array(0, 0, -8, 88, 40, 96, 128, 64, 144, 0, 128, -64, 40, -96, -8, -88)
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="CorvidStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="alerted_enemy_detected" from="EnemyAlertChainer" to="." method="alert"]

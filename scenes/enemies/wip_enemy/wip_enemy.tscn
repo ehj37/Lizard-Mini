@@ -6,11 +6,17 @@
 [ext_resource type="Script" uid="uid://bngihwdws3t46" path="res://scenes/enemies/wip_enemy/state/alerted.gd" id="4_gbuk4"]
 [ext_resource type="Script" uid="uid://f71yn7u2mk73" path="res://scenes/enemies/wip_enemy/state/step.gd" id="5_6btuo"]
 [ext_resource type="PackedScene" uid="uid://ctmmrvn5msgq0" path="res://scenes/health_component/health_component.tscn" id="6_3a4gc"]
-[ext_resource type="Script" uid="uid://ca45jebjg8li6" path="res://scenes/enemies/wip_enemy/state/attack.gd" id="6_3w1av"]
+[ext_resource type="Script" uid="uid://dxjbvd8ge6xpg" path="res://scenes/enemies/wip_enemy/state/pre_attack.gd" id="6_cc55l"]
 [ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="6_t3dnm"]
 [ext_resource type="PackedScene" uid="uid://btskgccbkw3mo" path="res://scenes/enemy_health_bar/enemy_health_bar.tscn" id="7_f2tsk"]
 [ext_resource type="Script" uid="uid://dl7mf1tjbxxi5" path="res://scenes/enemies/wip_enemy/state/death.gd" id="7_s18xg"]
+[ext_resource type="Script" uid="uid://66bwptfeipo7" path="res://scenes/enemies/wip_enemy/state/lunge_slam.gd" id="7_ssfqn"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="8_f2tsk"]
+[ext_resource type="Script" uid="uid://cojerx3xk70nl" path="res://scenes/enemies/wip_enemy/state/slam.gd" id="8_s24oj"]
+[ext_resource type="Script" uid="uid://sk42n1xuxhx5" path="res://scenes/enemies/wip_enemy/state/post_attack.gd" id="9_s24oj"]
+[ext_resource type="Script" uid="uid://dq6bfxwu2t6h3" path="res://scenes/enemies/wip_enemy/state/combo_slam.gd" id="10_sfiqa"]
+[ext_resource type="PackedScene" uid="uid://d25cfuqijjroy" path="res://scenes/enemy_alert_chainer/enemy_alert_chainer.tscn" id="12_037im"]
+[ext_resource type="PackedScene" uid="uid://bj6y18qq7gqrd" path="res://scenes/player_detector/player_detector.tscn" id="13_htmdt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2tsk"]
 radius = 15.0
@@ -32,6 +38,9 @@ width = 128
 height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htmdt"]
+radius = 100.0
 
 [node name="WipEnemy" type="CharacterBody2D" unique_id=2043209814]
 collision_layer = 16
@@ -62,8 +71,24 @@ metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 script = ExtResource("5_6btuo")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
-[node name="Attack" type="Node" parent="WipEnemyStateMachine" unique_id=1896783947]
-script = ExtResource("6_3w1av")
+[node name="PreAttack" type="Node" parent="WipEnemyStateMachine" unique_id=614053547]
+script = ExtResource("6_cc55l")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="LungeSlam" type="Node" parent="WipEnemyStateMachine" unique_id=1186643344]
+script = ExtResource("7_ssfqn")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="Slam" type="Node" parent="WipEnemyStateMachine" unique_id=747979667]
+script = ExtResource("8_s24oj")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="PostAttack" type="Node" parent="WipEnemyStateMachine" unique_id=1307017047]
+script = ExtResource("9_s24oj")
+metadata/_custom_type_script = "uid://csv4j5khmw4ph"
+
+[node name="ComboSlam" type="Node" parent="WipEnemyStateMachine" unique_id=1067236131]
+script = ExtResource("10_sfiqa")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
 [node name="Death" type="Node" parent="WipEnemyStateMachine" unique_id=1911827624]
@@ -112,4 +137,13 @@ texture = SubResource("GradientTexture2D_s18xg")
 wait_time = 1.5
 one_shot = true
 
+[node name="EnemyAlertChainer" parent="." unique_id=365511844 instance=ExtResource("12_037im")]
+radius = 125.0
+
+[node name="PlayerDetector" parent="." unique_id=486908320 instance=ExtResource("13_htmdt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=99131802]
+shape = SubResource("CircleShape2D_htmdt")
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="WipEnemyStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="player_detected" from="PlayerDetector" to="." method="_on_player_detector_player_detected"]
