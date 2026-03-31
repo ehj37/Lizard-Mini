@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://c4ca6f4chgg4a"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_rxift"]
+[ext_resource type="AudioStream" uid="uid://c5n1nlag8kutr" path="res://scenes/floor/fire_vent/sound_effects/fire_vent_on.ogg" id="1_uilc7"]
+
+[resource]
+script = ExtResource("1_rxift")
+audio_stream = ExtResource("1_uilc7")
+random_start_time = true
+loop_audio = true
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

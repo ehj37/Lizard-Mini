@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://dc7j3noa62ivt"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_bqpf6"]
+[ext_resource type="AudioStream" uid="uid://icg5tmo0ce41" path="res://scenes/objects/explosive_canister/sound_effects/canister_explosion.ogg" id="1_lx68i"]
+
+[resource]
+script = ExtResource("1_bqpf6")
+audio_stream = ExtResource("1_lx68i")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

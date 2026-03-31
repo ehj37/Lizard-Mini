@@ -50,6 +50,15 @@ var _times_burnt: int = 0
 @onready var sword_polygon_dr_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDownRight2
 @onready var sword_polygon_d_1: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown1
 @onready var sword_polygon_d_2: CollisionPolygon2D = $HitboxSword/CollisionPolygonDown2
+@onready var _ouch_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_ouch.tres"
+)
+@onready var _singe_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_singe.tres"
+)
+@onready var _sword_connect_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_sword_connect.tres"
+)
 
 
 func _physics_process(_delta: float) -> void:
@@ -87,10 +96,10 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 	hurt.emit()
 	Overlays.add_hurt()
 	shader_animation_player.play("hurt_flash")
-	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_OUCH)
+	SoundEffectManager.play(_ouch_sound_effect_config)
 
 	if types.has(Hitbox.DamageType.BURN):
-		PositionalAudioManager.play_audio_at(global_position, PositionalAudioConfig.Type.SINGE)
+		SoundEffectManager.play(_singe_sound_effect_config)
 		# Only transition to hurt state on first burn
 		if _times_burnt > 0:
 			return
@@ -145,7 +154,7 @@ func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -
 	match hurtbox_owner_type:
 		Hitbox.HurtboxOwnerType.ENEMY:
 			SignalBus.shake_camera.emit()
-			NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_SWORD_CONNECT)
+			SoundEffectManager.play(_sword_connect_sound_effect_config)
 
 
 func _take_burn_damage() -> void:

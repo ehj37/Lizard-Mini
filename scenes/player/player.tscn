@@ -29,13 +29,13 @@ point_count = 5
 [sub_resource type="CurveTexture" id="CurveTexture_viv4t"]
 curve = SubResource("Curve_jagov")
 
-[sub_resource type="Gradient" id="Gradient_ioxgp"]
+[sub_resource type="Gradient" id="Gradient_3j4b4"]
 resource_local_to_scene = true
 colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cnsyf"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yj68g"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_ioxgp")
+gradient = SubResource("Gradient_3j4b4")
 
 [sub_resource type="Curve" id="Curve_l1wwq"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -55,7 +55,7 @@ curve_x = SubResource("Curve_l1wwq")
 curve_y = SubResource("Curve_r6bn0")
 curve_z = SubResource("Curve_ioxgp")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_007i1"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ioxgp"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
@@ -71,7 +71,7 @@ directional_velocity_curve = SubResource("CurveXYZTexture_jagov")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_cnsyf")
+color_ramp = SubResource("GradientTexture1D_yj68g")
 alpha_curve = SubResource("CurveTexture_viv4t")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_yj68g"]
@@ -91,15 +91,15 @@ shader_parameter/event_type = 0
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvP8APECcgECBToow4ICQgU5o7NhESELabKhsx/wEAnnQdsIokqdVRICAKoFYCCtL690V68Sei/xMg/0uOKjSDGIdxUBqGcY2yVALMML0WkG+OFVFrqe298QA=")
 size_override = Vector2(64, 64)
 
-[sub_resource type="Gradient" id="Gradient_6cv16"]
+[sub_resource type="Gradient" id="Gradient_cnsyf"]
 resource_local_to_scene = true
 colors = PackedColorArray(0, 0.93974996, 0.99267167, 1, 0.7158854, 0.2553401, 0.9967863, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_j4nxn"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_007i1"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_6cv16")
+gradient = SubResource("Gradient_cnsyf")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_28m0y"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6cv16"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 2, 1)
@@ -115,7 +115,7 @@ directional_velocity_curve = SubResource("CurveXYZTexture_jagov")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_j4nxn")
+color_ramp = SubResource("GradientTexture1D_007i1")
 alpha_curve = SubResource("CurveTexture_viv4t")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lgqa7"]
@@ -1079,7 +1079,7 @@ metadata/_custom_type_script = "uid://ctigeyiermart"
 position = Vector2(0, -13)
 emitting = false
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_007i1")
+process_material = SubResource("ParticleProcessMaterial_ioxgp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=328535929]
 texture_filter = 1
@@ -1146,7 +1146,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "6e5bd0ef7acdf9758003ffbc8357bf4e"
 position = Vector2(0, -11)
 emitting = false
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_28m0y")
+process_material = SubResource("ParticleProcessMaterial_6cv16")
 
 [node name="SpriteShadow" type="Sprite2D" parent="." unique_id=2074119340]
 z_index = -3

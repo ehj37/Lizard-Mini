@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://cofbx7au4u2gn"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_aa02u"]
+[ext_resource type="AudioStream" uid="uid://bv8leh2bt5a61" path="res://scenes/player/sound_effects/player_blink.ogg" id="1_ld2hc"]
+
+[resource]
+script = ExtResource("1_aa02u")
+audio_stream = ExtResource("1_ld2hc")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

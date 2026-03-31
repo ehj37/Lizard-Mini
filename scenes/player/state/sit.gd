@@ -1,5 +1,9 @@
 extends PlayerState
 
+@onready var _blink_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_blink.tres"
+)
+
 
 func update(_delta: float) -> void:
 	if !animation_player.is_playing():
@@ -35,4 +39,4 @@ func exit() -> void:
 
 
 func _play_blink_sound_effect() -> void:
-	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_BLINK)
+	SoundEffectManager.play(_blink_sound_effect_config)

@@ -3,8 +3,11 @@ extends StaticBody2D
 const ENABLED_COLOR: Color = Color("00a9b3")
 const DISABLED_COLOR: Color = Color("01262a")
 
-var _ambience_identifier: int
+var _ambience_sound_effect_identifier: int
 
+@onready var on_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/floor/fire_vent/sound_effects/fire_vent_on.tres"
+)
 @onready var color_rect: ColorRect = $ColorRect
 @onready var fire_particles: GPUParticles2D = $GPUParticles2D
 @onready var smoke_particles: GPUParticles2D = $SmokeParticles
@@ -31,10 +34,10 @@ func disable() -> void:
 
 
 func _play_ambience() -> void:
-	_ambience_identifier = PositionalAudioManager.play_audio_at(
-		global_position, PositionalAudioConfig.Type.FIRE_VENT
+	_ambience_sound_effect_identifier = SoundEffectManager.play_at(
+		on_sound_effect_config, global_position
 	)
 
 
 func _stop_ambience() -> void:
-	PositionalAudioManager.cancel_audio(PositionalAudioConfig.Type.FIRE_VENT, _ambience_identifier)
+	SoundEffectManager.cancel(_ambience_sound_effect_identifier)

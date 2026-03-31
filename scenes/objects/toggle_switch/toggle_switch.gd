@@ -8,6 +8,9 @@ const GLYPHS_DISABLED_COLOR: Color = Color("01262a")
 @export var toggled_on: bool
 @export var toggleable_elements: Array[Node2D]
 
+@onready var interaction_complete_sound_effect_config: SoundEffectConfig = preload(
+	"res://audio/shared_sound_effects/interaction/interaction_complete.tres"
+)
 @onready var sprite_glyphs: Sprite2D = $SpriteGlyphs
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
@@ -19,9 +22,7 @@ const GLYPHS_DISABLED_COLOR: Color = Color("01262a")
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	shader_animation_player.play("toggle")
 	HitStopManager.hit_stop()
-	PositionalAudioManager.play_audio_at(
-		global_position, PositionalAudioConfig.Type.INTERACT_COMPLETE
-	)
+	SoundEffectManager.play_at(interaction_complete_sound_effect_config, global_position)
 
 	interact_area.disable()
 	_toggle()

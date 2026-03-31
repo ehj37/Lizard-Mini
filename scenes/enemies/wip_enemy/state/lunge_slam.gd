@@ -30,9 +30,8 @@ func _slam() -> void:
 	if !is_current_state():
 		return
 
-	PositionalAudioManager.play_audio_at(
-		wip_enemy.global_position, PositionalAudioConfig.Type.WIP_ENEMY_SLAM
-	)
+	SoundEffectManager.play_at(wip_enemy.slam_sound_effect_config, wip_enemy.global_position)
+
 	wip_enemy.hitbox.enable()
 	wip_enemy.damage_visual.show()
 	await get_tree().create_timer(HITBOX_ENABLE_DURATION).timeout

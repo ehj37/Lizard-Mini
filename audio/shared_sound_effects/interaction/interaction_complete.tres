@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://c4xe8npwnfyde"]
+
+[ext_resource type="AudioStream" uid="uid://dycfmyj03cewc" path="res://audio/shared_sound_effects/interaction/interaction_complete.ogg" id="1_elkim"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_oxil1"]
+
+[resource]
+script = ExtResource("1_oxil1")
+audio_stream = ExtResource("1_elkim")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

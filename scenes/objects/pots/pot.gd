@@ -15,11 +15,14 @@ const MAX_IMPULSE_MAGNITUDE: float = 800.0
 )
 @onready
 var _dust_puff_resource: PackedScene = preload("res://scenes/objects/pots/dust_puff/dust_puff.tscn")
+@onready var _pot_break_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/objects/pots/sound_effects/pot_break.tres"
+)
 
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	_spawn_fragments(direction)
-	PositionalAudioManager.play_audio_at(global_position, PositionalAudioConfig.Type.POT_BREAK)
+	SoundEffectManager.play_at(_pot_break_sound_effect_config, global_position)
 	_spawn_dust_puff()
 
 	queue_free()

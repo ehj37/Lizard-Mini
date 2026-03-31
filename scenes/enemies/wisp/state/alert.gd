@@ -9,6 +9,10 @@ var _particle_color_ramp: GradientTexture1D
 var _sprite_texture: GradientTexture2D
 var _sprite_shadow_texture: GradientTexture2D
 
+@onready var _alert_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/wisp/sound_effects/wisp_alert.tres"
+)
+
 
 func update(_delta: float) -> void:
 	_particle_color_ramp.gradient.set_color(0, _color)
@@ -41,9 +45,7 @@ func enter(_data: Dictionary = {}) -> void:
 	# Gets set back to normal amount on exit
 	wisp.fire_small.amount *= 2
 
-	PositionalAudioManager.play_audio_at(
-		wisp.global_position, PositionalAudioConfig.Type.WISP_ALERT
-	)
+	SoundEffectManager.play_at(_alert_sound_effect_config, wisp.global_position)
 
 
 func exit() -> void:

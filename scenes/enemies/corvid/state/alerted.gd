@@ -1,5 +1,9 @@
 extends CorvidState
 
+@onready var _alert_sound_effect_config: SoundEffectConfig = load(
+	"res://scenes/enemies/corvid/sound_effects/corvid_alert.tres"
+)
+
 
 func update(_delta: float) -> void:
 	if !corvid.animation_player.is_playing():
@@ -8,9 +12,7 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	corvid.animation_player.play("alerted")
-	PositionalAudioManager.play_audio_at(
-		corvid.global_position, PositionalAudioConfig.Type.CORVID_ALERT
-	)
+	SoundEffectManager.play_at(_alert_sound_effect_config, corvid.global_position)
 
 
 func _set_alerted() -> void:

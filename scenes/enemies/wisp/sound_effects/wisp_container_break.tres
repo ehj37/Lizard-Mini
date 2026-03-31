@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://cpjxtn5vtiyv2"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_t6bjo"]
+[ext_resource type="AudioStream" uid="uid://bc5mmr0pdha2h" path="res://scenes/enemies/wisp/sound_effects/wisp_container_break.ogg" id="1_vhpsg"]
+
+[resource]
+script = ExtResource("1_t6bjo")
+audio_stream = ExtResource("1_vhpsg")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

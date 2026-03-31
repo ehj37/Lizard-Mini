@@ -11,6 +11,9 @@ var _deceleration_tween: Tween
 @onready var dust_cloud_packed_scene: PackedScene = preload(
 	"res://scenes/enemies/corvid/lunge_dust_cloud/lunge_dust_cloud.tscn"
 )
+@onready var _attack_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/corvid/sound_effects/corvid_attack.tres"
+)
 
 
 func physics_update(_delta: float) -> void:
@@ -21,9 +24,7 @@ func physics_update(_delta: float) -> void:
 func enter(data: Dictionary = {}) -> void:
 	corvid.animation_player.play("attack")
 
-	PositionalAudioManager.play_audio_at(
-		corvid.global_position, PositionalAudioConfig.Type.CORVID_ATTACK
-	)
+	SoundEffectManager.play_at(_attack_sound_effect_config, corvid.global_position)
 
 	corvid.set_collision_mask_value(8, false)
 

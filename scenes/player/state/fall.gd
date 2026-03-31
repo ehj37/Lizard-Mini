@@ -5,6 +5,10 @@ const DECELERATION: float = 350.0
 
 var _current_velocity: Vector2
 
+@onready var _thud_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_fall_thud.tres"
+)
+
 
 func update(delta: float) -> void:
 	_current_velocity = _current_velocity.move_toward(Vector2.ZERO, delta * DECELERATION)
@@ -34,6 +38,6 @@ func enter(data: Dictionary = {}) -> void:
 
 func _thud() -> void:
 	if player.ground_detector.on_floor():
-		NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_FALL_THUD)
+		SoundEffectManager.play(_thud_sound_effect_config)
 	else:
 		state_machine.transition_to("FallPit")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bhdk65kl2kjnj"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_0faxi"]
+[ext_resource type="AudioStream" uid="uid://biov00pgm7ji2" path="res://scenes/wall/door/sound_effects/door_down.ogg" id="1_l460e"]
+
+[resource]
+script = ExtResource("1_0faxi")
+audio_stream = ExtResource("1_l460e")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

@@ -31,6 +31,9 @@ var dash_ghost_resource: PackedScene = preload("res://scenes/player/dash_ghost/d
 	Vector2.DOWN.angle(): "dash_down",
 	Vector2.LEFT.angle(): "dash_right"
 }
+@onready var _dash_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_dash.tres"
+)
 
 
 func update(_delta: float) -> void:
@@ -102,12 +105,11 @@ func enter(data: Dictionary = {}) -> void:
 		player.sprite.flip_h = true
 
 	_dash_num = data.get("dash_num", 0)
-	var pitch_multiplier: float = minf(
-		1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER
-	)
-	NonPositionalAudioManager.play_audio(
-		NonPositionalAudioConfig.Type.PLAYER_DASH, pitch_multiplier
-	)
+	# NOTE: May be worth re-adding this, but as different sound effects.
+	#var pitch_multiplier: float = minf(
+	#1.0 + PITCH_MULTIPLIER_PER_DASH * _dash_num, MAX_PITCH_MULTIPLIER
+	#)
+	SoundEffectManager.play(_dash_sound_effect_config)
 
 	_spawn_ghost()
 	ghost_timer.start()

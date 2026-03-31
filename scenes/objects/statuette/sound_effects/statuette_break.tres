@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bg6nut14o0vt6"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_2kd7k"]
+[ext_resource type="AudioStream" uid="uid://bbt710krg543d" path="res://scenes/objects/statuette/sound_effects/statuette_break.ogg" id="1_chmbh"]
+
+[resource]
+script = ExtResource("1_2kd7k")
+audio_stream = ExtResource("1_chmbh")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

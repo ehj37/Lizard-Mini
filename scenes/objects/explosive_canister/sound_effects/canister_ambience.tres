@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://g2youvubg6jf"]
+
+[ext_resource type="AudioStream" uid="uid://ut0dbp8o6syl" path="res://scenes/objects/explosive_canister/sound_effects/canister_ambience.ogg" id="1_sa18i"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_sm3la"]
+
+[resource]
+script = ExtResource("1_sm3la")
+limit = 3
+audio_stream = ExtResource("1_sa18i")
+random_start_time = true
+loop_audio = true
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

@@ -34,6 +34,7 @@ var _lunge_dir: Vector2
 var _speed: float = 0.0
 var _can_combo: bool = false
 var _combo_num: int
+var _sword_swing_sound_effect_identifier: int
 
 @onready var animation_to_collision_polygon: Dictionary
 @onready var combo_1_animation_map: Dictionary = {
@@ -56,6 +57,9 @@ var _combo_num: int
 	Vector2.LEFT.angle(): ANIMATION_R_2,
 	Vector2(-1, -1).angle(): ANIMATION_UR_2
 }
+@onready var _sword_swing_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_sword_swing.tres"
+)
 
 
 func _ready() -> void:
@@ -111,11 +115,8 @@ func enter(data: Dictionary = {}) -> void:
 
 	_combo_num = data.get("combo_num", 0)
 	var animation: String = _get_animation(_lunge_dir, _combo_num)
-	var pitch_multiplier: float = 1.0 + _combo_num * PITCH_MULTIPLIER_PER_ATTACK
 	animation_player.play(animation)
-	NonPositionalAudioManager.play_audio(
-		NonPositionalAudioConfig.Type.PLAYER_SWORD_SWING, pitch_multiplier
-	)
+	_sword_swing_sound_effect_identifier = SoundEffectManager.play(_sword_swing_sound_effect_config)
 
 	if _lunge_dir.x < 0:
 		player.sprite.flip_h = true
@@ -141,7 +142,7 @@ func enter(data: Dictionary = {}) -> void:
 func exit() -> void:
 	if animation_player.is_playing():
 		_disable_sword()
-		NonPositionalAudioManager.cancel_audio(NonPositionalAudioConfig.Type.PLAYER_SWORD_SWING)
+		SoundEffectManager.cancel(_sword_swing_sound_effect_identifier)
 		animation_player.stop()
 
 	# This is fine for combo attacks since they don't check the timer.

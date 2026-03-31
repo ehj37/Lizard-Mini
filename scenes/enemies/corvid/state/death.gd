@@ -1,5 +1,9 @@
 extends CorvidState
 
+@onready var _death_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/corvid/sound_effects/corvid_death.tres"
+)
+
 
 func update(_delta: float) -> void:
 	if !corvid.animation_player.is_playing():
@@ -8,9 +12,7 @@ func update(_delta: float) -> void:
 
 
 func enter(_data: Dictionary = {}) -> void:
-	PositionalAudioManager.play_audio_at(
-		corvid.global_position, PositionalAudioConfig.Type.CORVID_DEATH
-	)
+	SoundEffectManager.play_at(_death_sound_effect_config, corvid.global_position)
 	corvid.sprite_shadow.visible = false
 	corvid.velocity = Vector2.ZERO
 	corvid.collision_shape.disabled = true

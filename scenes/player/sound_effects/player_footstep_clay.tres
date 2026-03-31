@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://clwoudy1fw85o"]
+
+[ext_resource type="AudioStream" uid="uid://dvx7vfdn187sn" path="res://scenes/player/sound_effects/player_footstep_clay.ogg" id="1_aa0nj"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_ndbtb"]
+
+[resource]
+script = ExtResource("1_ndbtb")
+audio_stream = ExtResource("1_aa0nj")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

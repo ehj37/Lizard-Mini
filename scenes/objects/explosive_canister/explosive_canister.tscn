@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://db24r4k8yb5md"]
+[gd_scene format=4 uid="uid://db24r4k8yb5md"]
 
 [ext_resource type="Script" uid="uid://duyfqlsqgrgaq" path="res://scenes/objects/explosive_canister/explosive_canister.gd" id="1_opcd8"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="2_fntc5"]
@@ -34,25 +34,25 @@ color_ramp = SubResource("GradientTexture1D_opcd8")
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAGAAAACsAAAAUklGRqQAAABXRUJQVlA4TJgAAAAvP8AXEEdAJmCxUymJdHa6xVHTthGUrUCKtzTvQ3CjgbRtMv/eZmS3cCAThlgcv8xyCuD8QZUkshp/tWZ34Ca2bacigwGG/gUDBAcIiKdHAlTXwrN+yPwwE9H/CfCe5Q6eh5jSAzkHACiL2EFSRgc7IuY0A8uyejvkHACgzAJIRllFip0ptbuSplmlYmma2l3bkpxzjvKXHw==")
 size_override = Vector2(64, 96)
 
-[node name="ExplosiveCanister" type="StaticBody2D"]
+[node name="ExplosiveCanister" type="StaticBody2D" unique_id=1198264432]
 script = ExtResource("1_opcd8")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=268783249]
 polygon = PackedVector2Array(-5, 0, 5, 0, 5, -9, -5, -9)
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_fntc5")]
+[node name="Hurtbox" parent="." unique_id=780773418 instance=ExtResource("2_fntc5")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=1345694029]
 polygon = PackedVector2Array(-5, 0, 5, 0, 5, -21, -5, -21)
 
-[node name="HurtboxGround" parent="." instance=ExtResource("2_fntc5")]
+[node name="HurtboxGround" parent="." unique_id=530353072 instance=ExtResource("2_fntc5")]
 self_damage_disabled = false
 grounded = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxGround"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxGround" unique_id=1518724371]
 polygon = PackedVector2Array(-5, 0, 5, 0, 5, -9, -5, -9)
 
-[node name="SpriteBack" type="Sprite2D" parent="."]
+[node name="SpriteBack" type="Sprite2D" parent="." unique_id=1487590009]
 texture_filter = 1
 position = Vector2(0, 16)
 texture = SubResource("PortableCompressedTexture2D_e5hk1")
@@ -80,19 +80,19 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "fee912713b73c0a6cbf2fab36e48ff04"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448009148]
 clip_children = 1
 offset_left = -5.0
 offset_top = -21.0
 offset_right = 5.0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect" unique_id=1027143627]
 position = Vector2(5, 21)
 amount = 100
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_opcd8")
 
-[node name="SpriteFront" type="Sprite2D" parent="."]
+[node name="SpriteFront" type="Sprite2D" parent="." unique_id=1977108843]
 texture_filter = 1
 position = Vector2(0, 16)
 texture = SubResource("PortableCompressedTexture2D_uphv0")

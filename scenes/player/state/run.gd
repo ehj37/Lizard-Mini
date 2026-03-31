@@ -17,6 +17,12 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 	Vector2.DOWN.angle(): "run_down",
 	Vector2.LEFT.angle(): "run_right"
 }
+@onready var _footstep_clay_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_footstep_clay.tres"
+)
+@onready var _footstep_tile_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_footstep_tile.tres"
+)
 
 
 func update(delta: float) -> void:
@@ -92,20 +98,17 @@ func play_footstep_sound_effect() -> void:
 		if data_at_position:
 			tile_data.append(data_at_position)
 
-	var audio_config_type: NonPositionalAudioConfig.Type = (
-		NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_TILE
-	)
-
+	var sound_effect_config: SoundEffectConfig = _footstep_tile_sound_effect_config
 	if tile_data.size() > 0:
 		var uppermost_tile_data: TileData = tile_data.back()
 		var tile_type: String = uppermost_tile_data.get_custom_data("ground_type")
 		match tile_type:
 			"tile":
-				audio_config_type = NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_TILE
+				sound_effect_config = _footstep_tile_sound_effect_config
 			"clay":
-				audio_config_type = NonPositionalAudioConfig.Type.PLAYER_FOOTSTEP_CLAY
+				sound_effect_config = _footstep_clay_sound_effect_config
 
-	NonPositionalAudioManager.play_audio(audio_config_type)
+	SoundEffectManager.play(sound_effect_config)
 
 
 func _get_animation(dir: Vector2) -> String:

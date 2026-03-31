@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bcupauqdc6cwp"]
+[gd_scene format=4 uid="uid://bcupauqdc6cwp"]
 
 [ext_resource type="Script" uid="uid://bl7e8ub1u4ooq" path="res://scenes/enemies/wisp/wisp_container/wisp_container.gd" id="1_54q02"]
 [ext_resource type="PackedScene" uid="uid://g7iyyiv2xqy6" path="res://scenes/enemies/wisp/wisp.tscn" id="1_sq3on"]
@@ -43,14 +43,14 @@ color = Color(0, 0.94100165, 0.9920456, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8nvc"]
 size = Vector2(12, 34)
 
-[node name="WispContainer" type="StaticBody2D"]
+[node name="WispContainer" type="StaticBody2D" unique_id=2053255098]
 y_sort_enabled = true
 script = ExtResource("1_54q02")
 
-[node name="Wisp" parent="." instance=ExtResource("1_sq3on")]
+[node name="Wisp" parent="." unique_id=294132632 instance=ExtResource("1_sq3on")]
 position = Vector2(0, -5)
 
-[node name="SpriteBase" type="Sprite2D" parent="."]
+[node name="SpriteBase" type="Sprite2D" parent="." unique_id=711113998]
 z_index = -3
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_54q02")
@@ -79,7 +79,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "8fdb51fd490be86ab7008bf25407f604"
 
-[node name="SpriteBack" type="Sprite2D" parent="."]
+[node name="SpriteBack" type="Sprite2D" parent="." unique_id=1260390182]
 texture_filter = 1
 position = Vector2(0, -6)
 texture = SubResource("PortableCompressedTexture2D_q07fn")
@@ -108,7 +108,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "8fdb51fd490be86ab7008bf25407f604"
 
-[node name="SpriteFront" type="Sprite2D" parent="."]
+[node name="SpriteFront" type="Sprite2D" parent="." unique_id=1080107400]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_n8nvc")
 offset = Vector2(0, -32)
@@ -136,7 +136,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "8fdb51fd490be86ab7008bf25407f604"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1754501998]
 position = Vector2(0, -22)
 emitting = false
 amount = 20
@@ -146,16 +146,16 @@ explosiveness = 1.0
 trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_n8nvc")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=306463147]
 polygon = PackedVector2Array(-6, 0, 6, 0, 5, -1, -5, -1, -5, -10, 5, -10, 5, -1, 6, 0, 6, -10, 6, -11, -6, -11)
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_54q02")]
+[node name="Hurtbox" parent="." unique_id=1378404578 instance=ExtResource("3_54q02")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1893632615]
 position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_n8nvc")
 
-[node name="FragmentSpawner" type="Node2D" parent="."]
+[node name="FragmentSpawner" type="Node2D" parent="." unique_id=688030486]
 position = Vector2(0, -12)
 script = ExtResource("4_q07fn")
 fragment_config = ExtResource("5_n8nvc")

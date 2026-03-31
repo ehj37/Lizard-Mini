@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://ju8kxlounnbu"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_54vej"]
+[ext_resource type="AudioStream" uid="uid://dqfyt0w6sb8mj" path="res://scenes/player/sound_effects/player_fall_thud.ogg" id="1_a5qfq"]
+
+[resource]
+script = ExtResource("1_54vej")
+audio_stream = ExtResource("1_a5qfq")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

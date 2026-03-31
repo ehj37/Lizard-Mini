@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://yk546x45bden"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_aejbn"]
+[ext_resource type="AudioStream" uid="uid://c4kaox7f2wy7r" path="res://scenes/enemies/wip_enemy/sound_effects/wip_enemy_slam.ogg" id="1_kufdi"]
+
+[resource]
+script = ExtResource("1_aejbn")
+audio_stream = ExtResource("1_kufdi")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

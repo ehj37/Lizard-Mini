@@ -1,5 +1,9 @@
 extends PlayerState
 
+@onready var _fall_pit_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_fall_pit.tres"
+)
+
 
 func update(_delta: float) -> void:
 	if player.animation_player.is_playing():
@@ -22,7 +26,7 @@ func enter(_data: Dictionary = {}) -> void:
 
 	player.sprite_shadow.visible = false
 
-	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_FALL_PIT)
+	SoundEffectManager.play(_fall_pit_sound_effect_config)
 	animation_player.play("fall_pit")
 
 

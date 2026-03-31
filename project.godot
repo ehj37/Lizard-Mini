@@ -23,8 +23,7 @@ run/canvas_textures/default_texture_filter=0
 [autoload]
 
 HitStopManager="*res://autoload/hit_stop_manager.gd"
-PositionalAudioManager="*uid://bs5ysnxnafcbk"
-NonPositionalAudioManager="*uid://ckvys0kk1vlff"
+SoundEffectManager="*uid://bptbixlo01bbw"
 InteractionManager="*res://autoload/interaction_manager.gd"
 SignalBus="*res://autoload/signal_bus.gd"
 ScreenFader="*res://autoload/screen_fader/screen_fader.tscn"

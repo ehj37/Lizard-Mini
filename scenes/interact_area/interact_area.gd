@@ -14,11 +14,24 @@ const INTERACTION_LENGTH_DURATIONS: Dictionary = {
 @export var progress_indicator: ProgressIndicator
 
 var _completion_progress: float = 0.0
+var _progress_sound_effect_identifier: int
+
+@onready var interaction_progress_short_sound_effect_config: SoundEffectConfig = preload(
+	"res://audio/shared_sound_effects/interaction/interaction_progress_short.tres"
+)
+@onready var interaction_progress_medium_sound_effect_config: SoundEffectConfig = preload(
+	"res://audio/shared_sound_effects/interaction/interaction_progress_medium.tres"
+)
+@onready var interaction_complete_sound_effect_config: SoundEffectConfig = preload(
+	"res://audio/shared_sound_effects/interaction/interaction_complete.tres"
+)
 
 
 func interact(delta: float) -> void:
 	if _completion_progress == 0.0:
-		PositionalAudioManager.play_audio_at(global_position, _get_audio_config_type())
+		_progress_sound_effect_identifier = SoundEffectManager.play_at(
+			_get_interact_progress_sound_effect_config(), global_position
+		)
 
 	var completion_time: float = INTERACTION_LENGTH_DURATIONS[interaction_length]
 	_completion_progress = min(_completion_progress + delta, completion_time)
@@ -26,15 +39,13 @@ func interact(delta: float) -> void:
 	progress_indicator.update_progress_bar(completion_percentage * 100.0)
 	if _completion_progress == completion_time:
 		interaction_complete.emit()
-		PositionalAudioManager.play_audio_at(
-			global_position, PositionalAudioConfig.Type.INTERACT_COMPLETE
-		)
+		SoundEffectManager.play_at(interaction_complete_sound_effect_config, global_position)
 		disable()
 
 
 func reset_progress() -> void:
 	_completion_progress = 0.0
-	PositionalAudioManager.cancel_audio(_get_audio_config_type())
+	SoundEffectManager.cancel(_progress_sound_effect_identifier)
 	progress_indicator.update_progress_bar(0.0)
 
 
@@ -57,12 +68,12 @@ func _on_body_exited(_body: Node2D) -> void:
 	InteractionManager.unregister_area(self)
 
 
-func _get_audio_config_type() -> PositionalAudioConfig.Type:
+func _get_interact_progress_sound_effect_config() -> SoundEffectConfig:
 	match interaction_length:
 		InteractionLength.SHORT:
-			return PositionalAudioConfig.Type.PROGRESS_INDICATOR_SHORT
+			return interaction_progress_short_sound_effect_config
 		InteractionLength.MEDIUM:
-			return PositionalAudioConfig.Type.PROGRESS_INDICATOR_MEDIUM
+			return interaction_progress_medium_sound_effect_config
 		_:
 			assert(false, "Interaction length does not have corresponding audio config type")
-			return PositionalAudioConfig.Type.PROGRESS_INDICATOR_MEDIUM
+			return interaction_progress_short_sound_effect_config

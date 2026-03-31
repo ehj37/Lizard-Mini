@@ -11,12 +11,13 @@ var popped: bool = false
 @onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
+@onready var _container_break_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/wisp/sound_effects/wisp_container_break.tres"
+)
 
 
 func shatter(direction: Vector2 = Vector2.ZERO) -> void:
-	PositionalAudioManager.play_audio_at(
-		global_position, PositionalAudioConfig.Type.WISP_CONTAINER_BREAK
-	)
+	SoundEffectManager.play_at(_container_break_sound_effect_config, global_position)
 
 	popped = true
 	collision_polygon.set_deferred("disabled", true)

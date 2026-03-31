@@ -8,6 +8,9 @@ extends StaticBody2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_ground: Hurtbox = $HurtboxGround
 @onready var fragment_spawner: FragmentSpawner = $FragmentSpawner
+@onready var _break_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/objects/statuette/sound_effects/statuette_break.tres"
+)
 
 
 func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
@@ -16,9 +19,7 @@ func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vect
 	var dust_puff: Sprite2D = dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
 	LevelManager.current_level.add_child(dust_puff)
-	PositionalAudioManager.play_audio_at(
-		global_position, PositionalAudioConfig.Type.STATUETTE_BREAK
-	)
+	SoundEffectManager.play_at(_break_sound_effect_config, global_position)
 	collision_shape.disabled = true
 
 	hurtbox.disable()

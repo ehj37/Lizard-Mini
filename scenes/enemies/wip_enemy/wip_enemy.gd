@@ -4,6 +4,9 @@ extends Enemy
 
 var _player: Player
 
+@onready var slam_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/wip_enemy/sound_effects/wip_enemy_slam.tres"
+)
 @onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var color_rect: ColorRect = $ColorRect

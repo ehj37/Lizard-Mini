@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cm4fn38crxxpm"]
+[gd_scene format=4 uid="uid://cm4fn38crxxpm"]
 
 [ext_resource type="Script" uid="uid://cxwlac7bho4sc" path="res://scenes/objects/statuette/statuette.gd" id="1_dgcue"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="1_qpumi"]
@@ -22,11 +22,11 @@ size = Vector2(8, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dypgv"]
 size = Vector2(10, 8)
 
-[node name="Statuette" type="StaticBody2D"]
+[node name="Statuette" type="StaticBody2D" unique_id=1312726234]
 collision_mask = 0
 script = ExtResource("1_dgcue")
 
-[node name="SpriteStatuette" type="Sprite2D" parent="."]
+[node name="SpriteStatuette" type="Sprite2D" parent="." unique_id=609570415]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_gyitp")
 offset = Vector2(0, -15)
@@ -54,7 +54,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "f9913e9cd7ddd7b0875884f16aeaea67"
 
-[node name="SpriteGround" type="Sprite2D" parent="."]
+[node name="SpriteGround" type="Sprite2D" parent="." unique_id=226240680]
 z_index = -4
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_qpumi")
@@ -83,23 +83,23 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "f9913e9cd7ddd7b0875884f16aeaea67"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628084545]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_gyitp")
 
-[node name="Hurtbox" parent="." instance=ExtResource("1_qpumi")]
+[node name="Hurtbox" parent="." unique_id=423292130 instance=ExtResource("1_qpumi")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1375135958]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_dgcue")
 
-[node name="HurtboxGround" parent="." instance=ExtResource("1_qpumi")]
+[node name="HurtboxGround" parent="." unique_id=399388233 instance=ExtResource("1_qpumi")]
 grounded = true
 fragile = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxGround"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxGround" unique_id=1025615901]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_dypgv")
 
-[node name="FragmentSpawner" parent="." instance=ExtResource("3_tudps")]
+[node name="FragmentSpawner" parent="." unique_id=1934548823 instance=ExtResource("3_tudps")]
 fragment_config = ExtResource("4_ir5qn")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://vf1shpkofgan"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_4yy5e"]
+[ext_resource type="AudioStream" uid="uid://bje2yuisxnhvx" path="res://scenes/enemies/wisp/sound_effects/wisp_death.ogg" id="1_jrdxl"]
+
+[resource]
+script = ExtResource("1_4yy5e")
+audio_stream = ExtResource("1_jrdxl")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

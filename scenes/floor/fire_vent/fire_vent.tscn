@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b8agbdu84gnwv"]
+[gd_scene format=4 uid="uid://b8agbdu84gnwv"]
 
 [ext_resource type="Script" uid="uid://dugvsrvvqyjn7" path="res://scenes/floor/fire_vent/fire_vent.gd" id="1_epv8t"]
 [ext_resource type="Texture2D" uid="uid://drpj8v0ka3q2c" path="res://scenes/fire/flame.png" id="1_ojh8q"]
@@ -23,9 +23,14 @@ point_count = 8
 _data = [Vector2(0.0028248578, 0), 0.0, 0.0, 0, 0, Vector2(0.18549907, 0.49425715), 0.0, 0.0, 0, 0, Vector2(0.43032014, 0.6243053), 0.0, 0.0, 0, 0, Vector2(0.6167608, 0.41237497), 0.0, 0.0, 0, 0, Vector2(0.76553667, 0.53760654), 0.0, 0.0, 0, 0, Vector2(0.9952919, 0.4195999), 0.0, 0.0, 0, 0]
 point_count = 6
 
+[sub_resource type="Curve" id="Curve_a0nvp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ojh8q"]
 curve_x = SubResource("Curve_xm11h")
 curve_y = SubResource("Curve_yxs7j")
+curve_z = SubResource("Curve_a0nvp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xm11h"]
 particle_flag_disable_z = true
@@ -63,9 +68,14 @@ point_count = 9
 _data = [Vector2(0.010233916, 0.18880922), 0.0, 0.0, 0, 0, Vector2(0.2646199, 0.4972902), 0.0, 0.0, 0, 0, Vector2(0.99269, 0.17357558), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Curve" id="Curve_hxc6y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ne04d"]
 curve_x = SubResource("Curve_epv8t")
 curve_y = SubResource("Curve_wk3ti")
+curve_z = SubResource("Curve_hxc6y")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_epv8t"]
 particle_flag_disable_z = true
@@ -86,19 +96,19 @@ alpha_curve = SubResource("CurveTexture_a0nvp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epv8t"]
 size = Vector2(24, 24)
 
-[node name="FireVent" type="StaticBody2D"]
+[node name="FireVent" type="StaticBody2D" unique_id=1534447187]
 collision_layer = 514
 collision_mask = 0
 script = ExtResource("1_epv8t")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=574983718]
 z_index = -4
 offset_left = -12.0
 offset_top = -24.0
 offset_right = 12.0
 color = Color(0, 0.6627451, 0.7019608, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2037477633]
 z_index = -4
 texture_filter = 1
 position = Vector2(0, -12)
@@ -126,7 +136,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "62c3c9f22db912b2bf2b77e134014408"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2041460549]
 position = Vector2(0, -12)
 amount = 200
 texture = ExtResource("1_ojh8q")
@@ -134,17 +144,17 @@ lifetime = 0.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_xm11h")
 
-[node name="Hitbox" parent="." instance=ExtResource("1_yxs7j")]
+[node name="Hitbox" parent="." unique_id=1708803351 instance=ExtResource("1_yxs7j")]
 damage_amount = 100
 damage_types = Array[int]([3])
 grounded = true
 disabled = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=390177850]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_yxs7j")
 
-[node name="SmokeParticles" type="GPUParticles2D" parent="."]
+[node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=1012776661]
 position = Vector2(0, -12)
 emitting = false
 amount = 100
@@ -154,6 +164,6 @@ trail_enabled = true
 trail_lifetime = 0.15000000000000002
 process_material = SubResource("ParticleProcessMaterial_epv8t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1979032958]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_epv8t")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bnjyxvbeknit8"]
+
+[ext_resource type="AudioStream" uid="uid://b5b8pfjjrpcvt" path="res://scenes/enemies/corvid/sound_effects/corvid_attack.ogg" id="1_ak8hc"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_c2o6j"]
+
+[resource]
+script = ExtResource("1_c2o6j")
+audio_stream = ExtResource("1_ak8hc")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

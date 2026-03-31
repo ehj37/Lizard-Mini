@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://dh1hxlin0gpie"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_h1ol0"]
+[ext_resource type="AudioStream" uid="uid://dhlamtxgwrbye" path="res://scenes/objects/pots/sound_effects/pot_break.ogg" id="1_ypoj2"]
+
+[resource]
+script = ExtResource("1_h1ol0")
+pitch_variance = 0.2
+audio_stream = ExtResource("1_ypoj2")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

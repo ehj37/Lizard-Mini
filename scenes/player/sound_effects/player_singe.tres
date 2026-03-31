@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://b6jdly8vvbrfh"]
+
+[ext_resource type="AudioStream" uid="uid://cfejlea3831pe" path="res://scenes/player/sound_effects/player_singe.ogg" id="1_3cjbt"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_66no6"]
+
+[resource]
+script = ExtResource("1_66no6")
+audio_stream = ExtResource("1_3cjbt")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

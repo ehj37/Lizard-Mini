@@ -542,7 +542,7 @@ radius = 100.0
 
 [node name="PlayerDetector" parent="." unique_id=486908320 instance=ExtResource("19_qyci8")]
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PlayerDetector" unique_id=86759917]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector" unique_id=86759917]
 visible = false
 polygon = PackedVector2Array(0, 0, -8, 88, 40, 96, 128, 64, 144, 0, 128, -64, 40, -96, -8, -88)
 

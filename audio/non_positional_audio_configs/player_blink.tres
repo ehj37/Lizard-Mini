@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="NonPositionalAudioConfig" format=3 uid="uid://mnkbo46lpmd7"]
-
-[ext_resource type="Script" uid="uid://75hj1u18lpvd" path="res://audio/non_positional_audio_config.gd" id="1_cj77h"]
-[ext_resource type="AudioStream" uid="uid://cj376oquwdvgi" path="res://audio/audio_streams/Player blink.ogg" id="1_roigf"]
-
-[resource]
-script = ExtResource("1_cj77h")
-audio_stream = ExtResource("1_roigf")
-metadata/_custom_type_script = "uid://75hj1u18lpvd"

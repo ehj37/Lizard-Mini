@@ -10,6 +10,9 @@ const LEFT_BACKLIGHT_LIT_UP_COLOR: Color = ColorsOfLizard.FIRE_FUCHSIA
 const RIGHT_BACKLIGHT_LIT_UP_COLOR: Color = ColorsOfLizard.FIRE_CYAN
 
 @onready var dust_cloud_resource: PackedScene = preload("./door_dust_cloud/door_dust_cloud.tscn")
+@onready var door_down_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/wall/door/sound_effects/door_down.tres"
+)
 @onready var door_visuals: Node2D = $ColorRect/DoorVisuals
 @onready var left_backlight: ColorRect = $ColorRect/DoorVisuals/LeftBacklight
 @onready var right_backlight: ColorRect = $ColorRect/DoorVisuals/RightBacklight
@@ -27,7 +30,7 @@ func _ready() -> void:
 func _unlock() -> void:
 	unlocked.emit()
 
-	PositionalAudioManager.play_audio_at(global_position, PositionalAudioConfig.Type.DOOR_DOWN)
+	SoundEffectManager.play_at(door_down_sound_effect_config, global_position)
 
 	var right_dust_cloud: Sprite2D = dust_cloud_resource.instantiate()
 	right_dust_cloud.global_position = right_dust_spawn.global_position

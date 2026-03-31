@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://dk6wbr38ko286"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_61rvp"]
+[ext_resource type="AudioStream" uid="uid://cit3pauw0dkwf" path="res://scenes/player/sound_effects/player_sword_swing.ogg" id="1_gsoch"]
+
+[resource]
+script = ExtResource("1_61rvp")
+audio_stream = ExtResource("1_gsoch")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

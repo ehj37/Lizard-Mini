@@ -8,6 +8,9 @@ extends PlayerState
 	Vector2.DOWN.angle(): "idle_down",
 	Vector2.LEFT.angle(): "idle_right"
 }
+@onready var _blink_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/player/sound_effects/player_blink.tres"
+)
 
 
 func update(_delta: float) -> void:
@@ -65,7 +68,7 @@ func _get_animation(dir: Vector2) -> String:
 
 
 func _play_blink_sound_effect() -> void:
-	NonPositionalAudioManager.play_audio(NonPositionalAudioConfig.Type.PLAYER_BLINK)
+	SoundEffectManager.play(_blink_sound_effect_config)
 
 
 func _on_impatient_timer_timeout() -> void:

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bti80uhbig6o6"]
+
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_65q12"]
+[ext_resource type="AudioStream" uid="uid://bqjt0gtrp0obk" path="res://scenes/player/sound_effects/player_footstep_tile.ogg" id="1_njjcw"]
+
+[resource]
+script = ExtResource("1_65q12")
+audio_stream = ExtResource("1_njjcw")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"

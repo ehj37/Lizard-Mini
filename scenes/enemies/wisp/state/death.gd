@@ -6,6 +6,9 @@ extends WispState
 @onready var death_smoke_resource: PackedScene = preload(
 	"res://scenes/enemies/wisp/death_smoke/death_smoke.tscn"
 )
+@onready var _death_sound_effect_config: SoundEffectConfig = preload(
+	"res://scenes/enemies/wisp/sound_effects/wisp_death.tres"
+)
 
 
 func enter(_data: Dictionary = {}) -> void:
@@ -18,9 +21,7 @@ func enter(_data: Dictionary = {}) -> void:
 	death_particle_burst.global_position = wisp.global_position
 	LevelManager.current_level.add_child(death_particle_burst)
 
-	PositionalAudioManager.play_audio_at(
-		wisp.global_position, PositionalAudioConfig.Type.WISP_DEATH
-	)
+	SoundEffectManager.play_at(_death_sound_effect_config, wisp.global_position)
 
 	var lifetime: float = wisp.fire_small.lifetime
 
