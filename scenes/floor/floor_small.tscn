@@ -36,7 +36,7 @@ custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_w0xbj")
 pattern_0 = SubResource("TileMapPattern_w0xbj")
 
-[node name="Floor" type="TileMapLayer" unique_id=1152027552 groups=["ground"]]
+[node name="FloorSmall" type="TileMapLayer" unique_id=1152027552 groups=["ground"]]
 z_index = -5
 material = SubResource("ShaderMaterial_yin4l")
 tile_set = SubResource("TileSet_w0xbj")
@@ -67,7 +67,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://scenes/floor/floor.aseprite",
 "source_uid": 759404037010263615
 }
-metadata/_aseprite_wizard_source_file_hash_ = "877deed18e745208d1099d887b0f62df"
+metadata/_aseprite_wizard_source_file_hash_ = "67817c8a19974c38d98fb6aeb1caa07e"
 
 [node name="SpriteGrid" type="Sprite2D" parent="." unique_id=496540135]
 visible = false
