@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://odkw7xkf8lge"]
+[gd_scene format=3 uid="uid://odkw7xkf8lge"]
 
 [ext_resource type="Shader" uid="uid://bdhpyxrj6vhuv" path="res://ui/overlays/aberration_vignette.gdshader" id="1_05t7w"]
 [ext_resource type="Script" uid="uid://dy2p7lf5ekgtn" path="res://ui/overlays/overlays.gd" id="1_n305s"]
@@ -74,7 +74,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CinemaColorRectTop2:size")
+tracks/4/path = NodePath("CinemaColorRectBottom:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -82,6 +82,34 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(480, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hnxua"]
+resource_name = "cinema"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CinemaColorRectTop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 0), Vector2(480, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinemaColorRectBottom:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 0), Vector2(480, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_jwq0s"]
@@ -123,34 +151,6 @@ tracks/2/keys = {
 "values": [0.800000038, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_hnxua"]
-resource_name = "cinema"
-length = 0.75
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CinemaColorRectTop:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(480, 0), Vector2(480, 8)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CinemaColorRectTop2:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(480, 0), Vector2(480, 8)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5gsns"]
 _data = {
 &"RESET": SubResource("Animation_n305s"),
@@ -158,31 +158,33 @@ _data = {
 &"hurt": SubResource("Animation_jwq0s")
 }
 
-[node name="HurtOverlay" type="CanvasLayer"]
+[node name="HurtOverlay" type="CanvasLayer" unique_id=1094476693]
 script = ExtResource("1_n305s")
 
-[node name="AberrationVignetteColorRect" type="ColorRect" parent="."]
+[node name="AberrationVignetteColorRect" type="ColorRect" parent="." unique_id=486496576]
 material = SubResource("ShaderMaterial_n305s")
 offset_right = 480.0
 offset_bottom = 270.0
+mouse_filter = 2
 
-[node name="VignetteColorRect" type="ColorRect" parent="."]
+[node name="VignetteColorRect" type="ColorRect" parent="." unique_id=62492290]
 material = SubResource("ShaderMaterial_5gsns")
 offset_right = 480.0
 offset_bottom = 270.0
+mouse_filter = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_5gsns")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1719236458]
+libraries/ = SubResource("AnimationLibrary_5gsns")
 
-[node name="CinemaColorRectTop" type="ColorRect" parent="."]
+[node name="CinemaColorRectTop" type="ColorRect" parent="." unique_id=2087355962]
 offset_right = 480.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CinemaColorRectTop2" type="ColorRect" parent="."]
+[node name="CinemaColorRectBottom" type="ColorRect" parent="." unique_id=312092966]
 offset_top = 270.0
 offset_right = 480.0
 offset_bottom = 270.0
 scale = Vector2(1, -1)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)

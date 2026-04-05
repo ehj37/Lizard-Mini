@@ -12,6 +12,7 @@ func play(config: SoundEffectConfig) -> int:
 
 	# So audio keeps playing during hit stop
 	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	audio_player.bus = "SoundEffects"
 	add_child(audio_player)
 
 	var audio_stream: AudioStreamOggVorbis = config.audio_stream
@@ -57,6 +58,7 @@ func play_at(config: SoundEffectConfig, effect_position: Vector2) -> int:
 	audio_player.max_distance = AUDIO_STREAM_PLAYER_MAX_DISTANCE
 	# So audio keeps playing during hit stop
 	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	audio_player.bus = "SoundEffects"
 	add_child(audio_player)
 
 	audio_player.global_position = effect_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch8ov8027xtro"]
+[gd_scene format=3 uid="uid://ch8ov8027xtro"]
 
 [ext_resource type="Script" uid="uid://drhfs143f5me2" path="res://ui/pause_menu/pause_menu.gd" id="1_jbgdu"]
 [ext_resource type="Shader" uid="uid://cki4qo58ahqfg" path="res://ui/pause_menu/pause_menu.gdshader" id="2_le02u"]
@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/ColorRect:material:shader_parameter/level_of_detail")
+tracks/0/path = NodePath("CenterContainer/ColorRect:material:shader_parameter/level_of_detail")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control:modulate")
+tracks/1/path = NodePath("CenterContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +40,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/ColorRect:material:shader_parameter/level_of_detail")
+tracks/0/path = NodePath("CenterContainer/ColorRect:material:shader_parameter/level_of_detail")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control:modulate")
+tracks/1/path = NodePath("CenterContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,51 +68,75 @@ _data = {
 &"blur": SubResource("Animation_jbgdu")
 }
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" unique_id=434601694]
 process_mode = 3
 script = ExtResource("1_jbgdu")
 
-[node name="Control" type="Control" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=193723064]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 0
 offset_right = 480.0
 offset_bottom = 270.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=1782580875]
 material = SubResource("ShaderMaterial_b4b0p")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer" unique_id=410100413]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_b4b0p")
-}
+libraries/ = SubResource("AnimationLibrary_b4b0p")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -15.5
-offset_right = 35.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer" unique_id=2039091730]
+layout_mode = 2
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Control/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="CenterContainer/MainButtons" unique_id=1449080710]
 process_mode = 3
 layout_mode = 2
 disabled = true
 text = "Resume"
 
-[connection signal="pressed" from="Control/VBoxContainer/ResumeButton" to="." method="resume"]
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainButtons" unique_id=2017069891]
+layout_mode = 2
+text = "Settings"
+
+[node name="Settings" type="VBoxContainer" parent="CenterContainer" unique_id=558374443]
+layout_mode = 2
+
+[node name="MainVolumeLabel" type="Label" parent="CenterContainer/Settings" unique_id=467229010]
+layout_mode = 2
+text = "Main volume"
+
+[node name="MainVolumeHSlider" type="HSlider" parent="CenterContainer/Settings" unique_id=1811235764]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SoundEffectsVolumeLabel" type="Label" parent="CenterContainer/Settings" unique_id=593363502]
+layout_mode = 2
+text = "Sound effects volume"
+
+[node name="SoundEffectsVolumeHSlider" type="HSlider" parent="CenterContainer/Settings" unique_id=1275092624]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="MusicVolumeLabel" type="Label" parent="CenterContainer/Settings" unique_id=1860091517]
+layout_mode = 2
+text = "Music volume"
+
+[node name="MusicVolumeHSlider" type="HSlider" parent="CenterContainer/Settings" unique_id=1740288936]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BackButton" type="Button" parent="CenterContainer/Settings" unique_id=102329408]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="CenterContainer/MainButtons/ResumeButton" to="." method="_resume"]
+[connection signal="pressed" from="CenterContainer/MainButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="CenterContainer/Settings/MainVolumeHSlider" to="." method="_on_main_volume_h_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Settings/SoundEffectsVolumeHSlider" to="." method="_on_sound_effects_volume_h_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Settings/MusicVolumeHSlider" to="." method="_on_music_volume_h_slider_value_changed"]
+[connection signal="pressed" from="CenterContainer/Settings/BackButton" to="." method="_on_back_button_pressed"]
