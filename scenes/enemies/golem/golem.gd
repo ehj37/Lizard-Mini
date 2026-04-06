@@ -1,13 +1,13 @@
-class_name WipEnemy
+class_name Golem
 
 extends Enemy
 
 var _player: Player
 
 @onready var slam_sound_effect_config: SoundEffectConfig = preload(
-	"res://scenes/enemies/wip_enemy/sound_effects/wip_enemy_slam.tres"
+	"res://scenes/enemies/golem/sound_effects/golem_slam.tres"
 )
-@onready var state_machine: WipEnemyStateMachine = $WipEnemyStateMachine
+@onready var state_machine: GolemStateMachine = $GolemStateMachine
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var color_rect: ColorRect = $ColorRect
 @onready var hurtbox: Hurtbox = $Hurtbox

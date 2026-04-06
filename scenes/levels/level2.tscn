@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bsln2e52ibcdk" path="res://scenes/player_camera/player_camera.tscn" id="3_d5djh"]
 [ext_resource type="PackedScene" uid="uid://3dbbufxwngwj" path="res://scenes/floor/floor_medium.tscn" id="4_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/corvid/corvid.tscn" id="5_d5djh"]
-[ext_resource type="PackedScene" uid="uid://cxq0a1g7triur" path="res://scenes/enemies/wip_enemy/wip_enemy.tscn" id="6_ok6xr"]
+[ext_resource type="PackedScene" uid="uid://cxq0a1g7triur" path="res://scenes/enemies/golem/golem.tscn" id="6_ok6xr"]
 [ext_resource type="PackedScene" uid="uid://db24r4k8yb5md" path="res://scenes/objects/explosive_canister/explosive_canister.tscn" id="7_dj4wq"]
+[ext_resource type="PackedScene" uid="uid://cbg80infwg8ik" path="res://scenes/objects/pots/pot_d/pot_d.tscn" id="8_8i1lk"]
+[ext_resource type="Script" uid="uid://y3aesk4nf26x" path="res://scenes/objects/pots/pot.gd" id="9_hgky1"]
+[ext_resource type="PackedScene" uid="uid://c6ceoo202u4lv" path="res://scenes/objects/pots/pot_b/pot_b.tscn" id="11_hkuam"]
+[ext_resource type="PackedScene" uid="uid://crcqepil363yw" path="res://scenes/objects/pots/pot_c/pot_c.tscn" id="12_f3b2k"]
 
 [node name="Level2" type="Node2D" unique_id=66639698]
 y_sort_enabled = true
@@ -31,11 +35,32 @@ position = Vector2(-32, -184)
 [node name="Corvid3" parent="." unique_id=1070225603 instance=ExtResource("5_d5djh")]
 position = Vector2(-48, -80)
 
-[node name="WipEnemy" parent="." unique_id=2043209814 instance=ExtResource("6_ok6xr")]
+[node name="Golem" parent="." unique_id=2043209814 instance=ExtResource("6_ok6xr")]
 position = Vector2(376, -96)
 
-[node name="WipEnemy2" parent="." unique_id=1413503262 instance=ExtResource("6_ok6xr")]
+[node name="Golem2" parent="." unique_id=1413503262 instance=ExtResource("6_ok6xr")]
 position = Vector2(336, -216)
 
 [node name="ExplosiveCanister" parent="." unique_id=2118925219 instance=ExtResource("7_dj4wq")]
 position = Vector2(296, 24)
+
+[node name="PotD" type="StaticBody2D" parent="." unique_id=1673090526 instance=ExtResource("8_8i1lk")]
+position = Vector2(400, -88)
+script = ExtResource("9_hgky1")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
+
+[node name="PotC" type="StaticBody2D" parent="." unique_id=2038732270 instance=ExtResource("12_f3b2k")]
+position = Vector2(320, -160)
+collision_mask = 0
+script = ExtResource("9_hgky1")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
+
+[node name="PotB" type="StaticBody2D" parent="." unique_id=1271241237 instance=ExtResource("11_hkuam")]
+position = Vector2(320, -104)
+script = ExtResource("9_hgky1")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
+
+[node name="PotB2" type="StaticBody2D" parent="." unique_id=1588517067 instance=ExtResource("11_hkuam")]
+position = Vector2(424, -192)
+script = ExtResource("9_hgky1")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"

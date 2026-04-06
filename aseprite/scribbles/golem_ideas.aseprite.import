@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c2lyjdvxwlj45"
+path="res://.godot/imported/golem_ideas.aseprite-3b01965fb49696b49b6c64ed2a031bed.res"
+
+[deps]
+
+source_file="res://aseprite/scribbles/golem_ideas.aseprite"
+dest_files=["res://.godot/imported/golem_ideas.aseprite-3b01965fb49696b49b6c64ed2a031bed.res"]
+
+[params]
+

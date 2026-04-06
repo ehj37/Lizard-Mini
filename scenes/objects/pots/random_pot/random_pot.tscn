@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b846b4vc875fi"]
+
+[ext_resource type="Script" uid="uid://bsv1l104vd47e" path="res://scenes/objects/pots/random_pot/random_pot.gd" id="1_i8ogp"]
+
+[node name="RandomPot" type="Node2D" unique_id=2082562213]
+script = ExtResource("1_i8ogp")
