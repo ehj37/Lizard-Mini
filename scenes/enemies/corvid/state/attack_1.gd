@@ -28,7 +28,7 @@ func enter(data: Dictionary = {}) -> void:
 
 	corvid.set_collision_mask_value(8, false)
 
-	get_tree().create_timer(DECELERATION_START).timeout.connect(
+	get_tree().create_timer(DECELERATION_START, false).timeout.connect(
 		_on_deceleration_start_timer_timeout
 	)
 
@@ -39,7 +39,7 @@ func enter(data: Dictionary = {}) -> void:
 	else:
 		corvid.hitbox.position.x = abs(corvid.hitbox.position.x)
 
-	get_tree().create_timer(ATTACK_LUNGE_DURATION).timeout.connect(_on_lunge_timer_timeout)
+	get_tree().create_timer(ATTACK_LUNGE_DURATION, false).timeout.connect(_on_lunge_timer_timeout)
 
 
 func exit() -> void:

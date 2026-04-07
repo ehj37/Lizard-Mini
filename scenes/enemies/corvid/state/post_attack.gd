@@ -9,7 +9,7 @@ func enter(_data: Dictionary = {}) -> void:
 	var pause_duration: float = randf_range(
 		BASE_PAUSE_DURATION - PAUSE_DURATION_VARIANCE, BASE_PAUSE_DURATION + PAUSE_DURATION_VARIANCE
 	)
-	get_tree().create_timer(pause_duration).timeout.connect(_on_pause_timer_timeout)
+	get_tree().create_timer(pause_duration, false).timeout.connect(_on_pause_timer_timeout)
 
 
 func _on_pause_timer_timeout() -> void:

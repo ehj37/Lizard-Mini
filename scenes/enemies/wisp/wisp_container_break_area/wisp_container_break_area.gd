@@ -21,4 +21,4 @@ func _on_body_entered(_body: Node2D) -> void:
 			continue
 
 		container_to_pop.shatter()
-		await get_tree().create_timer(TIME_BETWEEN_BREAKS).timeout
+		await get_tree().create_timer(TIME_BETWEEN_BREAKS, false).timeout

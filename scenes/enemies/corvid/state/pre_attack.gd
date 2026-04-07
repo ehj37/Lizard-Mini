@@ -11,8 +11,10 @@ func enter(_data: Dictionary = {}) -> void:
 	corvid.animation_player.play("pre_attack")
 	corvid.velocity = Vector2.ZERO
 	_target_locked = false
-	get_tree().create_timer(LOCK_TARGET_TIME).timeout.connect(_on_lock_target_timer_timeout)
-	get_tree().create_timer(PRE_ATTACK_DURATION).timeout.connect(_on_pre_attack_timer_timeout)
+	get_tree().create_timer(LOCK_TARGET_TIME, false).timeout.connect(_on_lock_target_timer_timeout)
+	get_tree().create_timer(PRE_ATTACK_DURATION, false).timeout.connect(
+		_on_pre_attack_timer_timeout
+	)
 
 
 func update(_delta: float) -> void:

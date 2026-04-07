@@ -32,7 +32,7 @@ func enter(_data: Dictionary = {}) -> void:
 	sprite_mod_tween.tween_property(wisp.sprite, "modulate", Color.TRANSPARENT, lifetime / 3)
 
 	wisp.fire_small.emitting = false
-	await get_tree().create_timer(lifetime).timeout
+	await get_tree().create_timer(lifetime, false).timeout
 
 	var death_smoke: Sprite2D = death_smoke_resource.instantiate()
 	death_smoke.global_position = wisp.global_position

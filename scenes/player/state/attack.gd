@@ -132,11 +132,11 @@ func enter(data: Dictionary = {}) -> void:
 		player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
 	player.hitbox_sword.orientation = player.orientation
 
-	get_tree().create_timer(POLYGON_ENABLE_TIME).timeout.connect(_enable_sword)
-	get_tree().create_timer(POLYGON_DISABLE_TIME).timeout.connect(_disable_sword)
+	get_tree().create_timer(POLYGON_ENABLE_TIME, false).timeout.connect(_enable_sword)
+	get_tree().create_timer(POLYGON_DISABLE_TIME, false).timeout.connect(_disable_sword)
 
 	_can_combo = false
-	get_tree().create_timer(COMBO_WINDOW_START).timeout.connect(_enter_combo_window)
+	get_tree().create_timer(COMBO_WINDOW_START, false).timeout.connect(_enter_combo_window)
 
 
 func exit() -> void:

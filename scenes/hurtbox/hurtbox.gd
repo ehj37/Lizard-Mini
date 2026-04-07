@@ -68,7 +68,7 @@ func _process(_delta: float) -> void:
 func _add_cooldown_for(hitbox: Hitbox) -> void:
 	var hitbox_instance_id: int = hitbox.get_instance_id()
 	_hitbox_instance_ids_on_cooldown.append(hitbox_instance_id)
-	await get_tree().create_timer(repetitive_hitbox_damage_cooldown).timeout
+	await get_tree().create_timer(repetitive_hitbox_damage_cooldown, false).timeout
 
 	_hitbox_instance_ids_on_cooldown.erase(hitbox_instance_id)
 

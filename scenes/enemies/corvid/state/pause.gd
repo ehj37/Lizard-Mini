@@ -5,7 +5,7 @@ const DECIDE_DURATION: float = 0.2
 
 
 func enter(_data: Dictionary = {}) -> void:
-	get_tree().create_timer(DECIDE_DURATION).timeout.connect(_on_decide_timer_timeout)
+	get_tree().create_timer(DECIDE_DURATION, false).timeout.connect(_on_decide_timer_timeout)
 
 
 func _on_decide_timer_timeout() -> void:

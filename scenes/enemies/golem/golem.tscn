@@ -5,11 +5,10 @@
 [ext_resource type="Script" uid="uid://cfr4nw7ltr75o" path="res://scenes/enemies/golem/state/idle.gd" id="3_wxdr1"]
 [ext_resource type="Script" uid="uid://bngihwdws3t46" path="res://scenes/enemies/golem/state/alerted.gd" id="4_s8p6a"]
 [ext_resource type="Script" uid="uid://f71yn7u2mk73" path="res://scenes/enemies/golem/state/step.gd" id="5_orb4d"]
-[ext_resource type="Script" uid="uid://dxjbvd8ge6xpg" path="res://scenes/enemies/golem/state/pre_attack.gd" id="6_kqdxe"]
-[ext_resource type="Script" uid="uid://66bwptfeipo7" path="res://scenes/enemies/golem/state/lunge_slam.gd" id="7_8vac1"]
+[ext_resource type="Script" uid="uid://dxjbvd8ge6xpg" path="res://scenes/enemies/golem/state/decide_attack.gd" id="6_kqdxe"]
+[ext_resource type="Script" uid="uid://66bwptfeipo7" path="res://scenes/enemies/golem/state/lunge.gd" id="7_8vac1"]
 [ext_resource type="Script" uid="uid://cojerx3xk70nl" path="res://scenes/enemies/golem/state/slam.gd" id="8_rewa6"]
-[ext_resource type="Script" uid="uid://sk42n1xuxhx5" path="res://scenes/enemies/golem/state/post_attack.gd" id="9_be4r2"]
-[ext_resource type="Script" uid="uid://dq6bfxwu2t6h3" path="res://scenes/enemies/golem/state/combo_slam.gd" id="10_oppqs"]
+[ext_resource type="Script" uid="uid://sk42n1xuxhx5" path="res://scenes/enemies/golem/state/post_slam.gd" id="9_be4r2"]
 [ext_resource type="Script" uid="uid://dl7mf1tjbxxi5" path="res://scenes/enemies/golem/state/death.gd" id="11_oh0n6"]
 [ext_resource type="PackedScene" uid="uid://ctmmrvn5msgq0" path="res://scenes/health_component/health_component.tscn" id="12_01wgv"]
 [ext_resource type="PackedScene" uid="uid://btskgccbkw3mo" path="res://scenes/enemy_health_bar/enemy_health_bar.tscn" id="13_wdsmr"]
@@ -71,11 +70,11 @@ metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 script = ExtResource("5_orb4d")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
-[node name="PreAttack" type="Node" parent="GolemStateMachine" unique_id=614053547]
+[node name="DecideAttack" type="Node" parent="GolemStateMachine" unique_id=614053547]
 script = ExtResource("6_kqdxe")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
-[node name="LungeSlam" type="Node" parent="GolemStateMachine" unique_id=1186643344]
+[node name="Lunge" type="Node" parent="GolemStateMachine" unique_id=1186643344]
 script = ExtResource("7_8vac1")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
@@ -83,12 +82,8 @@ metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 script = ExtResource("8_rewa6")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
-[node name="PostAttack" type="Node" parent="GolemStateMachine" unique_id=1307017047]
+[node name="PostSlam" type="Node" parent="GolemStateMachine" unique_id=1307017047]
 script = ExtResource("9_be4r2")
-metadata/_custom_type_script = "uid://csv4j5khmw4ph"
-
-[node name="ComboSlam" type="Node" parent="GolemStateMachine" unique_id=1067236131]
-script = ExtResource("10_oppqs")
 metadata/_custom_type_script = "uid://csv4j5khmw4ph"
 
 [node name="Death" type="Node" parent="GolemStateMachine" unique_id=1911827624]
@@ -113,6 +108,7 @@ shape = SubResource("CapsuleShape2D_f2tsk")
 shape = SubResource("CircleShape2D_f2tsk")
 
 [node name="Hitbox" parent="." unique_id=774470425 instance=ExtResource("15_emer4")]
+damage_amount = 2
 damage_types = Array[int]([0])
 grounded = true
 disabled = true

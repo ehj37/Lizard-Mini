@@ -35,7 +35,7 @@ func enter(_data: Dictionary = {}) -> void:
 	)
 	get_tree().create_tween().tween_property(self, "_speed", 0, duration)
 
-	get_tree().create_timer(duration).timeout.connect(_on_step_timer_timeout)
+	get_tree().create_timer(duration, false).timeout.connect(_on_step_timer_timeout)
 	corvid.sprite.flip_h = _safe_velocity.x < 0
 	# A previously played step animation may be still playing
 	if corvid.animation_player.is_playing():

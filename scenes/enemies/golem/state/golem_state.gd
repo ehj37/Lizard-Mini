@@ -3,7 +3,6 @@ class_name GolemState
 extends State
 
 const ATTACK_RANGE: float = 50.0
-const HITBOX_ENABLE_DURATION: float = 0.1
 
 var golem: Golem
 var player: Player

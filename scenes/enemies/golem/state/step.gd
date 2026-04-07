@@ -16,12 +16,12 @@ func enter(_data: Dictionary = {}) -> void:
 	golem.color_rect.color = Color.AQUAMARINE
 	golem.velocity = _safe_velocity.normalized() * MAX_SPEED
 
-	get_tree().create_timer(STEP_DURATION).timeout.connect(_on_step_timer_timeout)
+	get_tree().create_timer(STEP_DURATION, false).timeout.connect(_on_step_timer_timeout)
 
 
 func _on_step_timer_timeout() -> void:
 	if can_attack():
-		transition_to("PreAttack")
+		transition_to("DecideAttack")
 	else:
 		transition_to("Step")
 

@@ -57,7 +57,7 @@ func _on_obstacle_detector_body_entered(_body: Node2D) -> void:
 	# detector is so much smaller than the collision shape), but just to be
 	# safe, wait here so the hitbox drawing blood wins out (and damage can be
 	# dealt).
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 
 	if state_machine.current_state.name != "Death":
 		state_machine.transition_to("Death")
