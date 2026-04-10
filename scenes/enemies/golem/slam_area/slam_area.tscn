@@ -1,0 +1,76 @@
+[gd_scene format=4 uid="uid://e55mb03m7itb"]
+
+[ext_resource type="PackedScene" uid="uid://bediyvecmero2" path="res://scenes/hitbox/hitbox.tscn" id="1_bb8p7"]
+[ext_resource type="Script" uid="uid://bm5thsbx00phv" path="res://scenes/enemies/golem/slam_area/slam_area.gd" id="1_h27jr"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h27jr"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAEAACABAAD0AAAAUklGRuwAAABXRUJQVlA4TOAAAAAvH8FHEA8w//M///Mf8IDcAGzchhDowM8889QoRCfRKB5No3SXyhTv3kBE/ycAvt4JAAPo2cxsjh3aIAsk0g2h3tyYoQDA0TdA7VodOlMCBCAuWiGDaIWMN7jlwH4KPZ7G6DfMFJo3EBC9E0TOKNm7QK8BWhuW2HPFplSmwCVwFaiIZ/VQ7vWJaS5Oa+iCqvAUeHobGiAA0LwxGUwFKk4TGplRDBTGsAAr7UXTezhpFAOZGALwYdvGw8l/wT0My5hKrclE0j2Mb+pu4uvzMvEL8zQRMqbyKW8ZURgjhz9hAQ==")
+size_override = Vector2(288, 288)
+
+[sub_resource type="Animation" id="Animation_bb8p7"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h27jr"]
+_data = {
+&"dissipate": SubResource("Animation_bb8p7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bb8p7"]
+radius = 48.0
+
+[node name="SlamArea" type="Node2D" unique_id=809878108]
+y_sort_enabled = true
+script = ExtResource("1_h27jr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664955964]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_h27jr")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/enemies/golem/slam_area/slam_area.aseprite",
+"source_uid": 3047722715068000027
+}
+metadata/_aseprite_wizard_source_file_hash_ = "4cd292efeeae42757812e81a4c0f3a15"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=770374556]
+libraries/ = SubResource("AnimationLibrary_h27jr")
+
+[node name="Hitbox" parent="." unique_id=1533949442 instance=ExtResource("1_bb8p7")]
+damage_amount = 1
+damage_types = Array[int]([0])
+grounded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=518271756]
+shape = SubResource("CircleShape2D_bb8p7")

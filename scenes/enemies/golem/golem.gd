@@ -4,16 +4,13 @@ extends Enemy
 
 var _player: Player
 
-@onready var slam_sound_effect_config: SoundEffectConfig = preload(
-	"res://scenes/enemies/golem/sound_effects/golem_slam.tres"
-)
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: GolemStateMachine = $GolemStateMachine
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var color_rect: ColorRect = $ColorRect
 @onready var hurtbox: Hurtbox = $Hurtbox
-@onready var hitbox: Hitbox = $Hitbox
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var damage_visual: Sprite2D = $DamageVisual
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var player_detector: PlayerDetector = $PlayerDetector
@@ -21,6 +18,10 @@ var _player: Player
 
 func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
 	health_component.subtract_health(amount)
+	if health_component.current_health > 0:
+		shader_animation_player.play("hurt_flash")
+	else:
+		shader_animation_player.play("death_flash")
 
 
 func alert() -> void:

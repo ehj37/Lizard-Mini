@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bjolsvkjnjib8"
+path="res://.godot/imported/slam_area.aseprite-dc0ce4b3b4c71c9ca9682002f8500440.res"
+
+[deps]
+
+source_file="res://scenes/enemies/golem/slam_area/slam_area.aseprite"
+dest_files=["res://.godot/imported/slam_area.aseprite-dc0ce4b3b4c71c9ca9682002f8500440.res"]
+
+[params]
+

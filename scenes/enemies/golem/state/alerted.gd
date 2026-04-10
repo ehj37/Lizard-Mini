@@ -1,18 +1,15 @@
 extends GolemState
 
-const ALERT_DURATION: float = 0.3
+
+func update(_delta: float) -> void:
+	if !golem.animation_player.is_playing():
+		golem.alerted = true
+		if can_attack():
+			transition_to("DecideAttack")
+		else:
+			transition_to("Step")
 
 
 func enter(_data: Dictionary = {}) -> void:
 	(state_machine as GolemStateMachine).set_player()
-	golem.color_rect.color = Color.RED
-	get_tree().create_timer(ALERT_DURATION, false).timeout.connect(_on_alert_timer_timeout)
-
-
-func _on_alert_timer_timeout() -> void:
-	golem.alerted = true
-
-	if can_attack():
-		transition_to("PreAttack")
-	else:
-		transition_to("Step")
+	golem.animation_player.play("alerted")

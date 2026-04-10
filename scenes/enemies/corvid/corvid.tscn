@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d0wgto7u87a5y" path="res://scenes/enemies/corvid/state/alerted.gd" id="4_gbuk4"]
 [ext_resource type="Script" uid="uid://q4d5r8wjofkb" path="res://scenes/enemies/corvid/state/step.gd" id="5_f2tsk"]
 [ext_resource type="Script" uid="uid://cgnkmidxm3pke" path="res://scenes/enemies/corvid/state/attack_1.gd" id="6_3w1av"]
-[ext_resource type="Script" uid="uid://b2g37xv5lcnch" path="res://scenes/enemies/corvid/state/pause.gd" id="6_kp0d4"]
+[ext_resource type="Script" uid="uid://b2g37xv5lcnch" path="res://scenes/enemies/corvid/state/decide.gd" id="6_kp0d4"]
 [ext_resource type="Script" uid="uid://blboaxbckdrdv" path="res://scenes/enemies/corvid/state/pre_attack.gd" id="7_htmdt"]
 [ext_resource type="Script" uid="uid://cvlqir8ougg5u" path="res://scenes/enemies/corvid/state/attack_2.gd" id="7_kp0d4"]
 [ext_resource type="Script" uid="uid://cghb616o3t5ul" path="res://scenes/enemies/corvid/state/dash.gd" id="8_s18xg"]

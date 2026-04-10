@@ -33,7 +33,7 @@ func disable() -> void:
 	disabled = true
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if disabled:
 		return
 
@@ -73,9 +73,9 @@ func _add_cooldown_for(hitbox: Hitbox) -> void:
 	_hitbox_instance_ids_on_cooldown.erase(hitbox_instance_id)
 
 
-func _on_area_entered(area: Area2D) -> void:
-	_overlapping_hitboxes.append(area)
+func _on_area_entered(hitbox: Hitbox) -> void:
+	_overlapping_hitboxes.append(hitbox)
 
 
-func _on_area_exited(area: Area2D) -> void:
-	_overlapping_hitboxes.erase(area)
+func _on_area_exited(hitbox: Hitbox) -> void:
+	_overlapping_hitboxes.erase(hitbox)

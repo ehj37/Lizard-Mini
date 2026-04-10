@@ -7,6 +7,7 @@ func update(_delta: float) -> void:
 
 
 func enter(_data: Dictionary = {}) -> void:
+	corvid.health_bar.visible = false
 	corvid.sprite_shadow.visible = false
 	corvid.velocity = Vector2.ZERO
 	corvid.collision_shape.disabled = true

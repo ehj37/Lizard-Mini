@@ -5,10 +5,6 @@ const COMBO_ATTACK_RANGE: float = 60.0
 
 
 func enter(data: Dictionary = {}) -> void:
-	golem.hitbox.disable()
-	golem.damage_visual.hide()
-	golem.color_rect.color = Color.BLUE
-
 	await get_tree().create_timer(POST_ATTACK_DURATION, false).timeout
 
 	var can_combo: bool = data.get("can_combo")
