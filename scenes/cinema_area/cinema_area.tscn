@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b8olfuq0xjwin"]
+
+[ext_resource type="Script" uid="uid://bfu7ysjbj7p5v" path="res://scenes/cinema_area/cinema_area.gd" id="1_xwy80"]
+
+[node name="CinemaArea" type="Area2D" unique_id=1122757590]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_xwy80")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

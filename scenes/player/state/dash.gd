@@ -36,6 +36,25 @@ var dash_ghost_resource: PackedScene = preload("res://scenes/player/dash_ghost/d
 )
 
 
+func handle_input(event: InputEvent) -> void:
+	if player._in_cinematic:
+		return
+
+	if event.is_action_pressed("attack"):
+		if player.attack_cooldown_timer.is_stopped():
+			transition_to("Attack")
+			return
+
+	if event.is_action_pressed("dash"):
+		if _in_chain_dash_window:
+			# Punish spamming dash too early by not allowing a chain dash.
+			if !_dash_attempted_before_dash_window:
+				transition_to("Dash", {"dash_num": _dash_num + 1})
+				return
+		else:
+			_dash_attempted_before_dash_window = true
+
+
 func update(_delta: float) -> void:
 	if _in_move_window:
 		player.velocity = _dash_direction * DASH_SPEED
@@ -44,31 +63,17 @@ func update(_delta: float) -> void:
 
 	if _in_chain_attack_window:
 		if !player.ground_detector.on_floor():
-			state_machine.transition_to("FallPit")
+			transition_to("FallPit")
 			return
-
-		if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
-			state_machine.transition_to("Attack")
-			return
-
-	if Input.is_action_just_pressed("dash"):
-		if _in_chain_dash_window:
-			# Punish spamming dash too early by not allowing a chain dash.
-			if !_dash_attempted_before_dash_window:
-				state_machine.transition_to("Dash", {"dash_num": _dash_num + 1})
-				return
-		else:
-			_dash_attempted_before_dash_window = true
 
 	if animation_player.is_playing():
 		return
 
 	var movement_dir: Vector2 = player.get_movement_direction()
-	if movement_dir != Vector2.ZERO:
-		state_machine.transition_to("Run")
-		return
-
-	state_machine.transition_to("Idle")
+	if movement_dir == Vector2.ZERO:
+		transition_to("Idle")
+	else:
+		transition_to("Run")
 
 
 func enter(data: Dictionary = {}) -> void:

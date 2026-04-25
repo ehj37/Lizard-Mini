@@ -11,13 +11,23 @@ var _interaction_complete: bool = false
 }
 
 
-func update(delta: float) -> void:
-	if !Input.is_action_pressed("interact") || _interaction_complete:
+func handle_input(event: InputEvent) -> void:
+	if player._in_cinematic || event.is_action_released("interact"):
 		var movement_direction: Vector2 = player.get_movement_direction()
 		if movement_direction != Vector2.ZERO:
-			state_machine.transition_to("Run")
+			transition_to("Run")
 		else:
-			state_machine.transition_to("Idle")
+			transition_to("Idle")
+		return
+
+
+func update(delta: float) -> void:
+	if _interaction_complete:
+		var movement_direction: Vector2 = player.get_movement_direction()
+		if movement_direction != Vector2.ZERO:
+			transition_to("Run")
+		else:
+			transition_to("Idle")
 		return
 
 	_interact_area.interact(delta)

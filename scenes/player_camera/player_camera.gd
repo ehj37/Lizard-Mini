@@ -5,10 +5,13 @@ extends Camera2D
 const ORIENTATION_OFFSET: int = 30
 const INITIAL_SHAKE_MAGNITUDE: float = 7.0
 const SHAKE_DIMINISH_SPEED: float = 50.0
+const PAN_SPEED: float = 250.0
 
 @export var player: Player
 
 var _current_shake_magnitude: float = 5.0
+var _focus_target: Vector2
+var _focused: bool = false
 var _registed_lock_areas: Array[CameraLockArea] = []
 
 
@@ -23,6 +26,8 @@ func unregister_lock_area(lock_area: CameraLockArea) -> void:
 func _ready() -> void:
 	player.hurt.connect(_begin_shake)
 	SignalBus.shake_camera.connect(_begin_shake)
+	SignalBus.focus_camera.connect(_on_focus)
+	SignalBus.unfocus_camera.connect(func() -> void: _focused = false)
 
 	position_smoothing_enabled = false
 	_set_global_position_from_player()
@@ -32,8 +37,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_set_global_position_from_player()
-
 	if _current_shake_magnitude > 0:
 		var shake_offset_x: float = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
 		var shake_offset_y: float = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
@@ -42,6 +45,11 @@ func _process(delta: float) -> void:
 		_current_shake_magnitude = max(_current_shake_magnitude - delta * SHAKE_DIMINISH_SPEED, 0)
 	else:
 		offset = Vector2.ZERO
+
+	if _focused:
+		global_position = global_position.move_toward(_focus_target, delta * PAN_SPEED)
+	else:
+		_set_global_position_from_player()
 
 
 func _set_global_position_from_player() -> void:
@@ -67,3 +75,8 @@ func _set_global_position_from_player() -> void:
 
 func _begin_shake() -> void:
 	_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE
+
+
+func _on_focus(target: Vector2) -> void:
+	_focused = true
+	_focus_target = target

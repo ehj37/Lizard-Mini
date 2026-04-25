@@ -14,6 +14,18 @@ var _attack_queued: bool = false
 }
 
 
+func handle_input(event: InputEvent) -> void:
+	if player._in_cinematic:
+		return
+
+	if event.is_action_pressed("attack"):
+		if _in_attack_queue_window:
+			_attack_queued = true
+
+		if !animation_player.is_playing():
+			transition_to("Attack")
+
+
 func update(_delta: float) -> void:
 	var movement_dir: Vector2 = player.get_movement_direction()
 
@@ -25,9 +37,6 @@ func update(_delta: float) -> void:
 		player.velocity = Vector2.ZERO
 
 	if animation_player.is_playing():
-		if _in_attack_queue_window && Input.is_action_just_pressed("attack"):
-			_attack_queued = true
-
 		return
 
 	if _attack_queued:

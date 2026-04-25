@@ -25,6 +25,27 @@ var _ground_tilemap_layers: Array[TileMapLayer] = []
 )
 
 
+func handle_input(event: InputEvent) -> void:
+	if player._in_cinematic:
+		return
+
+	if event.is_action_pressed("attack"):
+		if player.attack_cooldown_timer.is_stopped():
+			state_machine.transition_to("Attack")
+			return
+
+	if event.is_action_pressed("dash"):
+		if player.dash_cooldown_timer.is_stopped():
+			state_machine.transition_to("Dash")
+			return
+
+	if event.is_action_pressed("interact"):
+		var interact_area: InteractArea = InteractionManager.get_interact_area()
+		if interact_area:
+			state_machine.transition_to("Interact", {"interact_area": interact_area})
+			return
+
+
 func update(delta: float) -> void:
 	var ground_detector_status: PlayerGroundDetector.Status = (
 		player.ground_detector.current_status()
@@ -36,28 +57,14 @@ func update(delta: float) -> void:
 	if ground_detector_status == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
-	if Input.is_action_just_pressed("attack") && player.attack_cooldown_timer.is_stopped():
-		state_machine.transition_to("Attack")
-		return
-
-	if Input.is_action_just_pressed("dash") && player.dash_cooldown_timer.is_stopped():
-		state_machine.transition_to("Dash")
-		return
-
-	if Input.is_action_just_pressed("interact"):
-		var interact_area: InteractArea = InteractionManager.get_interact_area()
-		if interact_area:
-			state_machine.transition_to("Interact", {"interact_area": interact_area})
-			return
-
 	var movement_dir: Vector2 = player.get_movement_direction()
-
-	if player.ground_detector.on_ledge(movement_dir):
-		state_machine.transition_to("LedgePeer")
-		return
 
 	if movement_dir == Vector2.ZERO:
 		state_machine.transition_to("Idle")
+		return
+
+	if player.ground_detector.on_ledge(movement_dir):
+		state_machine.transition_to("LedgePeer")
 		return
 
 	var animation: String = _get_animation(movement_dir)

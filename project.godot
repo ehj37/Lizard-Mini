@@ -29,7 +29,8 @@ SignalBus="*res://autoload/signal_bus.gd"
 ScreenFader="*res://autoload/screen_fader/screen_fader.tscn"
 LevelManager="*res://autoload/level_manager.gd"
 PauseMenu="*res://ui/pause_menu/pause_menu.tscn"
-Overlays="*res://ui/overlays/overlays.tscn"
+HurtOverlay="*res://ui/overlays/hurt_overlay/hurt_overlay.tscn"
+CinemaOverlay="*uid://c7a371mpj1olr"
 DebugMenu="*uid://cifgxsdrxtsg1"
 
 [debug]

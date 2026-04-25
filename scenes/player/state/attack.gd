@@ -62,22 +62,13 @@ var _sword_swing_sound_effect_identifier: int
 )
 
 
-func _ready() -> void:
-	super()
-	await owner.ready
+func handle_input(event: InputEvent) -> void:
+	if player._in_cinematic:
+		return
 
-	animation_to_collision_polygon = {
-		ANIMATION_U_1: player.sword_polygon_u_1,
-		ANIMATION_U_2: player.sword_polygon_u_2,
-		ANIMATION_UR_1: player.sword_polygon_ur_1,
-		ANIMATION_UR_2: player.sword_polygon_ur_2,
-		ANIMATION_R_1: player.sword_polygon_r_1,
-		ANIMATION_R_2: player.sword_polygon_r_2,
-		ANIMATION_DR_1: player.sword_polygon_dr_1,
-		ANIMATION_DR_2: player.sword_polygon_dr_2,
-		ANIMATION_D_1: player.sword_polygon_d_1,
-		ANIMATION_D_2: player.sword_polygon_d_2,
-	}
+	if event.is_action_pressed("attack"):
+		if _can_combo:
+			transition_to("Attack", {"combo_num": _combo_num + 1})
 
 
 func physics_update(delta: float) -> void:
@@ -89,18 +80,13 @@ func physics_update(delta: float) -> void:
 
 
 func update(_delta: float) -> void:
-	if _can_combo:
-		if Input.is_action_just_pressed("attack"):
-			state_machine.transition_to("Attack", {"combo_num": _combo_num + 1})
-
 	if animation_player.is_playing():
 		return
 
-	if player.get_movement_direction() != Vector2.ZERO:
-		state_machine.transition_to("Run")
-		return
-
-	state_machine.transition_to("Idle")
+	if player.get_movement_direction() == Vector2.ZERO:
+		transition_to("Idle")
+	else:
+		transition_to("Run")
 
 
 func enter(data: Dictionary = {}) -> void:
@@ -147,6 +133,24 @@ func exit() -> void:
 
 	# This is fine for combo attacks since they don't check the timer.
 	player.attack_cooldown_timer.start()
+
+
+func _ready() -> void:
+	super()
+	await owner.ready
+
+	animation_to_collision_polygon = {
+		ANIMATION_U_1: player.sword_polygon_u_1,
+		ANIMATION_U_2: player.sword_polygon_u_2,
+		ANIMATION_UR_1: player.sword_polygon_ur_1,
+		ANIMATION_UR_2: player.sword_polygon_ur_2,
+		ANIMATION_R_1: player.sword_polygon_r_1,
+		ANIMATION_R_2: player.sword_polygon_r_2,
+		ANIMATION_DR_1: player.sword_polygon_dr_1,
+		ANIMATION_DR_2: player.sword_polygon_dr_2,
+		ANIMATION_D_1: player.sword_polygon_d_1,
+		ANIMATION_D_2: player.sword_polygon_d_2,
+	}
 
 
 func _get_animation(dir: Vector2, combo_num: int) -> String:

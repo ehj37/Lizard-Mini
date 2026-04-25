@@ -20,6 +20,7 @@ var last_safe_global_position: Vector2
 var _pressed_movement_inputs: Array[String] = []
 var _burning: bool = false
 var _times_burnt: int = 0
+var _in_cinematic: bool = false
 
 @onready var burn_particles_back: GPUParticles2D = $BurnParticlesBack
 @onready var sprite: Sprite2D = $Sprite2D
@@ -61,19 +62,6 @@ var _times_burnt: int = 0
 )
 
 
-func _physics_process(_delta: float) -> void:
-	move_and_slide()
-
-
-func _process(_delta: float) -> void:
-	for movement_input: String in MOVEMENT_INPUTS:
-		if Input.is_action_pressed(movement_input):
-			if !_pressed_movement_inputs.has(movement_input):
-				_pressed_movement_inputs.append(movement_input)
-		else:
-			_pressed_movement_inputs.erase(movement_input)
-
-
 func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector2) -> void:
 	# If the type is FIRE, this will no-op if the player is already burning.
 	# For BURN, damage is dealt regardless of if the player is already burning.
@@ -94,7 +82,7 @@ func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector
 			return
 
 	hurt.emit()
-	Overlays.add_hurt()
+	HurtOverlay.apply()
 	shader_animation_player.play("hurt_flash")
 	SoundEffectManager.play(_ouch_sound_effect_config)
 
@@ -132,6 +120,9 @@ func clear_burn() -> void:
 
 
 func get_movement_direction() -> Vector2:
+	if _in_cinematic:
+		return Vector2.ZERO
+
 	var movement_vector: Vector2 = Vector2.ZERO
 	var vertical_movement_input_i: int = _pressed_movement_inputs.rfind_custom(
 		func(movement_input: String) -> bool: return VERTICAL_MOVEMENT_INPUTS.has(movement_input)
@@ -148,6 +139,27 @@ func get_movement_direction() -> Vector2:
 		movement_vector += MOVEMENT_INPUT_TO_DIR[horizontal_movement_input]
 
 	return movement_vector.normalized()
+
+
+func on_cinematic_started() -> void:
+	_in_cinematic = true
+
+
+func on_cinematic_ended() -> void:
+	_in_cinematic = false
+
+
+func _physics_process(_delta: float) -> void:
+	move_and_slide()
+
+
+func _process(_delta: float) -> void:
+	for movement_input: String in MOVEMENT_INPUTS:
+		if Input.is_action_pressed(movement_input):
+			if !_pressed_movement_inputs.has(movement_input):
+				_pressed_movement_inputs.append(movement_input)
+		else:
+			_pressed_movement_inputs.erase(movement_input)
 
 
 func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:

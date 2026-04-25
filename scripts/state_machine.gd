@@ -9,19 +9,6 @@ var current_state: State
 var _states: Array[State] = []
 
 
-func _ready() -> void:
-	await owner.ready
-
-	for child: State in get_children():
-		assert(child is State)
-
-		child.state_machine = self
-		_states.append(child)
-
-	current_state = initial_state
-	current_state.enter({})
-
-
 func transition_to(state_name: String, data: Dictionary = {}) -> void:
 	if log_state_transitions:
 		print("-----------")
@@ -40,9 +27,26 @@ func transition_to(state_name: String, data: Dictionary = {}) -> void:
 	current_state.enter(data)
 
 
+func _input(event: InputEvent) -> void:
+	current_state.handle_input(event)
+
+
 func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
 
 
 func _process(delta: float) -> void:
 	current_state.update(delta)
+
+
+func _ready() -> void:
+	await owner.ready
+
+	for child: State in get_children():
+		assert(child is State)
+
+		child.state_machine = self
+		_states.append(child)
+
+	current_state = initial_state
+	current_state.enter({})
