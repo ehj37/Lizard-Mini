@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dkyfbkwrn2exj"]
+
+[ext_resource type="Script" uid="uid://5tpwoi11i1c7" path="res://scenes/objects/hold_switch/hold_switch.gd" id="1_i2ihh"]
+[ext_resource type="PackedScene" uid="uid://cptjdaxdxm8lq" path="res://scenes/interact_area/interact_area.tscn" id="2_3g133"]
+[ext_resource type="PackedScene" uid="uid://bjkktw14vfsrq" path="res://scenes/progress_indicator/progress_indicator.tscn" id="3_jtmbr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3g133"]
+radius = 31.0
+
+[node name="HoldSwitch" type="Node2D" unique_id=645071555]
+script = ExtResource("1_i2ihh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1740379995]
+offset_top = -16.0
+offset_right = 4.0
+
+[node name="InteractArea" parent="." unique_id=1350481860 node_paths=PackedStringArray("progress_indicator") instance=ExtResource("2_3g133")]
+progress_indicator = NodePath("../ProgressIndicator")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1217150292]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_3g133")
+
+[node name="ProgressIndicator" parent="." unique_id=1695720808 instance=ExtResource("3_jtmbr")]
+position = Vector2(9, -20)
+
+[connection signal="interaction_complete" from="InteractArea" to="." method="_on_interact_area_interaction_complete"]

@@ -43,7 +43,6 @@ func _physics_process(_delta: float) -> void:
 
 func _ready() -> void:
 	call_deferred("_seeker_setup")
-	health_component.health_depleted.connect(func() -> void: state_machine.transition_to("Death"))
 
 
 func _seeker_setup() -> void:
@@ -56,3 +55,8 @@ func _seeker_setup() -> void:
 func _on_player_detector_player_detected() -> void:
 	player_detector.monitoring = false
 	alert()
+
+
+func _on_health_component_health_depleted() -> void:
+	state_machine.transition_to("Death")
+	death.emit()

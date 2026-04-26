@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cknfhutufv6wu"]
+[gd_scene format=3 uid="uid://cknfhutufv6wu"]
 
 [ext_resource type="Script" uid="uid://raj4vugwv7c4" path="res://scenes/player/ground_detector/ground_detector.gd" id="1_ghbbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgikm"]
 radius = 3.0
 
-[node name="GroundDetector" type="Node2D"]
+[node name="GroundDetector" type="Node2D" unique_id=1628600940]
 script = ExtResource("1_ghbbx")
 
-[node name="SafeFloorDetector" type="Area2D" parent="."]
+[node name="SafeFloorDetector" type="Area2D" parent="." unique_id=1916993876]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeFloorDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeFloorDetector" unique_id=33168394]
 shape = SubResource("CircleShape2D_pgikm")
 
-[node name="UnsafeFloorDetector" type="Area2D" parent="."]
+[node name="UnsafeFloorDetector" type="Area2D" parent="." unique_id=1483709867]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorDetector" unique_id=579578093]
 shape = SubResource("CircleShape2D_pgikm")

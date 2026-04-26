@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cqcl12icjcf4g"
+path="res://.godot/imported/toggleable_floor.aseprite-eef334d801043282012c95708f3122ab.res"
+
+[deps]
+
+source_file="res://scenes/floor/toggleable_floor/toggleable_floor.aseprite"
+dest_files=["res://.godot/imported/toggleable_floor.aseprite-eef334d801043282012c95708f3122ab.res"]
+
+[params]
+

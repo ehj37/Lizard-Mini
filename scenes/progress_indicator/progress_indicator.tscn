@@ -1,7 +1,34 @@
-[gd_scene load_steps=38 format=4 uid="uid://bjkktw14vfsrq"]
+[gd_scene format=4 uid="uid://bjkktw14vfsrq"]
 
 [ext_resource type="Script" uid="uid://vlnyrwxmk45p" path="res://scenes/progress_indicator/progress_indicator.gd" id="1_ajmdn"]
 [ext_resource type="PackedScene" uid="uid://cusjjbupujcq7" path="res://scenes/progress_indicator/screen_line/screen_line.tscn" id="2_n0cpm"]
+
+[sub_resource type="Animation" id="Animation_xir5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_03iml"]
 resource_name = "fade_in"
@@ -44,33 +71,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xir5y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/on")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bixku"]
@@ -291,19 +291,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="ProgressIndicator" type="Node2D"]
+[node name="ProgressIndicator" type="Node2D" unique_id=1695720808]
 modulate = Color(1, 1, 1, 0)
 z_index = 4096
 script = ExtResource("1_ajmdn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_bixku")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=204252432]
+libraries/ = SubResource("AnimationLibrary_bixku")
 
-[node name="SineMovementContainer" type="Node2D" parent="."]
+[node name="SineMovementContainer" type="Node2D" parent="." unique_id=443111042]
 
-[node name="ProgressBar" type="ProgressBar" parent="SineMovementContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="SineMovementContainer" unique_id=433256598]
 offset_left = -2.0
 offset_top = 5.0
 offset_right = 8.0
@@ -313,7 +311,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ajmdn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cyf5t")
 show_percentage = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SineMovementContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="SineMovementContainer" unique_id=1160612154]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_pefhp")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -339,7 +337,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "534cdd9158ac89e179355725921869d9"
 
-[node name="LeftBar" type="AnimatedSprite2D" parent="SineMovementContainer"]
+[node name="LeftBar" type="AnimatedSprite2D" parent="SineMovementContainer" unique_id=1355326937]
 texture_filter = 1
 position = Vector2(-6, -4)
 sprite_frames = SubResource("SpriteFrames_i567m")
@@ -363,7 +361,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "839c23ea5d98bec2cdacb23b09d681db"
 
-[node name="RightBar" type="AnimatedSprite2D" parent="SineMovementContainer"]
+[node name="RightBar" type="AnimatedSprite2D" parent="SineMovementContainer" unique_id=458626654]
 texture_filter = 1
 position = Vector2(5, -4)
 sprite_frames = SubResource("SpriteFrames_vexnw")
@@ -388,5 +386,5 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "008f3aa7deb83895166720ae5f06222d"
 
-[node name="ScreenLine" parent="SineMovementContainer" instance=ExtResource("2_n0cpm")]
+[node name="ScreenLine" parent="SineMovementContainer" unique_id=1273941973 instance=ExtResource("2_n0cpm")]
 position = Vector2(-3, -6)

@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dm6i1rj3r0ko6" path="res://scenes/wall/door/door.tscn" id="21_jrfo0"]
 [ext_resource type="PackedScene" uid="uid://b8agbdu84gnwv" path="res://scenes/floor/fire_vent/fire_vent.tscn" id="23_6gwlt"]
 [ext_resource type="PackedScene" uid="uid://dxkhkxl2g7k0c" path="res://scenes/objects/snail/snail.tscn" id="24_c2nc4"]
-[ext_resource type="PackedScene" uid="uid://bvrvdh211j41c" path="res://scenes/objects/toggle_switch/toggle_switch.tscn" id="24_vhxpm"]
+[ext_resource type="PackedScene" uid="uid://bvrvdh211j41c" path="res://scenes/objects/sword_switch/sword_switch.tscn" id="24_vhxpm"]
 [ext_resource type="PackedScene" uid="uid://ex8okscf2ye6" path="res://scenes/objects/archway/archway.tscn" id="25_vhxpm"]
 [ext_resource type="PackedScene" uid="uid://cm4fn38crxxpm" path="res://scenes/objects/statuette/statuette.tscn" id="26_arkx4"]
 [ext_resource type="PackedScene" uid="uid://bcupauqdc6cwp" path="res://scenes/enemies/wisp/wisp_container/wisp_container.tscn" id="27_jqv5m"]
@@ -69,7 +69,7 @@ scroll_offset = Vector2(-744, -232)
 [node name="Test2" parent="Background" unique_id=944110735 instance=ExtResource("2_6gwlt")]
 
 [node name="Player" parent="." unique_id=1646083049 instance=ExtResource("1_x6ivy")]
-position = Vector2(-864, 104)
+position = Vector2(600, -216)
 
 [node name="PlayerCamera" parent="." unique_id=854111214 node_paths=PackedStringArray("player") instance=ExtResource("2_4tcl0")]
 player = NodePath("../Player")
@@ -334,10 +334,9 @@ position = Vector2(265, -227)
 [node name="Wisp3" parent="Hallway/Wisps" unique_id=346159023 instance=ExtResource("18_g7tkf")]
 position = Vector2(535, -244)
 
-[node name="ToggleSwitch" parent="Hallway" unique_id=740328467 node_paths=PackedStringArray("toggleable_elements") instance=ExtResource("24_vhxpm")]
+[node name="SwordSwitch" parent="Hallway" unique_id=740328467 instance=ExtResource("24_vhxpm")]
 position = Vector2(618, -214)
 toggled_on = true
-toggleable_elements = [NodePath("../FireVents/FireVent"), NodePath("../FireVents/FireVent2"), NodePath("../FireVents/FireVent3"), NodePath("../FireVents/FireVent4")]
 
 [node name="FireVents" type="Node2D" parent="Hallway" unique_id=393003533]
 y_sort_enabled = true
@@ -482,3 +481,7 @@ position = Vector2(-768, 32)
 initial_orientation = 1
 
 [connection signal="unlocked" from="Hallway/Wall/Door" to="Hallway/Wall/Door/ConcentricSquares" method="kill"]
+[connection signal="hit" from="Hallway/SwordSwitch" to="Hallway/FireVents/FireVent" method="toggle"]
+[connection signal="hit" from="Hallway/SwordSwitch" to="Hallway/FireVents/FireVent2" method="toggle"]
+[connection signal="hit" from="Hallway/SwordSwitch" to="Hallway/FireVents/FireVent3" method="toggle"]
+[connection signal="hit" from="Hallway/SwordSwitch" to="Hallway/FireVents/FireVent4" method="toggle"]

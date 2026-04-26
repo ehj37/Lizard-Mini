@@ -1,0 +1,159 @@
+[gd_scene format=4 uid="uid://c3ty6reg3iwgx"]
+
+[ext_resource type="Script" uid="uid://xs0t4nurqc46" path="res://scenes/floor/toggleable_floor/toggleable_floor.gd" id="1_4t0sw"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_rlxvj"]
+_data = PackedByteArray("AAADAAUAAAABAAAAkAAAAJwAAACGAQAAUklGRn4BAABXRUJQVlA4THEBAAAvj8AmEL/AqratRLj8OvRf5LAAdGHcpwbrSJKVPHc3IP9kCIEijXdfqNJIkqK5z+JIHk8wZEPhfggEIdrhoRG2i///B4gAxAZ+hRvyLg6o4o/neqQNhJt2FhssHx/WOeE32WG7SbfNpadgdPa3RkmkA4DgSJIjZdb0HN6N2/8/dbpwKdR4iOg/I7dtI0mA2tlzmkcsuCtuwv33nz84OXA/wcTvgE1ph01pg51kVKeiOgVVGNkYLJuy187Qa1e20hjabFAxcKd0cKc0cBdPflAy5hHLPo9YtnkUdyybxAdg6LVLfACGVprEBwg6T4yA5YkRsDwxQswZeeh7TYd4PXvd9b1dh3g9W9n0vU2HiOY//BE6+Pi8KOTMDn/CsMzu/kTHMrv5Ey2iYEhQJCiSeP57PygxDlM6R1caR4sq2HY8DrbdHwfbbmGF1WF1YFM8XuBe4l7jnuNe4d7gnnBvce9xz3DvcB9wF9zjzfvvP/+vcAAA")
+size_override = Vector2(144, 156)
+
+[sub_resource type="Animation" id="Animation_rlxvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dm87w"]
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_toggled_on"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ohyup"]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_toggled_off"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.55, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 4, 3, 2, 1, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohyup"]
+_data = {
+&"RESET": SubResource("Animation_rlxvj"),
+&"appear": SubResource("Animation_dm87w"),
+&"disappear": SubResource("Animation_ohyup")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t0sw"]
+size = Vector2(48, 48)
+
+[node name="ToggleableFloor" type="Node2D" unique_id=360309505]
+z_index = -5
+script = ExtResource("1_4t0sw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542482791]
+texture_filter = 1
+position = Vector2(24, 26)
+texture = SubResource("PortableCompressedTexture2D_rlxvj")
+hframes = 3
+vframes = 3
+frame = 5
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/floor/toggleable_floor/toggleable_floor.aseprite",
+"source_uid": 5900707369256670676
+}
+metadata/_aseprite_wizard_source_file_hash_ = "30468a7758b43b1a89062ec039d49ebe"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1747691911]
+libraries/ = SubResource("AnimationLibrary_ohyup")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1169486700]
+position = Vector2(24, 24)
+collision_layer = 6
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1626760373]
+shape = SubResource("RectangleShape2D_4t0sw")
