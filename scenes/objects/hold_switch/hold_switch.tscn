@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dkyfbkwrn2exj"]
+[gd_scene format=4 uid="uid://dkyfbkwrn2exj"]
 
 [ext_resource type="Script" uid="uid://5tpwoi11i1c7" path="res://scenes/objects/hold_switch/hold_switch.gd" id="1_i2ihh"]
 [ext_resource type="PackedScene" uid="uid://cptjdaxdxm8lq" path="res://scenes/interact_area/interact_area.tscn" id="2_3g133"]
@@ -7,12 +7,32 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3g133"]
 radius = 31.0
 
-[node name="HoldSwitch" type="Node2D" unique_id=645071555]
-script = ExtResource("1_i2ihh")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_3g133"]
+_data = PackedByteArray("AAADAAUAAAABAAAAGwAAAGAAAADKAQAAUklGRsIBAABXRUJQVlA4TLUBAAAvGsAXEJ+gNJKk6P478FjSJkIshf7TUNtIUvMW78kogpIpkBSRK4okqbkjxyf+XeCIJwYuzn9M0HVvGABpwCH4xuTZfeMcqhcUNPPBrE/KOn5U6N0Jop2r32e8D7Bs22rb+PoZ7Et5Lsn8B2se4spK+Y3ov9m0beJ21x3fH6vskJRT0SWppEnyXEuYKEvIB6lIPgCgLrmRvKoSG6kSs7vZWnIEgGHUAAjDG3AxszM2JTlI8huQcULOgmQJeAYAM4BMDYA8gggIHQDwkQyAo+mAhq4CGipcBVR0NB3gqAcA+g4AHI4uAjwmAX5fZc8/i25LJek2Jq5trxKfD1KwbW0JSDOApGq7kbwubYyz0YZtAxB3N5tsKwDDqAEQBg2Qw7IIuJjZWRwzgMw3INi2AcgjiIDQAQAfyQA4mg5o6CqgocJVQEVH0wGOegCg7wDA4egiwGMS4B+o7PnXdCxcAZhKYoS8ygT4mgBM5GxbAshpTEvAjeRVBdhIBNDsbkYNgDBogByWPw7gxczO1ADII4iA0AEAH8kAOJoOaOgqoKHCVUBFR9MBjnoAoO8AwOHoIsBjEmBP3wA=")
+size_override = Vector2(27, 96)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1740379995]
-offset_top = -16.0
-offset_right = 4.0
+[sub_resource type="Animation" id="Animation_jtmbr"]
+length = 0.825
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.425, 0.5, 0.575, 0.65, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gpxpe"]
+_data = {
+&"retract": SubResource("Animation_jtmbr")
+}
+
+[node name="HoldSwitch" type="StaticBody2D" unique_id=293498361]
+script = ExtResource("1_i2ihh")
 
 [node name="InteractArea" parent="." unique_id=1350481860 node_paths=PackedStringArray("progress_indicator") instance=ExtResource("2_3g133")]
 progress_indicator = NodePath("../ProgressIndicator")
@@ -22,6 +42,42 @@ position = Vector2(2, -2)
 shape = SubResource("CircleShape2D_3g133")
 
 [node name="ProgressIndicator" parent="." unique_id=1695720808 instance=ExtResource("3_jtmbr")]
-position = Vector2(9, -20)
+position = Vector2(14, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=663469795]
+texture_filter = 1
+position = Vector2(3, -15)
+texture = SubResource("PortableCompressedTexture2D_3g133")
+hframes = 3
+vframes = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/objects/hold_switch/hold_switch.aseprite",
+"source_uid": 9160380741921002555
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ba01d23e36f5c5d62f8d1d0a595ce371"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2038947968]
+libraries/ = SubResource("AnimationLibrary_gpxpe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=597380674]
+position = Vector2(0, 13)
+polygon = PackedVector2Array(0, -13, 0, -18, 7, -18, 7, -13)
 
 [connection signal="interaction_complete" from="InteractArea" to="." method="_on_interact_area_interaction_complete"]
