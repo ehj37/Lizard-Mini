@@ -11,6 +11,9 @@ enum ToggleValue { ON, OFF }
 
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _collision_shape: CollisionShape2D = $StaticBody2D/CollisionShape2D
+@onready var _appear_sound_effect_config: SoundEffectConfig = preload("./sound_effects/appear.tres")
+@onready
+var _disappear_sound_effect_config: SoundEffectConfig = preload("./sound_effects/disappear.tres")
 
 
 func toggle_on() -> void:
@@ -40,3 +43,11 @@ func _emit_toggled_on() -> void:
 
 func _emit_toggled_off() -> void:
 	toggled_off.emit()
+
+
+func _play_appear_sound_effect() -> void:
+	SoundEffectManager.play_at(_appear_sound_effect_config, global_position)
+
+
+func _play_disappear_sound_effect() -> void:
+	SoundEffectManager.play_at(_disappear_sound_effect_config, global_position)

@@ -42,9 +42,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_play_appear_sound_effect"
+}, {
 "args": [],
 "method": &"_emit_toggled_on"
 }]
@@ -83,9 +86,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.55),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_play_disappear_sound_effect"
+}, {
 "args": [],
 "method": &"_emit_toggled_off"
 }]
@@ -123,7 +129,6 @@ position = Vector2(24, 26)
 texture = SubResource("PortableCompressedTexture2D_rlxvj")
 hframes = 3
 vframes = 3
-frame = 5
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

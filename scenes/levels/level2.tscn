@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dkyfbkwrn2exj" path="res://scenes/objects/hold_switch/hold_switch.tscn" id="19_4eecq"]
 [ext_resource type="PackedScene" uid="uid://c4kdib5saiq85" path="res://scenes/floor/collapsing_floor/collapsing_floor.tscn" id="19_b3p8y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxuut"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4eecq"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -30,7 +30,7 @@ shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
 shader_parameter/color = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g04qb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3p8y"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -43,7 +43,7 @@ shader_parameter/color = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhrca"]
 size = Vector2(400, 1232)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ida7w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxuut"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -80,11 +80,11 @@ position = Vector2(-32, -184)
 position = Vector2(-48, -80)
 
 [node name="Golem" parent="." unique_id=2043209814 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_bxuut")
+material = SubResource("ShaderMaterial_4eecq")
 position = Vector2(376, -96)
 
 [node name="Golem2" parent="." unique_id=1413503262 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_g04qb")
+material = SubResource("ShaderMaterial_b3p8y")
 position = Vector2(336, -216)
 
 [node name="ExplosiveCanister" parent="." unique_id=2118925219 instance=ExtResource("7_dj4wq")]
@@ -161,7 +161,7 @@ initial_value = 0
 y_sort_enabled = true
 
 [node name="Golem" parent="GolemIntro/FirstGolem" unique_id=1669117974 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_ida7w")
+material = SubResource("ShaderMaterial_bxuut")
 position = Vector2(-528, -712)
 
 [node name="CinemaArea" parent="GolemIntro/FirstGolem" unique_id=1122757590 node_paths=PackedStringArray("target_marker") instance=ExtResource("16_f3b2k")]

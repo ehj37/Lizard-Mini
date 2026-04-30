@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://bfs4rhhv223xl"]
+
+[ext_resource type="AudioStream" uid="uid://c024a0ol2kuur" path="res://scenes/floor/collapsing_floor/sound_effects/collapse.ogg" id="1_aji0o"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_kxvjr"]
+
+[resource]
+script = ExtResource("1_kxvjr")
+audio_stream = ExtResource("1_aji0o")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"
