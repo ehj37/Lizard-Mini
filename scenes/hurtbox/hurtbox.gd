@@ -18,13 +18,6 @@ var _overlapping_hitboxes: Array[Hitbox] = []
 var _hitbox_instance_ids_on_cooldown: Array[int] = []
 
 
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-
-	assert(owner.has_method("take_damage"), "Owner of a hurtbox must have implement take_damage")
-
-
 func enable() -> void:
 	disabled = false
 
@@ -33,27 +26,29 @@ func disable() -> void:
 	disabled = true
 
 
+func is_hurt_by(hitbox: Hitbox) -> bool:
+	if self_damage_disabled && hitbox.owner == owner:
+		return false
+
+	if grounded != hitbox.grounded:
+		return false
+
+	if hitbox.damage_amount <= 0 && !fragile:
+		return false
+
+	var hitbox_on_cooldown: bool = _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
+	if hitbox_on_cooldown:
+		return false
+
+	return true
+
+
 func _physics_process(_delta: float) -> void:
 	if disabled:
 		return
 
 	for hitbox: Hitbox in _overlapping_hitboxes:
-		if hitbox.disabled:
-			continue
-
-		if self_damage_disabled && hitbox.owner == owner:
-			continue
-
-		if grounded != hitbox.grounded:
-			continue
-
-		if hitbox.damage_amount <= 0 && !fragile:
-			continue
-
-		var hitbox_on_cooldown: bool = _hitbox_instance_ids_on_cooldown.has(
-			hitbox.get_instance_id()
-		)
-		if hitbox_on_cooldown:
+		if hitbox.disabled || !is_hurt_by(hitbox):
 			continue
 
 		# In _ready() we check that the owner implements take_damage
@@ -63,6 +58,13 @@ func _physics_process(_delta: float) -> void:
 
 		if repetitive_hitbox_damage_cooldown > 0:
 			_add_cooldown_for(hitbox)
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
+	assert(owner.has_method("take_damage"), "Owner of a hurtbox must have implement take_damage")
 
 
 func _add_cooldown_for(hitbox: Hitbox) -> void:

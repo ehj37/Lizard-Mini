@@ -32,6 +32,7 @@ _data = {
 }
 
 [node name="HoldSwitch" type="StaticBody2D" unique_id=293498361]
+collision_mask = 0
 script = ExtResource("1_i2ihh")
 
 [node name="InteractArea" parent="." unique_id=1350481860 node_paths=PackedStringArray("progress_indicator") instance=ExtResource("2_3g133")]

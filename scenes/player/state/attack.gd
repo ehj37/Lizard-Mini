@@ -1,6 +1,6 @@
 extends PlayerState
 
-enum SwingDirection {}
+enum SwingDirection { U, UR, R, DR, D, DL, L, UL }
 
 const INITIAL_LUNGE_SPEED: float = 80.0
 const LUNGE_DECELERATION: float = 350.0
@@ -90,8 +90,6 @@ func update(_delta: float) -> void:
 
 
 func enter(data: Dictionary = {}) -> void:
-	player.hitbox_sword.disabled = false
-
 	var movement_direction: Vector2 = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		_lunge_dir = movement_direction
@@ -99,10 +97,16 @@ func enter(data: Dictionary = {}) -> void:
 	else:
 		_lunge_dir = player.orientation
 
+	player.sword_bonk_detector.rotation = _lunge_dir.angle()
+
 	_combo_num = data.get("combo_num", 0)
 	var animation: String = _get_animation(_lunge_dir, _combo_num)
 	animation_player.play(animation)
 	_sword_swing_sound_effect_identifier = SoundEffectManager.play(_sword_swing_sound_effect_config)
+
+	var collision_polygon: CollisionPolygon2D = animation_to_collision_polygon.get(animation)
+	collision_polygon.disabled = false
+	collision_polygon.visible = true
 
 	if _lunge_dir.x < 0:
 		player.sprite.flip_h = true
@@ -172,13 +176,14 @@ func _enable_sword() -> void:
 	if state_machine.current_state != self:
 		return
 
-	player.hitbox_sword.enable()
-	var collision_polygon: CollisionPolygon2D = animation_to_collision_polygon.get(
-		animation_player.current_animation
-	)
+	if (
+		player.sword_bonk_detector.has_overlapping_bodies()
+		&& player.hitbox_sword.preview_hit_count() == 0
+	):
+		transition_to("SwordBonk", {"lunge_dir": _lunge_dir})
+		return
 
-	collision_polygon.disabled = false
-	collision_polygon.visible = true
+	player.hitbox_sword.enable()
 
 
 func _disable_sword() -> void:
@@ -186,11 +191,6 @@ func _disable_sword() -> void:
 		return
 
 	player.hitbox_sword.disable()
-	var collision_polygon: CollisionPolygon2D = animation_to_collision_polygon.get(
-		animation_player.current_animation
-	)
-	collision_polygon.disabled = true
-	collision_polygon.visible = false
 
 
 func _enter_combo_window() -> void:

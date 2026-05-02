@@ -34,6 +34,7 @@ var _in_cinematic: bool = false
 @onready var hurtbox_feet: Hurtbox = $HurtboxFeet
 @onready var hitbox_sword: HitboxSword = $HitboxSword
 @onready var hitbox_feet: Hitbox = $HitboxFeet
+@onready var sword_bonk_detector: Area2D = $SwordBonkDetector
 
 # Timers
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer

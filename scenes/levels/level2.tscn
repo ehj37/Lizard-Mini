@@ -19,8 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://c3ty6reg3iwgx" path="res://scenes/floor/toggleable_floor/toggleable_floor.tscn" id="18_yhrca"]
 [ext_resource type="PackedScene" uid="uid://dkyfbkwrn2exj" path="res://scenes/objects/hold_switch/hold_switch.tscn" id="19_4eecq"]
 [ext_resource type="PackedScene" uid="uid://c4kdib5saiq85" path="res://scenes/floor/collapsing_floor/collapsing_floor.tscn" id="19_b3p8y"]
+[ext_resource type="Script" uid="uid://y3aesk4nf26x" path="res://scenes/objects/pots/pot.gd" id="20_b3p8y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4eecq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxuut"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -30,7 +31,7 @@ shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
 shader_parameter/color = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3p8y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g04qb"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -43,7 +44,7 @@ shader_parameter/color = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhrca"]
 size = Vector2(400, 1232)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxuut"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ida7w"]
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
@@ -80,11 +81,11 @@ position = Vector2(-32, -184)
 position = Vector2(-48, -80)
 
 [node name="Golem" parent="." unique_id=2043209814 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_4eecq")
+material = SubResource("ShaderMaterial_bxuut")
 position = Vector2(376, -96)
 
 [node name="Golem2" parent="." unique_id=1413503262 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_b3p8y")
+material = SubResource("ShaderMaterial_g04qb")
 position = Vector2(336, -216)
 
 [node name="ExplosiveCanister" parent="." unique_id=2118925219 instance=ExtResource("7_dj4wq")]
@@ -161,7 +162,7 @@ initial_value = 0
 y_sort_enabled = true
 
 [node name="Golem" parent="GolemIntro/FirstGolem" unique_id=1669117974 instance=ExtResource("6_ok6xr")]
-material = SubResource("ShaderMaterial_bxuut")
+material = SubResource("ShaderMaterial_ida7w")
 position = Vector2(-528, -712)
 
 [node name="CinemaArea" parent="GolemIntro/FirstGolem" unique_id=1122757590 node_paths=PackedStringArray("target_marker") instance=ExtResource("16_f3b2k")]
@@ -181,6 +182,20 @@ position = Vector2(-464, -712)
 
 [node name="CollapsingFloor" parent="." unique_id=736631965 instance=ExtResource("19_b3p8y")]
 position = Vector2(-464, 328)
+
+[node name="PotB2" type="StaticBody2D" parent="." unique_id=2110702716 instance=ExtResource("14_sqrei")]
+position = Vector2(-400, 240)
+script = ExtResource("20_b3p8y")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
+
+[node name="PotA3" type="StaticBody2D" parent="." unique_id=971964170 instance=ExtResource("12_hkuam")]
+position = Vector2(-520, 240)
+script = ExtResource("20_b3p8y")
+
+[node name="PotB3" type="StaticBody2D" parent="." unique_id=36094070 instance=ExtResource("14_sqrei")]
+position = Vector2(-528, 248)
+script = ExtResource("20_b3p8y")
+metadata/_custom_type_script = "uid://y3aesk4nf26x"
 
 [connection signal="interaction_complete" from="GolemIntro/InitialPath/HoldSwitch" to="GolemIntro/InitialPath/ToggleableFloors/ToggleableFloor" method="toggle_on"]
 [connection signal="toggled_on" from="GolemIntro/InitialPath/ToggleableFloors/ToggleableFloor" to="GolemIntro/InitialPath/ToggleableFloors/ToggleableFloor2" method="toggle_on"]
