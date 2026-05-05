@@ -7,7 +7,7 @@ const LUNGE_DECELERATION: float = 350.0
 const MAX_COMBO_NUM: int = 2
 const PITCH_MULTIPLIER_PER_ATTACK: float = 0.03
 # TIMINGS
-const POLYGON_ENABLE_TIME: float = 0.05
+const SWING_START: float = 0.05
 const POLYGON_DISABLE_TIME: float = 0.15
 const COMBO_WINDOW_START: float = 0.225
 # DIRECTIONS
@@ -90,6 +90,9 @@ func update(_delta: float) -> void:
 
 
 func enter(data: Dictionary = {}) -> void:
+	player.velocity = Vector2.ZERO
+	_speed = 0.0
+
 	var movement_direction: Vector2 = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
 		_lunge_dir = movement_direction
@@ -115,14 +118,9 @@ func enter(data: Dictionary = {}) -> void:
 		player.sprite.flip_h = false
 		player.hitbox_sword.scale.x = 1
 
-	_speed = INITIAL_LUNGE_SPEED
-	if player.ground_detector.on_ledge(_lunge_dir):
-		player.velocity = Vector2.ZERO
-	else:
-		player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
 	player.hitbox_sword.orientation = player.orientation
 
-	get_tree().create_timer(POLYGON_ENABLE_TIME, false).timeout.connect(_enable_sword)
+	get_tree().create_timer(SWING_START, false).timeout.connect(_swing)
 	get_tree().create_timer(POLYGON_DISABLE_TIME, false).timeout.connect(_disable_sword)
 
 	_can_combo = false
@@ -172,9 +170,15 @@ func _get_animation(dir: Vector2, combo_num: int) -> String:
 	return AnimationPicker.pick_animation(combo_1_animation_map, angle)
 
 
-func _enable_sword() -> void:
+func _swing() -> void:
 	if state_machine.current_state != self:
 		return
+
+	_speed = INITIAL_LUNGE_SPEED
+	if player.ground_detector.on_ledge(_lunge_dir):
+		player.velocity = Vector2.ZERO
+	else:
+		player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
 
 	if (
 		player.sword_bonk_detector.has_overlapping_bodies()
