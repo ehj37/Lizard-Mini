@@ -16,14 +16,6 @@ var _player: Player
 @onready var player_detector: PlayerDetector = $PlayerDetector
 
 
-func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
-	health_component.subtract_health(amount)
-	if health_component.current_health > 0:
-		shader_animation_player.play("hurt_flash")
-	else:
-		shader_animation_player.play("death_flash")
-
-
 func alert() -> void:
 	if state_machine.current_state.name == "Idle":
 		state_machine.transition_to("Alerted")
@@ -57,6 +49,12 @@ func _on_player_detector_player_detected() -> void:
 	alert()
 
 
-func _on_health_component_health_depleted() -> void:
-	state_machine.transition_to("Death")
-	death.emit()
+func _on_hurtbox_hitbox_connected(
+	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	if health_component.current_health > 0:
+		shader_animation_player.play("hurt_flash")
+	else:
+		shader_animation_player.play("death_flash")
+		state_machine.transition_to("Death")
+		death.emit()

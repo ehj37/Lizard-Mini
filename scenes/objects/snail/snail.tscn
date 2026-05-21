@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dxkhkxl2g7k0c"]
+[gd_scene format=4 uid="uid://dxkhkxl2g7k0c"]
 
 [ext_resource type="Script" uid="uid://b023dqmvy1wyg" path="res://scripts/state_machine.gd" id="1_l0ukk"]
 [ext_resource type="Script" uid="uid://csww1dvbl7b8d" path="res://scenes/objects/snail/snail.gd" id="1_q0ap6"]
@@ -97,10 +97,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5prx"]
 size = Vector2(14, 13)
 
-[node name="Snail" type="Node2D"]
+[node name="Snail" type="Node2D" unique_id=1612350269]
 script = ExtResource("1_q0ap6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=38513728]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_eilry")
 offset = Vector2(0, -8)
@@ -130,40 +130,39 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b6b07aad4c8d73da2d20c869b287ab17"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_atrqb")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=649413957]
+libraries/ = SubResource("AnimationLibrary_atrqb")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1222703726 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_l0ukk")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://b023dqmvy1wyg"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1261514896]
 script = ExtResource("3_tt47h")
 metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine" unique_id=405267891]
 script = ExtResource("3_8hb86")
 metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
 
-[node name="Hide" type="Node" parent="StateMachine"]
+[node name="Hide" type="Node" parent="StateMachine" unique_id=850294056]
 script = ExtResource("5_u5prx")
 metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
 
-[node name="Emerge" type="Node" parent="StateMachine"]
+[node name="Emerge" type="Node" parent="StateMachine" unique_id=758352369]
 script = ExtResource("6_eilry")
 metadata/_custom_type_script = "uid://5s1bm7lvcrxe"
 
-[node name="Hurtbox" parent="." instance=ExtResource("5_atrqb")]
+[node name="Hurtbox" parent="." unique_id=449765496 instance=ExtResource("5_atrqb")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2000884638]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_u5prx")
 
-[node name="HideTimer" type="Timer" parent="."]
+[node name="HideTimer" type="Timer" parent="." unique_id=1402374725]
 wait_time = 10.0
 one_shot = true
 
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
 [connection signal="timeout" from="HideTimer" to="StateMachine/Hide" method="_on_hide_timer_timeout"]

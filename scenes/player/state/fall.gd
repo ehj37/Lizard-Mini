@@ -32,8 +32,9 @@ func enter(data: Dictionary = {}) -> void:
 
 	_current_velocity = damage_direction * INITIAL_SPEED
 	player.velocity = _current_velocity
-	player.clear_burn()
 	player.animation_player.play("fall_right")
+
+	player.remove_burn()
 
 
 func _thud() -> void:

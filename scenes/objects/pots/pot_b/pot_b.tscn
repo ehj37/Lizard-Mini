@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://c6ceoo202u4lv"]
+[gd_scene format=4 uid="uid://c6ceoo202u4lv"]
 
 [ext_resource type="Script" uid="uid://y3aesk4nf26x" path="res://scenes/objects/pots/pot.gd" id="1_iudrq"]
 [ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="2_5lhnu"]
@@ -7,11 +7,11 @@
 _data = PackedByteArray("AAADAAUAAAABAAAACAAAABgAAACIAAAAUklGRoAAAABXRUJQVlA4THQAAAAvB8AFEEdgpAEaNBLL0ESh42M9ndpINqj3kRmpUBO6ULuizEQgZDUbnRoq6PLBP8f8BwD7ZlImuqMSt929jwM2sW01eiJQ8BwQNVDnmsEBbKiZtR4lRPR/AvCrdhqXkA8NXWsE8s04Ec4Bz4VA3tSH8MpzAQ==")
 size_override = Vector2(8, 24)
 
-[node name="PotB" type="StaticBody2D"]
+[node name="PotB" type="StaticBody2D" unique_id=173288685]
 script = ExtResource("1_iudrq")
 metadata/_custom_type_script = "uid://y3aesk4nf26x"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1441192825]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_677y1")
 offset = Vector2(0, -12)
@@ -38,19 +38,22 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "103720f04783f28e6a2d10236360f0af"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=770238210]
 position = Vector2(0, 14)
 polygon = PackedVector2Array(2, -14, 2, -19, -4, -19, -4, -14)
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_5lhnu")]
+[node name="Hurtbox" parent="." unique_id=1519600795 instance=ExtResource("2_5lhnu")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=1240233871]
 polygon = PackedVector2Array(2, 0, -4, 0, -4, -18, 2, -18)
 
-[node name="HurtboxGrounded" parent="." instance=ExtResource("2_5lhnu")]
+[node name="HurtboxGrounded" parent="." unique_id=985289460 instance=ExtResource("2_5lhnu")]
 grounded = true
 fragile = true
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HurtboxGrounded"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HurtboxGrounded" unique_id=73185823]
 position = Vector2(0, 14)
 polygon = PackedVector2Array(2, -14, 2, -19, -4, -19, -4, -14)
+
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
+[connection signal="hitbox_connected" from="HurtboxGrounded" to="." method="_on_hurtbox_hitbox_connected"]

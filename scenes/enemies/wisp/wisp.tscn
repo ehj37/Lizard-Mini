@@ -136,10 +136,8 @@ process_material = SubResource("ParticleProcessMaterial_e8vpj")
 
 [node name="Hitbox" parent="." unique_id=369520586 instance=ExtResource("2_57p5f")]
 position = Vector2(0, -9)
-damage_amount = 1
 damage_types = Array[int]([0, 3])
 grounded = true
-disabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1609184734]
 position = Vector2(0, 9)
@@ -191,4 +189,5 @@ shape = SubResource("CircleShape2D_6up6a")
 shape = SubResource("CircleShape2D_rcdd1")
 
 [connection signal="blood_drawn" from="Hitbox" to="." method="_on_hitbox_blood_drawn"]
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
 [connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]

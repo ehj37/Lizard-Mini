@@ -31,5 +31,7 @@ func shatter(direction: Vector2 = Vector2.ZERO) -> void:
 		wisp.alert()
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
-	shatter(direction)
+func _on_hurtbox_hitbox_connected(
+	damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	shatter(damage_direction)

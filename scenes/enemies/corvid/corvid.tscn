@@ -499,22 +499,24 @@ health_component = NodePath("../HealthComponent")
 max_health = 3
 current_health = 3
 
-[node name="Hurtbox" parent="." unique_id=1034727298 instance=ExtResource("12_037im")]
+[node name="Hurtbox" parent="." unique_id=1034727298 node_paths=PackedStringArray("health_component") instance=ExtResource("12_037im")]
+health_component = NodePath("../HealthComponent")
+damage_type_immunities = Array[int]([0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=107409904]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_htmdt")
 
-[node name="HurtboxGround" parent="." unique_id=1753281105 instance=ExtResource("12_037im")]
+[node name="HurtboxGround" parent="." unique_id=1753281105 node_paths=PackedStringArray("health_component") instance=ExtResource("12_037im")]
+health_component = NodePath("../HealthComponent")
+damage_type_immunities = Array[int]([0])
 grounded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxGround" unique_id=1099018973]
 shape = SubResource("CircleShape2D_037im")
 
 [node name="HitboxGround" parent="." unique_id=1625649487 instance=ExtResource("14_cc55l")]
-damage_amount = 1
 damage_types = Array[int]([0])
-grounded = false
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxGround" unique_id=684014020]
@@ -522,9 +524,7 @@ shape = SubResource("CircleShape2D_ssfqn")
 
 [node name="Hitbox" parent="." unique_id=32202676 instance=ExtResource("14_cc55l")]
 position = Vector2(7, -10)
-damage_amount = 1
 damage_types = Array[int]([0])
-grounded = false
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=673408076]
@@ -547,5 +547,7 @@ visible = false
 polygon = PackedVector2Array(0, 0, -8, 88, 40, 96, 128, 64, 144, 0, 128, -64, 40, -96, -8, -88)
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="CorvidStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
+[connection signal="hitbox_connected" from="HurtboxGround" to="." method="_on_hurtbox_hitbox_connected"]
 [connection signal="alerted_enemy_detected" from="EnemyAlertChainer" to="." method="alert"]
 [connection signal="player_detected" from="PlayerDetector" to="." method="alert"]

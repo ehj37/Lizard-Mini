@@ -18,17 +18,6 @@ const _GLYPHS_DISABLED_COLOR: Color = Color("01262a")
 @onready var _hurtbox: Hurtbox = $Hurtbox
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
-	hit.emit()
-	HitStopManager.hit_stop()
-	SoundEffectManager.play_at(_interaction_complete_sound_effect_config, global_position)
-	_toggle()
-	_hurtbox.disable()
-	await get_tree().create_timer(_TIME_BETWEEN_TOGGLES).timeout
-
-	_hurtbox.enable()
-
-
 func _ready() -> void:
 	if toggled_on:
 		_animation_player.play("on")
@@ -54,3 +43,16 @@ func _toggle() -> void:
 		)
 
 	toggled_on = !toggled_on
+
+
+func _on_hurtbox_hitbox_connected(
+	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	hit.emit()
+	HitStopManager.hit_stop()
+	SoundEffectManager.play_at(_interaction_complete_sound_effect_config, global_position)
+	_toggle()
+	_hurtbox.disable()
+	await get_tree().create_timer(_TIME_BETWEEN_TOGGLES).timeout
+
+	_hurtbox.enable()

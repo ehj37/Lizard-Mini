@@ -119,3 +119,6 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 1813835876254689710
 }
 metadata/_aseprite_wizard_source_file_hash_ = "fee912713b73c0a6cbf2fab36e48ff04"
+
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
+[connection signal="hitbox_connected" from="HurtboxGround" to="." method="_on_hurtbox_hitbox_connected"]

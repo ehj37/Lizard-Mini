@@ -7,8 +7,8 @@ const LUNGE_DECELERATION: float = 350.0
 const MAX_COMBO_NUM: int = 2
 const PITCH_MULTIPLIER_PER_ATTACK: float = 0.03
 # TIMINGS
-const SWING_START: float = 0.05
-const POLYGON_DISABLE_TIME: float = 0.15
+const SWING_START: float = 0.0667
+const POLYGON_DISABLE_TIME: float = 0.1333
 const COMBO_WINDOW_START: float = 0.225
 # DIRECTIONS
 const DIR_UR: Vector2 = Vector2(1, -1)

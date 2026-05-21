@@ -17,7 +17,9 @@ func _ready() -> void:
 	)
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
+func _on_hurtbox_hitbox_connected(
+	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
 	hurtbox.disable()
 	hurtbox_ground.disable()
 

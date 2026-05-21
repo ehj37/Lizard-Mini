@@ -333,7 +333,8 @@ current_health = 7
 position = Vector2(0, -48)
 health_component = NodePath("../HealthComponent")
 
-[node name="Hurtbox" parent="." unique_id=261575530 instance=ExtResource("14_0cfuq")]
+[node name="Hurtbox" parent="." unique_id=261575530 node_paths=PackedStringArray("health_component") instance=ExtResource("14_0cfuq")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1523195061]
 position = Vector2(0, -19)
@@ -367,6 +368,6 @@ radius = 125.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=99131802]
 shape = SubResource("CircleShape2D_htmdt")
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="GolemStateMachine/Step" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="player_detected" from="PlayerDetector" to="." method="_on_player_detector_player_detected"]

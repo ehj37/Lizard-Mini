@@ -57,9 +57,9 @@ func update(_delta: float) -> void:
 func enter(data: Dictionary = {}) -> void:
 	HitStopManager.hit_stop()
 
-	var damage_types: Array[Hitbox.DamageType] = data.get("types")
+	var damage_types: Array[Hitbox.DamageType] = data.get("damage_types")
 	if damage_types.has(Hitbox.DamageType.EXPLOSIVE):
-		var damage_direction: Vector2 = data.get("direction")
+		var damage_direction: Vector2 = data.get("damage_direction")
 		state_machine.transition_to("Fall", {"damage_direction": damage_direction})
 		return
 

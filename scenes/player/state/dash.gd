@@ -123,7 +123,7 @@ func enter(data: Dictionary = {}) -> void:
 	player.hurtbox_feet.disable()
 	player.hitbox_feet.enable()
 
-	player.clear_burn()
+	player.remove_burn()
 
 
 func exit() -> void:

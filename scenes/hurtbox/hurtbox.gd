@@ -2,16 +2,22 @@ class_name Hurtbox
 
 extends Area2D
 
+signal hitbox_connected(damage_direction: Vector2, damage_types: Array[Hitbox.DamageType])
+signal burned
+
+@export var health_component: HealthComponent
 # If the hurtbox's owner has been damaged by a hitbox, the amount of time before
 # the hitbox can hurt the hurtbox's owner again.
 # Default of 0.1 is oriented to player sword hitbox enable time.
 @export var repetitive_hitbox_damage_cooldown: float = 0.1
 @export var self_damage_disabled: bool = true
+@export var damage_type_immunities: Array[Hitbox.DamageType]
 @export var grounded: bool = false
 # A fragile hurtbox will cause damage to be taken even if the intersecting
 # hitbox imparts 0 damage.
 # E.g. the player dash won't hurt an enemy, but might break some pottery.
 @export var fragile: bool = false
+@export var flammable: bool = false
 @export var disabled: bool = false
 
 var _overlapping_hitboxes: Array[Hitbox] = []
@@ -33,7 +39,16 @@ func is_hurt_by(hitbox: Hitbox) -> bool:
 	if grounded != hitbox.grounded:
 		return false
 
+	if flammable && hitbox.damage_types.has(Hitbox.DamageType.FIRE):
+		burned.emit()
+
 	if hitbox.damage_amount <= 0 && !fragile:
+		return false
+
+	var relevant_damage_types: Array[Hitbox.DamageType] = hitbox.damage_types.filter(
+		func(type: Hitbox.DamageType) -> bool: return !damage_type_immunities.has(type)
+	)
+	if relevant_damage_types.size() == 0:
 		return false
 
 	var hitbox_on_cooldown: bool = _hitbox_instance_ids_on_cooldown.has(hitbox.get_instance_id())
@@ -51,20 +66,14 @@ func _physics_process(_delta: float) -> void:
 		if hitbox.disabled || !is_hurt_by(hitbox):
 			continue
 
-		# In _ready() we check that the owner implements take_damage
-		@warning_ignore("unsafe_method_access")
-		owner.take_damage(hitbox.damage_amount, hitbox.damage_types, hitbox.damage_direction(self))
+		if health_component != null:
+			health_component.subtract_health(hitbox.damage_amount)
+
+		hitbox_connected.emit(hitbox.damage_direction(self), hitbox.damage_types)
 		hitbox.on_hurtbox_connect(self)
 
 		if repetitive_hitbox_damage_cooldown > 0:
 			_add_cooldown_for(hitbox)
-
-
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-
-	assert(owner.has_method("take_damage"), "Owner of a hurtbox must have implement take_damage")
 
 
 func _add_cooldown_for(hitbox: Hitbox) -> void:

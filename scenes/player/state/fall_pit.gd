@@ -17,7 +17,6 @@ func update(_delta: float) -> void:
 
 func enter(_data: Dictionary = {}) -> void:
 	player.velocity = Vector2.ZERO
-	player.clear_burn()
 
 	# Setting state that'll be restored on exit
 	player.hurtbox.disable()
@@ -28,6 +27,8 @@ func enter(_data: Dictionary = {}) -> void:
 
 	SoundEffectManager.play(_fall_pit_sound_effect_config)
 	animation_player.play("fall_pit")
+
+	player.remove_burn()
 
 
 func exit() -> void:

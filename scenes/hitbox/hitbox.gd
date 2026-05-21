@@ -4,7 +4,7 @@ extends Area2D
 
 signal blood_drawn(hurtbox_owner_type: HurtboxOwnerType)
 
-enum DamageType { ENEMY, PLAYER, EXPLOSIVE, FIRE, BURN }
+enum DamageType { ENEMY, PLAYER, EXPLOSIVE, FIRE }
 enum HurtboxOwnerType { UNCATEGORIZED, PLAYER, ENEMY }
 
 @export var damage_amount: int = 1

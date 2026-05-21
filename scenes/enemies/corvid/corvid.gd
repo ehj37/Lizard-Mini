@@ -40,31 +40,6 @@ var _player: Player
 @onready var player_detector: PlayerDetector = $PlayerDetector
 
 
-func take_damage(amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
-	if !alerted:
-		alert()
-
-	# To consider: burn?
-	# Probably not the best way of doing this since (from the other enemy's perspective)
-	# the attack will have landed (i.e. take_damage was called).
-	# Could also try to bake something into hurtboxes for this such that this doesn't get called
-	# if the damage type is irrelevant.
-	var relevant_damage_types: Array[Hitbox.DamageType] = _types.filter(
-		func(type: Hitbox.DamageType) -> bool: return type != Hitbox.DamageType.ENEMY
-	)
-	if relevant_damage_types.is_empty():
-		return
-
-	health_component.subtract_health(amount)
-	if health_component.current_health > 0:
-		shader_animation_player.play("hurt_flash")
-	else:
-		shader_animation_player.play("death_flash")
-		death.emit()
-		HitStopManager.hit_stop()
-		state_machine.transition_to("Death")
-
-
 func alert() -> void:
 	if state_machine.current_state.name == "Alerted":
 		return
@@ -108,3 +83,20 @@ func _seeker_setup() -> void:
 
 	_player = get_tree().get_first_node_in_group("player")
 	navigation_agent.target_position = _player.global_position
+
+
+func _on_hurtbox_hitbox_connected(
+	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	# To consider: burn?
+
+	if !alerted:
+		alert()
+
+	if health_component.current_health > 0:
+		shader_animation_player.play("hurt_flash")
+	else:
+		shader_animation_player.play("death_flash")
+		death.emit()
+		HitStopManager.hit_stop()
+		state_machine.transition_to("Death")

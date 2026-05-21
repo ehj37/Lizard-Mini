@@ -19,10 +19,6 @@ var _elapsed_time: float = 0.0
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], _direction: Vector2) -> void:
-	state_machine.transition_to("Death")
-
-
 func alert() -> void:
 	super()
 
@@ -38,6 +34,12 @@ func _physics_process(delta: float) -> void:
 		)
 
 	move_and_slide()
+
+
+func _on_hurtbox_hitbox_connected(
+	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	state_machine.transition_to("Death")
 
 
 func _on_hitbox_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:

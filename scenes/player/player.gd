@@ -63,61 +63,9 @@ var _in_cinematic: bool = false
 )
 
 
-func take_damage(amount: int, types: Array[Hitbox.DamageType], direction: Vector2) -> void:
-	# If the type is FIRE, this will no-op if the player is already burning.
-	# For BURN, damage is dealt regardless of if the player is already burning.
-	if types.has(Hitbox.DamageType.FIRE):
-		_times_burnt = 0
-
-		if !_burning:
-			_burning = true
-			burn_particles_back.emitting = true
-			burn_particles_front.emitting = true
-			burn_timer.start()
-			_take_burn_damage()
-			return
-
-		# Don't take additional damage if the player is already burning and the
-		# only damage type is fire.
-		if types.size() == 1:
-			return
-
-	hurt.emit()
-	HurtOverlay.apply()
-	shader_animation_player.play("hurt_flash")
-	SoundEffectManager.play(_ouch_sound_effect_config)
-
-	if types.has(Hitbox.DamageType.BURN):
-		SoundEffectManager.play(_singe_sound_effect_config)
-		# Only transition to hurt state on first burn
-		if _times_burnt > 0:
-			return
-
-	# The player can get hurt in the fall and rise states, but they don't get
-	# transitioned to the hurt state from it.
-	# They just flash magenta, and continue with falling/getting up.
-	var current_state_name: String = state_machine.current_state.name
-	var state_exempt_from_hurt_transition: bool = ["Fall", "Rise"].has(current_state_name)
-	if state_exempt_from_hurt_transition:
-		return
-
-	state_machine.transition_to("Hurt", {"amount": amount, "types": types, "direction": direction})
-
-
 # For enemies: can the player be reached in their current state.
 func in_reachable_state() -> bool:
 	return state_machine.current_state.name != "FallPit"
-
-
-func clear_burn() -> void:
-	if !_burning:
-		return
-
-	_burning = false
-	_times_burnt = 0
-	burn_particles_back.emitting = false
-	burn_particles_front.emitting = false
-	burn_timer.stop()
 
 
 func get_movement_direction() -> Vector2:
@@ -140,6 +88,23 @@ func get_movement_direction() -> Vector2:
 		movement_vector += MOVEMENT_INPUT_TO_DIR[horizontal_movement_input]
 
 	return movement_vector.normalized()
+
+
+func add_burn() -> void:
+	_burning = true
+	_times_burnt = 0
+	burn_particles_back.emitting = true
+	burn_particles_front.emitting = true
+	burn_timer.start()
+	return
+
+
+func remove_burn() -> void:
+	_burning = false
+	_times_burnt = 0
+	burn_particles_back.emitting = false
+	burn_particles_front.emitting = false
+	burn_timer.stop()
 
 
 func on_cinematic_started() -> void:
@@ -170,12 +135,50 @@ func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -
 			SoundEffectManager.play(_sword_connect_sound_effect_config)
 
 
+func _on_hitbox_connection(
+	damage_direction: Vector2, damage_types: Array[Hitbox.DamageType]
+) -> void:
+	hurt.emit()
+	HurtOverlay.apply()
+	shader_animation_player.play("hurt_flash")
+	SoundEffectManager.play(_ouch_sound_effect_config)
+
+	if damage_types.has(Hitbox.DamageType.FIRE):
+		add_burn()
+
+	# The player can get hurt in the fall and rise states, but they don't get
+	# transitioned to the hurt state from it.
+	# They just flash magenta, and continue with falling/getting up.
+	var current_state_name: String = state_machine.current_state.name
+	var state_exempt_from_hurt_transition: bool = ["Fall", "Rise"].has(current_state_name)
+	if state_exempt_from_hurt_transition:
+		return
+
+	state_machine.transition_to(
+		"Hurt", {"damage_direction": damage_direction, "damage_types": damage_types}
+	)
+
+
 func _take_burn_damage() -> void:
-	take_damage(1, [Hitbox.DamageType.BURN], Vector2.ZERO)
+	hurt.emit()
+	HurtOverlay.apply()
+	shader_animation_player.play("hurt_flash")
+	SoundEffectManager.play(_singe_sound_effect_config)
+	SoundEffectManager.play(_ouch_sound_effect_config)
+
 	_times_burnt += 1
 	if _times_burnt == MAX_BURNS:
-		_burning = false
-		_times_burnt = 0
-		burn_particles_back.emitting = false
-		burn_particles_front.emitting = false
-		burn_timer.stop()
+		remove_burn()
+
+
+func _on_hurtbox_feet_burned() -> void:
+	_times_burnt = 0
+
+	if !burn_timer.is_stopped():
+		return
+
+	add_burn()
+
+	var damage_types: Array[Hitbox.DamageType] = [Hitbox.DamageType.FIRE]
+	state_machine.transition_to("Hurt", {"damage_types": damage_types})
+	_take_burn_damage()

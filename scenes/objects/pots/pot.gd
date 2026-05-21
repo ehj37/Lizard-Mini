@@ -20,14 +20,6 @@ var _dust_puff_resource: PackedScene = preload("res://scenes/objects/pots/dust_p
 )
 
 
-func take_damage(_amount: int, _types: Array[Hitbox.DamageType], direction: Vector2) -> void:
-	_spawn_fragments(direction)
-	SoundEffectManager.play_at(_pot_break_sound_effect_config, global_position)
-	_spawn_dust_puff()
-
-	queue_free()
-
-
 func _spawn_fragments(direction: Vector2) -> void:
 	var fragment_spawner: FragmentSpawner = _fragment_spawner_resource.instantiate()
 	fragment_spawner.global_position = global_position
@@ -41,3 +33,13 @@ func _spawn_dust_puff() -> void:
 	var dust_puff: Sprite2D = _dust_puff_resource.instantiate()
 	dust_puff.global_position = global_position
 	LevelManager.current_level.add_child(dust_puff)
+
+
+func _on_hurtbox_hitbox_connected(
+	damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
+) -> void:
+	_spawn_fragments(damage_direction)
+	SoundEffectManager.play_at(_pot_break_sound_effect_config, global_position)
+	_spawn_dust_puff()
+
+	queue_free()
