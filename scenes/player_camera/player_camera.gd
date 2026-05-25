@@ -3,8 +3,10 @@ class_name PlayerCamera
 extends Camera2D
 
 const ORIENTATION_OFFSET: int = 30
-const INITIAL_SHAKE_MAGNITUDE: float = 7.0
-const SHAKE_DIMINISH_SPEED: float = 50.0
+const INITIAL_SHAKE_MAGNITUDE_SMALL: float = 7.0
+const INITIAL_SHAKE_MAGNITUDE_MEDIUM: float = 10.0
+const INITIAL_SHAKE_MAGNITUDE_LARGE: float = 12.0
+const SHAKE_DIMINISH_SPEED: float = 75.0
 const PAN_SPEED: float = 250.0
 
 @export var player: Player
@@ -24,7 +26,6 @@ func unregister_lock_area(lock_area: CameraLockArea) -> void:
 
 
 func _ready() -> void:
-	player.hurt.connect(_begin_shake)
 	SignalBus.shake_camera.connect(_begin_shake)
 	SignalBus.focus_camera.connect(_on_focus)
 	SignalBus.unfocus_camera.connect(func() -> void: _focused = false)
@@ -73,8 +74,14 @@ func _set_global_position_from_player() -> void:
 	global_position = Vector2(target_x, target_y)
 
 
-func _begin_shake() -> void:
-	_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE
+func _begin_shake(shake_magnitude: SignalBus.CameraShakeMagnitude) -> void:
+	match shake_magnitude:
+		SignalBus.CameraShakeMagnitude.LARGE:
+			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_LARGE
+		SignalBus.CameraShakeMagnitude.MEDIUM:
+			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_MEDIUM
+		SignalBus.CameraShakeMagnitude.SMALL:
+			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_SMALL
 
 
 func _on_focus(target: Vector2) -> void:

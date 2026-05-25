@@ -36,6 +36,10 @@ func _ready() -> void:
 		current_health = 1
 
 
+func is_health_depleted() -> bool:
+	return current_health == 0
+
+
 func add_health(amount: int) -> void:
 	var pre_add_health: int = current_health
 	var post_add_health: int = min(current_health + amount, max_health)

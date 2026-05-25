@@ -128,10 +128,18 @@ func _process(_delta: float) -> void:
 			_pressed_movement_inputs.erase(movement_input)
 
 
-func _on_hitbox_sword_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType) -> void:
+func _on_hitbox_sword_blood_drawn(
+	hurtbox_owner_type: Hitbox.HurtboxOwnerType, is_lethal: bool
+) -> void:
 	match hurtbox_owner_type:
 		Hitbox.HurtboxOwnerType.ENEMY:
-			SignalBus.shake_camera.emit()
+			var shake_magnitude: SignalBus.CameraShakeMagnitude
+			if is_lethal:
+				shake_magnitude = SignalBus.CameraShakeMagnitude.LARGE
+			else:
+				shake_magnitude = SignalBus.CameraShakeMagnitude.SMALL
+
+			SignalBus.shake_camera.emit(shake_magnitude)
 			SoundEffectManager.play(_sword_connect_sound_effect_config)
 
 
@@ -139,6 +147,7 @@ func _on_hitbox_connection(
 	damage_direction: Vector2, damage_types: Array[Hitbox.DamageType]
 ) -> void:
 	hurt.emit()
+	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL)
 	HurtOverlay.apply()
 	shader_animation_player.play("hurt_flash")
 	SoundEffectManager.play(_ouch_sound_effect_config)
@@ -160,7 +169,7 @@ func _on_hitbox_connection(
 
 
 func _take_burn_damage() -> void:
-	hurt.emit()
+	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL)
 	HurtOverlay.apply()
 	shader_animation_player.play("hurt_flash")
 	SoundEffectManager.play(_singe_sound_effect_config)

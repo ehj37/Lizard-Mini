@@ -2,7 +2,7 @@ class_name Hitbox
 
 extends Area2D
 
-signal blood_drawn(hurtbox_owner_type: HurtboxOwnerType)
+signal blood_drawn(hurtbox_owner_type: HurtboxOwnerType, is_lethal: bool)
 
 enum DamageType { ENEMY, PLAYER, EXPLOSIVE, FIRE }
 enum HurtboxOwnerType { UNCATEGORIZED, PLAYER, ENEMY }
@@ -46,7 +46,8 @@ func on_hurtbox_connect(hurtbox: Hurtbox) -> void:
 	else:
 		hurtbox_owner_type = HurtboxOwnerType.UNCATEGORIZED
 
-	blood_drawn.emit(hurtbox_owner_type)
+	if hurtbox.health_component:
+		blood_drawn.emit(hurtbox_owner_type, hurtbox.health_component.is_health_depleted())
 
 
 func _ready() -> void:

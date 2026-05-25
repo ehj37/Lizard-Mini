@@ -62,7 +62,7 @@ script = ExtResource("1_e0cvd")
 metadata/_custom_type_script = "uid://ddrve4myklki5"
 
 [node name="Player" parent="." unique_id=155206965 instance=ExtResource("2_niitk")]
-position = Vector2(-456, -376)
+position = Vector2(-464, 240)
 
 [node name="PlayerCamera" parent="." unique_id=787665818 node_paths=PackedStringArray("player") instance=ExtResource("3_d5djh")]
 player = NodePath("../Player")
