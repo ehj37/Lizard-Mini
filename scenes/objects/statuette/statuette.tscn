@@ -103,3 +103,5 @@ shape = SubResource("RectangleShape2D_dypgv")
 
 [node name="FragmentSpawner" parent="." unique_id=1934548823 instance=ExtResource("3_tudps")]
 fragment_config = ExtResource("4_ir5qn")
+
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
