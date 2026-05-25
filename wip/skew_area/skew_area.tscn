@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blbrgdboj4ygj"]
+
+[ext_resource type="Script" uid="uid://k8jetor8f3p6" path="res://wip/skew_area/skew_area.gd" id="1_1lucy"]
+
+[node name="SkewArea" type="Area2D" unique_id=613007771]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_1lucy")

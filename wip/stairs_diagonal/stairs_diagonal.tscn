@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=4 uid="uid://bj5bw7w4ujjen"]
+[gd_scene format=4 uid="uid://bj5bw7w4ujjen"]
 
-[ext_resource type="Script" uid="uid://k8jetor8f3p6" path="res://wip/movement_transform_area/movement_transform_area.gd" id="1_idcjp"]
+[ext_resource type="Script" uid="uid://k8jetor8f3p6" path="res://wip/skew_area/skew_area.gd" id="1_idcjp"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_idcjp"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAIAAAAA2AQAAUklGRi4BAABXRUJQVlA4TCEBAAAvP8AfEEegqJEU5nTg/4uZJgADHTFmI8n4f7SgIzXoPxYakURR20ZMQZRk4R6QPf7zHwD42fkS9XIdN1CShPw8QIok2baSFsALGAIPYP/F600Nn3VE/w2YbbSjjvxEvO+vurf3n87rS/0fq36R6o81f675TZo/l3yW/CjJZ8lnyY+SfJZ8lvwoyWfJZ8mPknyWfJb8KMlnyWfJj5J8lnyW/CjJZ8lnyY+SfJZ8lvwoyWfJZ8mPknyWfJb8KMln6Z8lP0ryWfpnyeev+fz4aaf+VP/pQHWa/3SA6iQ/SnWqE/0gVKc60Q9CdaoT/SBUpzrRD0J1qhP9IFSnOtEPQnWqE/0gVKc60Q9CdaoT/SBUpzrRD0J16k/0g1Cd+hN9888dAA==")
 size_override = Vector2(64, 128)
 
-[node name="StairsDiagonal" type="Area2D"]
+[node name="StairsDiagonal" type="Area2D" unique_id=227965149]
 z_index = -5
 collision_layer = 256
 collision_mask = 0
 script = ExtResource("1_idcjp")
-direction = 7
+skew_type = 1
 metadata/_custom_type_script = "uid://k8jetor8f3p6"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1327485019]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_idcjp")
 offset = Vector2(32, -64)
@@ -43,5 +43,12 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "078107fa28ddcf939a2f37a4ef6c0edd"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1369098361]
+polygon = PackedVector2Array(64, -65, 64, -129, 0, -65, 0, -1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=880129449]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1966886757]
 polygon = PackedVector2Array(64, -65, 64, -129, 0, -65, 0, -1)

@@ -14,7 +14,7 @@ const CHAIN_DASH_WINDOW_START: float = 0.3
 const PITCH_MULTIPLIER_PER_DASH: float = 0.05
 const MAX_PITCH_MULTIPLIER: float = 1.2
 
-var _dash_direction: Vector2
+var _pre_skew_dash_direction: Vector2
 var _dash_num: int
 var _in_move_window: bool
 var _movement_extended: bool
@@ -55,9 +55,12 @@ func handle_input(event: InputEvent) -> void:
 			_dash_attempted_before_dash_window = true
 
 
-func update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if _in_move_window:
-		player.velocity = _dash_direction * DASH_SPEED
+		var post_skew_dash_direction: Vector2 = player.ground_detector.apply_skew(
+			_pre_skew_dash_direction
+		)
+		player.velocity = post_skew_dash_direction * DASH_SPEED
 	else:
 		player.velocity = Vector2.ZERO
 
@@ -83,12 +86,16 @@ func enter(data: Dictionary = {}) -> void:
 	var movement_dir: Vector2 = player.get_movement_direction()
 	if movement_dir == Vector2.ZERO:
 		if player.orientation == Vector2.ZERO:
-			_dash_direction = Vector2.RIGHT
+			_pre_skew_dash_direction = Vector2.RIGHT
 		else:
-			_dash_direction = player.orientation
+			_pre_skew_dash_direction = player.orientation
 	else:
-		_dash_direction = movement_dir
-	player.velocity = _dash_direction * DASH_SPEED
+		_pre_skew_dash_direction = movement_dir
+	var post_skew_dash_direction: Vector2 = player.ground_detector.apply_skew(
+		_pre_skew_dash_direction
+	)
+
+	player.velocity = post_skew_dash_direction * DASH_SPEED
 
 	_in_move_window = true
 	_movement_extended = false
@@ -101,10 +108,10 @@ func enter(data: Dictionary = {}) -> void:
 	_dash_attempted_before_dash_window = false
 	get_tree().create_timer(CHAIN_DASH_WINDOW_START).timeout.connect(_enter_chain_dash_window)
 
-	player.sprite.flip_h = _dash_direction.x < 0
-	player.orientation = _dash_direction
+	player.sprite.flip_h = post_skew_dash_direction.x < 0
+	player.orientation = post_skew_dash_direction
 
-	var animation: String = _get_animation(_dash_direction)
+	var animation: String = _get_animation(post_skew_dash_direction)
 	animation_player.play(animation)
 	if player.orientation.x < 0:
 		player.sprite.flip_h = true
@@ -178,7 +185,10 @@ func _get_animation(dir: Vector2) -> String:
 func _spawn_ghost() -> void:
 	var dash_ghost: PlayerDashGhost = dash_ghost_resource.instantiate()
 	dash_ghost.global_position = player.global_position
-	dash_ghost.direction = _dash_direction
-	dash_ghost.animation = _get_animation(_dash_direction)
+	var post_skew_dash_direction: Vector2 = player.ground_detector.apply_skew(
+		_pre_skew_dash_direction
+	)
+	dash_ghost.direction = post_skew_dash_direction
+	dash_ghost.animation = _get_animation(post_skew_dash_direction)
 	dash_ghost.flip_h = player.sprite.flip_h
 	LevelManager.current_level.add_child(dash_ghost)

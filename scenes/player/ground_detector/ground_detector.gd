@@ -11,6 +11,7 @@ const PIT_DETECTOR_RADIUS: float = 6.0
 @export var debug_mode: bool = false
 
 var _pit_detectors: Array[Area2D] = []
+var _skew_areas: Array[SkewArea] = []
 
 @onready var safe_floor_detector: Area2D = $SafeFloorDetector
 @onready var unsafe_floor_detector: Area2D = $UnsafeFloorDetector
@@ -79,3 +80,19 @@ func on_ledge(direction: Vector2) -> bool:
 				pit_detector.modulate = Color.WHITE
 
 	return !closest_pit_detector.has_overlapping_bodies()
+
+
+func apply_skew(v: Vector2) -> Vector2:
+	if _skew_areas.is_empty():
+		return v
+
+	var skew_area: SkewArea = _skew_areas.front()
+	return skew_area.apply_skew(v)
+
+
+func _on_skew_area_detector_area_entered(skew_area: SkewArea) -> void:
+	_skew_areas.append(skew_area)
+
+
+func _on_skew_area_detector_area_exited(skew_area: SkewArea) -> void:
+	_skew_areas.erase(skew_area)

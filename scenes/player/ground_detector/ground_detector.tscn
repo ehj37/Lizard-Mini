@@ -21,3 +21,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorDetector" unique_id=579578093]
 shape = SubResource("CircleShape2D_pgikm")
+
+[node name="SkewAreaDetector" type="Area2D" parent="." unique_id=1656058752]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkewAreaDetector" unique_id=559369237]
+shape = SubResource("CircleShape2D_pgikm")
+
+[connection signal="area_entered" from="SkewAreaDetector" to="." method="_on_skew_area_detector_area_entered"]
+[connection signal="area_exited" from="SkewAreaDetector" to="." method="_on_skew_area_detector_area_exited"]

@@ -57,25 +57,27 @@ func update(delta: float) -> void:
 	if ground_detector_status == PlayerGroundDetector.Status.ON_SAFE_GROUND:
 		player.last_safe_global_position = player.global_position
 
-	var movement_dir: Vector2 = player.get_movement_direction()
+	var post_skew_movement_dir: Vector2 = player.ground_detector.apply_skew(
+		player.get_movement_direction()
+	)
 
-	if movement_dir == Vector2.ZERO:
+	if post_skew_movement_dir == Vector2.ZERO:
 		state_machine.transition_to("Idle")
 		return
 
-	if player.ground_detector.on_ledge(movement_dir):
+	if player.ground_detector.on_ledge(post_skew_movement_dir):
 		state_machine.transition_to("LedgePeer")
 		return
 
-	var animation: String = _get_animation(movement_dir)
+	var animation: String = _get_animation(post_skew_movement_dir)
 	if animation_player.current_animation != animation:
 		animation_player.current_animation = animation
 
 	_move_speed = min(_move_speed + MOVE_ACCELERATION * delta, MAX_MOVE_SPEED)
 
-	player.sprite.flip_h = movement_dir.x < 0
-	player.velocity = movement_dir * _move_speed
-	player.orientation = movement_dir
+	player.sprite.flip_h = post_skew_movement_dir.x < 0
+	player.velocity = post_skew_movement_dir * _move_speed
+	player.orientation = post_skew_movement_dir
 
 
 func enter(_data: Dictionary = {}) -> void:

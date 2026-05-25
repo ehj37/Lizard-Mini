@@ -30,7 +30,8 @@ const ANIMATION_DR_2: String = "swing_down_right_2"
 const ANIMATION_D_1: String = "swing_down_1"
 const ANIMATION_D_2: String = "swing_down_2"
 
-var _lunge_dir: Vector2
+var _pre_skew_dir: Vector2
+
 var _speed: float = 0.0
 var _can_combo: bool = false
 var _combo_num: int
@@ -73,10 +74,11 @@ func handle_input(event: InputEvent) -> void:
 
 func physics_update(delta: float) -> void:
 	_speed = max(_speed - LUNGE_DECELERATION * delta, 0.0)
-	if player.ground_detector.on_ledge(_lunge_dir):
+	var post_skew_lunge_dir: Vector2 = player.ground_detector.apply_skew(_pre_skew_dir)
+	if player.ground_detector.on_ledge(post_skew_lunge_dir):
 		player.velocity = Vector2.ZERO
 	else:
-		player.velocity = player.orientation * _speed
+		player.velocity = post_skew_lunge_dir * _speed
 
 
 func update(_delta: float) -> void:
@@ -95,15 +97,17 @@ func enter(data: Dictionary = {}) -> void:
 
 	var movement_direction: Vector2 = player.get_movement_direction()
 	if movement_direction != Vector2.ZERO:
-		_lunge_dir = movement_direction
+		_pre_skew_dir = movement_direction
 		player.orientation = movement_direction
 	else:
-		_lunge_dir = player.orientation
+		_pre_skew_dir = player.orientation
 
-	player.sword_bonk_detector.rotation = _lunge_dir.angle()
+	var post_skew_dir: Vector2 = player.ground_detector.apply_skew(_pre_skew_dir)
 
+	# Use pre-skew for sword bonk detector & attack animation
+	player.sword_bonk_detector.rotation = _pre_skew_dir.angle()
 	_combo_num = data.get("combo_num", 0)
-	var animation: String = _get_animation(_lunge_dir, _combo_num)
+	var animation: String = _get_animation(_pre_skew_dir, _combo_num)
 	animation_player.play(animation)
 	_sword_swing_sound_effect_identifier = SoundEffectManager.play(_sword_swing_sound_effect_config)
 
@@ -111,7 +115,7 @@ func enter(data: Dictionary = {}) -> void:
 	collision_polygon.disabled = false
 	collision_polygon.visible = true
 
-	if _lunge_dir.x < 0:
+	if post_skew_dir.x < 0:
 		player.sprite.flip_h = true
 		player.hitbox_sword.scale.x = -1
 	else:
@@ -175,16 +179,17 @@ func _swing() -> void:
 		return
 
 	_speed = INITIAL_LUNGE_SPEED
-	if player.ground_detector.on_ledge(_lunge_dir):
+	var post_skew_lunge_dir: Vector2 = player.ground_detector.apply_skew(_pre_skew_dir)
+	if player.ground_detector.on_ledge(post_skew_lunge_dir):
 		player.velocity = Vector2.ZERO
 	else:
-		player.velocity = _lunge_dir * INITIAL_LUNGE_SPEED
+		player.velocity = post_skew_lunge_dir * INITIAL_LUNGE_SPEED
 
 	if (
 		player.sword_bonk_detector.has_overlapping_bodies()
 		&& player.hitbox_sword.preview_hit_count() == 0
 	):
-		transition_to("SwordBonk", {"lunge_dir": _lunge_dir})
+		transition_to("SwordBonk", {"lunge_dir": post_skew_lunge_dir})
 		return
 
 	player.hitbox_sword.enable()
