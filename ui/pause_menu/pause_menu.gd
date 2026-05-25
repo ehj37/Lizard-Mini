@@ -27,12 +27,14 @@ func _ready() -> void:
 
 
 func _pause() -> void:
+	SoundEffectManager.apply_low_pass_effect()
 	_resume_button.disabled = false
 	get_tree().paused = true
 	_animation_player.play("blur")
 
 
 func _resume() -> void:
+	SoundEffectManager.remove_low_pass_effect()
 	_resume_button.disabled = true
 	_animation_player.play_backwards("blur")
 	await _animation_player.animation_finished

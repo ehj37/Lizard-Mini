@@ -1,10 +1,15 @@
 extends Node2D
 
 const AUDIO_STREAM_PLAYER_MAX_DISTANCE: float = 500
+const LOW_PASS_FILTER_APPLY_CUTOFF_HZ: int = 500
+const LOW_PASS_FILTER_APPLY_TWEEN_DURATION: float = 0.1
+const LOW_PASS_FILTER_REMOVE_CUTOFF_HZ: int = 20000
+const LOW_PASS_FILTER_REMOVE_TWEEN_DURATION: float = 0.75
 
 var _audio_players_by_resource_path: Dictionary = {}
 var _audio_player_to_resource_path: Dictionary = {}
 var _instance_id_to_audio_player: Dictionary = {}
+var _low_pass_filter_tween: Tween
 
 
 func play(config: SoundEffectConfig) -> int:
@@ -113,6 +118,45 @@ func cancel(instance_id: int) -> void:
 	else:
 		@warning_ignore("unsafe_cast")
 		_remove_audio_player_2d(audio_player as AudioStreamPlayer2D)
+
+
+func apply_low_pass_effect() -> void:
+	var low_pass_filter: AudioEffectLowPassFilter = AudioServer.get_bus_effect(0, 0)
+	AudioServer.set_bus_effect_enabled(0, 0, true)
+	if is_instance_valid(_low_pass_filter_tween):
+		_low_pass_filter_tween.kill()
+
+	_low_pass_filter_tween = create_tween()
+	_low_pass_filter_tween.set_trans(Tween.TRANS_CUBIC)
+	_low_pass_filter_tween.tween_property(
+		low_pass_filter,
+		"cutoff_hz",
+		LOW_PASS_FILTER_APPLY_CUTOFF_HZ,
+		LOW_PASS_FILTER_APPLY_TWEEN_DURATION
+	)
+
+
+func remove_low_pass_effect() -> void:
+	var low_pass_filter: AudioEffectLowPassFilter = AudioServer.get_bus_effect(0, 0)
+	if is_instance_valid(_low_pass_filter_tween):
+		_low_pass_filter_tween.kill()
+
+	_low_pass_filter_tween = create_tween()
+	_low_pass_filter_tween.set_trans(Tween.TRANS_CUBIC)
+
+	_low_pass_filter_tween.tween_property(
+		low_pass_filter,
+		"cutoff_hz",
+		LOW_PASS_FILTER_REMOVE_CUTOFF_HZ,
+		LOW_PASS_FILTER_APPLY_TWEEN_DURATION
+	)
+	await _low_pass_filter_tween.finished
+
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _remove_audio_player(audio_player: AudioStreamPlayer) -> void:
