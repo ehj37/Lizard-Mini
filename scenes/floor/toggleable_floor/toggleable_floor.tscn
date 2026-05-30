@@ -129,6 +129,7 @@ position = Vector2(24, 26)
 texture = SubResource("PortableCompressedTexture2D_rlxvj")
 hframes = 3
 vframes = 3
+frame = 5
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

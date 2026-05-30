@@ -1,0 +1,102 @@
+[gd_scene format=4 uid="uid://rfky0l6d3bc0"]
+
+[ext_resource type="Script" uid="uid://ddrve4myklki5" path="res://scripts/level.gd" id="1_148a6"]
+[ext_resource type="PackedScene" uid="uid://fkmtv41g72kp" path="res://scenes/player/player.tscn" id="2_y2wv5"]
+[ext_resource type="PackedScene" uid="uid://3dbbufxwngwj" path="res://scenes/floor/floor_medium.tscn" id="3_gbsa5"]
+[ext_resource type="PackedScene" uid="uid://bsln2e52ibcdk" path="res://scenes/player_camera/player_camera.tscn" id="3_ye5p4"]
+[ext_resource type="PackedScene" uid="uid://c3ty6reg3iwgx" path="res://scenes/floor/toggleable_floor/toggleable_floor.tscn" id="4_ye5p4"]
+[ext_resource type="Script" uid="uid://tcr2wnewxgiq" path="res://scripts/toggle_box.gd" id="5_mrkwn"]
+[ext_resource type="PackedScene" uid="uid://dsddyihfsw22c" path="res://scenes/objects/sword_timer_switch/sword_timer_switch.tscn" id="6_tcyl2"]
+[ext_resource type="PackedScene" uid="uid://me06723le6of" path="res://scenes/camera_lock_area/camera_lock_area.tscn" id="7_mp8gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g3br"]
+size = Vector2(248, 456)
+
+[node name="ToggleBoxTest" type="Node2D" unique_id=214578198]
+y_sort_enabled = true
+script = ExtResource("1_148a6")
+metadata/_custom_type_script = "uid://ddrve4myklki5"
+
+[node name="Player" parent="." unique_id=155206965 instance=ExtResource("2_y2wv5")]
+position = Vector2(1064, 576)
+
+[node name="PlayerCamera" parent="." unique_id=787665818 node_paths=PackedStringArray("player") instance=ExtResource("3_ye5p4")]
+player = NodePath("../Player")
+
+[node name="FloorMedium" parent="." unique_id=1832326056 instance=ExtResource("3_gbsa5")]
+tile_map_data = PackedByteArray("AACCAEUAAAAAAAAAAACCAEYAAAAAAAAAAACCAEcAAAAAAAAAAACCAEgAAAAAAAAAAACCAEkAAAAAAAAAAACCAEoAAAAAAAAAAACCAEsAAAAAAAAAAACCAEwAAAAAAAAAAACDAEUAAAAAAAAAAACDAEYAAAAAAAAAAACDAEcAAAAAAAAAAACDAEgAAAAAAAAAAACDAEkAAAAAAAAAAACDAEoAAAAAAAAAAACDAEsAAAAAAAAAAACDAEwAAAAAAAAAAACEAEUAAAAAAAAAAACEAEYAAAAAAAAAAACEAEcAAAAAAAAAAACEAEgAAAAAAAAAAACEAEkAAAAAAAAAAACEAEoAAAAAAAAAAACEAEsAAAAAAAAAAACEAEwAAAAAAAAAAACFAEUAAAAAAAAAAACFAEYAAAAAAAAAAACFAEcAAAAAAAAAAACFAEgAAAAAAAAAAACFAEkAAAAAAAAAAACFAEoAAAAAAAAAAACFAEsAAAAAAAAAAACFAEwAAAAAAAAAAACGAEUAAAAAAAAAAACGAEYAAAAAAAAAAACGAEcAAAAAAAAAAACGAEgAAAAAAAAAAACGAEkAAAAAAAAAAACGAEoAAAAAAAAAAACGAEsAAAAAAAAAAACGAEwAAAAAAAAAAACHAEUAAAAAAAAAAACHAEYAAAAAAAAAAACHAEcAAAAAAAAAAACHAEgAAAAAAAAAAACHAEkAAAAAAAAAAACHAEoAAAAAAAAAAACHAEsAAAAAAAAAAACHAEwAAAAAAAAAAACCABUAAAAAAAAAAACCABYAAAAAAAAAAACCABcAAAAAAAAAAACCABgAAAAAAAAAAACCABkAAAAAAAAAAACCABoAAAAAAAAAAACCABsAAAAAAAAAAACCABwAAAAAAAAAAACCAB0AAAAAAAAAAACCAB4AAAAAAAAAAACDABUAAAAAAAAAAACDABYAAAAAAAAAAACDABcAAAAAAAAAAACDABgAAAAAAAAAAACDABkAAAAAAAAAAACDABoAAAAAAAAAAACDABsAAAAAAAAAAACDABwAAAAAAAAAAACDAB0AAAAAAAAAAACDAB4AAAAAAAAAAACEABUAAAAAAAAAAACEABYAAAAAAAAAAACEABcAAAAAAAAAAACEABgAAAAAAAAAAACEABkAAAAAAAAAAACEABoAAAAAAAAAAACEABsAAAAAAAAAAACEABwAAAAAAAAAAACEAB0AAAAAAAAAAACEAB4AAAAAAAAAAACFABUAAAAAAAAAAACFABYAAAAAAAAAAACFABcAAAAAAAAAAACFABgAAAAAAAAAAACFABkAAAAAAAAAAACFABoAAAAAAAAAAACFABsAAAAAAAAAAACFABwAAAAAAAAAAACFAB0AAAAAAAAAAACFAB4AAAAAAAAAAACGABUAAAAAAAAAAACGABYAAAAAAAAAAACGABcAAAAAAAAAAACGABgAAAAAAAAAAACGABkAAAAAAAAAAACGABoAAAAAAAAAAACGABsAAAAAAAAAAACGABwAAAAAAAAAAACGAB0AAAAAAAAAAACGAB4AAAAAAAAAAACHABUAAAAAAAAAAACHABYAAAAAAAAAAACHABcAAAAAAAAAAACHABgAAAAAAAAAAACHABkAAAAAAAAAAACHABoAAAAAAAAAAACHABsAAAAAAAAAAACHABwAAAAAAAAAAACHAB0AAAAAAAAAAACHAB4AAAAAAAAAAABlAC8AAAAAAAAAAABlADAAAAAAAAAAAABlADEAAAAAAAAAAABlADIAAAAAAAAAAABlADMAAAAAAAAAAABlADQAAAAAAAAAAABmAC8AAAAAAAAAAABmADAAAAAAAAAAAABmADEAAAAAAAAAAABmADIAAAAAAAAAAABmADMAAAAAAAAAAABmADQAAAAAAAAAAABnAC8AAAAAAAAAAABnADAAAAAAAAAAAABnADEAAAAAAAAAAABnADIAAAAAAAAAAABnADMAAAAAAAAAAABnADQAAAAAAAAAAABoAC8AAAAAAAAAAABoADAAAAAAAAAAAABoADEAAAAAAAAAAABoADIAAAAAAAAAAABoADMAAAAAAAAAAABoADQAAAAAAAAAAABpAC8AAAAAAAAAAABpADAAAAAAAAAAAABpADEAAAAAAAAAAABpADIAAAAAAAAAAABpADMAAAAAAAAAAABpADQAAAAAAAAAAABqAC8AAAAAAAAAAABqADAAAAAAAAAAAABqADEAAAAAAAAAAABqADIAAAAAAAAAAABqADMAAAAAAAAAAABqADQAAAAAAAAAAABrAC8AAAAAAAAAAABrADAAAAAAAAAAAABrADEAAAAAAAAAAABrADIAAAAAAAAAAABrADMAAAAAAAAAAABrADQAAAAAAAAAAABsAC8AAAAAAAAAAABsADAAAAAAAAAAAABsADEAAAAAAAAAAABsADIAAAAAAAAAAABsADMAAAAAAAAAAABsADQAAAAAAAAAAABtAC8AAAAAAAAAAABtADAAAAAAAAAAAABtADEAAAAAAAAAAABtADIAAAAAAAAAAABtADMAAAAAAAAAAABtADQAAAAAAAAAAABuAC8AAAAAAAAAAABuADAAAAAAAAAAAABuADEAAAAAAAAAAABuADIAAAAAAAAAAABuADMAAAAAAAAAAABuADQAAAAAAAAAAABvAC8AAAAAAAAAAABvADAAAAAAAAAAAABvADEAAAAAAAAAAABvADIAAAAAAAAAAABvADMAAAAAAAAAAABvADQAAAAAAAAAAABwAC8AAAAAAAAAAABwADAAAAAAAAAAAABwADEAAAAAAAAAAABwADIAAAAAAAAAAABwADMAAAAAAAAAAABwADQAAAAAAAAAAABxAC8AAAAAAAAAAABxADAAAAAAAAAAAABxADEAAAAAAAAAAABxADIAAAAAAAAAAABxADMAAAAAAAAAAABxADQAAAAAAAAAAACYADAAAAAAAAAAAACYADEAAAAAAAAAAACYADIAAAAAAAAAAACYADMAAAAAAAAAAACYADQAAAAAAAAAAACZADAAAAAAAAAAAACZADEAAAAAAAAAAACZADIAAAAAAAAAAACZADMAAAAAAAAAAACZADQAAAAAAAAAAACaADAAAAAAAAAAAACaADEAAAAAAAAAAACaADIAAAAAAAAAAACaADMAAAAAAAAAAACaADQAAAAAAAAAAACbADAAAAAAAAAAAACbADEAAAAAAAAAAACbADIAAAAAAAAAAACbADMAAAAAAAAAAACbADQAAAAAAAAAAACcADAAAAAAAAAAAACcADEAAAAAAAAAAACcADIAAAAAAAAAAACcADMAAAAAAAAAAACcADQAAAAAAAAAAACdADAAAAAAAAAAAACdADEAAAAAAAAAAACdADIAAAAAAAAAAACdADMAAAAAAAAAAACdADQAAAAAAAAAAACeADAAAAAAAAAAAACeADEAAAAAAAAAAACeADIAAAAAAAAAAACeADMAAAAAAAAAAACeADQAAAAAAAAAAACfADAAAAAAAAAAAACfADEAAAAAAAAAAACfADIAAAAAAAAAAACfADMAAAAAAAAAAACfADQAAAAAAAAAAACgADAAAAAAAAAAAACgADEAAAAAAAAAAACgADIAAAAAAAAAAACgADMAAAAAAAAAAACgADQAAAAAAAAAAAA=")
+
+[node name="Label2" type="Label" parent="." unique_id=590797643]
+custom_minimum_size = Vector2(400, 0)
+offset_left = 1208.0
+offset_top = 496.0
+offset_right = 1608.0
+offset_bottom = 701.0
+text = "Initial state: All disabled but leftmost platform.
+Both bottom and top switches toggle all the middle ones on and switches from left to right.
+So if you quickly hit the bottom one, the left to right switch happens, then you go up top, hit the switch, and a right to left switch happens , allowing you to move on the left platform and maybe access a secret area"
+autowrap_mode = 2
+
+[node name="ToggleableFloor17" parent="." unique_id=360309505 node_paths=PackedStringArray("toggle_box") instance=ExtResource("4_ye5p4")]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(1040, 464)
+toggle_box = NodePath("ToggleBox")
+
+[node name="ToggleBox" type="Node" parent="ToggleableFloor17" unique_id=706097984]
+script = ExtResource("5_mrkwn")
+metadata/_custom_type_script = "uid://tcr2wnewxgiq"
+
+[node name="ToggleableFloor18" parent="." unique_id=1452604601 node_paths=PackedStringArray("toggle_box") instance=ExtResource("4_ye5p4")]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(1040, 376)
+toggle_box = NodePath("ToggleBox")
+
+[node name="ToggleBox" type="Node" parent="ToggleableFloor18" unique_id=245246274]
+script = ExtResource("5_mrkwn")
+metadata/_custom_type_script = "uid://tcr2wnewxgiq"
+
+[node name="ToggleableFloor19" parent="." unique_id=726742697 node_paths=PackedStringArray("toggle_box") instance=ExtResource("4_ye5p4")]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(1040, 288)
+toggle_box = NodePath("ToggleBox")
+
+[node name="ToggleBox" type="Node" parent="ToggleableFloor19" unique_id=1145500972]
+script = ExtResource("5_mrkwn")
+metadata/_custom_type_script = "uid://tcr2wnewxgiq"
+
+[node name="ToggleableFloor20" parent="." unique_id=35289397 node_paths=PackedStringArray("toggle_box") instance=ExtResource("4_ye5p4")]
+position = Vector2(952, 376)
+initial_value = 0
+toggle_box = NodePath("ToggleBox")
+
+[node name="ToggleBox" type="Node" parent="ToggleableFloor20" unique_id=177058427]
+script = ExtResource("5_mrkwn")
+behavior = 1
+metadata/_custom_type_script = "uid://tcr2wnewxgiq"
+
+[node name="ToggleableFloor21" parent="." unique_id=239885836 node_paths=PackedStringArray("toggle_box") instance=ExtResource("4_ye5p4")]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(1128, 376)
+toggle_box = NodePath("ToggleBox")
+
+[node name="ToggleBox" type="Node" parent="ToggleableFloor21" unique_id=1230601556]
+script = ExtResource("5_mrkwn")
+behavior = 1
+metadata/_custom_type_script = "uid://tcr2wnewxgiq"
+
+[node name="BottomSwordTimerSwitch" parent="." unique_id=394672558 node_paths=PackedStringArray("toggle_boxes") instance=ExtResource("6_tcyl2")]
+position = Vector2(1048, 560)
+toggle_boxes = [NodePath("../ToggleableFloor17/ToggleBox"), NodePath("../ToggleableFloor18/ToggleBox"), NodePath("../ToggleableFloor19/ToggleBox"), NodePath("../ToggleableFloor20/ToggleBox"), NodePath("../ToggleableFloor21/ToggleBox")]
+
+[node name="TopSwordTimerSwitch" parent="." unique_id=1949441957 node_paths=PackedStringArray("toggle_boxes") instance=ExtResource("6_tcyl2")]
+position = Vector2(1080, 240)
+toggle_boxes = [NodePath("../ToggleableFloor17/ToggleBox"), NodePath("../ToggleableFloor18/ToggleBox"), NodePath("../ToggleableFloor19/ToggleBox"), NodePath("../ToggleableFloor20/ToggleBox"), NodePath("../ToggleableFloor21/ToggleBox")]
+
+[node name="CameraLockArea2" parent="." unique_id=473816185 node_paths=PackedStringArray("player_camera") instance=ExtResource("7_mp8gx")]
+position = Vector2(1176, 400)
+player_camera = NodePath("../PlayerCamera")
+lock_y = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLockArea2" unique_id=769682140]
+position = Vector2(-28, -4)
+shape = SubResource("RectangleShape2D_6g3br")

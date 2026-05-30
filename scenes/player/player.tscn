@@ -1146,7 +1146,7 @@ texture = SubResource("PortableCompressedTexture2D_cnsyf")
 offset = Vector2(0, -16)
 hframes = 14
 vframes = 13
-frame = 89
+frame = 66
 script = ExtResource("9_je7p5")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,

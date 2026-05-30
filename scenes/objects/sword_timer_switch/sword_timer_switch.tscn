@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dsddyihfsw22c"]
+
+[ext_resource type="Script" uid="uid://bf3ptsrtjey7a" path="res://scenes/objects/sword_timer_switch/sword_timer_switch.gd" id="1_2h3ln"]
+[ext_resource type="PackedScene" uid="uid://3tvie3ok2fau" path="res://scenes/hurtbox/hurtbox.tscn" id="2_8x4sx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x4sx"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqru"]
+size = Vector2(4, 16)
+
+[node name="SwordTimerSwitch" type="StaticBody2D" unique_id=394672558 groups=["timer_switches"]]
+collision_mask = 0
+script = ExtResource("1_2h3ln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1816912820]
+shape = SubResource("RectangleShape2D_8x4sx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2060712757]
+offset_left = -2.0
+offset_top = -18.0
+offset_right = 2.0
+
+[node name="Hurtbox" parent="." unique_id=1020032897 instance=ExtResource("2_8x4sx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=463002177]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_8hqru")
+
+[node name="TickTimer" type="Timer" parent="." unique_id=1082373393]
+one_shot = true
+
+[connection signal="hitbox_connected" from="Hurtbox" to="." method="_on_hurtbox_hitbox_connected"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

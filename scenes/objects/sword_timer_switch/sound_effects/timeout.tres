@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" format=3 uid="uid://d3egx0x8gvcep"]
+
+[ext_resource type="AudioStream" uid="uid://wvexsvjkvjon" path="res://scenes/objects/sword_timer_switch/sound_effects/timeout.ogg" id="1_2cmui"]
+[ext_resource type="Script" uid="uid://dlpgtn102c0kw" path="res://audio/sound_effect_config.gd" id="1_2t46t"]
+
+[resource]
+script = ExtResource("1_2t46t")
+audio_stream = ExtResource("1_2cmui")
+metadata/_custom_type_script = "uid://dlpgtn102c0kw"
