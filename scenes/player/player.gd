@@ -147,9 +147,7 @@ func _on_hitbox_connection(
 	damage_direction: Vector2, damage_types: Array[Hitbox.DamageType]
 ) -> void:
 	hurt.emit()
-	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL)
 	HurtOverlay.apply()
-	shader_animation_player.play("hurt_flash")
 	SoundEffectManager.play(_ouch_sound_effect_config)
 
 	if damage_types.has(Hitbox.DamageType.FIRE):

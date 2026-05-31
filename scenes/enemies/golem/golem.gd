@@ -4,9 +4,8 @@ extends Enemy
 
 var _player: Player
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: EffectsSprite = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var state_machine: GolemStateMachine = $GolemStateMachine
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -53,8 +52,8 @@ func _on_hurtbox_hitbox_connected(
 	_damage_direction: Vector2, _damage_types: Array[Hitbox.DamageType]
 ) -> void:
 	if health_component.current_health > 0:
-		shader_animation_player.play("hurt_flash")
+		sprite.play_hurt_flash()
 	else:
-		shader_animation_player.play("death_flash")
+		sprite.play_death_flash()
 		state_machine.transition_to("Death")
 		death.emit()

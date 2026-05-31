@@ -10,12 +10,13 @@ uniform vec3 hurt_color: source_color = vec3(0.918, 0.0, 0.447);
 uniform vec3 death_color: source_color = vec3(1, 0, 0);
 uniform vec3 heal_color: source_color = vec3(0.471, 1.0, 0.808);
 
-uniform int event_type: hint_enum("None", "Hurt", "Death", "Heal");
+uniform int event_type: hint_enum("None", "Hurt", "Death", "Heal", "White", "Black");
 
 void fragment() {
 	vec4 sprite_color = texture(TEXTURE, UV);
-	
+
 	switch (event_type) {
+		// NONE
 		case 0:
 			vec4 screen_color = texture(screen_texture, SCREEN_UV);
 			if(all(lessThan(abs(sprite_color - screen_color), vec4(silhouette_color_tolerance)))) {
@@ -24,15 +25,25 @@ void fragment() {
 				COLOR = vec4(silhouette_color.rgb, silhouette_color.a * sprite_color.a);
 			}
 			break;
+		// HURT
 		case 1:
-			COLOR = vec4(hurt_color, sprite_color.a);
+			COLOR = vec4(hurt_color, sprite_color.a * 0.7);
 			break;
+		// DEATH
 		case 2:
 			COLOR = vec4(death_color, sprite_color.a);
 			break;
+		// HEAL
 		case 3:
 			COLOR = vec4(heal_color, sprite_color.a);
 			break;
+		// WHITE
+		case 4:
+			COLOR = vec4(vec3(1.0), sprite_color.a);
+			break;
+		// BLACK
+		case 5:
+			COLOR = vec4(vec3(0.0), sprite_color.a);
+			break;
 		}
 }
-

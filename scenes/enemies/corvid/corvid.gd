@@ -22,11 +22,10 @@ enum InitialOrientation { RIGHT, LEFT }
 var _player: Player
 
 @onready var state_machine: CorvidStateMachine = $CorvidStateMachine
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: EffectsSprite = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var health_bar: EnemyHealthBar = $EnemyHealthBar
 @onready var health_component: HealthComponent = $HealthComponent
@@ -94,9 +93,9 @@ func _on_hurtbox_hitbox_connected(
 		alert()
 
 	if health_component.current_health > 0:
-		shader_animation_player.play("hurt_flash")
+		sprite.play_hurt_flash()
 	else:
-		shader_animation_player.play("death_flash")
+		sprite.play_death_flash()
 		death.emit()
 		HitStopManager.hit_stop()
 		state_machine.transition_to("Death")

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://pbbmbb3cs5xv"]
+
+[ext_resource type="Shader" uid="uid://5dvrnk5mplh2" path="res://shaders/flash.gdshader" id="1_3xbg8"]
+[ext_resource type="Script" uid="uid://dkaq4q7q0le6y" path="res://scenes/effects_sprite/effects_sprite.gd" id="2_jjalu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjalu"]
+resource_local_to_scene = true
+shader = ExtResource("1_3xbg8")
+shader_parameter/enabled = false
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/transparent = Color(0, 0, 0, 0)
+shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
+shader_parameter/death_color = Color(1, 0, 0, 1)
+shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
+shader_parameter/color = 1
+
+[sub_resource type="Animation" id="Animation_jjalu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_q5qoo"]
+resource_name = "death_flash"
+length = 0.083333336
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.016666668, 0.033333335, 0.05, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 1, 4, 1, 4]
+}
+
+[sub_resource type="Animation" id="Animation_3xbg8"]
+resource_name = "hurt_flash"
+length = 0.083333336
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.016666668, 0.033333335, 0.05, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 1, 3, 1, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjalu"]
+_data = {
+&"RESET": SubResource("Animation_jjalu"),
+&"death_flash": SubResource("Animation_q5qoo"),
+&"hurt_flash": SubResource("Animation_3xbg8")
+}
+
+[node name="EffectsSprite" type="Sprite2D" unique_id=1188522868]
+material = SubResource("ShaderMaterial_jjalu")
+script = ExtResource("2_jjalu")
+
+[node name="ShaderAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1060547443]
+libraries/ = SubResource("AnimationLibrary_jjalu")

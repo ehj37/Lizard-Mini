@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3dbbufxwngwj" path="res://scenes/floor/floor_medium.tscn" id="4_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://bj3qcibeaijal" path="res://scenes/enemies/corvid/corvid.tscn" id="5_d5djh"]
 [ext_resource type="PackedScene" uid="uid://cxq0a1g7triur" path="res://scenes/enemies/golem/golem.tscn" id="6_ok6xr"]
-[ext_resource type="Shader" uid="uid://5dvrnk5mplh2" path="res://shaders/uniform_color.gdshader" id="7_b0vvs"]
+[ext_resource type="Shader" uid="uid://5dvrnk5mplh2" path="res://shaders/flash.gdshader" id="7_b0vvs"]
 [ext_resource type="PackedScene" uid="uid://db24r4k8yb5md" path="res://scenes/objects/explosive_canister/explosive_canister.tscn" id="7_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://cbg80infwg8ik" path="res://scenes/objects/pots/pot_d/pot_d.tscn" id="8_8i1lk"]
 [ext_resource type="PackedScene" uid="uid://dm6i1rj3r0ko6" path="res://scenes/wall/door/door.tscn" id="10_gycjm"]
@@ -27,7 +27,9 @@
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
-shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/transparent = Color(0, 0, 0, 0)
 shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
 shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
@@ -37,7 +39,9 @@ shader_parameter/color = 1
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
-shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/transparent = Color(0, 0, 0, 0)
 shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
 shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
@@ -50,7 +54,9 @@ size = Vector2(400, 1232)
 resource_local_to_scene = true
 shader = ExtResource("7_b0vvs")
 shader_parameter/enabled = false
-shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/transparent = Color(0, 0, 0, 0)
 shader_parameter/hurt_color = Color(0.918, 0, 0.447, 1)
 shader_parameter/death_color = Color(1, 0, 0, 1)
 shader_parameter/heal_color = Color(0.471, 1, 0.808, 1)
@@ -68,7 +74,7 @@ script = ExtResource("1_e0cvd")
 metadata/_custom_type_script = "uid://ddrve4myklki5"
 
 [node name="Player" parent="." unique_id=155206965 instance=ExtResource("2_niitk")]
-position = Vector2(-8, 504)
+position = Vector2(-8, 40)
 
 [node name="PlayerCamera" parent="." unique_id=787665818 node_paths=PackedStringArray("player") instance=ExtResource("3_d5djh")]
 player = NodePath("../Player")
