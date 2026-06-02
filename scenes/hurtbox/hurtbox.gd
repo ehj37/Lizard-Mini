@@ -5,6 +5,8 @@ extends Area2D
 signal hitbox_connected(damage_direction: Vector2, damage_types: Array[Hitbox.DamageType])
 signal burned
 
+enum OwnerType { UNCATEGORIZED, PLAYER, ENEMY }
+
 @export var health_component: HealthComponent
 # If the hurtbox's owner has been damaged by a hitbox, the amount of time before
 # the hitbox can hurt the hurtbox's owner again.
@@ -56,6 +58,16 @@ func is_hurt_by(hitbox: Hitbox) -> bool:
 		return false
 
 	return true
+
+
+func get_owner_type() -> OwnerType:
+	if owner is Player:
+		return OwnerType.PLAYER
+
+	if owner is Enemy:
+		return OwnerType.ENEMY
+
+	return OwnerType.UNCATEGORIZED
 
 
 func _physics_process(_delta: float) -> void:

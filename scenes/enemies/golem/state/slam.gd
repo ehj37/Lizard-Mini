@@ -19,7 +19,7 @@ func update(_delta: float) -> void:
 func enter(data: Dictionary = {}) -> void:
 	_is_combo = data.get("is_combo", false)
 
-	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL)
+	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL, Vector2.ZERO)
 	golem.animation_player.play("slam")
 	SoundEffectManager.play_at(slam_sound_effect_config, golem.global_position)
 

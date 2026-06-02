@@ -42,9 +42,9 @@ func _on_hurtbox_hitbox_connected(
 	state_machine.transition_to("Death")
 
 
-func _on_hitbox_blood_drawn(hurtbox_owner_type: Hitbox.HurtboxOwnerType, _is_lethal: bool) -> void:
+func _on_hitbox_blood_drawn(hurtbox_owner_type: Hurtbox.OwnerType, _is_lethal: bool) -> void:
 	# Power through breakable obstacles without dying.
-	if hurtbox_owner_type == Hitbox.HurtboxOwnerType.UNCATEGORIZED:
+	if hurtbox_owner_type == Hurtbox.OwnerType.UNCATEGORIZED:
 		return
 
 	if state_machine.current_state.name == "Alert":

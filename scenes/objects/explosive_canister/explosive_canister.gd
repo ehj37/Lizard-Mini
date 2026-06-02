@@ -29,6 +29,6 @@ func _on_hurtbox_hitbox_connected(
 	explosion.global_position = global_position
 	LevelManager.current_level.add_child(explosion)
 
-	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.LARGE)
+	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.LARGE, Vector2.ZERO)
 
 	queue_free()

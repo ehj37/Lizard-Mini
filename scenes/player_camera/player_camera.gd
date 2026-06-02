@@ -11,7 +11,8 @@ const PAN_SPEED: float = 250.0
 
 @export var player: Player
 
-var _current_shake_magnitude: float = 5.0
+var _shake_magnitude: float = 0.0
+var _shake_direction: Vector2 = Vector2.ZERO
 var _focus_target: Vector2
 var _focused: bool = false
 var _registed_lock_areas: Array[CameraLockArea] = []
@@ -38,14 +39,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _current_shake_magnitude > 0:
-		var shake_offset_x: float = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
-		var shake_offset_y: float = randf_range(-_current_shake_magnitude, _current_shake_magnitude)
-		offset = Vector2(shake_offset_x, shake_offset_y)
-
-		_current_shake_magnitude = max(_current_shake_magnitude - delta * SHAKE_DIMINISH_SPEED, 0)
-	else:
-		offset = Vector2.ZERO
+	_shake_magnitude = max(_shake_magnitude - SHAKE_DIMINISH_SPEED * delta, 0)
+	_set_shake_offset()
 
 	if _focused:
 		global_position = global_position.move_toward(_focus_target, delta * PAN_SPEED)
@@ -74,14 +69,27 @@ func _set_global_position_from_player() -> void:
 	global_position = Vector2(target_x, target_y)
 
 
-func _begin_shake(shake_magnitude: SignalBus.CameraShakeMagnitude) -> void:
+func _set_shake_offset() -> void:
+	if _shake_direction == Vector2.ZERO:
+		var shake_offset_x: float = randf_range(-_shake_magnitude, _shake_magnitude)
+		var shake_offset_y: float = randf_range(-_shake_magnitude, _shake_magnitude)
+		offset = Vector2(shake_offset_x, shake_offset_y)
+	else:
+		offset = _shake_direction * _shake_magnitude
+
+
+func _begin_shake(shake_magnitude: SignalBus.CameraShakeMagnitude, direction: Vector2) -> void:
 	match shake_magnitude:
 		SignalBus.CameraShakeMagnitude.LARGE:
-			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_LARGE
+			_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_LARGE
 		SignalBus.CameraShakeMagnitude.MEDIUM:
-			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_MEDIUM
+			_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_MEDIUM
 		SignalBus.CameraShakeMagnitude.SMALL:
-			_current_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_SMALL
+			_shake_magnitude = INITIAL_SHAKE_MAGNITUDE_SMALL
+
+	_shake_direction = direction.normalized()
+
+	_set_shake_offset()
 
 
 func _on_focus(target: Vector2) -> void:
