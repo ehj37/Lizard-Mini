@@ -15,4 +15,4 @@ func enter(_data: Dictionary = {}) -> void:
 	corvid.hurtbox_ground.disable()
 	corvid.hitbox.disable()
 	corvid.animation_player.play("fall")
-	corvid.sprite.apply_fall_offset()
+	corvid.sprite.apply_fall_offset_and_z_index()

@@ -1,4 +1,4 @@
-extends Sprite2D
+extends EffectsSprite
 
 @onready var silhouette: Sprite2D = $Silhouette
 
@@ -12,8 +12,6 @@ func _ready() -> void:
 
 	# Has to go after hframes and vframes are set.
 	silhouette.frame = frame
-
-	silhouette.visible = true
 
 
 func _set(property: StringName, value: Variant) -> bool:

@@ -75,7 +75,7 @@ func enter(data: Dictionary = {}) -> void:
 	_attack_queued = false
 	get_tree().create_timer(ATTACK_QUEUE_WINDOW_START).timeout.connect(_enter_attack_queue_window)
 
-	player.shader_animation_player.play("hurt_flash")
+	player.sprite.play_hurt_flash()
 
 
 func exit() -> void:

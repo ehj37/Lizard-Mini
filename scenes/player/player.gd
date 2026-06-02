@@ -23,11 +23,10 @@ var _times_burnt: int = 0
 var _in_cinematic: bool = false
 
 @onready var burn_particles_back: GPUParticles2D = $BurnParticlesBack
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: EffectsSprite = $Sprite2D
 @onready var burn_particles_front: GPUParticles2D = $BurnParticlesFront
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var shader_animation_player: AnimationPlayer = $ShaderAnimationPlayer
 @onready var ground_detector: PlayerGroundDetector = $GroundDetector
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -163,7 +162,8 @@ func _on_hitbox_connection(
 func _take_burn_damage() -> void:
 	SignalBus.shake_camera.emit(SignalBus.CameraShakeMagnitude.SMALL)
 	HurtOverlay.apply()
-	shader_animation_player.play("hurt_flash")
+	sprite.play_hurt_flash()
+
 	SoundEffectManager.play(_singe_sound_effect_config)
 	SoundEffectManager.play(_ouch_sound_effect_config)
 

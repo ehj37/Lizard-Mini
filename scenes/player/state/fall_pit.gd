@@ -1,5 +1,7 @@
 extends PlayerState
 
+const POST_FALL_SPRITE_FLICKER_DURATION: float = 1.0
+
 @onready var _fall_pit_sound_effect_config: SoundEffectConfig = preload(
 	"res://scenes/player/sound_effects/player_fall_pit.tres"
 )
@@ -27,6 +29,7 @@ func enter(_data: Dictionary = {}) -> void:
 
 	SoundEffectManager.play(_fall_pit_sound_effect_config)
 	animation_player.play("fall_pit")
+	player.sprite.apply_fall_offset_and_z_index()
 
 	player.remove_burn()
 
@@ -37,6 +40,9 @@ func exit() -> void:
 	player.hurtbox_feet.enable()
 	_toggle_collision(true)
 	player.sprite_shadow.visible = true
+	player.sprite.reset_fall_offset_and_z_index()
+	# TODO: Damage immunity post fall
+	player.sprite.flicker(POST_FALL_SPRITE_FLICKER_DURATION)
 
 
 # We do this instead of changing the disabled value for the player collision
